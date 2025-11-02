@@ -1,0 +1,234 @@
+@import "tailwindcss";
+
+body {
+  background: linear-gradient(90deg, #9C6BFF, #FF88D2);
+  overflow-y: hidden;
+}
+
+
+.page_1 {
+  height: 100vh;
+  width: 80vw;
+  background-repeat: no-repeat;
+  /* ما تتكرر */
+  background-position: center;
+  /* تبقى بالنص */
+  background-size: contain;
+  /* تحفظ الحجم الطبيعي */
+  background-color: #fff;
+  /* او أي لون خلفية */
+  overflow: hidden;
+  /* يمنع أي Scroll */
+}
+
+.page_1-background {
+  background-image: url('./assets/page_1.png');
+  width: 100vw;
+  min-height: 100vh;
+  /* مو height، لازم min-height */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  /* الصورة تبقى كاملة ولا تنقص */
+  background-color: #ffffff;
+  /* مهم حتى لا تختفي */
+  overflow: hidden;
+  /* لمنع Scroll */
+}
+
+.page_2-background,
+.page_3-background,
+.page_4-background,
+.page_5-background,
+.page_6-background {
+
+  background-color: #ffffff;
+  /* مهم حتى لا تختفي */
+  overflow: hidden;
+  position: relative;
+  /* لمنع Scroll */
+  justify-content: center;
+  display: flex
+}
+
+img {
+
+  height: 600px;
+  width: 100vw
+}
+
+
+/* ============page 4=============== */
+.headset-icon-CD-page4 {
+  position: absolute;
+  top: 6%;
+  right: 14%;
+  background-color: #6bcff6;
+  border-radius: 20px;
+  border: rgb(255, 255, 255) solid 2px;
+  padding: 5px
+}
+
+.number-icon {
+  position: absolute;
+  background-color: #fff461;
+  border: red solid 2px;
+  padding: 5px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  /* حتى نقدر نوسّط الرقم */
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  /* شكل الرقم */
+  font-size: 16px;
+  position: absolute;
+}
+
+#num-4-page4 {
+  top: 25%;
+  left: 85%;
+}
+
+#num-5-page4 {
+  top: 28%;
+  left: 74%;
+}
+
+#num-1-page4 {
+  top: 44%;
+  left: 45%;
+}
+
+
+/*===========page5============*/
+
+.headset-icon-CD-page5 {
+  position: absolute;
+  background-color: #6bcff6;
+  border-radius: 20px;
+  border: rgb(255, 255, 255) solid 2px;
+  padding: 5px
+}
+
+#CD-1-page5 {
+  top: 6%;
+  right: 7%;
+}
+
+#CD-2-page5 {
+  bottom: 31%;
+  right: 12%;
+}
+
+#num-2-page5 {
+  top: 46%;
+  left: 8%;
+}
+
+#num-3-page5 {
+  top: 43%;
+  left: 34%;
+}
+
+
+/*===========page 6 ====================*/
+
+.headset-icon-CD-page6 {
+  position: absolute;
+  background-color: #6bcff6;
+  border-radius: 20px;
+  border: rgb(255, 255, 255) solid 2px;
+  padding: 5px;
+  top: 5%;
+  left: 36%;
+}
+
+
+
+/*=========page7===========*/
+.headset-icon-CD-page7 {
+  position: absolute;
+  background-color: #6bcff6;
+  border-radius: 20px;
+  border: rgb(255, 255, 255) solid 2px;
+  padding: 5px;
+  top: 12%;
+  right: 32%;
+}
+
+
+
+/*===========page8==================*/
+.headset-icon-CD-page8 {
+  position: absolute;
+  background-color: #6bcff6;
+  border-radius: 20px;
+  border: rgb(255, 255, 255) solid 3px;
+  padding: 5px;
+  top: 13%;
+  left: 45%;
+}
+
+.click-icon-page8-1 {
+  position: absolute;
+  background-color: #6bcff6;
+  border-radius: 20px;
+  border: rgb(255, 255, 255) solid 3px;
+  padding: 5px;
+  top: 13%;
+  left: 47%;
+}
+
+.click-icon-page8-2 {
+  position: absolute;
+  background-color: #6bcff6;
+  border-radius: 20px;
+  border: rgb(255, 255, 255) solid 3px;
+  padding: 5px;
+  top: 47%;
+  left: 22%;
+}
+
+.click-icon-page8-3 {
+  position: absolute;
+  background-color: #6bcff6;
+  border-radius: 20px;
+  border: rgb(255, 255, 255) solid 3px;
+  padding: 5px;
+  bottom: 29%;
+  left: 29%;
+}
+
+/*===========page9==================*/
+.headset-icon-CD-page9 {
+  position: absolute;
+  background-color: #6bcff6;
+  border-radius: 20px;
+  border: rgb(255, 255, 255) solid 2px;
+  padding: 5px;
+  bottom: 34%;
+  right: 37%;
+}
+
+.click-icon-page9-1 {
+  position: absolute;
+  background-color: #6bcff6;
+  border-radius: 20px;
+  border: rgb(255, 255, 255) solid 3px;
+  padding: 5px;
+  top: 11%;
+  right: 33%
+}
+
+.click-icon-page9-2 {
+  position: absolute;
+  background-color: #6bcff6;
+  border-radius: 20px;
+  border: rgb(255, 255, 255) solid 3px;
+  padding: 5px;
+     top: 30%;
+    right: 32%;
+}
