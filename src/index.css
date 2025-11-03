@@ -59,7 +59,7 @@ img {
 
 
 /* ============page 4=============== */
-.headset-icon-CD-page4 {
+.headset-icon-CD-page4-1 {
   position: absolute;
   top: 6%;
   right: 14%;
@@ -67,6 +67,41 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 2px;
   padding: 5px
+}
+
+.headset-icon-CD-page4-2 {
+  position: absolute;
+  top: 58%;
+  left: 4%;
+  background-color: #6bcff6;
+  border-radius: 20px;
+  border: rgb(255, 255, 255) solid 2px;
+  padding: 5px
+}
+
+.click-icon-page4 {
+  position: absolute;
+  background-color: #6bcff6;
+  border-radius: 20px;
+  border: rgb(255, 255, 255) solid 3px;
+  padding: 5px;
+  bottom: 16%;
+  right: 43%;
+}
+
+.header-title-page4 {
+  font-family: "Fredoka", sans-serif;
+  /* خط قريب من اللي في الصورة */
+  font-weight: 700;
+  font-size: 28px;
+  color: #ffffff;
+  text-shadow:
+    -1px -1px 0 #0c9de5,
+    1px -1px 0 #0c9de5,
+    -1px 1px 0 #0c9de5,
+    1px 1px 0 #0c9de5;
+  /* تحديد خارجي */
+
 }
 
 .number-icon {
@@ -102,6 +137,39 @@ img {
   left: 45%;
 }
 
+#d {
+  color: darkblue !important;
+  font-size: 30px;
+  position: absolute;
+  top: 58%;
+  left: 17.5%;
+}
+
+.listen {
+  color: black;
+  font-size: 20px;
+  position: absolute;
+
+}
+
+.listenSpan {
+  color: red;
+}
+
+#duck {
+  bottom: 23%;
+  right: 22%;
+}
+
+#dish {
+  bottom: 23%;
+  left: 50%;
+}
+
+#deer {
+  bottom: 23%;
+  left: 25%;
+}
 
 /*===========page5============*/
 
@@ -133,6 +201,39 @@ img {
   left: 34%;
 }
 
+.click-icon-page5 {
+  position: absolute;
+  background-color: #6bcff6;
+  border-radius: 20px;
+  border: rgb(255, 255, 255) solid 3px;
+  padding: 5px;
+  bottom: 15%;
+  left: 53%;
+
+}
+
+#t {
+  color: darkblue !important;
+  font-size: 30px;
+  position: absolute;
+  top: 49%;
+  left: 19.5%
+}
+
+#tiger {
+  bottom: 28%;
+  right: 22%;
+}
+
+#taxi {
+  bottom: 28%;
+  left: 50%;
+}
+
+#table{
+  bottom: 28%;
+  left: 25%;
+}
 
 /*===========page 6 ====================*/
 
@@ -229,6 +330,6 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 3px;
   padding: 5px;
-     top: 30%;
-    right: 32%;
+  top: 30%;
+  right: 32%;
 }
