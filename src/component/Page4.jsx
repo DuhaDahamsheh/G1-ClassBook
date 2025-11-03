@@ -48,13 +48,10 @@ const Page4 = () => {
                     isOpen={activePopup === 1}
                     onClose={() => setActivePopup(null)}
                     children={
-                        <>
-                       
+                        <>                       
                             <audio controls>
                                 <source src={activeData[0].sound} type="audio/mp3" />
                             </audio>
-
-
                         </>
                     }
 
@@ -68,12 +65,9 @@ const Page4 = () => {
                     onClose={() => setActivePopup(null)}
                     children={
                         <>
-                        
                             <audio controls>
                                 <source src={activeData[1].sound} type="audio/mp3" />
                             </audio>
-
-
                         </>
                     }
 

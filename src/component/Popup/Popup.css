@@ -15,7 +15,7 @@
 
 /* محتوى البوب أب */
 .popup-content {
-    background: linear-gradient(145deg, #e6eef8, #ffffff) !important;
+    background: linear-gradient(145deg,#ffffff, #ffffff) !important;
     padding: 50px;
     border-radius: clamp(10px, 1.5vw, 15px);
     max-width: clamp(300px, 60vw, 900px);
