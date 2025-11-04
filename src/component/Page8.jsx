@@ -4,7 +4,7 @@ import { FaHeadphones } from "react-icons/fa";
 import { PiCursorClickBold } from "react-icons/pi";
 import Popup from "./Popup/Popup";
 import CD6_Pg8_Instruction1_AdultLady from "../assets/unit1/CD6.Pg8_Instruction1_Adult Lady.mp3";
-import MatchExercise from "./Page8_Q3";
+import Page8_Q3 from "./Page8_Q3";
 import Page8_Q2 from "./Page8_Q2";
 import Page8_Q1 from "./Page8_Q1";
 import Page8_Q4 from "./Page8_Q4";
@@ -73,7 +73,7 @@ const Page8 = () => {
         onClose={() => setActivePopup(null)}
         children={
           <>
-            <MatchExercise />
+            <Page8_Q3 />
           </>
         }
       />

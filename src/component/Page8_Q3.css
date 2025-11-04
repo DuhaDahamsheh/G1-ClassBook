@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+   position: relative;
+}
+
+.word-section {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 80px;
+  margin-right: 200px;
+}
+
+
+.red-dot {
+ display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: red;
+  border-radius: 50%;
+}

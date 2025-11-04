@@ -541,3 +541,9 @@ img {
   top: 30%;
   right: 32%;
 }
+
+#ex-d {
+  display: flex;
+  align-items: flex-end;
+  gap: 11px;
+}

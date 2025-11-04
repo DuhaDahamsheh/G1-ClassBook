@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  justify-content: space-between;
+  gap: 250px;
+}
+
+.word-section1 ,.word-section2{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.red-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: red;
+  border-radius: 50%;
+  margin: 10px;
+}
+
+h5 {
+  font-family: "Baloo 2", sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  color: transparent;
+  -webkit-text-stroke: 2px #5c5c5c;
+}

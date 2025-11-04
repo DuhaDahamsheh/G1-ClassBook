@@ -10,8 +10,8 @@ import duck from "../assets/unit1/Pg4_1.4_Adult Lady.mp3";
 import deer from "../assets/unit1/Pg4_1.2_Adult Lady.mp3";
 import dish from "../assets/unit1/Pg4_1.3_Adult Lady.mp3";
 import dSound from "../assets/unit1/Pg4_1.1_Adult Lady.mp3";
-import imgs from "../assets/horizontal_combined.png"
 import { PiCursorClickBold } from "react-icons/pi";
+import Page4_Interactive1 from "./Page4_Interactive1";
 const Page4 = () => {
   const [activePopup, setActivePopup] = useState(null);
   const activeData = [
@@ -86,11 +86,11 @@ const Page4 = () => {
         <Popup
           isOpen={activePopup === 4}
           onClose={() => setActivePopup(null)}
-          children={<>
-          
-          <img src={imgs}/>
-          
-          </>}
+          children={
+            <>
+           <Page4_Interactive1/>
+            </>
+          }
         />
         <span className="headset-icon-CD-page4-2 shadow-md hover:scale-110 transition">
           <FaHeadphones
