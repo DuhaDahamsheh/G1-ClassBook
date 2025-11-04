@@ -44,7 +44,7 @@
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  margin-top: clamp(120px, 15vw, 210px) !important;
+  /* margin-top: clamp(120px, 15vw, 210px) !important; */
   transition: all 0.3s ease !important;
 }
 
@@ -78,7 +78,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: clamp(120px, 15vw, 210px);
+  /* margin-top: clamp(120px, 15vw, 210px); */
   transition: transform 0.3s ease, background 0.3s ease;
   transform-origin: center;
 }

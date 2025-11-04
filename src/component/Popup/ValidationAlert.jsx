@@ -15,43 +15,43 @@ const ValidationAlert = {
       imageAlt: "Question GIF",
       background: "#dfeaf6",
       confirmButtonText: `${< FaArrowRightLong />}`,
-allowOutsideClick: false,
-  allowEscapeKey: false,
-    buttonsStyling: false,
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      buttonsStyling: false,
       customClass: {
-  popup: "my-popup",
-    image: "my-image",
-      title: "my-title",
+        popup: "my-popup",
+        image: "my-image",
+        title: "my-title",
         content: "my-content",
-          confirmButton: "my-button",
-        },
-      });
+        confirmButton: "my-button",
+      },
+    });
   },
 
 
-error: (title = "Try Again!", text = "Some answers are incorrect.") => {
-  Swal.fire({
-    title: "Try Again!",
-    html: "Some answers are incorrect.",
-    imageUrl: wrong,
-    imageWidth: 200,
-    imageHeight: 200,
-    imageAlt: "Question GIF",
-    confirmButtonText: 'Try again',
-    allowOutsideClick: false,
-    allowEscapeKey: false,
-    buttonsStyling: false,
-    confirmButtonColor: '#f44336',
-    background: "#dfeaf6",
-    customClass: {
-      popup: "my-popup",
-      image: "my-image",
-      title: "my-title",
-      content: "my-content",
-      confirmButton: "my-button1",
-    },
-  });
-},
+  error: (title = "Try Again!", text = "Some answers are incorrect.") => {
+    Swal.fire({
+      title: "Try Again!",
+      html: "Some answers are incorrect.",
+      imageUrl: wrong,
+      imageWidth: 200,
+      imageHeight: 200,
+      imageAlt: "Question GIF",
+      confirmButtonText: 'Try again',
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      buttonsStyling: false,
+      confirmButtonColor: '#f44336',
+      background: "#dfeaf6",
+      customClass: {
+        popup: "my-popup",
+        image: "my-image",
+        title: "my-title",
+        content: "my-content",
+        confirmButton: "my-button1",
+      },
+    });
+  },
 
   info: (title = "Notice", text = "Please complete all fields.") => {
     Swal.fire({

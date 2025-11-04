@@ -59,6 +59,7 @@ export default function Book({ pages }) {
                     </div>
                     <button
                         onClick={nextPage}
+                        style={{zIndex: 1}}
                         className="absolute right-4 sm:right-8 w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-[#5247DD] text-white text-2xl sm:text-3xl flex items-center justify-center shadow-md hover:scale-110 transition"
                     >
                        <GrLinkNext size={25} />

@@ -1,10 +1,9 @@
 @import "tailwindcss";
 
 body {
-  background: linear-gradient(90deg, #9C6BFF, #FF88D2);
+  background: linear-gradient(90deg, #9c6bff, #ff88d2);
   overflow-y: hidden;
 }
-
 
 .page_1 {
   height: 100vh;
@@ -22,7 +21,7 @@ body {
 }
 
 .page_1-background {
-  background-image: url('./assets/page_1.png');
+  background-image: url("./assets/page_1.png");
   width: 100vw;
   min-height: 100vh;
   /* مو height، لازم min-height */
@@ -41,42 +40,76 @@ body {
 .page_4-background,
 .page_5-background,
 .page_6-background {
-
   background-color: #ffffff;
   /* مهم حتى لا تختفي */
   overflow: hidden;
   position: relative;
   /* لمنع Scroll */
   justify-content: center;
-  display: flex
+  display: flex;
 }
 
 img {
-
-  height: 600px;
-  width: 100vw
+  height: 85vh;
+  width: 100vw;
 }
 
-
 /* ============page 4=============== */
+.page {
+  position: relative;
+  width: 100%;
+  max-width: 900px; /* حجم مناسب */
+  margin: auto;
+}
+
+.page-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.number-icon,
+.headset-icon-CD-page4-1,
+.headset-icon-CD-page4-2,
+.click-icon-page4 {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+.headset-icon-CD-page4-1 {
+  top: 8%;
+  right: 11%;
+}
+
+#num-4-page4 {
+  top: 25%;
+  left: 85%;
+}
+
+#num-5-page4 {
+  top: 28%;
+  left: 74%;
+}
+
+#num-1-page4 {
+  top: 44%;
+  left: 45%;
+}
 .headset-icon-CD-page4-1 {
   position: absolute;
-  top: 6%;
-  right: 14%;
   background-color: #6bcff6;
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 2px;
-  padding: 5px
+  padding: 5px;
 }
 
 .headset-icon-CD-page4-2 {
   position: absolute;
-  top: 58%;
-  left: 4%;
+  top: 60%;
+  left: 5%;
   background-color: #6bcff6;
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 2px;
-  padding: 5px
+  padding: 5px;
 }
 
 .click-icon-page4 {
@@ -85,8 +118,8 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 3px;
   padding: 5px;
-  bottom: 16%;
-  right: 43%;
+  bottom: 14%;
+  right: 39%;
 }
 
 .header-title-page4 {
@@ -95,13 +128,9 @@ img {
   font-weight: 700;
   font-size: 28px;
   color: #ffffff;
-  text-shadow:
-    -1px -1px 0 #0c9de5,
-    1px -1px 0 #0c9de5,
-    -1px 1px 0 #0c9de5,
+  text-shadow: -1px -1px 0 #0c9de5, 1px -1px 0 #0c9de5, -1px 1px 0 #0c9de5,
     1px 1px 0 #0c9de5;
   /* تحديد خارجي */
-
 }
 
 .number-icon {
@@ -120,6 +149,15 @@ img {
   /* شكل الرقم */
   font-size: 16px;
   position: absolute;
+}
+.click-icon-page4-1 {
+  position: absolute;
+  background-color: #6bcff6;
+  border-radius: 20px;
+  border: rgb(255, 255, 255) solid 3px;
+  padding: 5px;
+  top: 36%;
+  left: 5%;
 }
 
 #num-4-page4 {
@@ -149,7 +187,6 @@ img {
   color: black;
   font-size: 20px;
   position: absolute;
-
 }
 
 .listenSpan {
@@ -178,7 +215,7 @@ img {
   background-color: #6bcff6;
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 2px;
-  padding: 5px
+  padding: 5px;
 }
 
 #CD-1-page5 {
@@ -209,7 +246,6 @@ img {
   padding: 5px;
   bottom: 15%;
   left: 53%;
-
 }
 
 #t {
@@ -217,7 +253,7 @@ img {
   font-size: 30px;
   position: absolute;
   top: 49%;
-  left: 19.5%
+  left: 19.5%;
 }
 
 #tiger {
@@ -230,7 +266,7 @@ img {
   left: 50%;
 }
 
-#table{
+#table {
   bottom: 28%;
   left: 25%;
 }
@@ -247,8 +283,6 @@ img {
   left: 36%;
 }
 
-
-
 /*=========page7===========*/
 .headset-icon-CD-page7 {
   position: absolute;
@@ -259,8 +293,6 @@ img {
   top: 12%;
   right: 32%;
 }
-
-
 
 /*===========page8==================*/
 .headset-icon-CD-page8 {
@@ -282,8 +314,16 @@ img {
   top: 13%;
   left: 47%;
 }
-
 .click-icon-page8-2 {
+  position: absolute;
+  background-color: #6bcff6;
+  border-radius: 20px;
+  border: rgb(255, 255, 255) solid 3px;
+  padding: 5px;
+  top: 28%;
+  left: 22%;
+}
+.click-icon-page8-3 {
   position: absolute;
   background-color: #6bcff6;
   border-radius: 20px;
@@ -293,7 +333,7 @@ img {
   left: 22%;
 }
 
-.click-icon-page8-3 {
+.click-icon-page8-4 {
   position: absolute;
   background-color: #6bcff6;
   border-radius: 20px;
@@ -303,37 +343,36 @@ img {
   left: 29%;
 }
 
-.ex-A{
+.ex-A {
   border: white solid 2px;
   padding: 0px 10px;
   background-color: #6bcff6;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-weight: 700;
   font-size: 25px;
   border-radius: 7px;
   color: #ffffff;
 }
 
-.ex-a-1{
+.ex-a-1 {
   color: rgb(105, 1, 147);
   font-size: 25px;
-   padding: 0px 10px;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+  padding: 0px 10px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-weight: 700;
-
 }
 
-.header-title-page8{
+.header-title-page8 {
   font-size: 20px;
-   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
-   color: navy;
-    font-weight: 700;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: navy;
+  font-weight: 700;
 }
+
 .exercise-container {
   display: flex;
   gap: 20px;
-  justify-content: center;
-  margin-top: 20px;
+  justify-content: space-around;
 }
 
 .exercise-item {
@@ -345,9 +384,12 @@ img {
 .exercise-image {
   height: 100px;
   cursor: pointer;
-  transition: .2s;
+  transition: 0.2s;
 }
-.exercise-image:hover { transform: scale(1.1); }
+
+.exercise-image:hover {
+  transform: scale(1.1);
+}
 
 .missing-input {
   width: 35px;
@@ -357,6 +399,12 @@ img {
   border: 2px solid #4aa1ff;
   border-radius: 6px;
   margin-top: 8px;
+}
+.number-of-q {
+  color: rgb(105, 1, 147);
+  font-size: 25px;
+  font-weight: 700;
+  margin-right: 10px;
 }
 
 /* footer buttons */
@@ -380,19 +428,89 @@ img {
 }
 
 .retry-btn {
-  background: #fff131;
+  background: #ffee00;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
 .play-btn {
   background: #64b8ff;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
 }
 
 .check-btn {
   background: #55c271;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
 }
-.char-input{
+
+.char-input {
   border-bottom: black solid 2px;
 }
+.popup-container {
+  position: relative;
+  z-index: 9999;
+  background: white;
+  padding: 25px;
+  width: 480px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+#match-area {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.item {
+  background: #3498db;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.item img {
+  width: 100px;
+  pointer-events: none;
+}
+
+.check-button2 {
+  background-color: #28a745;
+}
+
+.check-button2:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(40, 167, 69, 0.3);
+}
+
+.try-again-button {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.try-again-button:hover {
+  background-color: #e0a800;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(255, 193, 7, 0.3);
+}
+
 /*===========page9==================*/
 .headset-icon-CD-page9 {
   position: absolute;
@@ -411,7 +529,7 @@ img {
   border: rgb(255, 255, 255) solid 3px;
   padding: 5px;
   top: 11%;
-  right: 33%
+  right: 33%;
 }
 
 .click-icon-page9-2 {

@@ -12,6 +12,8 @@
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^7.1.0",
     "@fortawesome/react-fontawesome": "^3.1.0",
+    "@hello-pangea/dnd": "^18.0.1",
+    "@jsplumb/browser-ui": "^6.2.10",
     "@tailwindcss/vite": "^4.1.16",
     "primeicons": "^7.0.0",
     "react": "^19.1.1",
