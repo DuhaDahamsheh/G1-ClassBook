@@ -10,209 +10,133 @@ import taxi from "../assets/taxi_page_8.png";
 import tiger from "../assets/tiger_page_8.png";
 import ValidationAlert from "./Popup/ValidationAlert";
 import { IoCaretForwardCircle } from "react-icons/io5";
-import { FaCheck } from "react-icons/fa";
+
 const Page8_Q1 = () => {
   const audioRef = useRef(null);
 
-  const words = [
-    { word: "tiger", missing: "t" },
-    { word: "taxi", missing: "t" },
-    { word: "duck", missing: "d" },
-    { word: "deer", missing: "d" },
+  // ✅ بدل 2 arrays → state واحد مرتب
+  const data = [
+    { word: "deer", missing: "d", sound: Pg8_1_4_AdultLady, src: deer, num: "4" },
+    { word: "duck", missing: "d", sound: Pg8_1_3_AdultLady, src: duck, num: "3" },
+    { word: "tiger", missing: "t", sound: Pg8_1_1_AdultLady, src: tiger, num: "1" },
+    { word: "taxi", missing: "t", sound: Pg8_1_2_AdultLady, src: taxi, num: "2" },
   ];
-  const [inputs, setInputs] = useState(Array(words.length).fill(""));
 
-  const sentences = [
-    {
-      word: "deer",
-      missing: "d",
-      sound: Pg8_1_4_AdultLady,
-      src: deer,
-      num: "4",
-    },
-    {
-      word: "duck",
-      missing: "d",
-      sound: Pg8_1_3_AdultLady,
-      src: duck,
-      num: "3",
-    },
-    {
-      word: "tiger",
-      missing: "t",
-      sound: Pg8_1_1_AdultLady,
-      src: tiger,
-      num: "1",
-    },
-    {
-      word: "taxi",
-      missing: "t",
-      sound: Pg8_1_2_AdultLady,
-      src: taxi,
-      num: "2",
-    },
-  ];
-  const [answers, setAnswers] = useState(Array(sentences.length).fill(""));
-  const [pausedByStopPoint, setPausedByStopPoint] = useState(false);
+  const [answers, setAnswers] = useState(
+    data.map(() => ({ letter: "", number: "" }))
+  );
 
-  const stopAtSecond = 2; // غيري الرقم حسب ما بدك
+  const stopAtSecond = 2;
+  const [paused, setPaused] = useState(false);
 
-  const startWatch = () => {
+  useEffect(() => {
+    audioRef.current.play();
     const interval = setInterval(() => {
-      if (audioRef.current && audioRef.current.currentTime >= stopAtSecond) {
+      if (audioRef.current.currentTime >= stopAtSecond) {
         audioRef.current.pause();
-        setPausedByStopPoint(true);
+        setPaused(true);
         clearInterval(interval);
       }
     }, 200);
-  };
-  const playSound = (soundPath) => {
-    console.log(soundPath);
-
-    audioRef.current.src = soundPath;
-    audioRef.current.play();
-  };
-
-  useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.currentTime = 0; // اختياري
-      audioRef.current.play();
-      startWatch();
-    }
   }, []);
-  const continueSound = () => {
-    audioRef.current.play();
-    setPausedByStopPoint(false);
-  };
-  const handleInputChange = (value, index) => {
-    const updated = [...answers];
-    updated[index] = value.toLowerCase();
-    setAnswers(updated);
-  };
-  const handleInputChange2 = (value, index) => {
-    const updated = [...inputs];
-    updated[index] = value.toLowerCase();
-    setInputs(updated);
+
+  // ✅ دالة عامة لكل الإدخالات
+  const updateAnswer = (index, field, value) => {
+    setAnswers((prev) =>
+      prev.map((item, i) =>
+        i === index ? { ...item, [field]: value.toLowerCase() } : item
+      )
+    );
   };
 
-  const handleCheckAnswers = () => {
-    if (answers.includes("") && inputs.includes("")) {
+  const playSound = (src) => {
+    audioRef.current.src = src;
+    audioRef.current.play();
+  };
+
+  // ✅ Start Again reset
+  const reset = () =>
+    setAnswers(data.map(() => ({ letter: "", number: "" })));
+
+  // ✅ Check
+  const checkAnswers = () => {
+    if (answers.some((a) => a.letter === "" || a.number === "")) {
       ValidationAlert.info();
       return;
     }
 
-    const isCorrectInput1 = answers.every((answer, i) => {
-      return answer == sentences[i].num;
-    });
-    const isCorrectInput2 = inputs.every(
-      (char, i) => char === words[i].missing
+    const correct = answers.every(
+      (a, i) => a.letter === data[i].missing && a.number === data[i].num
     );
-    if (isCorrectInput1 && isCorrectInput2) {
-      ValidationAlert.success();
-    } else {
-      ValidationAlert.error();
-    }
+
+    correct ? ValidationAlert.success() : ValidationAlert.error();
   };
 
   return (
     <>
       <header className="header-title-page8">
         <span className="ex-A">A</span>
-        <span className="ex-a-1">1</span> Listen and write the missing letters.
-        Number the pictures.
+        <span className="ex-a-1">1</span> Listen and write the missing letters. Number the pictures.
       </header>
-      <audio ref={audioRef} style={{ alignSelf: "center" }} controls>
+
+      <audio ref={audioRef} controls>
         <source src={CD6_Pg8_Instruction1_AdultLady} type="audio/mp3" />
       </audio>
-      <div
-        className="div-input"
-        style={{ display: "flex", justifyContent: "space-evenly" }}
-      >
-        {words.map((word, index) => {
-          return (
-            <>
-              <div style={{ display: "flex", alignItems: "flex-end" }}>
-                <span className="number-of-q">{index + 1} </span>{" "}
-                <input
-                  type="text"
-                  maxLength="1"
-                  className="char-input"
-                  value={inputs[index]}
-                  onChange={(e) => handleInputChange2(e.target.value, index)}
-                  style={{
-                    width: "30px",
-                    textAlign: "center",
-                    fontSize: "24px",
-                    marginRight: "5px",
-                  }}
-                />
-                {word.word.slice(1)}
-              </div>
-            </>
-          );
-        })}
+
+      <div className="div-input" style={{ display: "flex", justifyContent: "space-evenly" }}>
+        {data.map((item, index) => (
+          <div key={index} style={{ display: "flex", alignItems: "flex-end" }}>
+            <span className="number-of-q">{index + 1}</span>
+            <input
+              type="text"
+              maxLength="1"
+              className="char-input"
+              value={answers[index].letter}
+              onChange={(e) => updateAnswer(index, "letter", e.target.value)}
+              style={{ width: "30px", textAlign: "center", fontSize: "24px", marginRight: "5px" }}
+            />
+            {item.word.slice(1)}
+          </div>
+        ))}
       </div>
+
       <div className="exercise-image-div" style={{ display: "flex" }}>
-        <img
-          src={deer}
-          className="exercise-image"
-          onClick={() => playSound(Pg8_1_4_AdultLady)}
-        />
-        <img
-          src={duck}
-          className="exercise-image"
-          onClick={() => playSound(Pg8_1_3_AdultLady)}
-        />
-        <img
-          src={tiger}
-          className="exercise-image"
-          onClick={() => playSound(Pg8_1_1_AdultLady)}
-        />
-        <img
-          src={taxi}
-          className="exercise-image"
-          onClick={() => playSound(Pg8_1_2_AdultLady)}
-        />
+        {data.map((item, index) => (
+          <img
+            key={index}
+            src={item.src}
+            className="exercise-image"
+            onClick={() => playSound(item.sound)}
+          />
+        ))}
       </div>
+
       <div className="exercise-container">
-        {sentences.map((item, index) => (
+        {data.map((item, index) => (
           <div key={index} className="exercise-item">
             <input
               type="text"
               maxLength="1"
-              className="missing-input"
-              value={answers[index]}
-              onChange={(e) => handleInputChange(e.target.value, index)}
+             className={`missing-input ${answers[index].number ? "filled" : ""}`}
+              value={answers[index].number}
+              onChange={(e) => updateAnswer(index, "number", e.target.value)}
             />
           </div>
         ))}
       </div>
 
-      {/* زر الفحص */}
-
-      <div class="validation-buttons">
-        <button
-          className="try-again-button retry-btn swal-retry"
-          onClick={() => {
-            setInputs(Array(words.length).fill(""));
-            setAnswers(Array(sentences.length).fill(""));
-          }}
-        >
+      <div className="validation-buttons">
+        <button className="try-again-button retry-btn swal-retry" onClick={reset}>
           Start Again ↻
         </button>
-        {pausedByStopPoint && (
-          <button class="play-btn swal-continue" onClick={continueSound}>
-            Continue{" "}
-            <span>
-              <IoCaretForwardCircle size={20} style={{ color: "red" }} />
-            </span>
+
+        {paused && (
+          <button className="play-btn swal-continue" onClick={() => (audioRef.current.play(), setPaused(false))}>
+            Continue <IoCaretForwardCircle size={20} style={{ color: "red" }} />
           </button>
         )}
 
-        <button
-          className="check-button2 check-btn swal-check"
-          onClick={handleCheckAnswers}
-        >
+        <button className="check-button2 check-btn swal-check" onClick={checkAnswers}>
           Check Answers ✓
         </button>
       </div>

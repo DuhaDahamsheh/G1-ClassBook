@@ -3,6 +3,7 @@
 body {
   background: linear-gradient(90deg, #9c6bff, #ff88d2);
   overflow-y: hidden;
+  overflow: hidden;
 }
 
 .page_1 {
@@ -39,7 +40,8 @@ body {
 .page_3-background,
 .page_4-background,
 .page_5-background,
-.page_6-background {
+.page_6-background,
+.page_7-backgroun {
   background-color: #ffffff;
   /* مهم حتى لا تختفي */
   overflow: hidden;
@@ -76,8 +78,8 @@ img {
   transform: translate(-50%, -50%);
 }
 .headset-icon-CD-page4-1 {
-  top: 8%;
-  right: 11%;
+  top: 9%;
+  right: 12%;
 }
 
 #num-4-page4 {
@@ -105,7 +107,7 @@ img {
 .headset-icon-CD-page4-2 {
   position: absolute;
   top: 60%;
-  left: 5%;
+  left: 7%;
   background-color: #6bcff6;
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 2px;
@@ -124,13 +126,18 @@ img {
 
 .header-title-page4 {
   font-family: "Fredoka", sans-serif;
-  /* خط قريب من اللي في الصورة */
   font-weight: 700;
-  font-size: 28px;
-  color: #ffffff;
-  text-shadow: -1px -1px 0 #0c9de5, 1px -1px 0 #0c9de5, -1px 1px 0 #0c9de5,
-    1px 1px 0 #0c9de5;
-  /* تحديد خارجي */
+  font-size: 22px;
+  text-shadow: -1px -1px 0 #46b8e6, 1px -1px 0 #46b8e6, -1px 1px 0 #46b8e6,
+    1px 1px 0 #46b8e6;
+  color: white;
+  background: #46b8e6;
+  width: fit-content;
+  border-radius: 20px 20px 0px 0px;
+  padding: 5px;
+  position: absolute;
+  top: 19%;
+  left: 26%;
 }
 
 .number-icon {
@@ -179,7 +186,7 @@ img {
   color: darkblue !important;
   font-size: 30px;
   position: absolute;
-  top: 58%;
+  top: 43%;
   left: 17.5%;
 }
 
@@ -187,6 +194,7 @@ img {
   color: black;
   font-size: 20px;
   position: absolute;
+  font-weight: 500;
 }
 
 .listenSpan {
@@ -194,18 +202,18 @@ img {
 }
 
 #duck {
-  bottom: 23%;
-  right: 22%;
+  bottom: 30%;
+  right: 18%;
 }
 
 #dish {
-  bottom: 23%;
-  left: 50%;
+  bottom: 30%;
+  left: 54%;
 }
 
 #deer {
-  bottom: 23%;
-  left: 25%;
+  bottom: 30%;
+  left: 31%;
 }
 
 /*===========page5============*/
@@ -220,11 +228,11 @@ img {
 
 #CD-1-page5 {
   top: 6%;
-  right: 7%;
+  right: 8%;
 }
 
 #CD-2-page5 {
-  bottom: 31%;
+  bottom: 32%;
   right: 12%;
 }
 
@@ -244,33 +252,45 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 3px;
   padding: 5px;
-  bottom: 15%;
+  bottom: 16%;
   left: 53%;
 }
-
 #t {
   color: darkblue !important;
   font-size: 30px;
   position: absolute;
-  top: 49%;
-  left: 19.5%;
+  top: 45%;
+  left: 18.5%;
 }
 
 #tiger {
   bottom: 28%;
-  right: 22%;
+  right: 15%;
 }
 
 #taxi {
   bottom: 28%;
-  left: 50%;
+  left: 54%;
 }
 
 #table {
   bottom: 28%;
-  left: 25%;
+  left: 31%;
 }
 
+#text-0 {
+  position: absolute;
+  top: 41%;
+  left: 14%;
+  font-size: 20px;
+}
+#text-1{
+  cursor: pointer;
+  font-size: 20px;
+  position: absolute;
+  right: 24%;
+  top: 41%;
+}
 /*===========page 6 ====================*/
 
 .headset-icon-CD-page6 {
@@ -279,7 +299,7 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 2px;
   padding: 5px;
-  top: 5%;
+  top: 7%;
   left: 36%;
 }
 
@@ -290,7 +310,7 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 2px;
   padding: 5px;
-  top: 12%;
+  top: 13%;
   right: 32%;
 }
 
@@ -329,7 +349,7 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 3px;
   padding: 5px;
-  top: 47%;
+  top: 46%;
   left: 22%;
 }
 
@@ -339,7 +359,7 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 3px;
   padding: 5px;
-  bottom: 29%;
+  bottom: 30%;
   left: 29%;
 }
 
@@ -392,14 +412,22 @@ img {
 }
 
 .missing-input {
-  width: 35px;
-  height: 35px;
-  font-size: 24px;
-  text-align: center;
-  border: 2px solid #4aa1ff;
+  width: 38px;
+  height: 38px;
+  border: 2px solid #6ec1ff;
   border-radius: 6px;
-  margin-top: 8px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  transition: transform 0.2s ease, font-size 0.2s ease;
 }
+
+/* لما يصير فيه حرف */
+.missing-input.filled {
+  transform: scale(1.2); /* يكبر بنسبة 20% */
+  font-size: 26px;
+}
+
 .number-of-q {
   color: rgb(105, 1, 147);
   font-size: 25px;
@@ -518,8 +546,8 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 2px;
   padding: 5px;
-  bottom: 34%;
-  right: 37%;
+  bottom: 34.5%;
+  right: 36.5%;
 }
 
 .click-icon-page9-1 {
@@ -546,4 +574,16 @@ img {
   display: flex;
   align-items: flex-end;
   gap: 11px;
+}
+
+@media (max-width: 1000px) {
+  .div-input {
+    flex-wrap: wrap;
+  }
+  .exercise-image-div {
+    flex-wrap: wrap;
+  }
+  .exercise-image-div img {
+    width: auto;
+  }
 }

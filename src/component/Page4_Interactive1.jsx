@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import backgroundImage from "../assets/horizontal_combined.png";
+import backgroundImage from "../assets/horizontal_combined.jpg";
 import ValidationAlert from "./Popup/ValidationAlert";
 
 const Page4_Interactive1 = () => {

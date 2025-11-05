@@ -5,13 +5,14 @@ import Popup from "./Popup/Popup";
 import soundFile1 from "../assets/unit1/CD1.Pg4.U1_Intro_Adult Lady.mp3";
 import vocabulary from "../assets/unit1/Pg4_Vocabulary_Adult Lady.mp3";
 import listenSound from "../assets/unit1/Pg4_Instruction1_Adult Lady.mp3";
-import listenImg from "../assets/page_4-1.png";
+import listenImg from "../assets/page_4-1 (2).jpg";
 import duck from "../assets/unit1/Pg4_1.4_Adult Lady.mp3";
 import deer from "../assets/unit1/Pg4_1.2_Adult Lady.mp3";
 import dish from "../assets/unit1/Pg4_1.3_Adult Lady.mp3";
 import dSound from "../assets/unit1/Pg4_1.1_Adult Lady.mp3";
 import { PiCursorClickBold } from "react-icons/pi";
 import Page4_Interactive1 from "./Page4_Interactive1";
+import Page4_vocabulary from "./Page4_vocabulary";
 const Page4 = () => {
   const [activePopup, setActivePopup] = useState(null);
   const activeData = [
@@ -104,9 +105,7 @@ const Page4 = () => {
           onClose={() => setActivePopup(null)}
           children={
             <>
-              <audio controls>
-                <source src={activeData[1].sound} type="audio/mp3" />
-              </audio>
+           <Page4_vocabulary/>
             </>
           }
         />

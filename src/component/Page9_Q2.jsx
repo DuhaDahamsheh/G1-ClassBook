@@ -1,36 +1,189 @@
-import React, { useRef, useState, useEffect } from "react";
-
+import React, { useRef, useState } from "react";
+import ValidationAlert from "./Popup/ValidationAlert";
 import "./Page9_Q2.css";
+
 export default function Page9_Q2() {
+  const [lines, setLines] = useState([]);
+  const containerRef = useRef(null);
+  let startPoint = null;
+
+  // 🎨 ألوان الكلمات
+  const colors = ["red", "blue", "green", "orange", "purple"];
+  const [selectedWordIndex, setSelectedWordIndex] = useState(null);
+  const [wordColors, setWordColors] = useState([
+    "transparent",
+    "transparent",
+    "transparent",
+    "transparent",
+    "transparent",
+    "transparent",
+  ]);
+
+  const handleWordClick = (index) => {
+    setSelectedWordIndex(index);
+  };
+
+  const applyColor = (color) => {
+    const newColors = [...wordColors];
+    newColors[selectedWordIndex] = color;
+    setWordColors(newColors);
+    setSelectedWordIndex(null);
+  };
+
+  const handleDotDown = (e) => {
+    startPoint = e.target;
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = startPoint.getBoundingClientRect().left - rect.left + 8;
+    const y = startPoint.getBoundingClientRect().top - rect.top + 8;
+    setLines((prev) => [...prev, { x1: x, y1: y, x2: x, y2: y }]);
+    window.addEventListener("mousemove", followMouse);
+    window.addEventListener("mouseup", stopDrawingLine);
+  };
+
+  const correctMatches = [
+    { word1: "Good", word2: "afternoon" },
+    { word1: "Fine,", word2: "thank you" },
+    { word1: "How", word2: "are you" },
+  ];
+
+  const followMouse = (e) => {
+    const rect = containerRef.current.getBoundingClientRect();
+    setLines((prev) => [
+      ...prev.slice(0, -1),
+      {
+        x1: startPoint.getBoundingClientRect().left - rect.left + 8,
+        y1: startPoint.getBoundingClientRect().top - rect.top + 8,
+        x2: e.clientX - rect.left,
+        y2: e.clientY - rect.top,
+      },
+    ]);
+  };
+
+  const stopDrawingLine = (e) => {
+    window.removeEventListener("mousemove", followMouse);
+    window.removeEventListener("mouseup", stopDrawingLine);
+
+    const endDot = document.elementFromPoint(e.clientX, e.clientY);
+
+    if (!endDot.classList.contains("end-dot1")) {
+      setLines((prev) => prev.slice(0, -1));
+      return;
+    }
+
+    const rect = containerRef.current.getBoundingClientRect();
+    const newLine = {
+      x1: startPoint.getBoundingClientRect().left - rect.left + 8,
+      y1: startPoint.getBoundingClientRect().top - rect.top + 8,
+      x2: endDot.getBoundingClientRect().left - rect.left + 8,
+      y2: endDot.getBoundingClientRect().top - rect.top + 8,
+      word: startPoint.dataset.letter,
+      image: endDot.dataset.image,
+    };
+
+    setLines((prev) => [...prev.slice(0, -1), newLine]);
+  };
+
+  const checkAnswers = () => {
+    if (lines.length < 3) return ValidationAlert.info();
+    let correctCount = 0;
+    lines.forEach((line) => {
+      const isCorrect = correctMatches.some(
+        (pair) => pair.word1 === line.word && pair.word2 === line.image
+      );
+      if (isCorrect) correctCount++;
+    });
+
+    correctCount === correctMatches.length
+      ? ValidationAlert.success()
+      : ValidationAlert.error();
+  };
+
   return (
     <>
       <h4 className="header-title-page8">
         <span className="ex-A">E</span>Match and color.
       </h4>
+      {selectedWordIndex !== null && (
+        <div className="color-palette">
+          {colors.map((c) => (
+            <div
+              key={c}
+              className="color-circle"
+              style={{ backgroundColor: c }}
+              onClick={() => applyColor(c)}
+            ></div>
+          ))}
+        </div>
+      )}
 
-      <div className="container">
+      <div className="container2" ref={containerRef}>
         <div className="word-section1">
-          <h5>
-            Good<span className="red-dot"></span>
-          </h5>
-          <h5>
-            Fine,<span className="red-dot"></span>
-          </h5>
-          <h5>
-            How<span className="red-dot"></span>
-          </h5>
+          {["Good", "Fine,", "How"].map((word, i) => (
+            <h5
+              key={i}
+              className={wordColors[0] === "transparent" ? "word-outline H5" : "word-colored H5"}
+              style={{ color: wordColors[i], cursor: "pointer" }}
+              onClick={() => handleWordClick(i)}
+            >
+              {word}
+              <div
+                className="dot start-dot1"
+                data-letter={word}
+                onMouseDown={handleDotDown}
+              ></div>
+            </h5>
+          ))}
         </div>
+
         <div className="word-section2">
-          <h5>
-           <span className="red-dot"></span> thank you
-          </h5>
-          <h5>
-           <span className="red-dot"></span> are you
-          </h5>
-          <h5>
-          <span className="red-dot"></span>  afternoon
-          </h5>
+          {["thank you", "are you", "afternoon"].map((word, i) => (
+            <h5
+              key={i + 3}
+               className={wordColors[0] === "transparent" ? "word-outline H5" : "word-colored H5"}
+              style={{ color: wordColors[i + 3], cursor: "pointer" }}
+              onClick={() => handleWordClick(i + 3)}
+            >
+              {word}
+              <div className="dot end-dot1" data-image={word}></div>
+            </h5>
+          ))}
         </div>
+
+        <svg className="lines-layer">
+          {lines.map((line, i) => (
+            <line
+              key={i}
+              x1={line.x1}
+              y1={line.y1}
+              x2={line.x2}
+              y2={line.y2}
+              stroke="red"
+              strokeWidth="3"
+            />
+          ))}
+        </svg>
+      </div>
+
+      <div className="action-buttons-container">
+        <button
+          onClick={() => {
+            setLines([]);
+            setWordColors([
+              "transparent",
+              "transparent",
+              "transparent",
+              "transparent",
+              "transparent",
+              "transparent",
+            ]);
+          }}
+          className="try-again-button"
+        >
+          Start Again ↻
+        </button>
+        <button onClick={checkAnswers} className="check-button2">
+          Check Answer ✓
+        </button>
       </div>
     </>
   );

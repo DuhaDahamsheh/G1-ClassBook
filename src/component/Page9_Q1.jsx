@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import conversation from "../assets/conversation.png";
+import conversation from "../assets/conversation.svg";
 import ValidationAlert from "./Popup/ValidationAlert"
 const Page9_Q1 = () => {
   const clickableAreas = [
-    { x: 24, y: 35, w: 22, h: 9 } // (x2-x1=22 , y2-y1=9)
+    { x: 20, y: 24, w: 22, h: 9 } // (x2-x1=22 , y2-y1=9)
   ];
 
   const [inputs, setInputs] = useState(Array(clickableAreas.length).fill(""));

@@ -14,7 +14,7 @@ const ValidationAlert = {
       imageHeight: 200,
       imageAlt: "Question GIF",
       background: "#dfeaf6",
-      confirmButtonText: `${< FaArrowRightLong />}`,
+      confirmButtonText: "Good Job",
       allowOutsideClick: false,
       allowEscapeKey: false,
       buttonsStyling: false,

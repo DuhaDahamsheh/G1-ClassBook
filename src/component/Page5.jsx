@@ -11,9 +11,9 @@ import Pg5_2_2_Adult from "../assets/unit1/Pg5_2.2_Adult Lady.mp3"
 import Pg5_2_3_Adult from "../assets/unit1/Pg5_2.3_Adult Lady.mp3"
 import Pg5_2_4_Adult from "../assets/unit1/Pg5_2.4_Adult Lady.mp3"
 import Pg5_Instruction2_Adult from "../assets/unit1/Pg5_Instruction2_Adult Lady.mp3"
-import page_5_1 from "../assets/page_5-1.png"
+import page_5_1 from "../assets/page_5-1.svg"
 import page_5_2 from "../assets/page_5-2.png"
-import page_5_3 from "../assets/page_5-3.png"
+import page_5_3 from "../assets/page_5-3.jpg"
 import { PiCursorClickBold } from "react-icons/pi";
 import { FaHeadphones } from "react-icons/fa";
 
@@ -70,15 +70,15 @@ const Page5 = () => {
         onClose={() => setActivePopup(null)}
         children={
           <>
-            <header>{activeData[1].title}</header>
-            <img src={activeData[1].imgSrc} style={{ height: "auto", width: "400px" }} onClick={() => playSound(Pg5_1_1_Stella)} />
+           
+            <img src={activeData[1].imgSrc} style={{ height: "auto" }}  />
 
             {speaking.map((item, index) => {
               return (
                 <p
                   key={index}
                   className='speaking'
-                  id={item.text}
+                  id={`text-${index}` }
                   onClick={() => playSound(item.sound)}
                   style={{ cursor: "pointer" }}
                 >
@@ -105,7 +105,6 @@ const Page5 = () => {
         onClose={() => setActivePopup(null)}
         children={
           <>
-            <header>{activeData[2].title}</header>
             <img src={activeData[2].imgSrc} style={{ height: "auto", width: "600px" }} />
 
             {sentences.map((item, index) => {
