@@ -58,7 +58,7 @@ const Page4_Interactive1 = () => {
         <img
           src={backgroundImage}
           alt="interactive"
-          style={{ cursor: "pointer", height: "400px" }}
+          style={{ cursor: "pointer", height: "460px" }}
           onClick={handleImageClick}
         />
 

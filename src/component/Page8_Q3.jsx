@@ -1,7 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
-import img1 from "../assets/matching1Q_Page8 (1).png";
-import img2 from "../assets/matching2Q_Page8 (2).png";
-import imgs from "../assets/Untitled-1-05.svg";
+import img1 from "../assets/img2.svg";
+
+import img2 from "../assets/img1.svg";
+
 import "./Page8_Q3.css";
 import ValidationAlert from "./Popup/ValidationAlert";
 export default function Page8_Q3() {
@@ -96,7 +97,7 @@ export default function Page8_Q3() {
       <div className="container" ref={containerRef}>
         <div className="word-section">
           <h5 className="H5-Q8">
-            <span className="span-num">1</span>Hello! I’m John.
+            <span className="span-num">1</span> Hello! I’m John.
             <div
               className="dot start-dot"
               data-letter={"Hello! I’m John."}
@@ -113,12 +114,8 @@ export default function Page8_Q3() {
           </h5>
         </div>
         <div className="img-section">
-          <img
-            src={imgs}
-            className="imgs"
-            style={{ height: "50vh", width: "auto" }}
-          />
           <div className="img-container2">
+            <img src={img1} style={{ height: "160px", width: "auto" }} />
             <div
               id="dot-start1"
               className="dot end-dot"
@@ -127,6 +124,7 @@ export default function Page8_Q3() {
             ></div>
           </div>
           <div className="img-container2">
+            <img src={img2} style={{ height: "160px", width: "auto" }} />
             <div
               id="dot-start2"
               className="dot end-dot"

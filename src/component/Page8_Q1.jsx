@@ -83,7 +83,7 @@ const Page8_Q1 = () => {
         <source src={CD6_Pg8_Instruction1_AdultLady} type="audio/mp3" />
       </audio>
 
-      <div className="div-input" style={{ display: "flex", justifyContent: "space-evenly" }}>
+      <div className="div-input" style={{ display: "flex", justifyContent: "space-around" }}>
         {data.map((item, index) => (
           <div key={index} style={{ display: "flex", alignItems: "flex-end" }}>
             <span className="number-of-q">{index + 1}</span>

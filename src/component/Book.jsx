@@ -14,6 +14,7 @@ export default function Book({ pages }) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  
   const nextPage = () => {
     if (isMobile) {
       if (pageIndex < pages.length - 1) setPageIndex(pageIndex + 1);
@@ -31,6 +32,8 @@ export default function Book({ pages }) {
       else if (pageIndex > 1) setPageIndex(pageIndex - 2);
     }
   };
+
+
 
   return (
     <div className="w-full min-h-screen flex items-center justify-center relative">

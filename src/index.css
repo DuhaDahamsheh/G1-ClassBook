@@ -284,7 +284,7 @@ img {
   left: 14%;
   font-size: 20px;
 }
-#text-1{
+#text-1 {
   cursor: pointer;
   font-size: 20px;
   position: absolute;
@@ -383,10 +383,13 @@ img {
 }
 
 .header-title-page8 {
-  font-size: 20px;
+  font-size: 25px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   color: navy;
   font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .exercise-container {
@@ -417,7 +420,7 @@ img {
   border: 2px solid #6ec1ff;
   border-radius: 6px;
   text-align: center;
-  font-size: 22px;
+  font-size: 25px;
   font-weight: bold;
   transition: transform 0.2s ease, font-size 0.2s ease;
 }
@@ -425,7 +428,7 @@ img {
 /* لما يصير فيه حرف */
 .missing-input.filled {
   transform: scale(1.2); /* يكبر بنسبة 20% */
-  font-size: 26px;
+  font-size: 25px;
 }
 
 .number-of-q {

@@ -82,12 +82,6 @@ const Page8_Q2 = () => {
       <div className="exercise-container2">
         <h5
           className="header-title-page8"
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            marginBottom: "20px",
-            alignItems: "center",
-          }}
         >
           <span className="number-of-q">2.</span>Look and write.
         </h5>

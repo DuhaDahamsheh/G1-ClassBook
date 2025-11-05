@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import conversation from "../assets/conversation.svg";
-import ValidationAlert from "./Popup/ValidationAlert"
+import ValidationAlert from "./Popup/ValidationAlert";
 const Page9_Q1 = () => {
   const clickableAreas = [
-    { x: 20, y: 24, w: 22, h: 9 } // (x2-x1=22 , y2-y1=9)
+    { x: 20, y: 24, w: 22, h: 9 }, // (x2-x1=22 , y2-y1=9)
   ];
 
   const [inputs, setInputs] = useState(Array(clickableAreas.length).fill(""));
@@ -24,7 +24,6 @@ const Page9_Q1 = () => {
     ValidationAlert.success(); // All filled
   };
 
- 
   const handleReset = () => {
     setInputs(Array(clickableAreas.length).fill(""));
   };
@@ -35,7 +34,13 @@ const Page9_Q1 = () => {
         <span className="ex-A">D</span>Ask and answer.
       </h5>
 
-      <div style={{ position: "relative", display: "inline-block" ,marginBottom:"30px"}}>
+      <div
+        style={{
+          position: "relative",
+          display: "inline-block",
+          marginBottom: "30px",
+        }}
+      >
         <img src={conversation} style={{ height: "300px" }} />
 
         {clickableAreas.map((area, index) => (
@@ -45,15 +50,19 @@ const Page9_Q1 = () => {
             onChange={(e) => handleInputChange(e.target.value, index)}
             style={{
               position: "absolute",
-              top: `${area.y}%`,
-              left: `${area.x}%`,
-              width: `${area.w}%`,
-              height: `${area.h}%`,
+              top: "24%", // y
+              left: "20%", // x
+              width: "22%", // w
+              height: "9%", // h
+              /* أهم سطرين لتثبيت الموقع */
+              transform: "none",
+              /* حجم الخط responsive */
+              fontSize: "1.2vw", // أو "1em" إذا بدك ثابت داخل البابل
               border: "2px solid #444",
               borderRadius: "6px",
-              fontSize: "14px",
               padding: "4px",
-              background: "white"
+              background: "white",
+              outline: "none",
             }}
           />
         ))}
