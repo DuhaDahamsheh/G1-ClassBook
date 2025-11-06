@@ -1,13 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
-import CD6_Pg8_Instruction1_AdultLady from "../../assets/unit1/CD6.Pg8_Instruction1_Adult Lady.mp3";
-import Pg8_1_1_AdultLady from "../../assets/unit1/Pg8_1.1_Adult Lady.mp3";
-import Pg8_1_2_AdultLady from "../../assets/unit1/Pg8_1.2_Adult Lady.mp3";
-import Pg8_1_3_AdultLady from "../../assets/unit1/Pg8_1.3_Adult Lady.mp3";
-import Pg8_1_4_AdultLady from "../../assets/unit1/Pg8_1.4_Adult Lady.mp3";
-import deer from "../../assets/deer_page_8.png";
-import duck from "../../assets/duck_page_8.png";
-import taxi from "../../assets/taxi_page_8.png";
-import tiger from "../../assets/tiger_page_8.png";
+import CD6_Pg8_Instruction1_AdultLady from "../../assets/unit1/sounds/CD6.Pg8_Instruction1_Adult Lady.mp3";
+import Pg8_1_1_AdultLady from "../../assets/unit1/sounds/Pg8_1.1_Adult Lady.mp3";
+import Pg8_1_2_AdultLady from "../../assets/unit1/sounds/Pg8_1.2_Adult Lady.mp3";
+import Pg8_1_3_AdultLady from "../../assets/unit1/sounds/Pg8_1.3_Adult Lady.mp3";
+import Pg8_1_4_AdultLady from "../../assets/unit1/sounds/Pg8_1.4_Adult Lady.mp3";
+import deer from "../../assets/unit1/imgs/deer_1.svg";
+import duck from "../../assets/unit1/imgs/duck.svg";
+import taxi from "../../assets/unit1/imgs/taxi_1.svg";
+import tiger from "../../assets/unit1/imgs/tiger.svg";
 import ValidationAlert from "../Popup/ValidationAlert";
 import { IoCaretForwardCircle } from "react-icons/io5";
 

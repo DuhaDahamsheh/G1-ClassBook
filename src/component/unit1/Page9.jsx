@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import page_9 from "../../assets/page_9.png";
+import page_9 from "../../assets/unit1/imgs/Page9.svg";
 import { FaHeadphones } from "react-icons/fa";
 import { PiCursorClickBold } from "react-icons/pi";
 import Popup from "../Popup/Popup";

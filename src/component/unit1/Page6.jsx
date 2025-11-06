@@ -1,16 +1,16 @@
 import React, { useRef, useState } from "react";
-import page_6 from "../../assets/page_6.png";
-import CD4_Pg6_Grammar1_AdultLady from "../../assets/unit1/CD4.Pg6_Grammar1_Adult Lady.mp3";
-import Pg6_1_1_AdultLady from "../../assets/unit1/Pg6_1.1_Adult Lady.mp3";
-import Pg6_1_2_AdultLady from "../../assets/unit1/Pg6_1.2_Adult Lady.mp3";
-import Pg6_1_3_AdultLady from "../../assets/unit1/Pg6_1.3_Adult Lady.mp3";
-import Pg6_1_4_AdultLady from "../../assets/unit1/Pg6_1.4_Adult Lady.mp3";
-import Pg6_1_5_AdultLady from "../../assets/unit1/Pg6_1.5_Adult Lady.mp3";
-import Pg6_1_6_AdultLady from "../../assets/unit1/Pg6_1.6_Adult Lady.mp3";
-import Pg6_2_1_Stella from "../../assets/unit1/Pg6_2.1_Stella.mp3";
-import Pg6_2_2_ModifiedStella from "../../assets/unit1/Pg6_2.2_Modified Stella.mp3";
-import Pg6_3_1_Harley from "../../assets/unit1/Pg6_3.1_Harley.mp3";
-import Pg6_3_2_ModifiedHarley from "../../assets/unit1/Pg6_3.2_Modified Harley.mp3";
+import page_6 from "../../assets/unit1/imgs/page_6.png";
+import CD4_Pg6_Grammar1_AdultLady from "../../assets/unit1/sounds/CD4.Pg6_Grammar1_Adult Lady.mp3";
+import Pg6_1_1_AdultLady from "../../assets/unit1/sounds/Pg6_1.1_Adult Lady.mp3";
+import Pg6_1_2_AdultLady from "../../assets/unit1/sounds/Pg6_1.2_Adult Lady.mp3";
+import Pg6_1_3_AdultLady from "../../assets/unit1/sounds/Pg6_1.3_Adult Lady.mp3";
+import Pg6_1_4_AdultLady from "../../assets/unit1/sounds/Pg6_1.4_Adult Lady.mp3";
+import Pg6_1_5_AdultLady from "../../assets/unit1/sounds/Pg6_1.5_Adult Lady.mp3";
+import Pg6_1_6_AdultLady from "../../assets/unit1/sounds/Pg6_1.6_Adult Lady.mp3";
+import Pg6_2_1_Stella from "../../assets/unit1/sounds/Pg6_2.1_Stella.mp3";
+import Pg6_2_2_ModifiedStella from "../../assets/unit1/sounds/Pg6_2.2_Modified Stella.mp3";
+import Pg6_3_1_Harley from "../../assets/unit1/sounds/Pg6_3.1_Harley.mp3";
+import Pg6_3_2_ModifiedHarley from "../../assets/unit1/sounds/Pg6_3.2_Modified Harley.mp3";
 import Popup from "../Popup/Popup";
 // import Pg6_1_4_AdultLady from "../assets"
 import { FaHeadphones } from "react-icons/fa";

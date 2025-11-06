@@ -22,7 +22,7 @@ body {
 }
 
 .page_1-background {
-  background-image: url("./assets/page_1.png");
+  background-image: url("./assets/unit1/imgs/page_1.png");
   width: 100vw;
   min-height: 100vh;
   /* مو height، لازم min-height */
@@ -51,7 +51,18 @@ body {
   display: flex;
 }
 
+
+.unit2-page-background {
+  background-color: #ffffff;
+  /* مهم حتى لا تختفي */
+  overflow: hidden;
+  position: relative;
+  /* لمنع Scroll */
+  justify-content: center;
+  display: flex;
+}
 img {
+  position: relative;
   height: 85vh;
   width: 100vw;
 }
@@ -334,8 +345,8 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 3px;
   padding: 5px;
-  top: 13%;
-  left: 45%;
+     top: 15%;
+    left: 39%;
   cursor: pointer;
 }
 
@@ -345,8 +356,8 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 3px;
   padding: 5px;
-  top: 13%;
-  left: 47%;
+      top: 15%;
+    left: 42%;
   cursor: pointer;
 }
 .click-icon-page8-2 {
@@ -355,8 +366,8 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 3px;
   padding: 5px;
-  top: 28%;
-  left: 22%;
+      top: 30%;
+    left: 22.5%;
   cursor: pointer;
 }
 .click-icon-page8-3 {
@@ -365,7 +376,7 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 3px;
   padding: 5px;
-  top: 46%;
+  top: 48%;
   left: 22%;
   cursor: pointer;
 }
@@ -376,8 +387,8 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 3px;
   padding: 5px;
-  bottom: 30%;
-  left: 29%;
+     bottom: 28%;
+    left: 28%;
   cursor: pointer;
 }
 
@@ -424,8 +435,12 @@ img {
 
 .exercise-image {
   height: 100px;
-  cursor: pointer;
-  transition: 0.2s;
+    cursor: pointer;
+    transition: 0.2s;
+    border: solid 2px #6ec1ff;;
+    border-radius: 13px;
+    margin-left: 10px;
+
 }
 
 .exercise-image:hover {
@@ -568,7 +583,7 @@ img {
   border: rgb(255, 255, 255) solid 2px;
   padding: 5px;
   bottom: 34.5%;
-  right: 36.5%;
+  right: 35.5%;
   cursor: pointer;
 }
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import backgroundImage from "../../assets/horizontal_combined.jpg";
+import backgroundImage from "../../assets/unit1/imgs/horizontal_combined.jpg";
 import ValidationAlert from "../Popup/ValidationAlert";
-import vocabTitle from "../../assets/vocab-title.png";
+import vocabTitle from "../../assets/unit1/imgs/vocab-title.png";
 const Page4_Interactive1 = () => {
   const [clickedPoint, setClickedPoint] = useState(null);
   const [checkResult, setCheckResult] = useState(null);
@@ -70,7 +70,7 @@ const Page4_Interactive1 = () => {
         <img
           src={backgroundImage}
           alt="interactive"
-          style={{ cursor: "pointer", height: "460px" }}
+          style={{ cursor: "pointer", height: "460px" ,width:"auto" }}
           onClick={handleImageClick}
         />
 

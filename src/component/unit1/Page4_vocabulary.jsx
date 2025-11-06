@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react";
-import backgroundImage from "../../assets/horizontal_vocabulary.jpg";
+import backgroundImage from "../../assets/unit1/imgs/horizontal_vocabulary.jpg";
 import ValidationAlert from "../Popup/ValidationAlert";
-import page2_2 from "../../assets/page4_vocab-removebg-preview.png";
-import vocabulary from "../../assets/unit1/Pg4_Vocabulary_Adult Lady.mp3";
+import page2_2 from "../../assets/unit1/imgs/page4_vocab-removebg-preview.png";
+import vocabulary from "../../assets/unit1/sounds/Pg4_Vocabulary_Adult Lady.mp3";
 import { IoCaretForwardCircle } from "react-icons/io5";
 const Page4_vocabulary = () => {
   const audioRef = useRef(null);

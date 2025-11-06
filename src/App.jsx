@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import './App.css'
-import Book from './component/unit1/Book'
+import Book from './component/Book'
 
 function App() {
 

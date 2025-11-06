@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import conversation from "../../assets/conversation.svg";
+import conversation from "../../assets/unit1/imgs/conversation.svg";
 import ValidationAlert from "../Popup/ValidationAlert";
 const Page9_Q1 = () => {
   const clickableAreas = [
