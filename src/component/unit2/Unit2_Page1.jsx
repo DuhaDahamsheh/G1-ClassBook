@@ -7,6 +7,7 @@ import unit2_page1_CD8 from "../../assets/img_unit2/sounds-unit2/CD8.Pg10_U2.Int
 import Popup from "../Popup/Popup";
 import Unit2_Page1_find from "./Unit2_Page1_find";
 import Unit2_Page1_Vocab from "./Unit2_Page1_Vocab";
+import Unit2_Page1_Read from "./Unit2_Pag1_Read";
 const Unit2_Page1 = () => {
   const [activePopup, setActivePopup] = useState(null);
   return (
@@ -71,6 +72,15 @@ const Unit2_Page1 = () => {
           color="rgb(255, 255, 255)"
           onClick={() => setActivePopup(4)}
         />
+            <Popup
+        isOpen={activePopup === 4}
+        onClose={() => setActivePopup(null)}
+        children={
+          <>
+            <Unit2_Page1_Read/>
+          </>
+        }
+      />
       </span>
     </div>
   );
