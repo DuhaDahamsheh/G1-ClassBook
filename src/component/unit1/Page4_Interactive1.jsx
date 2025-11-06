@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import backgroundImage from "../assets/horizontal_combined.jpg";
-import ValidationAlert from "./Popup/ValidationAlert";
-
+import backgroundImage from "../../assets/horizontal_combined.jpg";
+import ValidationAlert from "../Popup/ValidationAlert";
+import vocabTitle from "../../assets/vocab-title.png";
 const Page4_Interactive1 = () => {
   const [clickedPoint, setClickedPoint] = useState(null);
   const [checkResult, setCheckResult] = useState(null);
 
   // ✅ منطقة المطعم (بالنسب المئوية)
   const targetArea = {
-    x1: 36,
+    x1: 30,
     y1: 12,
     x2: 60,
     y2: 38,
@@ -32,7 +32,10 @@ const Page4_Interactive1 = () => {
 
   const handleCheck = () => {
     if (!clickedPoint) {
-      ValidationAlert.error("Pay attention!", "Please click on the image first.");
+      ValidationAlert.info(
+        "Pay attention!",
+        "Please click on the image first."
+      );
       return;
     }
 
@@ -52,9 +55,18 @@ const Page4_Interactive1 = () => {
 
   return (
     <div style={{ textAlign: "center" }}>
-      <h3 className="header-title-page8" >Find the restaurant</h3>
-
+  
       <div style={{ position: "relative", display: "inline-block" }}>
+        <img
+          src={vocabTitle}
+          style={{
+            height: "200px",
+            width: "auto",
+            position: "absolute",
+            bottom: "2%",
+            right: "6%",
+          }}
+        />
         <img
           src={backgroundImage}
           alt="interactive"
@@ -88,7 +100,7 @@ const Page4_Interactive1 = () => {
               left: `${targetArea.x1}%`,
               width: `${targetArea.x2 - targetArea.x1}%`,
               height: `${targetArea.y2 - targetArea.y1}%`,
-              backgroundColor: "rgba(0, 255, 0, 0.3)", // أخضر شفاف
+              backgroundColor: "rgba(0, 255, 0, 0.55)", // أخضر شفاف
               borderRadius: "8px",
               pointerEvents: "none",
             }}

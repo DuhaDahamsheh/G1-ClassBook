@@ -1,14 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
-import CD6_Pg8_Instruction1_AdultLady from "../assets/unit1/CD6.Pg8_Instruction1_Adult Lady.mp3";
-import Pg8_1_1_AdultLady from "../assets/unit1/Pg8_1.1_Adult Lady.mp3";
-import Pg8_1_2_AdultLady from "../assets/unit1/Pg8_1.2_Adult Lady.mp3";
-import Pg8_1_3_AdultLady from "../assets/unit1/Pg8_1.3_Adult Lady.mp3";
-import Pg8_1_4_AdultLady from "../assets/unit1/Pg8_1.4_Adult Lady.mp3";
-import deer from "../assets/deer_page_8.png";
-import duck from "../assets/duck_page_8.png";
-import taxi from "../assets/taxi_page_8.png";
-import tiger from "../assets/tiger_page_8.png";
-import ValidationAlert from "./Popup/ValidationAlert";
+import CD6_Pg8_Instruction1_AdultLady from "../../assets/unit1/CD6.Pg8_Instruction1_Adult Lady.mp3";
+import Pg8_1_1_AdultLady from "../../assets/unit1/Pg8_1.1_Adult Lady.mp3";
+import Pg8_1_2_AdultLady from "../../assets/unit1/Pg8_1.2_Adult Lady.mp3";
+import Pg8_1_3_AdultLady from "../../assets/unit1/Pg8_1.3_Adult Lady.mp3";
+import Pg8_1_4_AdultLady from "../../assets/unit1/Pg8_1.4_Adult Lady.mp3";
+import deer from "../../assets/deer_page_8.png";
+import duck from "../../assets/duck_page_8.png";
+import taxi from "../../assets/taxi_page_8.png";
+import tiger from "../../assets/tiger_page_8.png";
+import ValidationAlert from "../Popup/ValidationAlert";
 import { IoCaretForwardCircle } from "react-icons/io5";
 
 const Page8_Q1 = () => {
@@ -76,7 +76,7 @@ const Page8_Q1 = () => {
     <>
       <header className="header-title-page8">
         <span className="ex-A">A</span>
-        <span className="ex-a-1">1</span> Listen and write the missing letters. Number the pictures.
+      1 Listen and write the missing letters. Number the pictures.
       </header>
 
       <audio ref={audioRef} controls>

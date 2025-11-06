@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 body {
-  background: linear-gradient(90deg, #9c6bff, #ff88d2);
+  background: linear-gradient(to bottom right, #4f46e5, #7c3aed, #ec4899);
   overflow-y: hidden;
   overflow: hidden;
 }
@@ -76,6 +76,7 @@ img {
 .click-icon-page4 {
   position: absolute;
   transform: translate(-50%, -50%);
+  cursor: pointer;
 }
 .headset-icon-CD-page4-1 {
   top: 9%;
@@ -102,6 +103,7 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 2px;
   padding: 5px;
+  cursor: pointer;
 }
 
 .headset-icon-CD-page4-2 {
@@ -112,6 +114,7 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 2px;
   padding: 5px;
+  cursor: pointer;
 }
 
 .click-icon-page4 {
@@ -122,6 +125,7 @@ img {
   padding: 5px;
   bottom: 14%;
   right: 39%;
+  cursor: pointer;
 }
 
 .header-title-page4 {
@@ -165,6 +169,7 @@ img {
   padding: 5px;
   top: 36%;
   left: 5%;
+  cursor: pointer;
 }
 
 #num-4-page4 {
@@ -224,6 +229,7 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 2px;
   padding: 5px;
+  cursor: pointer;
 }
 
 #CD-1-page5 {
@@ -254,6 +260,7 @@ img {
   padding: 5px;
   bottom: 16%;
   left: 53%;
+  cursor: pointer;
 }
 #t {
   color: darkblue !important;
@@ -301,8 +308,13 @@ img {
   padding: 5px;
   top: 7%;
   left: 36%;
+  cursor: pointer;
 }
 
+.clickable-area {
+  position: absolute;
+  cursor: pointer;
+}
 /*=========page7===========*/
 .headset-icon-CD-page7 {
   position: absolute;
@@ -310,8 +322,9 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 2px;
   padding: 5px;
-  top: 13%;
-  right: 32%;
+  top: 6%;
+  right: 58%;
+  cursor: pointer;
 }
 
 /*===========page8==================*/
@@ -323,6 +336,7 @@ img {
   padding: 5px;
   top: 13%;
   left: 45%;
+  cursor: pointer;
 }
 
 .click-icon-page8-1 {
@@ -333,6 +347,7 @@ img {
   padding: 5px;
   top: 13%;
   left: 47%;
+  cursor: pointer;
 }
 .click-icon-page8-2 {
   position: absolute;
@@ -342,6 +357,7 @@ img {
   padding: 5px;
   top: 28%;
   left: 22%;
+  cursor: pointer;
 }
 .click-icon-page8-3 {
   position: absolute;
@@ -351,6 +367,7 @@ img {
   padding: 5px;
   top: 46%;
   left: 22%;
+  cursor: pointer;
 }
 
 .click-icon-page8-4 {
@@ -361,6 +378,7 @@ img {
   padding: 5px;
   bottom: 30%;
   left: 29%;
+  cursor: pointer;
 }
 
 .ex-A {
@@ -427,7 +445,7 @@ img {
 
 /* لما يصير فيه حرف */
 .missing-input.filled {
-  transform: scale(1.2); /* يكبر بنسبة 20% */
+  transform: scale(1.1); /* يكبر بنسبة 20% */
   font-size: 25px;
 }
 
@@ -551,6 +569,7 @@ img {
   padding: 5px;
   bottom: 34.5%;
   right: 36.5%;
+  cursor: pointer;
 }
 
 .click-icon-page9-1 {
@@ -561,6 +580,7 @@ img {
   padding: 5px;
   top: 11%;
   right: 33%;
+  cursor: pointer;
 }
 
 .click-icon-page9-2 {
@@ -571,6 +591,7 @@ img {
   padding: 5px;
   top: 30%;
   right: 32%;
+  cursor: pointer;
 }
 
 #ex-d {

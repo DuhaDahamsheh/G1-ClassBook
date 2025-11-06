@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Page8_Q4.css";
-import ValidationAlert from "./Popup/ValidationAlert";
+import ValidationAlert from "../Popup/ValidationAlert";
 const Page8_Q4 = () => {
   const data = [
     { letter: "a", number: 1 },

@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import ValidationAlert from "./Popup/ValidationAlert";
+import ValidationAlert from "../Popup/ValidationAlert";
 import "./Page9_Q2.css";
 
 export default function Page9_Q2() {
@@ -8,7 +8,7 @@ export default function Page9_Q2() {
   let startPoint = null;
 
   // 🎨 ألوان الكلمات
-  const colors = ["red", "blue", "green", "orange", "purple"];
+  const colors = ["red", "blue", "green", "orange", "purple" , "yellow"];
   const [selectedWordIndex, setSelectedWordIndex] = useState(null);
   const [wordColors, setWordColors] = useState([
     "transparent",
@@ -127,7 +127,7 @@ export default function Page9_Q2() {
             >
               {word}
               <div
-                className="dot start-dot1"
+                className="dot1 start-dot1"
                 data-letter={word}
                 onMouseDown={handleDotDown}
               ></div>
@@ -143,8 +143,8 @@ export default function Page9_Q2() {
               style={{ color: wordColors[i + 3], cursor: "pointer" }}
               onClick={() => handleWordClick(i + 3)}
             >
+              <div className="dot1 end-dot1" data-image={word}></div>
               {word}
-              <div className="dot end-dot1" data-image={word}></div>
             </h5>
           ))}
         </div>

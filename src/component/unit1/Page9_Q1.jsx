@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import conversation from "../assets/conversation.svg";
-import ValidationAlert from "./Popup/ValidationAlert";
+import conversation from "../../assets/conversation.svg";
+import ValidationAlert from "../Popup/ValidationAlert";
 const Page9_Q1 = () => {
   const clickableAreas = [
     { x: 20, y: 24, w: 22, h: 9 }, // (x2-x1=22 , y2-y1=9)

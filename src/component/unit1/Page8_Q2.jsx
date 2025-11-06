@@ -1,11 +1,11 @@
 import React, { useState, useRef } from "react";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
-import ValidationAlert from "./Popup/ValidationAlert";
+import ValidationAlert from "../Popup/ValidationAlert";
 import "./Page8_Q2.css";
-import img1 from "../assets/page-8-q2-img1.png";
-import img2 from "../assets/page-8-q2-img2.png";
-import img3 from "../assets/page-8-q2-img3.png";
-import img4 from "../assets/page-8-q2-img4.png";
+import img1 from "../../assets/page-8-q2-img1.png";
+import img2 from "../../assets/page-8-q2-img2.png";
+import img3 from "../../assets/page-8-q2-img3.png";
+import img4 from "../../assets/page-8-q2-img4.png";
 
 const exerciseData = {
   pairs: [
@@ -33,31 +33,38 @@ const Page8_Q2 = () => {
   const audioRef = useRef(null);
 
   const handleOnDragEnd = (result) => {
-    if (!result.destination || result.destination.droppableId === "letters")
+    if (!result.destination) return;
+
+    const { destination, draggableId } = result;
+
+    // Dropping back into letters area
+    if (destination.droppableId === "letters") {
+      const newDropped = { ...droppedLetters };
+      const prevDrop = Object.keys(newDropped).find(
+        (key) => newDropped[key] === draggableId
+      );
+      if (prevDrop) newDropped[prevDrop] = null;
+      setDroppedLetters(newDropped);
       return;
-
-    const { source, destination, draggableId } = result;
-    const letterToMove = draggableId;
-
-    const prevDropZoneId = Object.keys(droppedLetters).find(
-      (key) => droppedLetters[key] === letterToMove
-    );
-    const newDroppedLetters = { ...droppedLetters };
-    if (prevDropZoneId) {
-      newDroppedLetters[prevDropZoneId] = null;
     }
 
-    newDroppedLetters[destination.droppableId] = letterToMove;
+    // Normal drop into a drop box
+    const newDropped = { ...droppedLetters };
 
-    setDroppedLetters(newDroppedLetters);
+    // If it was in another drop box before, clear that drop box
+    const previousDrop = Object.keys(newDropped).find(
+      (key) => newDropped[key] === draggableId
+    );
+    if (previousDrop) newDropped[previousDrop] = null;
+
+    newDropped[destination.droppableId] = draggableId;
+
+    setDroppedLetters(newDropped);
   };
 
   const resetExercise = () => {
     setDroppedLetters(initialDroppedState);
     setShuffledPairs(getShuffledPairs());
-    if (ValidationAlert && typeof ValidationAlert.close === "function") {
-      ValidationAlert.close();
-    }
   };
 
   const checkAnswers = () => {
@@ -80,27 +87,24 @@ const Page8_Q2 = () => {
   return (
     <>
       <div className="exercise-container2">
-        <h5
-          className="header-title-page8"
-        >
-          <span className="number-of-q">2.</span>Look and write.
+        <h5 className="header-title-page8">
+          <span className="number-of-q">2</span>Look and write.
         </h5>
+
         <DragDropContext onDragEnd={handleOnDragEnd}>
+          {/* WORDS SECTION */}
           <div className="word-container">
-            <Droppable
-              droppableId="letters"
-              direction="horizontal"
-              isDropDisabled={true}
-            >
+            <Droppable droppableId="letters" direction="horizontal">
               {(provided) => (
                 <div
                   className="letters-section-horizontal"
                   ref={provided.innerRef}
                   {...provided.droppableProps}
                 >
-                  {shuffledPairs.map((pair, index) => (
-                    <div key={pair.id} className="letter-sentence-pair">
-                      <Draggable draggableId={pair.letter} index={index}>
+                  {shuffledPairs
+                    .filter((pair) => !Object.values(droppedLetters).includes(pair.letter))
+                    .map((pair, index) => (
+                      <Draggable draggableId={pair.letter} index={index} key={pair.id}>
                         {(providedDraggable, snapshot) => (
                           <div
                             ref={providedDraggable.innerRef}
@@ -114,33 +118,42 @@ const Page8_Q2 = () => {
                           </div>
                         )}
                       </Draggable>
-                    </div>
-                  ))}
+                    ))}
+                  {provided.placeholder}
                 </div>
               )}
             </Droppable>
           </div>
+
+          {/* IMAGE + DROP ZONES */}
           <div className="exercise-layout-vertical">
             <div className="image-section-horizontal">
               {exerciseData.images.map((imageSrc, index) => (
-                <Droppable
-                  key={`drop-${index + 1}`}
-                  droppableId={`drop-${index + 1}`}
-                >
+                <Droppable key={`drop-${index + 1}`} droppableId={`drop-${index + 1}`}>
                   {(provided, snapshot) => (
                     <div className="image-container">
                       <img src={imageSrc} alt={`Visual hint ${index + 1}`} />
                       <div
                         ref={provided.innerRef}
                         {...provided.droppableProps}
-                        className={`drop-box ${
-                          snapshot.isDraggingOver ? "is-over" : ""
-                        }`}
+                        className={`drop-box ${snapshot.isDraggingOver ? "is-over" : ""}`}
                       >
                         {droppedLetters[`drop-${index + 1}`] ? (
-                          <div className="dropped-letter">
-                            {droppedLetters[`drop-${index + 1}`]}
-                          </div>
+                          <Draggable
+                            draggableId={droppedLetters[`drop-${index + 1}`]}
+                            index={0}
+                          >
+                            {(providedDraggable) => (
+                              <div
+                                ref={providedDraggable.innerRef}
+                                {...providedDraggable.draggableProps}
+                                {...providedDraggable.dragHandleProps}
+                                className="dropped-letter"
+                              >
+                                {droppedLetters[`drop-${index + 1}`]}
+                              </div>
+                            )}
+                          </Draggable>
                         ) : (
                           <span className="placeholder"></span>
                         )}
@@ -154,6 +167,7 @@ const Page8_Q2 = () => {
           </div>
         </DragDropContext>
 
+        {/* ACTION BUTTONS */}
         <div className="action-buttons-container">
           <button onClick={resetExercise} className="try-again-button">
             Start Again ↻
