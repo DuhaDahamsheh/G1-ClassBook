@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import page_6 from "../../assets/unit1/imgs/page_6.png";
-import CD4_Pg6_Grammar1_AdultLady from "../../assets/unit1/sounds/CD4.Pg6_Grammar1_Adult Lady.mp3";
+import CD4_Pg6_Grammar1_AdultLady from "../../assets/unit1/sounds/All Page 6.mp3";
 import Pg6_1_1_AdultLady from "../../assets/unit1/sounds/Pg6_1.1_Adult Lady.mp3";
 import Pg6_1_2_AdultLady from "../../assets/unit1/sounds/Pg6_1.2_Adult Lady.mp3";
 import Pg6_1_3_AdultLady from "../../assets/unit1/sounds/Pg6_1.3_Adult Lady.mp3";

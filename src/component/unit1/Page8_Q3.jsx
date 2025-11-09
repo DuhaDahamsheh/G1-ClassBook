@@ -63,26 +63,52 @@ export default function Page8_Q3() {
     setLines((prev) => [...prev.slice(0, -1), newLine]);
   };
 
-  const checkAnswers = () => {
-    if (lines.length < 2) {
-      ValidationAlert.info();
-      return;
-    }
+const checkAnswers = () => {
+  // تأكد إنو الطالب وصل كل الأزواج
+  if (lines.length < correctMatches.length) {
+    ValidationAlert.info(
+      "Oops!",
+      "Please connect all the pairs before checking."
+    );
+    return;
+  }
 
-    let correctCount = 0;
-    lines.forEach((line) => {
-      const isCorrect = correctMatches.some(
-        (pair) => pair.word === line.word && pair.image === line.image
-      );
-      if (isCorrect) correctCount++;
-    });
+  let correctCount = 0;
+  const total = correctMatches.length;
 
-    if (correctCount === correctMatches.length) {
-      ValidationAlert.success();
-    } else {
-      ValidationAlert.error();
-    }
-  };
+  // احسب كم وصلة صحيحة
+  lines.forEach((line) => {
+    const isCorrect = correctMatches.some(
+      (pair) => pair.word === line.word && pair.image === line.image
+    );
+    if (isCorrect) correctCount++;
+  });
+
+  // تحديد اللون حسب النتيجة
+  const color =
+    correctCount === total ? "green" :
+    correctCount === 0 ? "red" :
+    "orange";
+
+  // رسالة النتيجة منسقة بالألوان
+  const scoreMessage = `
+    <div style="font-size: 20px; margin-top: 10px; text-align:center;">
+      <span style="color:${color}; font-weight:bold;">
+        Your Score: ${correctCount} / ${total}
+      </span>
+    </div>
+  `;
+
+  // الحالات الثلاث
+  if (correctCount === total) {
+    ValidationAlert.success(scoreMessage);
+  } else if (correctCount === 0) {
+    ValidationAlert.error(scoreMessage);
+  } else {
+    ValidationAlert.warning(scoreMessage);
+  }
+};
+
 
   return (
     <>

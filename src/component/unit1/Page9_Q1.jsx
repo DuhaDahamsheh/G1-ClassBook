@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import conversation from "../../assets/unit1/imgs/conversation.svg";
 import ValidationAlert from "../Popup/ValidationAlert";
+
 const Page9_Q1 = () => {
+  // ✅ الإحداثيات كلها نسب مئوية (نسبة من الصورة)
   const clickableAreas = [
-    { x: 20, y: 24, w: 22, h: 9 }, // (x2-x1=22 , y2-y1=9)
+    { x: 20, y: 8, w: 22, h:12 }, // غيّري هاي الأرقام حسب ما بدك
   ];
 
   const [inputs, setInputs] = useState(Array(clickableAreas.length).fill(""));
@@ -14,14 +16,15 @@ const Page9_Q1 = () => {
     setInputs(updated);
   };
 
+  
+
   const handleCheck = () => {
-    // Check if any input is empty
     if (inputs.some((value) => value.trim() === "")) {
-      ValidationAlert.info(); // "Please fill all fields"
+      ValidationAlert.info(); 
       return;
     }
-
-    ValidationAlert.success(); // All filled
+     let scoreMessage = ``
+    ValidationAlert.success(scoreMessage);
   };
 
   const handleReset = () => {
@@ -31,18 +34,25 @@ const Page9_Q1 = () => {
   return (
     <>
       <h5 className="header-title-page8" id="ex-d">
-        <span className="ex-A">D</span>Ask and answer.
+        <span className="ex-A">D</span> Ask and answer.
       </h5>
 
+      {/* ✅ الصورة هي المرجع */}
       <div
         style={{
           position: "relative",
-          display: "inline-block",
+          width: "60vw",       // حجم Responsive
+          maxWidth: "600px",   // حد أقصى مناسب
           marginBottom: "30px",
         }}
       >
-        <img src={conversation} style={{ height: "300px" }} />
+        <img
+          src={conversation}
+          style={{ width: "100%", height: "auto", display: "block" }}
+          alt="conversation"
+        />
 
+        {/* ✅ الانبوت يتحرك حسب نسب الصورة */}
         {clickableAreas.map((area, index) => (
           <input
             key={index}
@@ -50,14 +60,11 @@ const Page9_Q1 = () => {
             onChange={(e) => handleInputChange(e.target.value, index)}
             style={{
               position: "absolute",
-              top: "24%", // y
-              left: "20%", // x
-              width: "22%", // w
-              height: "9%", // h
-              /* أهم سطرين لتثبيت الموقع */
-              transform: "none",
-              /* حجم الخط responsive */
-              fontSize: "1.2vw", // أو "1em" إذا بدك ثابت داخل البابل
+              top: `${area.y}%`,
+              left: `${area.x}%`,
+              width: `${area.w}%`,
+              height: `${area.h}%`,
+              fontSize: "1.2vw", // Responsive
               border: "2px solid #444",
               borderRadius: "6px",
               padding: "4px",
@@ -68,6 +75,7 @@ const Page9_Q1 = () => {
         ))}
       </div>
 
+      {/* Buttons */}
       <div className="action-buttons-container">
         <button onClick={handleReset} className="try-again-button">
           Start Again ↻
@@ -82,3 +90,4 @@ const Page9_Q1 = () => {
 };
 
 export default Page9_Q1;
+

@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
-import page_8 from "../../assets/unit1/imgs/Page8.jpg";
+import page_8 from "../../assets/unit1/imgs/Right G1- Class Book-8-9_page-0001.jpg";
 import { FaHeadphones } from "react-icons/fa";
 import { PiCursorClickBold } from "react-icons/pi";
 import Popup from "../Popup/Popup";
-import CD6_Pg8_Instruction1_AdultLady from "../../assets/unit1/sounds/CD6.Pg8_Instruction1_Adult Lady.mp3";
+import CD6_Pg8_Instruction1_AdultLady from "../../assets/unit1/sounds/pg8-instruction1-all.mp3";
 import Page8_Q3 from "./Page8_Q3";
 import Page8_Q2 from "./Page8_Q2";
 import Page8_Q1 from "./Page8_Q1";

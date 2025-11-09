@@ -49,30 +49,56 @@ const Page8_Q4 = () => {
   const formedWords = letters.map((group) => group.join(""));
   const fullSentence = formedWords.join(" ");
 
-  const handleCheckAnswers = () => {
-     // 1️⃣ Check empty input first
-  const hasEmpty = letters.some(group => group.some(letter => letter === ""));
+const handleCheckAnswers = () => {
+  // 1️⃣ التحقق من وجود فراغات
+  const hasEmpty = letters.some((group) =>
+    group.some((letter) => letter === "")
+  );
   if (hasEmpty) {
-    ValidationAlert.info(); // "Please fill all letters"
+    ValidationAlert.info("Oops!", "Please complete all fields before checking.");
     return;
   }
 
-  // 2️⃣ Check correctness
+  // 2️⃣ حساب عدد الصحيحة
+  let correctCount = 0;
+  let total = letters.flat().length;
+
   for (let g = 0; g < letters.length; g++) {
     for (let l = 0; l < letters[g].length; l++) {
       const letter = letters[g][l];
-      const correctNum = data.find(d => d.letter === letter)?.number;
+      const correctNum = data.find((d) => d.letter === letter)?.number;
 
-      if (correctNum !== questionGroups[g][l]) {
-        ValidationAlert.error();
-        return;
+      if (correctNum === questionGroups[g][l]) {
+        correctCount++;
       }
     }
   }
 
-  // 3️⃣ If all correct
-  ValidationAlert.success();
-  };
+  // 3️⃣ تحديد اللون حسب السكور
+  const color =
+    correctCount === total ? "green" :
+    correctCount === 0 ? "red" :
+    "orange";
+
+  // 4️⃣ رسالة النتيجة
+  const scoreMessage = `
+    <div style="font-size: 20px; margin-top: 10px; text-align:center;">
+      <span style="color:${color}; font-weight:bold;">
+        Your Score: ${correctCount} / ${total}
+      </span>
+    </div>
+  `;
+
+  // 5️⃣ عرض الرسالة حسب الحالة
+  if (correctCount === total) {
+    ValidationAlert.success(scoreMessage);
+  } else if (correctCount === 0) {
+    ValidationAlert.error(scoreMessage);
+  } else {
+    ValidationAlert.warning(scoreMessage);
+  }
+};
+
 
   return (
     <div className="container3">

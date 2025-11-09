@@ -51,7 +51,6 @@ body {
   display: flex;
 }
 
-
 .unit2-page-background {
   background-color: #ffffff;
   /* مهم حتى لا تختفي */
@@ -62,7 +61,6 @@ body {
   display: flex;
 }
 img {
- 
   height: 85vh;
   width: 100vw;
 }
@@ -345,8 +343,8 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 3px;
   padding: 5px;
-     top: 15%;
-    left: 8%;
+  top: 16%;
+  right: 53%;
   cursor: pointer;
 }
 
@@ -356,8 +354,8 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 3px;
   padding: 5px;
-      top: 15%;
-    left: 10%;
+  top: 16%;
+  right: 51%;
   cursor: pointer;
 }
 .click-icon-page8-2 {
@@ -366,8 +364,8 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 3px;
   padding: 5px;
-      top: 30%;
-    left: 22.5%;
+  top: 30%;
+  left: 22.5%;
   cursor: pointer;
 }
 .click-icon-page8-3 {
@@ -377,7 +375,7 @@ img {
   border: rgb(255, 255, 255) solid 3px;
   padding: 5px;
   top: 48%;
-  left: 22%;
+ left: 22.5%;
   cursor: pointer;
 }
 
@@ -387,8 +385,8 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 3px;
   padding: 5px;
-     bottom: 28%;
-    left: 28%;
+  bottom: 29%;
+    left: 29%;
   cursor: pointer;
 }
 
@@ -435,12 +433,11 @@ img {
 
 .exercise-image {
   height: 100px;
-    cursor: pointer;
-    transition: 0.2s;
-    border: solid 2px #6ec1ff;;
-    border-radius: 13px;
-    margin-left: 10px;
-
+  cursor: pointer;
+  transition: 0.2s;
+  border: solid 2px #6ec1ff;
+  border-radius: 13px;
+  margin-left: 10px;
 }
 
 .exercise-image:hover {
@@ -554,6 +551,10 @@ img {
   pointer-events: none;
 }
 
+/* #deer-0{
+  transform: scaleX(-1);
+  
+} */
 .check-button2 {
   background-color: #28a745;
 }
@@ -583,7 +584,7 @@ img {
   border: rgb(255, 255, 255) solid 2px;
   padding: 5px;
   bottom: 34.5%;
-  right: 35.5%;
+  right: 36.5%;
   cursor: pointer;
 }
 
@@ -593,7 +594,7 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 3px;
   padding: 5px;
-  top: 11%;
+  top: 12%;
   right: 33%;
   cursor: pointer;
 }
@@ -605,7 +606,7 @@ img {
   border: rgb(255, 255, 255) solid 3px;
   padding: 5px;
   top: 30%;
-  right: 32%;
+  right: 33%;
   cursor: pointer;
 }
 

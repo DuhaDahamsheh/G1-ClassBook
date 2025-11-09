@@ -8,7 +8,7 @@ export default function Page9_Q2() {
   let startPoint = null;
 
   // 🎨 ألوان الكلمات
-  const colors = ["red", "blue", "green", "orange", "purple" , "yellow"];
+  const colors = ["red", "blue", "green", "orange", "purple", "yellow"];
   const [selectedWordIndex, setSelectedWordIndex] = useState(null);
   const [wordColors, setWordColors] = useState([
     "transparent",
@@ -84,19 +84,51 @@ export default function Page9_Q2() {
   };
 
   const checkAnswers = () => {
-    if (lines.length < 3) return ValidationAlert.info();
-    let correctCount = 0;
-    lines.forEach((line) => {
-      const isCorrect = correctMatches.some(
-        (pair) => pair.word1 === line.word && pair.word2 === line.image
-      );
-      if (isCorrect) correctCount++;
-    });
+  // 1️⃣ إذا في خطوط ناقصة
+  if (lines.length < correctMatches.length) {
+    ValidationAlert.info(
+      "Oops!",
+      "Please connect all pairs before checking."
+    );
+    return;
+  }
 
-    correctCount === correctMatches.length
-      ? ValidationAlert.success()
-      : ValidationAlert.error();
-  };
+  // 2️⃣ حساب عدد التوصيلات الصحيحة
+  let correctCount = 0;
+  const total = correctMatches.length;
+
+  lines.forEach((line) => {
+    const isCorrect = correctMatches.some(
+      (pair) => pair.word1 === line.word && pair.word2 === line.image
+    );
+    if (isCorrect) correctCount++;
+  });
+
+  // 3️⃣ تحديد اللون حسب النتيجة
+  const color =
+    correctCount === total ? "green" :
+    correctCount === 0 ? "red" :
+    "orange";
+
+  // 4️⃣ رسالة النتيجة بشكل HTML
+  const scoreMessage = `
+    <div style="font-size: 20px; margin-top: 10px; text-align:center;">
+      <span style="color:${color}; font-weight:bold;">
+        Your Score: ${correctCount} / ${total}
+      </span>
+    </div>
+  `;
+
+  // 5️⃣ اختيار نوع الرسالة
+  if (correctCount === total) {
+    ValidationAlert.success(scoreMessage);
+  } else if (correctCount === 0) {
+    ValidationAlert.error(scoreMessage);
+  } else {
+    ValidationAlert.warning(scoreMessage);
+  }
+};
+
 
   return (
     <>
@@ -121,7 +153,11 @@ export default function Page9_Q2() {
           {["Good", "Fine,", "How"].map((word, i) => (
             <h5
               key={i}
-              className={wordColors[0] === "transparent" ? "word-outline H5" : "word-colored H5"}
+              className={
+                wordColors[0] === "transparent"
+                  ? "word-outline H5"
+                  : "word-colored H5"
+              }
               style={{ color: wordColors[i], cursor: "pointer" }}
               onClick={() => handleWordClick(i)}
             >
@@ -139,7 +175,11 @@ export default function Page9_Q2() {
           {["thank you", "are you", "afternoon"].map((word, i) => (
             <h5
               key={i + 3}
-               className={wordColors[0] === "transparent" ? "word-outline H5" : "word-colored H5"}
+              className={
+                wordColors[0] === "transparent"
+                  ? "word-outline H5"
+                  : "word-colored H5"
+              }
               style={{ color: wordColors[i + 3], cursor: "pointer" }}
               onClick={() => handleWordClick(i + 3)}
             >

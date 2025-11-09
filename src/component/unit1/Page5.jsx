@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import page_5 from "../../assets/unit1/imgs/page_5.png";
-import page5_CD2 from "../../assets/unit1/sounds/CD2.Pg5_Intro1_Adult Lady.mp3";
+import page5_CD2 from "../../assets/unit1/sounds/page5all.mp3";
 import page5_CD3 from "../../assets/unit1/sounds/CD3.Pg5_Instruction1_Adult Lady.mp3";
 import Popup from "../Popup/Popup";
 import Pg5_1_1_Stella from "../../assets/unit1/sounds/Pg5_1.1_Stella.mp3";
@@ -51,7 +51,7 @@ const Page5 = () => {
     { x1: 12.0, y1: 55.0, x2: 16.0, y2: 69.0, sound: Pg5_2_1_Adult },
     { x1: 25.0, y1: 47.0, x2: 42.14, y2: 67.0, sound: Pg5_2_2_Adult },
     { x1: 50.0, y1: 50.0, x2:66.0, y2: 71.0, sound: Pg5_2_3_Adult },
-    { x1: 80.0, y1: 40.0, x2: 85.0, y2: 70.0, sound: Pg5_2_4_Adult },
+    { x1: 80.0, y1: 40.0, x2: 89.0, y2: 70.0, sound: Pg5_2_4_Adult },
     ,
   ];
   const checkAreaAndPlaySound = (x, y) => {

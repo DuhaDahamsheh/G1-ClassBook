@@ -15,16 +15,16 @@ import Page9 from "./unit1/Page9";
 
 
 //==================== unit 2 pages 
-import Unit2_Page1 from "./unit2/Unit2_Page1";
-import Unit2_Page2 from "./unit2/Unit2_Page2";
-import Unit2_Page3 from "./unit2/Unit2_Page3";
-import Unit2_Page4 from "./unit2/Unit2_Page4";
-import Unit2_Page5 from "./unit2/Unit2_Page5";
-import Unit2_Page6 from "./unit2/Unit2_Page6";
-import Unit2_Page7 from "./unit2/Unit2_Page7";
-import Unit2_Page8 from "./unit2/Unit2_Page8";
-import Unit2_Page9 from "./unit2/Unit2_Page9";
-import Unit2_Page10 from "./unit2/Unit2_Page10";
+// import Unit2_Page1 from "./unit2/Unit2_Page1";
+// import Unit2_Page2 from "./unit2/Unit2_Page2";
+// import Unit2_Page3 from "./unit2/Unit2_Page3";
+// import Unit2_Page4 from "./unit2/Unit2_Page4";
+// import Unit2_Page5 from "./unit2/Unit2_Page5";
+// import Unit2_Page6 from "./unit2/Unit2_Page6";
+// import Unit2_Page7 from "./unit2/Unit2_Page7";
+// import Unit2_Page8 from "./unit2/Unit2_Page8";
+// import Unit2_Page9 from "./unit2/Unit2_Page9";
+// import Unit2_Page10 from "./unit2/Unit2_Page10";
 
 const pages = [
   <Page1 />,
@@ -36,16 +36,16 @@ const pages = [
   <Page7 />,
   <Page8 />,
   <Page9 />,
-  <Unit2_Page1/>,
-  <Unit2_Page2/>,
-  <Unit2_Page3/>,
-  <Unit2_Page4/>,
-  <Unit2_Page5/>,
-  <Unit2_Page6/>,
-  <Unit2_Page7/>,
-  <Unit2_Page8/>,
-  <Unit2_Page9/>,
-  <Unit2_Page10/>
+  // <Unit2_Page1/>,
+  // <Unit2_Page2/>,
+  // <Unit2_Page3/>,
+  // <Unit2_Page4/>,
+  // <Unit2_Page5/>,
+  // <Unit2_Page6/>,
+  // <Unit2_Page7/>,
+  // <Unit2_Page8/>,
+  // <Unit2_Page9/>,
+  // <Unit2_Page10/>
 ];
 
 export default function Book() {

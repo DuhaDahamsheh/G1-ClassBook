@@ -13,7 +13,6 @@ const Unit2_Page1 = () => {
   return (
     <div className="unit2-page-background">
       <img src={page_1} />
-
       <span className="headset-icon-CD-unit2-page1-1 shadow-md hover:scale-110 transition">
         <FaHeadphones
           size={12}
@@ -32,7 +31,6 @@ const Unit2_Page1 = () => {
           </>
         }
       />
-
       <span className="click-icon-unit2-page1-1 shadow-md hover:scale-110 transition">
         <PiCursorClickBold
           size={12}
@@ -49,7 +47,6 @@ const Unit2_Page1 = () => {
           </>
         }
       />
-
       <span className="headset-icon-CD-unit2-page1-2 shadow-md hover:scale-110 transition">
         <FaHeadphones
           size={12}
@@ -62,7 +59,7 @@ const Unit2_Page1 = () => {
         onClose={() => setActivePopup(null)}
         children={
           <>
-            <Unit2_Page1_Vocab/>
+            <Unit2_Page1_Vocab />
           </>
         }
       />
@@ -72,16 +69,16 @@ const Unit2_Page1 = () => {
           color="rgb(255, 255, 255)"
           onClick={() => setActivePopup(4)}
         />
-            <Popup
+      </span>
+      <Popup
         isOpen={activePopup === 4}
         onClose={() => setActivePopup(null)}
         children={
           <>
-            <Unit2_Page1_Read/>
+            <Unit2_Page1_Read />
           </>
         }
       />
-      </span>
     </div>
   );
 };

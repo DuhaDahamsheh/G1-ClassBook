@@ -4,8 +4,8 @@ import ValidationAlert from "../Popup/ValidationAlert";
 import "./Page8_Q2.css";
 import img1 from "../../assets/unit1/imgs/table.svg";
 import img2 from "../../assets/unit1/imgs/taxi.svg";
-import img3 from "../../assets/unit1/imgs/deer.svg";
-import img4 from "../../assets/unit1/imgs/dish.svg";
+import img3 from "../../assets/unit1/imgs/deer3.svg";
+import img4 from "../../assets/unit1/imgs/dish2.svg";
 
 const exerciseData = {
   pairs: [
@@ -67,22 +67,53 @@ const Page8_Q2 = () => {
     setShuffledPairs(getShuffledPairs());
   };
 
-  const checkAnswers = () => {
-    const allFilled = Object.values(droppedLetters).every((v) => v !== null);
-    if (!allFilled) {
-      ValidationAlert.info("Oops!", "Please complete all fields.");
-      return;
+const checkAnswers = () => {
+  const allFilled = Object.values(droppedLetters).every((v) => v !== null);
+
+  // إذا في مكان فاضي
+  if (!allFilled) {
+    ValidationAlert.info(
+      "Incomplete!",
+      "Please fill all the drop zones before checking your answers."
+    );
+    return;
+  }
+
+  let correctCount = 0;
+  const total = exerciseData.pairs.length;
+
+  exerciseData.pairs.forEach((pair, index) => {
+    const dropZoneId = `drop-${index + 1}`;
+    if (droppedLetters[dropZoneId] === pair.letter) {
+      correctCount++;
     }
-    const isCorrect = exerciseData.pairs.every((pair, index) => {
-      const dropZoneId = `drop-${index + 1}`;
-      return droppedLetters[dropZoneId] === pair.letter;
-    });
-    if (isCorrect) {
-      ValidationAlert.success("Good Job!", "All answers are correct!");
-    } else {
-      ValidationAlert.error("Try Again!", "Some answers are incorrect.");
-    }
-  };
+  });
+
+  // تحديد اللون حسب النتيجة
+  const color =
+    correctCount === total ? "green" :
+    correctCount === 0 ? "red" :
+    "orange";
+
+  // نص النتيجة مع تنسيق HTML
+  const scoreMessage = `
+    <div style="font-size: 20px; margin-top: 10px; text-align:center;">
+      <span style="color:${color}; font-weight:bold;">
+        Your Score: ${correctCount} / ${total}
+      </span>
+    </div>
+  `;
+
+  // الحالات الثلاث
+  if (correctCount === total) {
+    ValidationAlert.success(scoreMessage);
+  } else if (correctCount === 0) {
+    ValidationAlert.error(scoreMessage);
+  } else {
+    ValidationAlert.warning(scoreMessage);
+  }
+};
+
 
   return (
     <>
@@ -102,9 +133,16 @@ const Page8_Q2 = () => {
                   {...provided.droppableProps}
                 >
                   {shuffledPairs
-                    .filter((pair) => !Object.values(droppedLetters).includes(pair.letter))
+                    .filter(
+                      (pair) =>
+                        !Object.values(droppedLetters).includes(pair.letter)
+                    )
                     .map((pair, index) => (
-                      <Draggable draggableId={pair.letter} index={index} key={pair.id}>
+                      <Draggable
+                        draggableId={pair.letter}
+                        index={index}
+                        key={pair.id}
+                      >
                         {(providedDraggable, snapshot) => (
                           <div
                             ref={providedDraggable.innerRef}
@@ -129,14 +167,19 @@ const Page8_Q2 = () => {
           <div className="exercise-layout-vertical">
             <div className="image-section-horizontal">
               {exerciseData.images.map((imageSrc, index) => (
-                <Droppable key={`drop-${index + 1}`} droppableId={`drop-${index + 1}`}>
+                <Droppable
+                  key={`drop-${index + 1}`}
+                  droppableId={`drop-${index + 1}`}
+                >
                   {(provided, snapshot) => (
                     <div className="image-container">
                       <img src={imageSrc} alt={`Visual hint ${index + 1}`} />
                       <div
                         ref={provided.innerRef}
                         {...provided.droppableProps}
-                        className={`drop-box ${snapshot.isDraggingOver ? "is-over" : ""}`}
+                        className={`drop-box ${
+                          snapshot.isDraggingOver ? "is-over" : ""
+                        }`}
                       >
                         {droppedLetters[`drop-${index + 1}`] ? (
                           <Draggable

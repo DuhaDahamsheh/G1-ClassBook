@@ -22,10 +22,10 @@ const Unit2_Page1_Read = () => {
   };
 
   const clickableAreas = [
-    { x1: 12.0, y1: 43.0, x2: 16.0, y2: 69.0, sound: bSound },
+    { x1: 10.0, y1: 39.0, x2: 20.0, y2: 61.0, sound: bSound },
     { x1: 30.0, y1: 35.0, x2: 42.14, y2: 67.0, sound: bird },
     { x1: 55.0, y1: 38.0, x2: 66.0, y2: 71.0, sound: ball },
-    { x1: 86.0, y1: 34.0, x2: 91.0, y2: 54.0, sound: boy },
+    { x1: 70.0, y1: 30.0, x2: 85.0, y2: 63.0, sound: boy },
     ,
   ];
   const checkAreaAndPlaySound = (x, y) => {
@@ -61,7 +61,7 @@ const Unit2_Page1_Read = () => {
 
         <img
           src={listenImg}
-          style={{ height: "auto", width: "700px" ,position:"absolute"}}
+          style={{ height: "auto"}}
           onClick={handleImageClick}
         />
         <audio ref={audioRef} style={{ display: "none" }} />
