@@ -54,7 +54,7 @@ const Page8_Q1 = () => {
     data.map(() => ({ letter: "", number: "" }))
   );
 
-  const stopAtSecond = 2;
+  const stopAtSecond = 9;
   const [paused, setPaused] = useState(false);
 
   useEffect(() => {
