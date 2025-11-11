@@ -7,6 +7,7 @@ import ValidationAlert from "../Popup/ValidationAlert";
 
 export default function Page8_Q3() {
   const [lines, setLines] = useState([]);
+  const [wrongWords, setWrongWords] = useState([]); // ⭐ تم التعديل هون
   const containerRef = useRef(null);
   let startPoint = null;
 
@@ -63,52 +64,45 @@ export default function Page8_Q3() {
     setLines((prev) => [...prev.slice(0, -1), newLine]);
   };
 
-const checkAnswers = () => {
-  // تأكد إنو الطالب وصل كل الأزواج
-  if (lines.length < correctMatches.length) {
-    ValidationAlert.info(
-      "Oops!",
-      "Please connect all the pairs before checking."
-    );
-    return;
-  }
+  const checkAnswers = () => {
+    if (lines.length < correctMatches.length) {
+      ValidationAlert.info("Oops!", "Please connect all the pairs before checking.");
+      return;
+    }
 
-  let correctCount = 0;
-  const total = correctMatches.length;
+    let wrong = []; // ⭐ تم التعديل هون
+    let correctCount = 0;
 
-  // احسب كم وصلة صحيحة
-  lines.forEach((line) => {
-    const isCorrect = correctMatches.some(
-      (pair) => pair.word === line.word && pair.image === line.image
-    );
-    if (isCorrect) correctCount++;
-  });
+    lines.forEach((line) => {
+      const isCorrect = correctMatches.some(
+        (pair) => pair.word === line.word && pair.image === line.image
+      );
+      if (isCorrect) correctCount++;
+      else wrong.push(line.word); // ⭐ تم التعديل هون
+    });
 
-  // تحديد اللون حسب النتيجة
-  const color =
-    correctCount === total ? "green" :
-    correctCount === 0 ? "red" :
-    "orange";
+    setWrongWords(wrong); // ⭐ تم التعديل هون
 
-  // رسالة النتيجة منسقة بالألوان
-  const scoreMessage = `
-    <div style="font-size: 20px; margin-top: 10px; text-align:center;">
-      <span style="color:${color}; font-weight:bold;">
-        Your Score: ${correctCount} / ${total}
-      </span>
-    </div>
-  `;
+    const total = correctMatches.length;
+    const color =
+      correctCount === total
+        ? "green"
+        : correctCount === 0
+        ? "red"
+        : "orange";
 
-  // الحالات الثلاث
-  if (correctCount === total) {
-    ValidationAlert.success(scoreMessage);
-  } else if (correctCount === 0) {
-    ValidationAlert.error(scoreMessage);
-  } else {
-    ValidationAlert.warning(scoreMessage);
-  }
-};
+    const scoreMessage = `
+      <div style="font-size: 20px; margin-top: 10px; text-align:center;">
+        <span style="color:${color}; font-weight:bold;">
+           Score: ${correctCount} / ${total}
+        </span>
+      </div>
+    `;
 
+    if (correctCount === total) ValidationAlert.success(scoreMessage);
+    else if (correctCount === 0) ValidationAlert.error(scoreMessage);
+    else ValidationAlert.warning(scoreMessage);
+  };
 
   return (
     <>
@@ -117,11 +111,18 @@ const checkAnswers = () => {
       </h5>
 
       <div className="container1" ref={containerRef}>
-        {/* الصف الأول */}
+        {/* row 1 */}
         <div className="matching-row">
           <div className="word-with-dot">
             <span className="span-num">1</span>
-            <span className="word-text">Hello! I’m John.</span>
+
+            <span className="word-text">
+              Hello! I’m John.
+              {wrongWords.includes("Hello! I’m John.") && ( // ⭐ تم التعديل هون
+                <span className="error-mark">✕</span>
+              )}
+            </span>
+
             <div className="dot-wrapper">
               <div
                 className="dot start-dot"
@@ -139,11 +140,18 @@ const checkAnswers = () => {
           </div>
         </div>
 
-        {/* الصف الثاني */}
+        {/* row 2 */}
         <div className="matching-row">
           <div className="word-with-dot">
             <span className="span-num">2</span>
-            <span className="word-text">Goodbye!</span>
+
+            <span className="word-text">
+              Goodbye!
+              {wrongWords.includes("Goodbye!") && ( // ⭐ تم التعديل هون
+                <span className="error-mark">✕</span>
+              )}
+            </span>
+
             <div className="dot-wrapper">
               <div
                 className="dot start-dot"
@@ -169,7 +177,7 @@ const checkAnswers = () => {
       </div>
 
       <div className="action-buttons-container">
-        <button onClick={() => setLines([])} className="try-again-button">
+        <button onClick={() => { setLines([]); setWrongWords([]); }} className="try-again-button">
           Start Again ↻
         </button>
         <button onClick={checkAnswers} className="check-button2">
@@ -179,3 +187,4 @@ const checkAnswers = () => {
     </>
   );
 }
+

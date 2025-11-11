@@ -1,11 +1,34 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import backgroundImage from "../../assets/img_unit2/imgs/find img.jpg";
 import ValidationAlert from "../Popup/ValidationAlert";
-import page2_2 from "../../assets/img_unit2/imgs/unit2_page1_vocabTitle.png";
+import page2_2 from "../../assets/img_unit2/imgs/unit2 vocab.jpg";
 import vocabulary from "../../assets/img_unit2/sounds-unit2/Pg10_Vocabulary_Adult Lady.mp3";
 import { IoCaretForwardCircle } from "react-icons/io5";
 const Unit2_Page1_Vocab = () => {
   const audioRef = useRef(null);
+
+  const mainAudioRef = useRef(null); // ✅ الأوديو الرئيسي
+  const clickAudioRef = useRef(null); // ✅ صوت المناطق
+
+  const [paused, setPaused] = useState(false);
+  const stopAtSecond = 3;
+
+  useEffect(() => {
+    if (!mainAudioRef.current) return;
+
+    mainAudioRef.current.currentTime = 0;
+    mainAudioRef.current.play();
+
+    const interval = setInterval(() => {
+      if (mainAudioRef.current.currentTime >= stopAtSecond) {
+        mainAudioRef.current.pause();
+        setPaused(true);
+        clearInterval(interval);
+      }
+    }, 250);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const handleImageClick = (e) => {
     const rect = e.target.getBoundingClientRect();
@@ -36,27 +59,28 @@ const Unit2_Page1_Vocab = () => {
   };
   const playSound = (soundPath) => {
     console.log(soundPath);
-    if (audioRef.current) {
-      audioRef.current.src = soundPath;
-      audioRef.current.play();
+    if (clickAudioRef.current) {
+      clickAudioRef.current.src = soundPath;
+      clickAudioRef.current.play();
     }
   };
 
   return (
     <div style={{ textAlign: "center" }}>
-      <audio controls>
+      <audio ref={mainAudioRef} controls>
         <source src={vocabulary} type="audio/mp3" />
       </audio>
-
+      <audio ref={clickAudioRef} style={{ display: "none" }} />
       <div style={{ position: "relative", display: "inline-block" }}>
         <img
           src={page2_2}
           style={{
-            height: "200px",
+            height: "160px",
             width: "auto",
             position: "absolute",
-            bottom: "0%",
-            right: "0%",
+            bottom: "5%",
+            right: "5%",
+            borderRadius: "5%",
           }}
         />
         <img
@@ -65,21 +89,39 @@ const Unit2_Page1_Vocab = () => {
           style={{ cursor: "pointer", height: "460px", width: "auto" }}
           onClick={handleImageClick}
         />
+
+        {clickableAreas.map((area, index) => (
+          <div
+            key={index}
+            style={{
+              position: "absolute",
+              left: `${area.x1}%`,
+              top: `${area.y1}%`,
+              width: `${area.x2 - area.x1}%`,
+              height: `${area.y2 - area.y1}%`,
+              cursor: "pointer",
+            }}
+            onClick={() => playClickSound(area.sound)}
+          />
+        ))}
       </div>
-      <div
-        style={{
-          marginTop: "18px",
-          display: "flex",
-          justifyContent: "space-around",
-        }}
-      >
-        <button
-          className="play-btn swal-continue"
-          onClick={() => (audioRef.current.play(), setPaused(false))}
-        >
-          Continue <IoCaretForwardCircle size={20} style={{ color: "red" }} />
-        </button>
-      </div>
+
+      {paused ? (
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <button
+            className="play-btn swal-continue"
+            onClick={() => {
+              mainAudioRef.current.play();
+              // setPaused(false);
+            }}
+            style={{ marginTop: "18px" }}
+          >
+            Continue <IoCaretForwardCircle size={20} style={{ color: "red" }} />
+          </button>
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

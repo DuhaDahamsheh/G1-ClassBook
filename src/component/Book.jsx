@@ -15,16 +15,16 @@ import Page9 from "./unit1/Page9";
 
 
 //==================== unit 2 pages 
-// import Unit2_Page1 from "./unit2/Unit2_Page1";
-// import Unit2_Page2 from "./unit2/Unit2_Page2";
-// import Unit2_Page3 from "./unit2/Unit2_Page3";
-// import Unit2_Page4 from "./unit2/Unit2_Page4";
-// import Unit2_Page5 from "./unit2/Unit2_Page5";
-// import Unit2_Page6 from "./unit2/Unit2_Page6";
-// import Unit2_Page7 from "./unit2/Unit2_Page7";
-// import Unit2_Page8 from "./unit2/Unit2_Page8";
-// import Unit2_Page9 from "./unit2/Unit2_Page9";
-// import Unit2_Page10 from "./unit2/Unit2_Page10";
+import Unit2_Page1 from "./unit2/Unit2_Page1";
+import Unit2_Page2 from "./unit2/Unit2_Page2";
+import Unit2_Page3 from "./unit2/Unit2_Page3";
+import Unit2_Page4 from "./unit2/Unit2_Page4";
+import Unit2_Page5 from "./unit2/Unit2_Page5";
+import Unit2_Page6 from "./unit2/Unit2_Page6";
+import Unit2_Page7 from "./unit2/Unit2_Page7";
+import Unit2_Page8 from "./unit2/Unit2_Page8";
+import Unit2_Page9 from "./unit2/Unit2_Page9";
+import Unit2_Page10 from "./unit2/Unit2_Page10";
 
 const pages = [
   <Page1 />,
@@ -77,7 +77,8 @@ export default function Book() {
       else if (pageIndex > 1) setPageIndex(pageIndex - 2);
     }
   };
-
+// clamp (3rem ,35vw , 33.125
+//3rem 45 vh 43.75rem )
   return (
     <div className="w-full min-h-screen flex items-center justify-center relative">
       {/* 📱 إذا الشاشة صغيرة → صفحة واحدة دائماً */}
@@ -90,7 +91,7 @@ export default function Book() {
             <IoMdArrowBack size={25} />
           </button>
 
-          <div className="bg-white w-[90%] h-[85vh] rounded-2xl shadow-2xl border p-3 text-center">
+          <div className="bg-white w-[90%] h-[97vh] rounded-2xl shadow-2xl border p-3 text-center">
             {pages[pageIndex]}
           </div>
 
@@ -104,12 +105,12 @@ export default function Book() {
       ) : /* 💻 إذا الشاشة كبيرة → نظام صفحتين */
       pageIndex === 0 ? (
         <>
-          <div className="bg-white sm:w-[60%] h-[60vh] sm:h-[90vh] p-6 rounded-2xl shadow-2xl border flex items-center justify-center overflow-hidden">
+          <div className="bg-white sm:w-[50%] h-[85vh] sm:h-[97vh] p-6 rounded-2xl shadow-2xl border flex items-center justify-center overflow-hidden">
             {pages[0]}
           </div>
           <button
             onClick={nextPage}
-            className="absolute right-8 w-14 h-14 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md hover:bg-[#426ca7f2] hover:scale-110 transition z-[9999]"
+            className="absolute right-10 w-14 h-14 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md hover:bg-[#426ca7f2] hover:scale-110 transition z-[9999]"
           >
             <GrLinkNext size={25} />
           </button>
@@ -118,19 +119,19 @@ export default function Book() {
         <>
           <button
             onClick={prevPage}
-            className="absolute left-8 w-14 h-14 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md hover:bg-[#426ca7f2] hover:scale-110 transition z-[9999]"
+            className="absolute left-10 w-14 h-14 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md hover:bg-[#426ca7f2] hover:scale-110 transition z-[9999]"
           >
             <IoMdArrowBack size={30} />
           </button>
 
-          <div className="bg-white sm:w-[85%] h-[85vh] rounded-2xl shadow-2xl border grid grid-cols-2 overflow-hidden">
+          <div className="bg-white sm:w-[75%] h-[95vh] rounded-2xl shadow-2xl border grid grid-cols-2 overflow-hidden">
             <div className="border-r ">{pages[pageIndex]}</div>
             <div className="border-l ">{pages[pageIndex + 1]}</div>
           </div>
 
           <button
             onClick={nextPage}
-            className="absolute right-8 w-14 h-14 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md hover:bg-[#426ca7f2] hover:scale-110 transition z-[9999]"
+            className="absolute right-10 w-14 h-14 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md hover:bg-[#426ca7f2] hover:scale-110 transition z-[9999]"
           >
             <GrLinkNext size={25} />
           </button>

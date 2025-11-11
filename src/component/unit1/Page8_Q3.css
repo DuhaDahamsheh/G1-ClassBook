@@ -73,3 +73,23 @@
   height: 100%;
   pointer-events: none;
 }
+
+/* ⭐ تم إضافتها */
+.error-mark {
+  width: 25px;
+  height: 25px;
+  border: 2px solid white;
+  background-color: red;
+  border-radius: 50%;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 8px;
+  vertical-align: middle;
+  position: absolute;
+  left: 20%;
+  top: 28%;
+}

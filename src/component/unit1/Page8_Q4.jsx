@@ -36,7 +36,7 @@ const Page8_Q4 = () => {
     [1, 18, 5], // are
     [25, 15, 21], // you
   ];
-
+  const [wrongInputs, setWrongInputs] = useState([]); // ⭐ تم التعديل هون
   const [letters, setLetters] = useState(
     questionGroups.map((group) => group.map(() => ""))
   );
@@ -49,56 +49,58 @@ const Page8_Q4 = () => {
   const formedWords = letters.map((group) => group.join(""));
   const fullSentence = formedWords.join(" ");
 
-const handleCheckAnswers = () => {
-  // 1️⃣ التحقق من وجود فراغات
-  const hasEmpty = letters.some((group) =>
-    group.some((letter) => letter === "")
-  );
-  if (hasEmpty) {
-    ValidationAlert.info("Oops!", "Please complete all fields before checking.");
-    return;
-  }
+  const handleCheckAnswers = () => {
+    // 1️⃣ التحقق من وجود فراغات
+    const hasEmpty = letters.some((group) =>
+      group.some((letter) => letter === "")
+    );
+    if (hasEmpty) {
+      ValidationAlert.info(
+        "Oops!",
+        "Please complete all fields before checking."
+      );
+      return;
+    }
 
-  // 2️⃣ حساب عدد الصحيحة
-  let correctCount = 0;
-  let total = letters.flat().length;
+    // 2️⃣ حساب عدد الصحيحة
+    let correctCount = 0;
+    let total = letters.flat().length;
+    let wrong = []; // ⭐ تم التعديل هون
+    for (let g = 0; g < letters.length; g++) {
+      for (let l = 0; l < letters[g].length; l++) {
+        const letter = letters[g][l];
+        const correctNum = data.find((d) => d.letter === letter)?.number;
 
-  for (let g = 0; g < letters.length; g++) {
-    for (let l = 0; l < letters[g].length; l++) {
-      const letter = letters[g][l];
-      const correctNum = data.find((d) => d.letter === letter)?.number;
-
-      if (correctNum === questionGroups[g][l]) {
-        correctCount++;
+        if (correctNum === questionGroups[g][l]) {
+          correctCount++;
+        } else {
+          wrong.push(`${g}-${l}`); // ⭐ تم التعديل هون
+        }
       }
     }
-  }
+    setWrongInputs(wrong); // ⭐ تم التعديل هون
+    // 3️⃣ تحديد اللون حسب السكور
+    const color =
+      correctCount === total ? "green" : correctCount === 0 ? "red" : "orange";
 
-  // 3️⃣ تحديد اللون حسب السكور
-  const color =
-    correctCount === total ? "green" :
-    correctCount === 0 ? "red" :
-    "orange";
-
-  // 4️⃣ رسالة النتيجة
-  const scoreMessage = `
+    // 4️⃣ رسالة النتيجة
+    const scoreMessage = `
     <div style="font-size: 20px; margin-top: 10px; text-align:center;">
       <span style="color:${color}; font-weight:bold;">
-        Your Score: ${correctCount} / ${total}
+        Score: ${correctCount} / ${total}
       </span>
     </div>
   `;
 
-  // 5️⃣ عرض الرسالة حسب الحالة
-  if (correctCount === total) {
-    ValidationAlert.success(scoreMessage);
-  } else if (correctCount === 0) {
-    ValidationAlert.error(scoreMessage);
-  } else {
-    ValidationAlert.warning(scoreMessage);
-  }
-};
-
+    // 5️⃣ عرض الرسالة حسب الحالة
+    if (correctCount === total) {
+      ValidationAlert.success(scoreMessage);
+    } else if (correctCount === 0) {
+      ValidationAlert.error(scoreMessage);
+    } else {
+      ValidationAlert.warning(scoreMessage);
+    }
+  };
 
   return (
     <div className="container3">
@@ -124,36 +126,44 @@ const handleCheckAnswers = () => {
           ))}
         </div>
 
-     <div className="words">
-  {questionGroups.map((group, groupIndex) => (
-    <div className="word-group" key={groupIndex}>
-      {group.map((num, letterIndex) => (
-        <div className="input-h6" key={letterIndex}>
-          <h6>{num}</h6>
-          <input
-            className="inputs"
-            maxLength={1}
-            value={letters[groupIndex][letterIndex]}
-            onChange={(e) =>
-              handleInputChange(e.target.value, groupIndex, letterIndex)
-            }
-          />
+        <div className="words">
+          {questionGroups.map((group, groupIndex) => (
+            <div className="word-group" key={groupIndex}>
+              {group.map((num, letterIndex) => (
+                <div className="input-h6" key={letterIndex}>
+                  <h6>{num}</h6>
+                   <div className="input-wrapper">  {/* ⭐ تم التعديل هون */}
+                  <input
+                    className="inputs"
+                    maxLength={1}
+                    value={letters[groupIndex][letterIndex]}
+                    onChange={(e) =>
+                      handleInputChange(e.target.value, groupIndex, letterIndex)
+                    }
+                  />
+                  {wrongInputs.includes(`${groupIndex}-${letterIndex}`) && (
+                    <span className="error-mark1">✕</span> // ⭐ تم التعديل هون
+                  )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
-  ))}
-</div>
 
-       <div className="sentence">
-  {formedWords.map((word, i) => (
-    <span key={i} className="sentence-word">{word}</span>
-  ))}
-</div>
+        <div className="sentence">
+          {formedWords.map((word, i) => (
+            <span key={i} className="sentence-word">
+              {word}
+            </span>
+          ))}?
+        </div>
       </div>
       <div className="action-buttons-container">
         <button
           onClick={() => {
-           setLetters(questionGroups.map(group => group.map(() => "")));
+            setLetters(questionGroups.map((group) => group.map(() => "")));
+            setWrongInputs([])
           }}
           className="try-again-button"
         >

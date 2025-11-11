@@ -34,7 +34,7 @@
 
 /* زر التأكيد */
 .my-button {
-  background: #4a90e2 !important;
+  background: green !important;
   color: white !important;
   font-weight: bold !important;
   font-size: clamp(14px, 1.8vw, 18px) !important;
@@ -49,7 +49,49 @@
 }
 
 .my-button:hover {
-  background: #357abd !important;
+  background: rgb(6, 192, 6)  !important;
+  transform: scale(1.1);
+  box-shadow: 0 clamp(5px, 1vw, 10px) clamp(8px, 1.5vw, 15px) rgba(0, 0, 0, 0.4);
+}
+
+.my-button2{
+  background: rgb(255, 153, 0)!important;
+  color: white !important;
+  font-weight: bold !important;
+  font-size: clamp(14px, 1.8vw, 18px) !important;
+  border-radius: 50% !important;
+  width: clamp(60px, 8vw, 100px) !important;
+  height: clamp(60px, 8vw, 100px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  /* margin-top: clamp(120px, 15vw, 210px) !important; */
+  transition: all 0.3s ease !important;
+}
+
+.my-button2:hover{
+   background: rgb(255, 186, 58) !important;
+  transform: scale(1.1);
+  box-shadow: 0 clamp(5px, 1vw, 10px) clamp(8px, 1.5vw, 15px) rgba(0, 0, 0, 0.4);
+}
+
+.my-button3{
+  background: rgb(0, 170, 255)!important;
+  color: white !important;
+  font-weight: bold !important;
+  font-size: clamp(14px, 1.8vw, 18px) !important;
+  border-radius: 50% !important;
+  width: clamp(60px, 8vw, 100px) !important;
+  height: clamp(60px, 8vw, 100px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  /* margin-top: clamp(120px, 15vw, 210px) !important; */
+  transition: all 0.3s ease !important;
+}
+
+.my-button3:hover{
+   background: rgb(87, 194, 248) !important;
   transform: scale(1.1);
   box-shadow: 0 clamp(5px, 1vw, 10px) clamp(8px, 1.5vw, 15px) rgba(0, 0, 0, 0.4);
 }

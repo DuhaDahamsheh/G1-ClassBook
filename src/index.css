@@ -2,8 +2,8 @@
 
 body {
   background: linear-gradient(to bottom right, #4f46e5, #7c3aed, #ec4899);
-  overflow-y: hidden;
-  overflow: hidden;
+ overflow-x: hidden;
+  
 }
 
 .page_1 {
@@ -61,7 +61,7 @@ body {
   display: flex;
 }
 img {
-  height: 85vh;
+  height: 95vh;
   width: 100vw;
 }
 
@@ -343,8 +343,8 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 3px;
   padding: 5px;
-  top: 16%;
-  right: 53%;
+  top: 12%;
+  right: 52.5%;
   cursor: pointer;
 }
 
@@ -354,8 +354,8 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 3px;
   padding: 5px;
-  top: 16%;
-  right: 51%;
+  top: 12%;
+  right: 50.5%;
   cursor: pointer;
 }
 .click-icon-page8-2 {
@@ -364,8 +364,8 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 3px;
   padding: 5px;
-  top: 30%;
-  left: 22.5%;
+  top: 28.5%;
+  left: 25.7%;
   cursor: pointer;
 }
 .click-icon-page8-3 {
@@ -374,8 +374,8 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 3px;
   padding: 5px;
-  top: 48%;
- left: 22.5%;
+  top: 47.5%;
+  left: 25.5%;
   cursor: pointer;
 }
 
@@ -385,8 +385,8 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 3px;
   padding: 5px;
-  bottom: 29%;
-    left: 29%;
+  bottom: 26.4%;
+  left: 31.7%;
   cursor: pointer;
 }
 
@@ -459,6 +459,9 @@ img {
 .missing-input.filled {
   transform: scale(1.1); /* يكبر بنسبة 20% */
   font-size: 25px;
+}
+.missing-input:focus {
+  transform: scale(1.25); /* يكبر شوي */
 }
 
 .number-of-q {
@@ -583,8 +586,8 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 2px;
   padding: 5px;
-  bottom: 34.5%;
-  right: 36.5%;
+  bottom: 32.5%;
+  right: 37.8%;
   cursor: pointer;
 }
 
@@ -594,8 +597,8 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 3px;
   padding: 5px;
-  top: 12%;
-  right: 33%;
+  top: 8%;
+  right: 35%;
   cursor: pointer;
 }
 
@@ -605,8 +608,9 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 3px;
   padding: 5px;
-  top: 30%;
-  right: 33%;
+  top: 28%;
+  right: 34.8%;
+
   cursor: pointer;
 }
 

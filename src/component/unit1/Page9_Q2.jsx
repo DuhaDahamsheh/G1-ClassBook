@@ -5,6 +5,7 @@ import "./Page9_Q2.css";
 export default function Page9_Q2() {
   const [lines, setLines] = useState([]);
   const containerRef = useRef(null);
+  const [wrongWords, setWrongWords] = useState([]); // ⭐ تم التعديل هون
   let startPoint = null;
 
   // 🎨 ألوان الكلمات
@@ -84,51 +85,50 @@ export default function Page9_Q2() {
   };
 
   const checkAnswers = () => {
-  // 1️⃣ إذا في خطوط ناقصة
-  if (lines.length < correctMatches.length) {
-    ValidationAlert.info(
-      "Oops!",
-      "Please connect all pairs before checking."
-    );
-    return;
-  }
+    // 1️⃣ إذا في خطوط ناقصة
+    if (lines.length < correctMatches.length) {
+      ValidationAlert.info(
+        "Oops!",
+        "Please connect all pairs before checking."
+      );
+      return;
+    }
 
-  // 2️⃣ حساب عدد التوصيلات الصحيحة
-  let correctCount = 0;
-  const total = correctMatches.length;
+    // 2️⃣ حساب عدد التوصيلات الصحيحة
+    let correctCount = 0;
+    const total = correctMatches.length;
+    let wrong = []; // ⭐ تم التعديل هون
+    lines.forEach((line) => {
+      const isCorrect = correctMatches.some(
+        (pair) => pair.word1 === line.word && pair.word2 === line.image
+      );
+      if (isCorrect) correctCount++;
+      else wrong.push(line.word); // ⭐ تم التعديل هون
+    });
 
-  lines.forEach((line) => {
-    const isCorrect = correctMatches.some(
-      (pair) => pair.word1 === line.word && pair.word2 === line.image
-    );
-    if (isCorrect) correctCount++;
-  });
+    setWrongWords(wrong); // ⭐ تم التعديل هون
+    // 3️⃣ تحديد اللون حسب النتيجة
+    const color =
+      correctCount === total ? "green" : correctCount === 0 ? "red" : "orange";
 
-  // 3️⃣ تحديد اللون حسب النتيجة
-  const color =
-    correctCount === total ? "green" :
-    correctCount === 0 ? "red" :
-    "orange";
-
-  // 4️⃣ رسالة النتيجة بشكل HTML
-  const scoreMessage = `
+    // 4️⃣ رسالة النتيجة بشكل HTML
+    const scoreMessage = `
     <div style="font-size: 20px; margin-top: 10px; text-align:center;">
       <span style="color:${color}; font-weight:bold;">
-        Your Score: ${correctCount} / ${total}
+       Score: ${correctCount} / ${total}
       </span>
     </div>
   `;
 
-  // 5️⃣ اختيار نوع الرسالة
-  if (correctCount === total) {
-    ValidationAlert.success(scoreMessage);
-  } else if (correctCount === 0) {
-    ValidationAlert.error(scoreMessage);
-  } else {
-    ValidationAlert.warning(scoreMessage);
-  }
-};
-
+    // 5️⃣ اختيار نوع الرسالة
+    if (correctCount === total) {
+      ValidationAlert.success(scoreMessage);
+    } else if (correctCount === 0) {
+      ValidationAlert.error(scoreMessage);
+    } else {
+      ValidationAlert.warning(scoreMessage);
+    }
+  };
 
   return (
     <>
@@ -151,41 +151,58 @@ export default function Page9_Q2() {
       <div className="container2" ref={containerRef}>
         <div className="word-section1">
           {["Good", "Fine,", "How"].map((word, i) => (
-            <h5
-              key={i}
-              className={
-                wordColors[0] === "transparent"
-                  ? "word-outline H5"
-                  : "word-colored H5"
-              }
-              style={{ color: wordColors[i], cursor: "pointer" }}
-              onClick={() => handleWordClick(i)}
-            >
-              {word}
-              <div
-                className="dot1 start-dot1"
-                data-letter={word}
-                onMouseDown={handleDotDown}
-              ></div>
-            </h5>
+            <div style={{ position: "relative" }}>
+              <h5
+                key={i}
+                className={
+                  wordColors[0] === "transparent"
+                    ? "word-outline H5"
+                    : "word-colored H5"
+                }
+                style={{
+                  color: wordColors[i],
+                  cursor: "pointer",
+                  position: "relative",
+                }}
+                onClick={() => handleWordClick(i)}
+              >
+                {word}
+
+                <div
+                  className="dot1 start-dot1"
+                  data-letter={word}
+                  onMouseDown={handleDotDown}
+                ></div>
+              </h5>
+              {wrongWords.includes(word) && ( // ⭐ تم التعديل هون
+                <span className="error-mark3">X</span>
+              )}
+            </div>
           ))}
         </div>
 
         <div className="word-section2">
           {["thank you", "are you", "afternoon"].map((word, i) => (
-            <h5
-              key={i + 3}
-              className={
-                wordColors[0] === "transparent"
-                  ? "word-outline H5"
-                  : "word-colored H5"
-              }
-              style={{ color: wordColors[i + 3], cursor: "pointer" }}
-              onClick={() => handleWordClick(i + 3)}
-            >
-              <div className="dot1 end-dot1" data-image={word}></div>
-              {word}
-            </h5>
+            <>
+              {" "}
+              <h5
+                key={i + 3}
+                className={
+                  wordColors[0] === "transparent"
+                    ? "word-outline H5"
+                    : "word-colored H5"
+                }
+                style={{
+                  color: wordColors[i + 3],
+                  cursor: "pointer",
+                  position: "relative",
+                }}
+                onClick={() => handleWordClick(i + 3)}
+              >
+                <div className="dot1 end-dot1" data-image={word}></div>
+                {word}
+              </h5>
+            </>
           ))}
         </div>
 
@@ -216,6 +233,7 @@ export default function Page9_Q2() {
               "transparent",
               "transparent",
             ]);
+            setWrongWords([]);
           }}
           className="try-again-button"
         >

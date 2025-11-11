@@ -9,12 +9,9 @@ const ValidationAlert = {
   // ✅ لكل الإجابات الصحيحة
   success: (scoreMessage) => {
     Swal.fire({
-      title: "Great Job!",
+      
       html: `
       <div style="font-size: 20px; text-align: center;">
-        <p style="font-weight: bold; margin-bottom: 8px;">
-          All answers are correct! ✅
-        </p>
         <p style="color: green; font-weight: bold;">
           ${scoreMessage}
         </p>
@@ -43,9 +40,7 @@ const ValidationAlert = {
       title: "Keep Going!",
       html: `
       <div style="font-size: 20px; text-align: center;">
-        <p style="font-weight: bold; margin-bottom: 8px;">
-          You got some correct answers 🌟 But keep trying!
-        </p>
+        
         <p style="color: orange; font-weight: bold;">
           ${scoreMessage}
         </p>
@@ -63,7 +58,7 @@ const ValidationAlert = {
         image: "my-image",
         title: "my-title",
         content: "my-content",
-        confirmButton: "my-button",
+        confirmButton: "my-button2",
       },
     });
   },
@@ -74,13 +69,10 @@ const ValidationAlert = {
       title: "Try Again!",
       html: `
       <div style="font-size: 20px; text-align: center;">
-        <p style="font-weight: bold; margin-bottom: 8px;">
-          None of the answers are correct. ❌
-        </p>
         <p style="color: red; font-weight: bold;">
           ${scoreMessage}
         </p>
-        <p style="margin-top: 6px;">Try again, you can do it! 🌟</p>
+        
       </div>`,
       imageUrl: wrong,
       imageWidth: 200,
@@ -118,7 +110,7 @@ const ValidationAlert = {
         image: "my-image",
         title: "my-title",
         content: "my-content",
-        confirmButton: "my-button",
+        confirmButton: "my-button3",
       },
     });
   },

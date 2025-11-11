@@ -1,0 +1,160 @@
+.number-word-section {
+  display: grid;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 9px 45px;
+  grid-template-columns: repeat(5, 1fr);
+  margin-top: 24px;
+}
+
+.num-word {
+  border: 2px solid #3baaf7;
+  height: 30px;
+  font-size: 19px;
+  display: inline-flex;
+  width: 30px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  background-color: #b7eaff;
+  font-weight: 700;
+  color: darkblue;
+}
+
+.word-number {
+  display: flex;
+  gap: 5px;
+}
+
+.num-input-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 60px;
+}
+
+.sentence-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: 23px;
+}
+
+.input-sentence {
+  width: 80px;
+  height: 40px;
+  font-size: 18px;
+  text-align: center;
+  border-bottom: 2px solid #2c5287;
+}
+
+.sentence-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.sentence-label {
+  color: #2c5287;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.num-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 15vw;
+  gap: 24px;
+}
+
+.input-wrapper1 {
+  position: relative;
+  display: inline-block;
+}
+
+/* الانبت الغلط */
+.input-sentence.wrong-input1 {
+  border-color: #ff3b3b !important;
+}
+
+/* الأيقونة فوق يمين الانبت */
+.wrong-icon {
+  position: absolute;
+  top: 3px;
+  right: -10px;
+  background: #ff3b3b;
+  color: white;
+  width: 22px;
+  height: 22px;
+  font-size: 12px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  border: 2px solid white;
+}
+
+/* للشاشات المتوسطة (تابلت) */
+@media (max-width: 992px) {
+  .number-word-section {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px 25px;
+  }
+
+  .sentence-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .num-container {
+    width: 45vw;
+    justify-content: center;
+  }
+}
+
+/* للشاشات الصغيرة (موبايل) */
+@media (max-width: 600px) {
+  .number-word-section {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px 20px;
+  }
+
+  .num-word {
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+  }
+
+  .sentence-row {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .input-sentence {
+    width: 50px;
+    height: 35px;
+    font-size: 16px;
+  }
+
+  .sentence-label {
+    font-size: 18px;
+  }
+
+  .num-container {
+    width: 70vw;
+    justify-content: center;
+  }
+}
+
+/* للشاشات الصغيرة جدًا */
+@media (max-width: 400px) {
+  .number-word-section {
+    grid-template-columns: repeat(1, 1fr);
+    justify-items: center;
+  }
+}

@@ -15,7 +15,6 @@
 .alphabet-box {
   padding: 14px 20px;
   border-radius: 12px;
-  width: fit-content;
   margin: 30px 0px;
   border: 5px solid #5acbf4;
 }
@@ -47,6 +46,7 @@
 .words {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .numbers-section1 {
@@ -125,3 +125,29 @@
   width: calc(100% - 40px);
   justify-content: center;
 }
+
+
+/* ⭐ تم إضافته */
+.input-wrapper {
+  position: relative; /* مهم جدا حتى يصير المرجع */
+  display: inline-block;
+}
+
+.error-mark1 {
+    position: absolute;
+  top: 0px;   /* تحريك لفوق */
+  right: -8px; /* تحريك لليمين */
+  width: 20px;
+  height: 20px;
+  border: 2px solid white;
+  background-color: red;
+  border-radius: 50%;
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none; /* عشان ما تأثر على السحب أو الكتابة */
+}
+

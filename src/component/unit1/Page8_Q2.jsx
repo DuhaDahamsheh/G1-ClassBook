@@ -30,6 +30,7 @@ const Page8_Q2 = () => {
 
   const [droppedLetters, setDroppedLetters] = useState(initialDroppedState);
   const [shuffledPairs, setShuffledPairs] = useState(getShuffledPairs());
+  const [wrongDrops, setWrongDrops] = useState([]); // ✅ state added here
   const audioRef = useRef(null);
 
   const handleOnDragEnd = (result) => {
@@ -51,7 +52,6 @@ const Page8_Q2 = () => {
     // Normal drop into a drop box
     const newDropped = { ...droppedLetters };
 
-    // If it was in another drop box before, clear that drop box
     const previousDrop = Object.keys(newDropped).find(
       (key) => newDropped[key] === draggableId
     );
@@ -64,56 +64,59 @@ const Page8_Q2 = () => {
 
   const resetExercise = () => {
     setDroppedLetters(initialDroppedState);
+    setWrongDrops([]);
     setShuffledPairs(getShuffledPairs());
   };
 
-const checkAnswers = () => {
-  const allFilled = Object.values(droppedLetters).every((v) => v !== null);
+  const checkAnswers = () => {
+    const allFilled = Object.values(droppedLetters).every((v) => v !== null);
 
-  // إذا في مكان فاضي
-  if (!allFilled) {
-    ValidationAlert.info(
-      "Incomplete!",
-      "Please fill all the drop zones before checking your answers."
-    );
-    return;
-  }
-
-  let correctCount = 0;
-  const total = exerciseData.pairs.length;
-
-  exerciseData.pairs.forEach((pair, index) => {
-    const dropZoneId = `drop-${index + 1}`;
-    if (droppedLetters[dropZoneId] === pair.letter) {
-      correctCount++;
+    if (!allFilled) {
+      ValidationAlert.info(
+        "Incomplete!",
+        "Please fill all the drop zones before checking your answers."
+      );
+      return;
     }
-  });
 
-  // تحديد اللون حسب النتيجة
-  const color =
-    correctCount === total ? "green" :
-    correctCount === 0 ? "red" :
-    "orange";
+    let correctCount = 0;
+    const total = exerciseData.pairs.length;
 
-  // نص النتيجة مع تنسيق HTML
-  const scoreMessage = `
-    <div style="font-size: 20px; margin-top: 10px; text-align:center;">
-      <span style="color:${color}; font-weight:bold;">
-        Your Score: ${correctCount} / ${total}
-      </span>
-    </div>
-  `;
+    // ✅ هذا الجزء هو التعديل الوحيد
+    let wrongList = [];
 
-  // الحالات الثلاث
-  if (correctCount === total) {
-    ValidationAlert.success(scoreMessage);
-  } else if (correctCount === 0) {
-    ValidationAlert.error(scoreMessage);
-  } else {
-    ValidationAlert.warning(scoreMessage);
-  }
-};
+    exerciseData.pairs.forEach((pair, index) => {
+      const dropZoneId = `drop-${index + 1}`;
+      if (droppedLetters[dropZoneId] === pair.letter) {
+        correctCount++;
+      } else {
+        wrongList.push(dropZoneId);
+      }
+    });
 
+    setWrongDrops(wrongList);
+
+    const color =
+      correctCount === total ? "green" :
+      correctCount === 0 ? "red" :
+      "orange";
+
+    const scoreMessage = `
+      <div style="font-size: 20px; margin-top: 10px; text-align:center;">
+        <span style="color:${color}; font-weight:bold;">
+        Score: ${correctCount} / ${total}
+        </span>
+      </div>
+    `;
+
+    if (correctCount === total) {
+      ValidationAlert.success(scoreMessage);
+    } else if (correctCount === 0) {
+      ValidationAlert.error(scoreMessage);
+    } else {
+      ValidationAlert.warning(scoreMessage);
+    }
+  };
 
   return (
     <>
@@ -123,7 +126,6 @@ const checkAnswers = () => {
         </h5>
 
         <DragDropContext onDragEnd={handleOnDragEnd}>
-          {/* WORDS SECTION */}
           <div className="word-container">
             <Droppable droppableId="letters" direction="horizontal">
               {(provided) => (
@@ -163,7 +165,6 @@ const checkAnswers = () => {
             </Droppable>
           </div>
 
-          {/* IMAGE + DROP ZONES */}
           <div className="exercise-layout-vertical">
             <div className="image-section-horizontal">
               {exerciseData.images.map((imageSrc, index) => (
@@ -179,7 +180,7 @@ const checkAnswers = () => {
                         {...provided.droppableProps}
                         className={`drop-box ${
                           snapshot.isDraggingOver ? "is-over" : ""
-                        }`}
+                        } ${wrongDrops.includes(`drop-${index + 1}`) ? "wrong-drop" : ""}`}
                       >
                         {droppedLetters[`drop-${index + 1}`] ? (
                           <Draggable
@@ -210,7 +211,6 @@ const checkAnswers = () => {
           </div>
         </DragDropContext>
 
-        {/* ACTION BUTTONS */}
         <div className="action-buttons-container">
           <button onClick={resetExercise} className="try-again-button">
             Start Again ↻
