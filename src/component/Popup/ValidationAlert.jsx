@@ -37,7 +37,7 @@ const ValidationAlert = {
   // 🟠 إذا في إجابات صحيحة وإجابات خاطئة
   warning: (scoreMessage) => {
     Swal.fire({
-      title: "Keep Going!",
+    
       html: `
       <div style="font-size: 20px; text-align: center;">
         
@@ -66,7 +66,7 @@ const ValidationAlert = {
   // ❌ إذا ولا إجابة صحيحة
   error: (scoreMessage) => {
     Swal.fire({
-      title: "Try Again!",
+   
       html: `
       <div style="font-size: 20px; text-align: center;">
         <p style="color: red; font-weight: bold;">

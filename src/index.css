@@ -432,7 +432,7 @@ img {
 }
 
 .exercise-image {
-  height: 100px;
+  height: 130px;
   cursor: pointer;
   transition: 0.2s;
   border: solid 2px #6ec1ff;
