@@ -4,6 +4,11 @@ import img2 from "../../assets/img_unit2/imgs/34.jpg";
 import img3 from "../../assets/img_unit2/imgs/35.jpg";
 import img4 from "../../assets/img_unit2/imgs/36.jpg";
 import img5 from "../../assets/img_unit2/imgs/37.jpg";
+import sound1 from "../../assets/img_unit2/sounds-unit2/Pg17_1.1_Adult Lady.mp3"
+import sound2 from "../../assets/img_unit2/sounds-unit2/Pg17_1.2_Adult Lady.mp3"
+import sound3 from "../../assets/img_unit2/sounds-unit2/Pg17_1.3_Adult Lady.mp3"
+import sound4 from "../../assets/img_unit2/sounds-unit2/Pg17_1.4_Adult Lady.mp3"
+import sound5 from "../../assets/img_unit2/sounds-unit2/Pg17_1.5_Adult Lady.mp3"
 import ValidationAlert from "../Popup/ValidationAlert";
 import "./Unit2_Page7_Q2.css";
 
@@ -119,6 +124,9 @@ const Unit2_Page8_Q3 = () => {
       <h5 className="header-title-page8">
         F Does it begin with d or t? Listen and match.
       </h5>
+    <audio controls>
+          <source src={sound1} type="audio/mp3" />
+        </audio>
 
       <div className="match-wrapper2" ref={containerRef}>
         {/* الصور */}

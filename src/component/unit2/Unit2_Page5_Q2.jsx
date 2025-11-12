@@ -9,7 +9,7 @@ const Unit2_Page5_Q2 = () => {
 
   const items = [
     { img: "/assets/bat.png", correct: "b" },
-    { img: "/assets/bucket.png", correct: "b" },
+    { img: "/assets/bucket.png", correct: "p" },
     { img: "/assets/box.png", correct: "b" },
     { img: "/assets/boat.png", correct: "b" },
   ];

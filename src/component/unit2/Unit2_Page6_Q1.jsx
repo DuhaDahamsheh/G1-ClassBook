@@ -114,6 +114,9 @@ const Unit2_Page6_Q1 = () => {
       <h5 className="header-title-page8">
         <span className="ex-A">D</span> Listen and choose.
       </h5>
+      <audio controls>
+        <source src={stella} type="audio/mp3" />
+      </audio>
 
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <div className="layout">
