@@ -6,6 +6,7 @@ import Popup from "../Popup/Popup";
 import "./Unit2_Page7.css";
 import Unit2_Page7_Q2 from "./Unit2_Page7_Q2";
 import Unit2_Page7_Q1 from "./Unit2_Page7_Q1";
+import Unit2_Page7_Q3 from "./Unit2_Page7_Q3";
 const Unit2_Page7 = () => {
     const [activePopup, setActivePopup] = useState(null);
   return (
@@ -50,6 +51,15 @@ const Unit2_Page7 = () => {
           onClick={() => setActivePopup(3)}
         />
       </span>
+       <Popup
+        isOpen={activePopup === 3}
+        onClose={() => setActivePopup(null)}
+        children={
+          <>
+           <Unit2_Page7_Q3/>
+          </>
+        }
+      />
     </div>
   );
 };

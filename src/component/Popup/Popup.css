@@ -18,12 +18,11 @@
     background: linear-gradient(145deg,#ffffff, #ffffff) !important;
     padding: 50px;
     border-radius: clamp(10px, 1.5vw, 15px);
-    max-width: clamp(300px, 60vw, 900px);
+    max-width: clamp(300px, 70vw, 900px);
     position: relative;
     box-shadow: 0 clamp(5px, 1vw, 10px) clamp(15px, 2vw, 25px) rgba(0, 0, 0, 0.2);
     text-align: center;
     display: flex;
-    
     flex-direction: column;
     gap: clamp(0.5rem, 1vw, 1rem);
     animation: zoomIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);

@@ -268,14 +268,10 @@ const Page8_Q1 = () => {
         ))}
       </div>
 
-      <div className="validation-buttons">
-        <button
-          className="try-again-button retry-btn swal-retry"
-          onClick={reset}
-        >
+      <div className="action-buttons-container">
+        <button onClick={reset} className="try-again-button">
           Start Again ↻
         </button>
-
         {paused && (
           <button
             className="play-btn swal-continue"
@@ -285,11 +281,8 @@ const Page8_Q1 = () => {
           </button>
         )}
 
-        <button
-          className="check-button2 check-btn swal-check"
-          onClick={checkAnswers}
-        >
-          Check Answers ✓
+        <button onClick={checkAnswers} className="check-button2">
+          Check Answer ✓
         </button>
       </div>
     </>

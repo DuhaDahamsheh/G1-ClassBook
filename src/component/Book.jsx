@@ -25,6 +25,8 @@ import Unit2_Page7 from "./unit2/Unit2_Page7";
 import Unit2_Page8 from "./unit2/Unit2_Page8";
 import Unit2_Page9 from "./unit2/Unit2_Page9";
 import Unit2_Page10 from "./unit2/Unit2_Page10";
+import Unit2_Page11 from "./unit2/Unit2_Page11";
+import Unit2_Page12 from "./unit2/Unit2_Page12";
 
 const pages = [
   <Page1 />,
@@ -45,7 +47,9 @@ const pages = [
   // <Unit2_Page7/>,
   // <Unit2_Page8/>,
   // <Unit2_Page9/>,
-  // <Unit2_Page10/>
+  // <Unit2_Page10/>,
+  // <Unit2_Page11/>,
+  // <Unit2_Page12/>
 ];
 
 export default function Book() {
