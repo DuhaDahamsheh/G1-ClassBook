@@ -1,10 +1,94 @@
-import React from "react";
 import page24 from "../../assets/img_unit2/imgs/24.jpg";
+import React, { useState, useRef } from "react";
 
+import "./Unit2_Page11.css";
+import { FaHeadphones } from "react-icons/fa";
+import { PiCursorClickBold } from "react-icons/pi";
+import Popup from "../Popup/Popup";
+import sound1 from "../../assets/img_unit2/sounds-unit2/Pg20_Reading1_Adult Lady.mp3";
+import sound2 from "../../assets/img_unit2/sounds-unit2/Pg20_1.1_Adult Lady.mp3";
+import sound3 from "../../assets/img_unit2/sounds-unit2/Pg20_1.2_Adult Lady.mp3";
+import sound4 from "../../assets/img_unit2/sounds-unit2/Pg20_1.3_Adult Lady.mp3";
+import sound5 from "../../assets/img_unit2/sounds-unit2/Pg20_1.4_Adult Lady.mp3";
 const Unit2_Page11 = () => {
+  const [activePopup, setActivePopup] = useState(null);
+  const audioRef = useRef(null);
+
+  const handleImageClick = (e) => {
+    const rect = e.target.getBoundingClientRect();
+    const xPercent = ((e.clientX - rect.left) / rect.width) * 100;
+    const yPercent = ((e.clientY - rect.top) / rect.height) * 100;
+
+    console.log("X%:", xPercent.toFixed(2), "Y%:", yPercent.toFixed(2));
+
+    checkAreaAndPlaySound(xPercent, yPercent);
+  };
+  const clickableAreas = [
+
+    { x1: 17.00, y1: 40.0, x2: 50.14, y2: 48.0, sound: sound2 },
+    { x1: 56.0, y1: 40.0, x2: 89.0, y2: 48.0, sound: sound3 },
+    { x1: 18.0, y1: 83.0, x2: 51.0, y2: 95.0, sound: sound4 },
+    { x1: 56.0, y1: 83.0, x2: 85.0, y2: 90.0, sound: sound5 },
+  ];
+
+  const checkAreaAndPlaySound = (x, y) => {
+    const area = clickableAreas.find(
+      (a) => x >= a.x1 && x <= a.x2 && y >= a.y1 && y <= a.y2
+    );
+
+    console.log("Matched Area:", area);
+
+    if (area) playSound(area.sound);
+  };
+  const playSound = (soundPath) => {
+    console.log(soundPath);
+    if (audioRef.current) {
+      audioRef.current.src = soundPath;
+      audioRef.current.play();
+    }
+  };
   return (
     <div className="page_2-background">
-      <img src={page24} />
+      <img
+        src={page24}
+        style={{ display: "block" }}
+        onClick={handleImageClick}
+      />
+
+      {clickableAreas.map((area, index) => (
+        <div
+          key={index}
+          className="clickable-area"
+          style={{
+            position: "absolute",
+            left: `${area.x1}%`,
+            top: `${area.y1}%`,
+            width: `${area.x2 - area.x1}%`,
+            height: `${area.y2 - area.y1}%`,
+          }}
+          onClick={() => playSound(area.sound)}
+          onMouseEnter={(e) => (e.target.style.cursor = "pointer")}
+        ></div>
+      ))}
+      <span className="headset-icon-CD-unit2-page11-1 shadow-md hover:scale-110 transition">
+        <FaHeadphones
+          size={12}
+          color="rgba(255, 255, 255, 1)"
+          onClick={() => setActivePopup(1)}
+        />
+      </span>
+      <Popup
+        isOpen={activePopup === 1}
+        onClose={() => setActivePopup(null)}
+        children={
+          <>
+            <audio controls>
+              <source src={sound1} type="audio/mp3" />
+            </audio>
+          </>
+        }
+      />
+      <audio ref={audioRef} style={{ display: "none" }} />
     </div>
   );
 };

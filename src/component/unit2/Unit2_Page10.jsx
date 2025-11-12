@@ -8,6 +8,8 @@ import Popup from "../Popup/Popup";
 import "./Unit2_Page10.css";
 import Unit2_Page10_Q1 from "./Unit2_Page10_Q1";
 import Unit2_Page10_Q3 from "./Unit2_Page10_Q3";
+import Unit2_Page10_Q2 from "./Unit2_Page10_Q2";
+import Unit2_Page10_Q4 from "./Unit2_Page10_Q4";
 const Unit2_Page10 = () => {
   const [activePopup, setActivePopup] = useState(null);
   return (
@@ -25,7 +27,7 @@ const Unit2_Page10 = () => {
         onClose={() => setActivePopup(null)}
         children={
           <>
-            <Unit2_Page10_Q1/>
+            <Unit2_Page10_Q1 />
           </>
         }
       />
@@ -35,7 +37,6 @@ const Unit2_Page10 = () => {
       >
         <FaHeadphones size={12} color="rgba(255, 255, 255, 1)" />
       </span>
-
       <Popup
         isOpen={activePopup === 2}
         onClose={() => setActivePopup(null)}
@@ -54,19 +55,28 @@ const Unit2_Page10 = () => {
           onClick={() => setActivePopup(3)}
         />
       </span>
-
+      <Popup
+        isOpen={activePopup === 3}
+        onClose={() => setActivePopup(null)}
+        children={
+          <>
+            <Unit2_Page10_Q2 />
+          </>
+        }
+      />
       <span className="click-icon-unit2-page10-3 shadow-md hover:scale-110 transition">
         <PiCursorClickBold
           size={12}
           color="rgb(255, 255, 255)"
           onClick={() => setActivePopup(4)}
         />
-      </span> <Popup
+      </span>{" "}
+      <Popup
         isOpen={activePopup === 4}
         onClose={() => setActivePopup(null)}
         children={
           <>
-            <Unit2_Page10_Q3/>
+            <Unit2_Page10_Q3 />
           </>
         }
       />
@@ -76,7 +86,7 @@ const Unit2_Page10 = () => {
       >
         <FaHeadphones size={12} color="rgba(255, 255, 255, 1)" />
       </span>
-       <Popup
+      <Popup
         isOpen={activePopup === 5}
         onClose={() => setActivePopup(null)}
         children={
@@ -94,6 +104,15 @@ const Unit2_Page10 = () => {
           onClick={() => setActivePopup(6)}
         />
       </span>
+      <Popup
+        isOpen={activePopup === 6}
+        onClose={() => setActivePopup(null)}
+        children={
+          <>
+            <Unit2_Page10_Q4 />
+          </>
+        }
+      />
     </div>
   );
 };
