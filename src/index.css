@@ -6,6 +6,12 @@ body {
   
 }
 
+input:focus{
+  
+  border-color: gray !important ;/* هنا يصير اللون رمادي */
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1); /* ظل خفيف لطيف */
+
+}
 .page_1 {
   height: 100vh;
   width: 80vw;

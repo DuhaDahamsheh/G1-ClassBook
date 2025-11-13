@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import pizza2 from "../../assets/img_unit2/imgs/Pizza (2).jpg";
-import table from "../../assets/unit1/imgs/table.svg";
-import dish from "../../assets/unit1/imgs/dish.svg";
 import boy from "../../assets/img_unit2/imgs/boy2.jpg";
 import paint from "../../assets/img_unit2/imgs/Paint.jpg";
 import pincle from "../../assets/img_unit2/imgs/Pencel.jpg";
 import ValidationAlert from "../Popup/ValidationAlert"; // تأكدي إنها موجودة
-
+import "./Unit2_Page10_Q4.css"
 const Unit2_Page10_Q4 = () => {
   const correctAnswers = ["p", "b", "p", "p"];
   const [answers, setAnswers] = useState(["", "", "",""]);
@@ -25,16 +23,16 @@ const Unit2_Page10_Q4 = () => {
     }
 
     let tempScore = 0;
-    let wrong = [];
-    answers.forEach((ans, i) => {
-      if (ans === correctAnswers[i]) {
-        tempScore++;
-      } else {
-        wrong.push(ans);
-      }
-    });
+   let wrong = [];
+answers.forEach((ans, i) => {
+  if (ans === correctAnswers[i]) {
+    tempScore++;
+  } else {
+    wrong.push(i); // خزن رقم السؤال الغلط بدل الكلمة
+  }
+});
+setWrongInputs(wrong);
 
-    setWrongInputs(wrong);
 
     const total = correctAnswers.length;
     const color =
@@ -63,11 +61,11 @@ const Unit2_Page10_Q4 = () => {
   };
 
   return (
-    <div className="question-wrapper">
+    <div className="question-wrapper10">
       <h5 className="header-title-page8">G Look and write.</h5>
-      <div className="row-content">
+      <div className="row-content10-1">
         <div className="row2">
-          <span style={{ position: "relative" }}>
+          <span style={{ position: "relative", display:"flex"}}>
             <span className="num-span">1</span>{" "}
             <div className="input-wrapper">
               <input
@@ -76,7 +74,7 @@ const Unit2_Page10_Q4 = () => {
                 onChange={(e) => handleChange(e.target.value, 0)}
                 value={answers[0]}
               />
-              {wrongInputs.includes(answers[0]) && (
+              {wrongInputs.includes(0) && (
                 <span className="error-mark-input">✕</span>
               )}
             </div>
@@ -85,7 +83,7 @@ const Unit2_Page10_Q4 = () => {
         </div>
 
         <div className="row2">
-          <span style={{ position: "relative" }}>
+          <span style={{ position: "relative", display:"flex"}}>
             <span className="num-span">2</span>{" "}
             <div className="input-wrapper">
               <input
@@ -94,7 +92,7 @@ const Unit2_Page10_Q4 = () => {
                 onChange={(e) => handleChange(e.target.value, 1)}
                 value={answers[1]}
               />{" "}
-              {wrongInputs.includes(answers[1]) && (
+              {wrongInputs.includes(1) && (
                 <span className="error-mark-input">✕</span>
               )}
             </div>
@@ -103,7 +101,7 @@ const Unit2_Page10_Q4 = () => {
         </div>
 
         <div className="row2">
-          <span style={{ position: "relative" }}>
+          <span style={{ position: "relative", display:"flex"}}>
             <span className="num-span">3</span>{" "}
             <div className="input-wrapper">
               <input
@@ -112,7 +110,7 @@ const Unit2_Page10_Q4 = () => {
                 onChange={(e) => handleChange(e.target.value, 2)}
                 value={answers[2]}
               />{" "}
-              {wrongInputs.includes(answers[2]) && (
+              {wrongInputs.includes(2) && (
                 <span className="error-mark-input">✕</span>
               )}
             </div>
@@ -121,7 +119,7 @@ const Unit2_Page10_Q4 = () => {
         </div>
 
         <div className="row2">
-          <span style={{ position: "relative" }}>
+          <span style={{ position: "relative", display:"flex"}}>
             <span className="num-span">4</span>{" "}
             <div className="input-wrapper">
               <input
@@ -130,7 +128,7 @@ const Unit2_Page10_Q4 = () => {
                 onChange={(e) => handleChange(e.target.value, 3)}
                 value={answers[3]}
               />{" "}
-              {wrongInputs.includes(answers[3]) && (
+              {wrongInputs.includes(3) && (
                 <span className="error-mark-input">✕</span>
               )}
             </div>

@@ -42,28 +42,29 @@ const Unit2_Page10_Q2 = () => {
   };
 
   const stopDrawingLine = (e) => {
-    window.removeEventListener("mousemove", followMouse);
-    window.removeEventListener("mouseup", stopDrawingLine);
+  window.removeEventListener("mousemove", followMouse);
+  window.removeEventListener("mouseup", stopDrawingLine);
 
-    const endDot = document.elementFromPoint(e.clientX, e.clientY);
+  const endDot = document.elementFromPoint(e.clientX, e.clientY);
 
-    if (!endDot || !endDot.classList.contains("end-dot2")) {
-      setLines((prev) => prev.slice(0, -1));
-      return;
-    }
+  if (!endDot || !endDot.classList.contains("end-dot2")) {
+    setLines((prev) => prev.slice(0, -1));
+    return;
+  }
 
-    const rect = containerRef.current.getBoundingClientRect();
-    const newLine = {
-      x1: startPoint.getBoundingClientRect().left - rect.left + 8,
-      y1: startPoint.getBoundingClientRect().top - rect.top + 8,
-      x2: endDot.getBoundingClientRect().left - rect.left + 8,
-      y2: endDot.getBoundingClientRect().top - rect.top + 8,
-      word: startPoint.dataset.letter,
-      image: endDot.dataset.image,
-    };
-
-    setLines((prev) => [...prev.slice(0, -1), newLine]);
+  const rect = containerRef.current.getBoundingClientRect();
+  const newLine = {
+    x1: startPoint.getBoundingClientRect().left - rect.left + 8,
+    y1: startPoint.getBoundingClientRect().top - rect.top + 8,
+    x2: endDot.getBoundingClientRect().left - rect.left + 8,
+    y2: endDot.getBoundingClientRect().top - rect.top + 8,
+    word: endDot.dataset.letter, // ✅ أخذ الكلمة من نقطة النهاية
+    image: startPoint.dataset.image, // ✅ أخذ الصورة من نقطة البداية
   };
+
+  setLines((prev) => [...prev.slice(0, -1), newLine]);
+};
+
 
   const checkAnswers = () => {
     // تأكد إنو الطالب وصل كل الأزواج
@@ -112,126 +113,125 @@ const Unit2_Page10_Q2 = () => {
 
   return (
     <div className="page8-q1-container">
-      <h5 className="header-title-page8">Read and match.</h5>
+      <h5 className="header-title-page8">E Look, read, and match.</h5>
 
       <div className="container12" ref={containerRef}>
         {/* الصف الأول */}
         <div className="matching-row2">
-          <div className="word-with-dot2">
-            <span className="span-num2">1</span>
-            <span className="word-text2">Ball</span>
-            {wrongWords.includes("ball") && ( // ⭐ تم التعديل هون
-              <span className="error-mark">✕</span>
-            )}
-            <div className="dot-wrapper2">
-              <div
-                className="dot2 start-dot2"
-                data-letter="ball"
-                onMouseDown={handleDotDown}
-              ></div>
-            </div>
-          </div>
-
           <div className="img-with-dot2">
-            <div className="dot-wrapper2">
-              <div className="dot2 end-dot2" data-image="img1"></div>
-            </div>
+            <span className="span-num2">1</span>{" "}
             <img
               src={bird}
               className="matched-img2"
               alt=""
-              style={{ height: "100px", width: "auto" }}
+              style={{ height: "auto", width: "100px" }}
             />
+            {wrongWords.includes("bird") && ( // ⭐ تم التعديل هون
+              <span className="error-mark">✕</span>
+            )}{" "}
+            <div className="dot-wrapper2">
+              <div
+                className="dot2 start-dot2"
+                data-image="img1"
+                onMouseDown={handleDotDown}
+              ></div>
+            </div>
+          </div>
+          <div className="word-with-dot2">
+            <div className="dot-wrapper2">
+              <div className="dot2 end-dot2" data-letter="ball"></div>
+            </div>
+
+            <span className="word-text2">Ball</span>
           </div>
         </div>
 
         {/* الصف الثاني */}
-        <div className="matching-row2">
-          <div className="word-with-dot2">
-            <span className="span-num2">2</span>
-            <span className="word-text2">pizza</span>
-            {wrongWords.includes("pizza") && ( // ⭐ تم التعديل هون
-              <span className="error-mark">✕</span>
-            )}
-            <div className="dot-wrapper2">
-              <div
-                className="dot2 start-dot2"
-                data-letter="pizza"
-                onMouseDown={handleDotDown}
-              ></div>
-            </div>
-          </div>
-
+          <div className="matching-row2">
           <div className="img-with-dot2">
-            <div className="dot-wrapper2">
-              <div className="dot2 end-dot2" data-image="img2"></div>
-            </div>
+            <span className="span-num2">2</span>{" "}
             <img
               src={boy}
               className="matched-img2"
               alt=""
-              style={{ height: "100px", width: "auto" }}
+               style={{ height: "100px", width: "95px" }}
             />
-          </div>
-        </div>
-
-        {/* الصف الثالث */}
-        <div className="matching-row2">
-          <div className="word-with-dot2">
-            <span className="span-num2">3</span>
-            <span className="word-text2">bird</span>
-            {wrongWords.includes("bird") && ( // ⭐ تم التعديل هون
+            {wrongWords.includes("boy") && ( // ⭐ تم التعديل هون
               <span className="error-mark">✕</span>
-            )}
+            )}{" "}
             <div className="dot-wrapper2">
               <div
                 className="dot2 start-dot2"
-                data-letter="bird"
+                data-image="img2"
                 onMouseDown={handleDotDown}
               ></div>
             </div>
           </div>
-
-          <div className="img-with-dot2">
+          <div className="word-with-dot2">
             <div className="dot-wrapper2">
-              <div className="dot2 end-dot2" data-image="img3"></div>
+              <div className="dot2 end-dot2" data-letter="pizza"></div>
             </div>
+
+            <span className="word-text2">pizza</span>
+          </div>
+        </div>
+        {/* الصف الثالث */}
+        <div className="matching-row2">
+          <div className="img-with-dot2">
+            <span className="span-num2">3</span>{" "}
             <img
               src={pizza2}
               className="matched-img2"
               alt=""
-              style={{ height: "100px", width: "auto" }}
+             style={{ height: "auto", width: "100px" }}
             />
+            {wrongWords.includes("pizza") && ( // ⭐ تم التعديل هون
+              <span className="error-mark">✕</span>
+            )}{" "}
+            <div className="dot-wrapper2">
+              <div
+                className="dot2 start-dot2"
+                data-image="img3"
+                onMouseDown={handleDotDown}
+              ></div>
+            </div>
+          </div>
+          <div className="word-with-dot2">
+            <div className="dot-wrapper2">
+              <div className="dot2 end-dot2" data-letter="bird"></div>
+            </div>
+
+            <span className="word-text2">bird</span>
           </div>
         </div>
 
         {/* الصف الرابع */}
         <div className="matching-row2">
-          <div className="word-with-dot2">
-            <span className="span-num2">4</span>
-            <span className="word-text2">boy</span>
-            {wrongWords.includes("boy") && ( // ⭐ تم التعديل هون
-              <span className="error-mark">✕</span>
-            )}
-            <div className="dot-wrapper2">
-              <div
-                className="dot2 start-dot2"
-                data-letter="boy"
-                onMouseDown={handleDotDown}
-              ></div>
-            </div>
-          </div>
-
           <div className="img-with-dot2">
-            <div className="dot-wrapper2">
-              <div className="dot2 end-dot2" data-image="img4"></div>
-            </div>
+            <span className="span-num2">4</span>{" "}
             <img
               src={fotball}
               className="matched-img2"
               alt=""
-              style={{ height: "100px", width: "auto" }}
+              style={{ height: "auto", width: "100px" }}
             />
+            {wrongWords.includes("ball") && ( // ⭐ تم التعديل هون
+              <span className="error-mark">✕</span>
+            )}{" "}
+            <div className="dot-wrapper2">
+              <div
+                className="dot2 start-dot2"
+                data-image="img4"
+                onMouseDown={handleDotDown}
+              ></div>
+            </div>
+          </div>
+          <div className="word-with-dot2">
+            <div className="dot-wrapper2">
+              <div className="dot2 end-dot2" data-letter="boy"></div>
+            </div>
+
+            <span className="word-text2">boy</span>
           </div>
         </div>
 
