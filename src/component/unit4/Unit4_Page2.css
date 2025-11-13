@@ -1,6 +1,6 @@
-.headset-icon-CD-unit2-page2-1,
-.click-icon-unit2-page2-1,
-.headset-icon-CD-unit2-page2-2 {
+.headset-icon-CD-unit4-page2-1,
+.click-icon-unit4-page2-1,
+.headset-icon-CD-unit4-page2-2 {
   position: absolute;
   transform: translate(-50%, -50%);
   cursor: pointer;
@@ -11,17 +11,17 @@
   padding: 5px;
 }
 
-.headset-icon-CD-unit2-page2-1 {
+.headset-icon-CD-unit4-page2-1 {
   top: 8%;
   right: 6%;
 }
 
-.headset-icon-CD-unit2-page2-2 {
-  bottom: 29%;
+.headset-icon-CD-unit4-page2-2 {
+  bottom: 30%;
   right: 10%;
 }
 
-.click-icon-unit2-page2-1 {
+.click-icon-unit4-page2-1 {
   bottom: 14%;
   right: 38%;
 }

@@ -1,37 +1,37 @@
 import React, { useState, useEffect, useRef } from "react";
-import page_2 from "../../assets/img_unit2/imgs/15.jpg";
+import page_2 from "../../assets/unit4/Right G1- Class Book_00029.jpg";
 import { FaHeadphones } from "react-icons/fa";
 import { PiCursorClickBold } from "react-icons/pi";
 import Popup from "../Popup/Popup";
-import soundBirthday from "../../assets/img_unit2/sounds-unit2/CD9.Pg11_Intro1_Adult Lady.mp3";
-import soundListen from "../../assets/img_unit2/sounds-unit2/CD10.Pg11_Instruction1_Adult Lady.mp3";
-import Pg11_1_1_Bebo from "../../assets/img_unit2/sounds-unit2/Pg11_1.1_Bebo.mp3";
-import Pg11_1_1_Stella from "../../assets/img_unit2/sounds-unit2/Pg11_1.1_Stella.mp3";
-import Pg11_1_2_Lolo_Take from "../../assets/img_unit2/sounds-unit2/Pg11_1.2_Lolo_Take 2.mp3";
-import Pg11_1_2_Lolo from "../../assets/img_unit2/sounds-unit2/Pg11_1.2_Lolo.mp3";
-import Pg11_2_1_AdultLady from "../../assets/img_unit2/sounds-unit2/Pg11_2.1_Adult Lady.mp3";
-import Pg11_2_2_AdultLady from "../../assets/img_unit2/sounds-unit2/Pg11_2.2_Adult Lady.mp3";
-import Pg11_2_3_AdultLady from "../../assets/img_unit2/sounds-unit2/Pg11_2.3_Adult Lady.mp3";
-import Pg11_2_4_AdultLady from "../../assets/img_unit2/sounds-unit2/Pg11_2.4_Adult Lady.mp3";
-import Pg11_Instruction2_AdultLady from "../../assets/img_unit2/sounds-unit2/Pg11_Instruction2_Adult Lady.mp3";
-import readImg from "../../assets/img_unit2/imgs/read_page2.jpg";
-import Lolo_bebo from "../../assets/img_unit2/imgs/Lolo&Bebo.jpg";
-import "./Unit2_Page2.css";
-const Unit2_Page2 = () => {
+// import soundBirthday from "../../assets/img_unit2/sounds-unit2/CD9.Pg11_Intro1_Adult Lady.mp3";
+// import soundListen from "../../assets/img_unit2/sounds-unit2/CD10.Pg11_Instruction1_Adult Lady.mp3";
+// import Pg11_1_1_Bebo from "../../assets/img_unit2/sounds-unit2/Pg11_1.1_Bebo.mp3";
+// import Pg11_1_1_Stella from "../../assets/img_unit2/sounds-unit2/Pg11_1.1_Stella.mp3";
+// import Pg11_1_2_Lolo_Take from "../../assets/img_unit2/sounds-unit2/Pg11_1.2_Lolo_Take 2.mp3";
+// import Pg11_1_2_Lolo from "../../assets/img_unit2/sounds-unit2/Pg11_1.2_Lolo.mp3";
+// import Pg11_2_1_AdultLady from "../../assets/img_unit2/sounds-unit2/Pg11_2.1_Adult Lady.mp3";
+// import Pg11_2_2_AdultLady from "../../assets/img_unit2/sounds-unit2/Pg11_2.2_Adult Lady.mp3";
+// import Pg11_2_3_AdultLady from "../../assets/img_unit2/sounds-unit2/Pg11_2.3_Adult Lady.mp3";
+// import Pg11_2_4_AdultLady from "../../assets/img_unit2/sounds-unit2/Pg11_2.4_Adult Lady.mp3";
+// import Pg11_Instruction2_AdultLady from "../../assets/img_unit2/sounds-unit2/Pg11_Instruction2_Adult Lady.mp3";
+// import readImg from "../../assets/img_unit2/imgs/read_page2.jpg";
+// import Lolo_bebo from "../../assets/img_unit2/imgs/Lolo&Bebo.jpg";
+import "./Unit4_Page2.css";
+const Unit4_Page2 = () => {
   const [activePopup, setActivePopup] = useState(null);
   const activeData = [
-    { page: "1", title: "Birthdays Are Fun", sound: soundBirthday, imgSrc: "" },
+    { page: "1", title: "Birthdays Are Fun", sound: "soundBirthday", imgSrc: "" },
     {
       page: "2",
       title: "Lesiten, Read and repeat",
-      sound: soundListen,
-      imgSrc: Lolo_bebo,
+      sound: "soundListen",
+      imgSrc: 'Lolo_bebo',
     },
     {
       page: "3",
       title: "Lestine and read along",
-      sound: Pg11_Instruction2_AdultLady,
-      imgSrc: readImg,
+      sound: "Pg11_Instruction2_AdultLady",
+      imgSrc: 'readImg',
     },
   ];
 
@@ -48,16 +48,16 @@ const Unit2_Page2 = () => {
   };
 
   const clickableAreas = [
-    { x1: 10.0, y1: 44.0, x2: 16.0, y2: 69.0, sound: Pg11_2_1_AdultLady },
-    { x1: 25.0, y1: 47.0, x2: 42.14, y2: 67.0, sound: Pg11_2_2_AdultLady },
-    { x1: 50.0, y1: 50.0, x2: 66.0, y2: 71.0, sound: Pg11_2_3_AdultLady },
-    { x1: 80.0, y1: 40.0, x2: 92.0, y2: 70.0, sound: Pg11_2_4_AdultLady },
+    { x1: 10.0, y1: 44.0, x2: 16.0, y2: 69.0, sound: "Pg11_2_1_AdultLady" },
+    { x1: 25.0, y1: 47.0, x2: 42.14, y2: 67.0, sound: "Pg11_2_2_AdultLady" },
+    { x1: 50.0, y1: 50.0, x2: 66.0, y2: 71.0, sound: "Pg11_2_3_AdultLady" },
+    { x1: 80.0, y1: 40.0, x2: 92.0, y2: 70.0, sound: 'Pg11_2_4_AdultLady' },
     ,
   ];
 
   const clickableAreas2 = [
-    { x1: 12.0, y1:41.0, x2: 50.0, y2: 46.0, sound: Pg11_1_1_Bebo },
-    { x1: 56.0, y1: 45.0, x2: 83.0, y2: 43.0, sound: Pg11_1_2_Lolo_Take },
+    { x1: 12.0, y1:41.0, x2: 50.0, y2: 46.0, sound: "Pg11_1_1_Bebo" },
+    { x1: 56.0, y1: 45.0, x2: 83.0, y2: 43.0, sound: "Pg11_1_2_Lolo_Take" },
     ,
   ];
   const checkAreaAndPlaySound = (x, y, clickable) => {
@@ -77,8 +77,8 @@ const Unit2_Page2 = () => {
     }
   };
   const speaking = [
-    { text: "What’s your name?", sound: Pg11_1_1_Bebo },
-    { text: "My name isLolo.", sound: Pg11_1_2_Lolo_Take },
+    { text: "What’s your name?", sound: "Pg11_1_1_Bebo" },
+    { text: "My name isLolo.", sound: "Pg11_1_2_Lolo_Take" },
   ];
 
   useEffect(() => {
@@ -88,9 +88,9 @@ const Unit2_Page2 = () => {
   }, [activePopup]);
 
   return (
-    <div className="unit2-page-background">
+    <div className="unit4-page-background"  style={{position:"relative"}}>
       <img src={page_2} />
-      <span className="headset-icon-CD-unit2-page2-1 shadow-md hover:scale-110 transition">
+      <span className="headset-icon-CD-unit4-page2-1 shadow-md hover:scale-110 transition">
         <FaHeadphones
           size={12}
           color="rgba(255, 255, 255, 1)"
@@ -108,7 +108,7 @@ const Unit2_Page2 = () => {
           </>
         }
       />
-      <span className="headset-icon-CD-unit2-page2-2 shadow-md hover:scale-110 transition">
+      <span className="headset-icon-CD-unit4-page2-2 shadow-md hover:scale-110 transition">
         <FaHeadphones
           size={12}
           color="rgba(255, 255, 255, 1)"
@@ -120,7 +120,7 @@ const Unit2_Page2 = () => {
         onClose={() => setActivePopup(null)}
         children={
           <>
-            <audio ref={introRef} autoPlay style={{ display: "none" }}>
+            {/* <audio ref={introRef} autoPlay style={{ display: "none" }}>
               <source src={soundListen} type="audio/mp3" />
             </audio>
 
@@ -146,11 +146,11 @@ const Unit2_Page2 = () => {
                 onMouseEnter={(e) => (e.target.style.cursor = "pointer")}
                 onClick={() => playSound(area.sound)}
               ></div>
-            ))}
+            ))} */}
           </>
         }
       />
-      <span className="click-icon-unit2-page2-1 shadow-md hover:scale-110 transition">
+      <span className="click-icon-unit4-page2-1 shadow-md hover:scale-110 transition">
         <PiCursorClickBold
           size={12}
           color="rgb(255, 255, 255)"
@@ -162,7 +162,7 @@ const Unit2_Page2 = () => {
         onClose={() => setActivePopup(null)}
         children={
           <div style={{position:"relative"}}>
-            <audio ref={introRef} autoPlay style={{ display: "none" }}>
+            {/* <audio ref={introRef} autoPlay style={{ display: "none" }}>
               <source src={activeData[2].sound} type="audio/mp3" />
             </audio>
             <img
@@ -187,7 +187,7 @@ const Unit2_Page2 = () => {
                   onMouseEnter={(e) => (e.target.style.cursor = "pointer")}
                   onClick={() => playSound(area.sound)}
                 ></div>
-              ))}
+              ))} */}
           </div>
         }
       />
@@ -195,4 +195,4 @@ const Unit2_Page2 = () => {
   );
 };
 
-export default Unit2_Page2;
+export default Unit4_Page2;

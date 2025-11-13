@@ -1,10 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
-import backgroundImage from "../../assets/img_unit2/imgs/find img.jpg";
+import backgroundImage from "../../assets/unit3/imgs3/page1_2 unit3.jpg";
 import ValidationAlert from "../Popup/ValidationAlert";
-import page2_2 from "../../assets/img_unit2/imgs/unit2 vocab.jpg";
-import vocabulary from "../../assets/img_unit2/sounds-unit2/Pg10_Vocabulary_Adult Lady.mp3";
+import page2_2 from "../../assets/unit3/imgs3/vocabimg_unit3.jpg";
+import vocabulary from "../../assets/unit3/sound3/Pg22_Vocabulary_Adult Lady.mp3";
+
 import { IoCaretForwardCircle } from "react-icons/io5";
-const Unit2_Page1_Vocab = () => {
+const Unit3_Page1_Vocab = () => {
   const audioRef = useRef(null);
 
   const mainAudioRef = useRef(null); // ✅ الأوديو الرئيسي
@@ -41,11 +42,13 @@ const Unit2_Page1_Vocab = () => {
   };
 
   const clickableAreas = [
-    { x1: 16.0, y1: 44.0, x2: 18.0, y2: 46.0, sound: "" },
-    { x1: 55.0, y1: 45.0, x2: 57.0, y2: 47.0, sound: "" },
-    { x1: 70.0, y1: 42.0, x2: 72.0, y2: 44.0, sound: "" },
-    { x1: 9.0, y1: 17.0, x2: 33.0, y2: 21.0, sound: "" },
-    { x1: 35.0, y1: 28.0, x2: 38.0, y2: 30.0, sound: "" },
+    { x1: 13.0, y1: 22.0, x2: 16.0, y2: 25.0, sound: "" },
+    { x1: 23.0, y1: 53.0, x2: 25.0, y2: 55.0, sound: "" },
+    { x1: 37.0, y1: 43.0, x2: 39.0, y2: 45.0, sound: "" },
+    { x1: 63.0, y1: 20.0, x2: 65.0, y2: 22.0, sound: "" },
+    { x1: 61.0, y1: 29.0, x2: 63.0, y2: 31.0, sound: "" },
+    { x1: 61.0, y1: 41.0, x2: 63.0, y2: 43.0, sound: "" },
+    { x1: 35.0, y1: 63.0, x2: 37.0, y2: 65.0, sound: "" },
   ];
 
   const checkAreaAndPlaySound = (x, y) => {
@@ -86,7 +89,7 @@ const Unit2_Page1_Vocab = () => {
         <img
           src={backgroundImage}
           alt="interactive"
-          style={{ cursor: "pointer", height: "460px", width: "auto" }}
+          style={{  height: "460px", width: "auto" }}
           onClick={handleImageClick}
         />
 
@@ -126,4 +129,4 @@ const Unit2_Page1_Vocab = () => {
   );
 };
 
-export default Unit2_Page1_Vocab;
+export default Unit3_Page1_Vocab;

@@ -1,24 +1,24 @@
 import React, { useState } from "react";
-import find_img from "../../assets/img_unit2/imgs/find img.jpg"
-import find_title from "../../assets/img_unit2/imgs/unit2_page1_findTitle.png"
-import Popup from "../Popup/Popup";
+import find_img from "../../assets/unit3/imgs3/page1_2 unit3.jpg"
+import find_title from "../../assets/unit3/imgs3/findimg_unit3_P1.jpg"
 import ValidationAlert from "../Popup/ValidationAlert";
-const Unit2_Page1_find = () => {
+const Unit3_Page1_find = () => {
   const [clickedPoint, setClickedPoint] = useState(null);
   const [checkResult, setCheckResult] = useState(null);
 
   // ✅ منطقة المطعم (بالنسب المئوية)
   const targetArea = {
-    x1: 20,
-    y1: 67,
-    x2: 26,
-    y2: 72,
+    x1: 42,
+    y1: 14,
+    x2: 48,
+    y2: 40,
   };
 
   const handleImageClick = (e) => {
     const rect = e.target.getBoundingClientRect();
     const xPercent = ((e.clientX - rect.left) / rect.width) * 100;
     const yPercent = ((e.clientY - rect.top) / rect.height) * 100;
+console.log(xPercent,yPercent);
 
 
     setClickedPoint({
@@ -128,4 +128,4 @@ const Unit2_Page1_find = () => {
   );
 };
 
-export default Unit2_Page1_find;
+export default Unit3_Page1_find;

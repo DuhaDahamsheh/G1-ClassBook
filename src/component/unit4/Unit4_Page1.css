@@ -1,7 +1,7 @@
-.headset-icon-CD-unit2-page1-1,
-.click-icon-unit2-page1-1,
-.headset-icon-CD-unit2-page1-2,
-.click-icon-unit2-page1-2 {
+.headset-icon-CD-unit4-page1-1,
+.click-icon-unit4-page1-1,
+.headset-icon-CD-unit4-page1-2,
+.click-icon-unit4-page1-2 {
   position: absolute;
   transform: translate(-50%, -50%);
   cursor: pointer;
@@ -12,22 +12,22 @@
   padding: 5px;
 }
 
-.headset-icon-CD-unit2-page1-1 {
-  top: 8%;
-  right: 18%;
+.headset-icon-CD-unit4-page1-1 {
+    top: 9%;
+    right: 11%;
 }
 
-.click-icon-unit2-page1-1 {
+.click-icon-unit4-page1-1 {
   left: 9%;
-  top: 38%;
+     top: 42%;
 }
 
-.headset-icon-CD-unit2-page1-2 {
-  bottom: 34%;
+.headset-icon-CD-unit4-page1-2 {
+  bottom: 39%;
   left: 7%;
 }
 
-.click-icon-unit2-page1-2 {
+.click-icon-unit4-page1-2 {
   bottom: 14%;
   right: 40%;
 }

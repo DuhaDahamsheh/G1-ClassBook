@@ -1,23 +1,23 @@
 import React, { useState, useRef } from "react";
-import page_3 from "../../assets/img_unit2/imgs/16.jpg";
-import "./Unit2_Page3.css";
+import page_3 from "../../assets/unit4/Right G1- Class Book_00030.jpg";
+import "./Unit4_Page3.css";
 import { FaHeadphones } from "react-icons/fa";
 import { PiCursorClickBold } from "react-icons/pi";
 import Popup from "../Popup/Popup";
-import CD11_Pg12_Grammar1_AdultLady from "../../assets/img_unit2/sounds-unit2/CD11.Pg12_Grammar1_Adult Lady.mp3";
-import Pg12_1_1_AdultLady from "../../assets/img_unit2/sounds-unit2/Pg12_1.1_Adult Lady.mp3";
-import Pg12_1_2_AdultLady from "../../assets/img_unit2/sounds-unit2/Pg12_1.2_Adult Lady.mp3";
-import Pg12_1_3_AdultLady from "../../assets/img_unit2/sounds-unit2/Pg12_1.3_Adult Lady.mp3";
-import Pg12_1_4_AdultLady from "../../assets/img_unit2/sounds-unit2/Pg12_1.4_Adult Lady.mp3";
-import Pg12_1_5_AdultLady from "../../assets/img_unit2/sounds-unit2/Pg12_1.5_Adult Lady.mp3";
-import Pg12_2_1_Harley from "../../assets/img_unit2/sounds-unit2/Pg12_2.1_Harley.mp3";
-import Pg12_2_2_Sarah from "../../assets/img_unit2/sounds-unit2/Pg12_2.2_Sarah.mp3";
-import Pg12_3_1_Helen_Take from "../../assets/img_unit2/sounds-unit2/Pg12_3.1_Helen_Take 2.mp3";
-import Pg12_3_2_Stella from "../../assets/img_unit2/sounds-unit2/Pg12_3.2_Stella.mp3";
-import Pg12_4_1_Hansel from "../../assets/img_unit2/sounds-unit2/Pg12_4.1_Hansel.mp3";
-import Pg12_4_2_Stella from "../../assets/img_unit2/sounds-unit2/Pg12_4.2_Stella.mp3";
-import Pg12_4_3_Hansel from "../../assets/img_unit2/sounds-unit2/Pg12_4.3_Hansel.mp3";
-const Unit2_Page3 = () => {
+// import CD11_Pg12_Grammar1_AdultLady from "../../assets/img_unit2/sounds-unit2/CD11.Pg12_Grammar1_Adult Lady.mp3";
+// import Pg12_1_1_AdultLady from "../../assets/img_unit2/sounds-unit2/Pg12_1.1_Adult Lady.mp3";
+// import Pg12_1_2_AdultLady from "../../assets/img_unit2/sounds-unit2/Pg12_1.2_Adult Lady.mp3";
+// import Pg12_1_3_AdultLady from "../../assets/img_unit2/sounds-unit2/Pg12_1.3_Adult Lady.mp3";
+// import Pg12_1_4_AdultLady from "../../assets/img_unit2/sounds-unit2/Pg12_1.4_Adult Lady.mp3";
+// import Pg12_1_5_AdultLady from "../../assets/img_unit2/sounds-unit2/Pg12_1.5_Adult Lady.mp3";
+// import Pg12_2_1_Harley from "../../assets/img_unit2/sounds-unit2/Pg12_2.1_Harley.mp3";
+// import Pg12_2_2_Sarah from "../../assets/img_unit2/sounds-unit2/Pg12_2.2_Sarah.mp3";
+// import Pg12_3_1_Helen_Take from "../../assets/img_unit2/sounds-unit2/Pg12_3.1_Helen_Take 2.mp3";
+// import Pg12_3_2_Stella from "../../assets/img_unit2/sounds-unit2/Pg12_3.2_Stella.mp3";
+// import Pg12_4_1_Hansel from "../../assets/img_unit2/sounds-unit2/Pg12_4.1_Hansel.mp3";
+// import Pg12_4_2_Stella from "../../assets/img_unit2/sounds-unit2/Pg12_4.2_Stella.mp3";
+// import Pg12_4_3_Hansel from "../../assets/img_unit2/sounds-unit2/Pg12_4.3_Hansel.mp3";
+const Unit4_Page3 = () => {
   const [activePopup, setActivePopup] = useState(null);
   const audioRef = useRef(null);
 
@@ -31,18 +31,18 @@ const Unit2_Page3 = () => {
     checkAreaAndPlaySound(xPercent, yPercent);
   };
   const clickableAreas = [
-    { x1: 9.41, y1: 12.0, x2: 37.43, y2: 14.0, sound: Pg12_1_1_AdultLady },
-    { x1: 62.25, y1: 12.0, x2: 75.14, y2: 14.0, sound: Pg12_1_2_AdultLady },
-    { x1: 10.0, y1: 16.0, x2: 22.0, y2: 18.0, sound: Pg12_1_3_AdultLady },
-    { x1: 56.0, y1: 16.0, x2: 77.0, y2: 18.0, sound: Pg12_1_4_AdultLady },
-    { x1:56.0, y1: 19.0, x2: 70.0, y2: 18.0, sound:Pg12_1_5_AdultLady },
-    { x1: 16.0, y1: 29.0, x2: 29.0, y2: 30.0, sound: Pg12_2_1_Harley },
-    { x1: 10.0, y1: 48.0, x2: 29.0, y2: 49.0, sound: Pg12_2_2_Sarah },
-    { x1: 52.0, y1: 28.18, x2: 86.0, y2: 29.0, sound: Pg12_3_1_Helen_Take },
-    { x1: 82.25, y1: 40.0, x2:91.02, y2: 41.0, sound: Pg12_3_2_Stella },
-    { x1: 9.00, y1: 54.00, x2: 47.5, y2: 55.0, sound: Pg12_4_1_Hansel },
-    { x1: 44.0, y1: 62.0, x2: 66.0, y2: 67.0, sound: Pg12_4_2_Stella },
-    { x1: 9.0, y1: 74.0, x2: 66.0, y2:77.0, sound: Pg12_4_3_Hansel},
+    { x1: 9.41, y1: 12.0, x2: 37.43, y2: 14.0, sound: "Pg12_1_1_AdultLady" },
+    { x1: 62.25, y1: 12.0, x2: 75.14, y2: 14.0, sound: "Pg12_1_2_AdultLady" },
+    { x1: 10.0, y1: 16.0, x2: 22.0, y2: 18.0, sound: "Pg12_1_3_AdultLady" },
+    { x1: 56.0, y1: 16.0, x2: 77.0, y2: 18.0, sound: "Pg12_1_4_AdultLady" },
+    { x1:56.0, y1: 19.0, x2: 70.0, y2: 18.0, sound:"Pg12_1_5_AdultLady" },
+    { x1: 16.0, y1: 29.0, x2: 29.0, y2: 30.0, sound: "Pg12_2_1_Harley" },
+    { x1: 10.0, y1: 48.0, x2: 29.0, y2: 49.0, sound: "Pg12_2_2_Sarah" },
+    { x1: 52.0, y1: 28.18, x2: 86.0, y2: 29.0, sound: "Pg12_3_1_Helen_Take" },
+    { x1: 82.25, y1: 40.0, x2:91.02, y2: 41.0, sound: "Pg12_3_2_Stella" },
+    { x1: 9.00, y1: 54.00, x2: 47.5, y2: 55.0, sound: "Pg12_4_1_Hansel" },
+    { x1: 44.0, y1: 62.0, x2: 66.0, y2: 67.0, sound: "Pg12_4_2_Stella" },
+    { x1: 9.0, y1: 74.0, x2: 66.0, y2:77.0, sound: "Pg12_4_3_Hansel"},
   ];
 
   const checkAreaAndPlaySound = (x, y) => {
@@ -62,7 +62,7 @@ const Unit2_Page3 = () => {
     }
   };
   return (
-    <div className="unit2-page-background">
+    <div className="unit4-page-background"  style={{position:"relative"}}>
       
       <img src={page_3} style={{display:"block"}} onClick={handleImageClick}  />
  {clickableAreas.map((area, index) => (
@@ -80,7 +80,7 @@ const Unit2_Page3 = () => {
           onMouseEnter={(e) => (e.target.style.cursor = "pointer")}
         ></div>
       ))}
-      <span className="headset-icon-CD-unit2-page3-1 shadow-md hover:scale-110 transition">
+      <span className="headset-icon-CD-unit4-page3-1 shadow-md hover:scale-110 transition">
         <FaHeadphones
           size={12}
           color="rgba(255, 255, 255, 1)"
@@ -92,9 +92,9 @@ const Unit2_Page3 = () => {
         onClose={() => setActivePopup(null)}
         children={
           <>
-            <audio controls>
+            {/* <audio controls>
               <source src={CD11_Pg12_Grammar1_AdultLady} type="audio/mp3" />
-            </audio>
+            </audio> */}
           </>
         }
       />
@@ -103,4 +103,4 @@ const Unit2_Page3 = () => {
   );
 };
 
-export default Unit2_Page3;
+export default Unit4_Page3;

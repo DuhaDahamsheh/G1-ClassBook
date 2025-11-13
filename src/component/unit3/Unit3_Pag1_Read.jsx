@@ -1,12 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
-import listenSound from "../../assets/img_unit2/sounds-unit2/Pg10_Instruction1_Adult Lady.mp3";
-import listenImg from "../../assets/img_unit2/imgs/read_page1.jpg";
-import bird from "../../assets/img_unit2/sounds-unit2/Pg10_1.2_Adult Lady.mp3";
-import ball from "../../assets/img_unit2/sounds-unit2/Pg10_1.3_Adult Lady.mp3";
-import boy from "../../assets/img_unit2/sounds-unit2/Pg10_1.4_Adult Lady.mp3";
-import bSound from "../../assets/img_unit2/sounds-unit2/Pg10_1.1_Adult Lady.mp3";
+import listenSound from "../../assets/unit3/sound3/Pg22.Instruction1_Adult Lady.mp3";
+import listenImg from "../../assets/unit3/imgs3/readimg_p1_Unit3.jpg";
+import Pg22_1_1_AdultLady from "../../assets/unit3/sound3/Pg22_1.1_Adult Lady.mp3";
+import Pg22_1_2_AdultLady from "../../assets/unit3/sound3/Pg22_1.2_Adult Lady.mp3";
+import Pg22_1_3_AdultLady from "../../assets/unit3/sound3/Pg22_1.3_Adult Lady.mp3";
+import Pg22_1_4_AdultLady from "../../assets/unit3/sound3/Pg22_1.4_Adult Lady.mp3";
 
-const Unit2_Page1_Read = () => {
+const Unit3_Page1_Read = () => {
   const [activePopup, setActivePopup] = useState(null);
 
   const audioRef = useRef(null);
@@ -22,10 +22,10 @@ const Unit2_Page1_Read = () => {
   };
 
   const clickableAreas = [
-    { x1: 10.0, y1: 39.0, x2: 20.0, y2: 61.0, sound: bSound },
-    { x1: 30.0, y1: 35.0, x2: 42.14, y2: 67.0, sound: bird },
-    { x1: 55.0, y1: 38.0, x2: 66.0, y2: 71.0, sound: ball },
-    { x1: 70.0, y1: 30.0, x2: 85.0, y2: 63.0, sound: boy },
+    { x1: 10.0, y1: 39.0, x2: 31.0, y2: 59.0, sound: Pg22_1_1_AdultLady },
+    { x1: 37.0, y1: 37.0, x2: 39.14, y2: 60.0, sound: Pg22_1_2_AdultLady },
+    { x1: 55.0, y1: 38.0, x2: 66.0, y2: 71.0, sound: Pg22_1_3_AdultLady },
+    { x1: 70.0, y1: 30.0, x2: 85.0, y2: 63.0, sound: Pg22_1_4_AdultLady },
     ,
   ];
   const checkAreaAndPlaySound = (x, y) => {
@@ -85,4 +85,4 @@ const Unit2_Page1_Read = () => {
   );
 };
 
-export default Unit2_Page1_Read;
+export default Unit3_Page1_Read;
