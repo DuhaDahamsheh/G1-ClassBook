@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import { GrLinkNext } from "react-icons/gr";
 import { IoMdArrowBack } from "react-icons/io";
 import { FaHome } from "react-icons/fa";
-// 📘 صفحة الفهرس
-import BookIndex from "./BookIndex";
+
 
 //===================== unit 1 pages
 import Page1 from "./unit1/Page1";
@@ -44,11 +43,29 @@ import Unit4_Page3 from "./unit4/Unit4_Page3";
 import Unit4_Page4 from "./unit4/Unit4_Page4";
 import Unit4_Page5 from "./unit4/Unit4_Page5";
 import Unit4_Page6 from "./unit4/Unit4_Page6";
+
+export default function Book() {
+  const [pageIndex, setPageIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 640);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // ✅ دالة الذهاب للفهرس
+  const goToIndex = () => setPageIndex(1);
+  // ✅ دالة التنقل من الفهرس إلى أول صفحة من الوحدة
+  const goToUnit = (unitStartIndex) => {
+    const evenIndex =
+      unitStartIndex % 2 === 0 ? unitStartIndex : unitStartIndex - 1;
+    setPageIndex(evenIndex);
+  };
 const pages = [
   <Page1 />, // الغلاف
-  <BookIndex />, // الفهرس
-  <Page2 />,
-  <Page3 />,
+  <Page2 goToUnit={goToUnit} />,
+  <Page3  goToUnit={goToUnit}/>,
   <Page4 />,
   <Page5 />,
   <Page6 />,
@@ -81,58 +98,36 @@ const pages = [
   <Unit4_Page6 />,
 ];
 
-export default function Book() {
-  const [pageIndex, setPageIndex] = useState(0);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
+ const nextPage = () => {
+  if (isMobile) {
+    if (pageIndex < pages.length - 1) setPageIndex(pageIndex + 1);
+  } else {
+    if (pageIndex === 0) setPageIndex(1); // الغلاف → فهرس (صفحتين)
+    else if (pageIndex < pages.length - 2) setPageIndex(pageIndex + 2);
+  }
+};
 
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 640);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  // ✅ دالة الذهاب للفهرس
-  const goToIndex = () => setPageIndex(1);
-  // ✅ دالة التنقل من الفهرس إلى أول صفحة من الوحدة
-  const goToUnit = (unitStartIndex) => {
-    const evenIndex =
-      unitStartIndex % 2 === 0 ? unitStartIndex : unitStartIndex - 1;
-    setPageIndex(evenIndex);
-  };
-
-  const nextPage = () => {
-    if (isMobile) {
-      if (pageIndex < pages.length - 1) setPageIndex(pageIndex + 1);
-    } else {
-      if (pageIndex === 0) setPageIndex(1);
-      else if (pageIndex === 1)
-        setPageIndex(2); // بعد الفهرس ننتقل لنظام الصفحتين
-      else if (pageIndex < pages.length - 2) setPageIndex(pageIndex + 2);
-    }
-  };
-
-  const prevPage = () => {
-    if (isMobile) {
-      if (pageIndex > 0) setPageIndex(pageIndex - 1);
-    } else {
-      if (pageIndex === 1) setPageIndex(0);
-      else if (pageIndex === 2) setPageIndex(1); // رجوع من بعد الفهرس
-      else if (pageIndex > 1) setPageIndex(pageIndex - 2);
-    }
-  };
+const prevPage = () => {
+  if (isMobile) {
+    if (pageIndex > 0) setPageIndex(pageIndex - 1);
+  } else {
+    if (pageIndex === 1) setPageIndex(0); // رجوع من الفهرس → الغلاف
+    else if (pageIndex > 1) setPageIndex(pageIndex - 2);
+  }
+};
 
   return (
     <div className="w-full min-h-screen flex items-center justify-center relative">
       {/* 📖 زر العودة للفهرس - ثابت بكل الصفحات */}
-      {pageIndex !== 1 && (
-        <button
-          onClick={goToIndex}
-          title="Go to Index"
-          className="fixed top-6 right-6 z-[10000] bg-[#2c5287] hover:bg-[#426ca7f2] text-white p-3 rounded-full shadow-lg hover:scale-110 transition"
-        >
-     <FaHome />
-        </button>
-      )}
+    {pageIndex !== 1 && pageIndex !== 2 && (
+  <button
+    onClick={goToIndex}
+    title="Go to Index"
+    className="fixed top-6 right-6 z-[10000] bg-[#2c5287] hover:bg-[#426ca7f2] text-white p-3 rounded-full shadow-lg hover:scale-110 transition"
+  >
+    <FaHome />
+  </button>
+)}
       {/* 📱 شاشة الموبايل */}
       {isMobile ? (
         <>
@@ -144,11 +139,7 @@ export default function Book() {
           </button>
 
           <div className="bg-white w-[90%] h-[97vh] rounded-2xl shadow-2xl border p-3 text-center overflow-auto">
-            {pageIndex === 1 ? (
-              <BookIndex goToUnit={goToUnit} />
-            ) : (
-              pages[pageIndex]
-            )}
+            {pages[pageIndex]}
           </div>
 
           <button
@@ -161,59 +152,44 @@ export default function Book() {
       ) : (
         <>
           {/* 💻 شاشة اللابتوب / الديسكتوب */}
-          {pageIndex === 0 || pageIndex === 1 ? (
-            // ✅ غلاف أو فهرس → صفحة واحدة فقط
-            <>
-              <div className="bg-white sm:w-[50%] h-[97vh] p-6 rounded-2xl shadow-2xl border flex items-center justify-center overflow-hidden">
-                {pageIndex === 1 ? (
-                  <BookIndex goToUnit={goToUnit} />
-                ) : (
-                  pages[pageIndex]
-                )}
-              </div>
+        {pageIndex === 0 ? (
+  // ✅ الغلاف صفحة واحدة فقط
+  <>
+    <div className="bg-white sm:w-[40%] h-[95vh] rounded-2xl shadow-2xl border flex items-center justify-center overflow-hidden">
+      {pages[0]}
+    </div>
 
-              <button
-                onClick={prevPage}
-                disabled={pageIndex === 0}
-                className={`absolute left-10 w-14 h-14 rounded-full ${
-                  pageIndex === 0
-                    ? "opacity-0 cursor-default"
-                    : "bg-[#2c5287] hover:bg-[#426ca7f2]"
-                } text-white flex items-center justify-center shadow-md hover:scale-110 transition z-[9999]`}
-              >
-                <IoMdArrowBack size={30} />
-              </button>
+    <button
+      onClick={nextPage}
+      className="absolute right-10 w-14 h-14 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md hover:bg-[#426ca7f2] hover:scale-110 transition z-[9999]"
+    >
+      <GrLinkNext size={25} />
+    </button>
+  </>
+) : (
+  // ✅ الفهرس + باقي الصفحات → صفحتين
+  <>
+    <button
+      onClick={prevPage}
+      className="absolute left-10 w-14 h-14 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md hover:bg-[#426ca7f2] hover:scale-110 transition z-[9999]"
+    >
+      <IoMdArrowBack size={30} />
+    </button>
 
-              <button
-                onClick={nextPage}
-                className="absolute right-10 w-14 h-14 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md hover:bg-[#426ca7f2] hover:scale-110 transition z-[9999]"
-              >
-                <GrLinkNext size={25} />
-              </button>
-            </>
-          ) : (
-            // ✅ باقي الصفحات → صفحتين متجاورتين
-            <>
-              <button
-                onClick={prevPage}
-                className="absolute left-10 w-14 h-14 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md hover:bg-[#426ca7f2] hover:scale-110 transition z-[9999]"
-              >
-                <IoMdArrowBack size={30} />
-              </button>
+    <div className="bg-white sm:w-[75%] h-[95vh] rounded-2xl shadow-2xl border grid grid-cols-2 overflow-hidden">
+      <div className="border-r">{pages[pageIndex]}</div>
+      <div className="border-l">{pages[pageIndex + 1]}</div>
+    </div>
 
-              <div className="bg-white sm:w-[75%] h-[95vh] rounded-2xl shadow-2xl border grid grid-cols-2 overflow-hidden">
-                <div className="border-r">{pages[pageIndex]}</div>
-                <div className="border-l">{pages[pageIndex + 1]}</div>
-              </div>
+    <button
+      onClick={nextPage}
+      className="absolute right-10 w-14 h-14 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md hover:bg-[#426ca7f2] hover:scale-110 transition z-[9999]"
+    >
+      <GrLinkNext size={25} />
+    </button>
+  </>
+)}
 
-              <button
-                onClick={nextPage}
-                className="absolute right-10 w-14 h-14 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md hover:bg-[#426ca7f2] hover:scale-110 transition z-[9999]"
-              >
-                <GrLinkNext size={25} />
-              </button>
-            </>
-          )}
         </>
       )}
     </div>

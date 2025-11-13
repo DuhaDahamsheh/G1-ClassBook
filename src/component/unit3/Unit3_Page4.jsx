@@ -1,9 +1,15 @@
 import React, { useState, useRef } from "react";
-import page_4 from "../../assets/unit3/imgs3/Right G1- Class Book_00024.jpg";
+import page_4 from "../../assets/unit3/imgs3/Right G1- Class Book_00025.jpg";
 import "./Unit3_Page4.css";
 import { FaHeadphones } from "react-icons/fa";
 import { PiCursorClickBold } from "react-icons/pi";
-
+import CD23_pg25_Grammar2_AdultLady from "../../assets/unit3/sound3/CD23.Pg25_Grammar2_Adult Lady.mp3"
+import sound1 from "../../assets/unit3/sound3/Pg25_2.1_Adult Lady.mp3"
+import sound2 from "../../assets/unit3/sound3/Pg25_2.2_Adult Lady.mp3"
+import sound3 from "../../assets/unit3/sound3/Pg23_2.3_Adult Lady.mp3"
+import sound4 from "../../assets/unit3/sound3/Pg25_3.1_Female Teacher.mp3"
+import sound5 from "../../assets/unit3/sound3/Pg25_4.1_Female Teacher.mp3"
+import sound6 from "../../assets/unit3/sound3/Pg25_5.1_Female Teacher.mp3"
 import Popup from "../Popup/Popup";
 const Unit3_Page4 = () => {
   const [activePopup, setActivePopup] = useState(null);
@@ -19,18 +25,12 @@ const Unit3_Page4 = () => {
     checkAreaAndPlaySound(xPercent, yPercent);
   };
   const clickableAreas = [
-    { x1: 9.41, y1: 12.0, x2: 37.43, y2: 14.0, sound: "Pg13_2_1_AdultLady" },
-    { x1: 62.25, y1: 12.0, x2: 75.14, y2: 14.0, sound: "Pg13_2_2_AdultLady" },
-    { x1: 56.0, y1: 13.0, x2: 60.0, y2: 13.0, sound: "Pg13_2_3_AdultLady" },
-    { x1: 56.0, y1: 16.0, x2: 77.0, y2: 18.0, sound: "Pg13_2_4_AdultLady" },
-    { x1: 9.0, y1: 34.0, x2: 35.0, y2: 29.0, sound: "Pg13_3_1_Hansel" },
-    { x1: 16.0, y1: 29.0, x2: 39.0, y2: 30.0, sound: "Pg13_3_2_Harley" },
-    { x1: 54.0, y1: 32.0, x2: 70.0, y2: 35.0, sound: "Pg13_4_1_Hansel" },
-    { x1: 79.0, y1: 28.18, x2: 86.0, y2: 29.0, sound: "Pg13_4_2_Harley" },
-    { x1: 12.00, y1: 60.0, x2: 23.02, y2: 61.0, sound: "Pg13_5_1_Tom" },
-    { x1: 35.0, y1: 60.0, x2: 47.5, y2: 55.0, sound: "Pg13_5_2_Sarah" },
-    { x1: 55.0, y1: 55.0, x2: 66.0, y2: 67.0, sound: "Pg13_6_1_Helen" },
-    { x1: 76.0, y1: 61.0, x2: 87.0, y2: 62.0, sound: "Pg13_6_2_Sarah" },
+    { x1: 9.41, y1: 12.0, x2: 30.43, y2: 14.0, sound: sound1 },
+    { x1: 13.25, y1: 18.0, x2: 35.14, y2: 20.0, sound: sound2 },
+    { x1: 56.0, y1: 16.0, x2: 60.0, y2: 19.0, sound: sound3 },
+    { x1: 56.0, y1: 16.0, x2: 77.0, y2: 18.0, sound: sound4 },
+    { x1: 9.0, y1: 34.0, x2: 35.0, y2: 29.0, sound: sound5 },
+    { x1: 16.0, y1: 29.0, x2: 39.0, y2: 30.0, sound: sound6 },
   ];
 
   const checkAreaAndPlaySound = (x, y) => {
@@ -84,9 +84,9 @@ const Unit3_Page4 = () => {
         onClose={() => setActivePopup(null)}
         children={
           <>
-            {/* <audio controls>
-              <source src={CD12_Pg13_Grammar2_AdultLady} type="audio/mp3" />
-            </audio> */}
+            <audio controls>
+              <source src={CD23_pg25_Grammar2_AdultLady} type="audio/mp3" />
+            </audio>
           </>
         }
       />

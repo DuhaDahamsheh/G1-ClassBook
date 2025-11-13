@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import page_7 from "../../assets/unit1/imgs/page_7.png";
+import page_7 from "../../assets/unit1/imgs/Pages/Right 1 Unit 01 Good Morning World 2_page-0007.jpg";
 import CD5_Pg7_Grammar2_AdultLady from "../../assets/unit1/sounds/pg7-grammar2-All.mp3";
 import Pg7_2_1_AdultLady from "../../assets/unit1/sounds/Pg7_2.1_Adult Lady.mp3";
 import Pg7_2_2_AdultLady from "../../assets/unit1/sounds/Pg7_2.2_Adult Lady.mp3";
@@ -27,17 +27,17 @@ const Page7 = () => {
     checkAreaAndPlaySound(xPercent, yPercent);
   };
   const clickableAreas = [
-    { x1: 9.0, y1: 11.0, x2: 28.43, y2: 14.0, sound: Pg7_2_1_AdultLady },
-    { x1: 30.25, y1: 11.0, x2: 50.14, y2: 14.0, sound: Pg7_2_2_AdultLady },
-    { x1: 51.0, y1: 11.0, x2: 70.0, y2: 14.0, sound: Pg7_2_3_AdultLady },
-    { x1: 73.0, y1: 11.0, x2: 83.0, y2: 14.0, sound: Pg7_2_4_AdultLady },
-    { x1: 9.0, y1: 17.0, x2: 33.0, y2: 21.0, sound: Pg7_3_1_Stella },
-    { x1: 21.0, y1: 40.0, x2: 42.17, y2: 44.0, sound: Pg7_3_2_Mom },
-    { x1: 50.0, y1: 20.18, x2: 70.0, y2: 24.0, sound: Pg7_4_1_Hansel },
-    { x1: 69.25, y1: 47.0, x2: 89.02, y2: 50.0, sound: Pg7_4_2_ModifiedJack },
-    { x1: 9.0, y1: 57.0, x2: 27.02, y2: 59.0, sound: Pg7_5_1_Dad },
-    { x1: 30.0, y1: 47.5, x2: 46.0, y2: 62.0, sound: Pg7_5_2_Mom },
-    { x1: 70.0, y1: 60.0, x2: 86.0, y2: 67.0, sound: Pg7_6_1_Mom },
+    { x1: 6.33, y1: 9.4, x2: 28.43, y2: 13.3, sound: Pg7_2_1_AdultLady },
+    { x1: 29.25, y1: 9.4, x2: 50.14, y2: 13.3, sound: Pg7_2_2_AdultLady },
+    { x1: 51.0, y1: 9.4, x2: 72.0, y2:13.3, sound: Pg7_2_3_AdultLady },
+    { x1: 73.0, y1: 9.4, x2: 89.0, y2: 13.3, sound: Pg7_2_4_AdultLady },
+    { x1:6.5, y1: 16.3, x2: 31.7, y2: 19.6, sound: Pg7_3_1_Stella },
+    { x1: 19.4, y1: 41.0, x2: 44.8, y2: 44.6, sound: Pg7_3_2_Mom },
+    { x1: 50.0, y1: 19.80, x2: 70.2, y2: 22.8, sound: Pg7_4_1_Hansel },
+    { x1: 70.25, y1: 47.0, x2: 90.0, y2: 50.4, sound: Pg7_4_2_ModifiedJack },
+    { x1: 7.5, y1: 57.4, x2: 27.0, y2: 61.2, sound: Pg7_5_1_Dad },
+    { x1: 30.0, y1: 59.4, x2: 49.0, y2: 62.8, sound: Pg7_5_2_Mom },
+    { x1: 71.2, y1: 61.0, x2: 90.7, y2: 64.5, sound: Pg7_6_1_Mom },
   ];
 
   const checkAreaAndPlaySound = (x, y) => {

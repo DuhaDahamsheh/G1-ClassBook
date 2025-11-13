@@ -1,9 +1,17 @@
 import React from 'react'
-// import page_1 from "../../assets/page_1.png"
+import page_1 from "../../assets/unit1/imgs/Pages/Cover.jpg"
 const Page1 = () => {
   return (
     <div className='page_1-background' >
+        
+      <img
+        src={page_1}
+
        
+        // className="w-full h-full object-contain rounded-2xl shadow-lg"
+      />
+
+      
     </div>
   )
 }

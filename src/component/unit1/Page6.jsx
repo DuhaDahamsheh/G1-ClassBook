@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import page_6 from "../../assets/unit1/imgs/page_6.png";
+import page_6 from "../../assets/unit1/imgs/Pages/Right 1 Unit 01 Good Morning World 2_page-0006.jpg";
 import CD4_Pg6_Grammar1_AdultLady from "../../assets/unit1/sounds/All Page 6.mp3";
 import Pg6_1_1_AdultLady from "../../assets/unit1/sounds/Pg6_1.1_Adult Lady.mp3";
 import Pg6_1_2_AdultLady from "../../assets/unit1/sounds/Pg6_1.2_Adult Lady.mp3";
@@ -12,44 +12,33 @@ import Pg6_2_2_ModifiedStella from "../../assets/unit1/sounds/Pg6_2.2_Modified S
 import Pg6_3_1_Harley from "../../assets/unit1/sounds/Pg6_3.1_Harley.mp3";
 import Pg6_3_2_ModifiedHarley from "../../assets/unit1/sounds/Pg6_3.2_Modified Harley.mp3";
 import Popup from "../Popup/Popup";
-// import Pg6_1_4_AdultLady from "../assets"
 import { FaHeadphones } from "react-icons/fa";
+
 const Page6 = () => {
   const audioRef = useRef(null);
   const [activePopup, setActivePopup] = useState(null);
-  const handleImageClick = (e) => {
+  const [hoveredAreaIndex, setHoveredAreaIndex] = useState(null);
+
+  // 🟩 مناطق مستطيلة (x1,y1,x2,y2)
+  const clickableAreas = [
+    { x1: 7.0, y1: 10.0, x2: 43.0, y2: 14.0, sound: Pg6_1_1_AdultLady },
+    { x1: 61.5, y1: 10.0, x2: 75.14, y2: 14.0, sound: Pg6_1_2_AdultLady },
+    { x1: 7.0, y1: 14.0, x2: 29.0, y2: 18.0, sound: Pg6_1_3_AdultLady },
+    { x1: 61.5, y1: 14.0, x2: 82.0, y2: 18.0, sound: Pg6_1_4_AdultLady },
+    { x1: 7.0, y1: 18.0, x2: 30.0, y2: 21.5, sound: Pg6_1_5_AdultLady },
+    { x1: 61.5, y1: 18.0, x2: 83.0, y2: 21.5, sound: Pg6_1_6_AdultLady },
+    { x1: 32.0, y1: 28.00, x2: 51.0, y2: 33.5, sound: Pg6_2_1_Stella },
+    { x1: 62.00, y1: 32.0, x2: 71.02, y2: 35.5, sound: Pg6_2_2_ModifiedStella },
+    { x1: 6.70, y1: 63.7, x2: 23.5, y2: 67.5, sound: Pg6_3_1_Harley },
+    { x1: 48.0, y1: 64.0, x2: 67.3, y2: 68.2, sound: Pg6_3_2_ModifiedHarley },
+  ];
+ const handleImageClick = (e) => {
     const rect = e.target.getBoundingClientRect();
     const xPercent = ((e.clientX - rect.left) / rect.width) * 100;
     const yPercent = ((e.clientY - rect.top) / rect.height) * 100;
-
     console.log("X%:", xPercent.toFixed(2), "Y%:", yPercent.toFixed(2));
-
-    checkAreaAndPlaySound(xPercent, yPercent);
-  };
-  const clickableAreas = [
-    { x1: 9.41, y1: 12.0, x2: 37.43, y2: 14.0, sound: Pg6_1_1_AdultLady },
-    { x1: 62.25, y1: 12.0, x2: 75.14, y2: 14.0, sound: Pg6_1_2_AdultLady },
-    { x1: 10.0, y1: 16.0, x2: 22.0, y2: 18.0, sound: Pg6_1_3_AdultLady },
-    { x1: 62.0, y1: 16.0, x2: 77.0, y2: 18.0, sound: Pg6_1_4_AdultLady },
-    { x1: 9.0, y1: 19.0, x2: 26.0, y2: 23.0, sound: Pg6_1_5_AdultLady },
-    { x1: 62.0, y1: 19.0, x2: 79.17, y2: 23.0, sound: Pg6_1_6_AdultLady },
-    { x1: 30.0, y1: 30.18, x2: 50.0, y2: 40.0, sound: Pg6_2_1_Stella },
-    { x1: 62.25, y1: 33.0, x2: 69.02, y2: 35.0, sound: Pg6_2_2_ModifiedStella },
-    { x1: 8.5, y1: 63.5, x2: 23.5, y2: 66.0, sound: Pg6_3_1_Harley },
-    { x1: 48.0, y1: 64.0, x2: 66.0, y2: 67.0, sound: Pg6_3_2_ModifiedHarley },
-  ];
-
-  const checkAreaAndPlaySound = (x, y) => {
-    const area = clickableAreas.find(
-      (a) => x >= a.x1 && x <= a.x2 && y >= a.y1 && y <= a.y2
-    );
-
-    console.log("Matched Area:", area);
-
-    if (area) playSound(area.sound);
   };
   const playSound = (soundPath) => {
-    console.log(soundPath);
     if (audioRef.current) {
       audioRef.current.src = soundPath;
       audioRef.current.play();
@@ -58,7 +47,14 @@ const Page6 = () => {
 
   return (
     <div className="page_6-background" style={{ position: "relative" }}>
-      <img src={page_6} style={{display:"block"}} onClick={handleImageClick} />
+      <img
+        src={page_6}
+        style={{ display: "block" }}
+        alt="page 6"
+        onClick={handleImageClick}
+      />
+
+      {/* رسم المستطيلات التفاعلية */}
       {clickableAreas.map((area, index) => (
         <div
           key={index}
@@ -70,28 +66,26 @@ const Page6 = () => {
             width: `${area.x2 - area.x1}%`,
             height: `${area.y2 - area.y1}%`,
           }}
-           onClick={() => playSound(area.sound)} 
-          onMouseEnter={(e) => (e.target.style.cursor = "pointer")}
+          onClick={() => playSound(area.sound)}
+          onMouseEnter={() => setHoveredAreaIndex(index)}
+          onMouseLeave={() => setHoveredAreaIndex(null)}
         ></div>
       ))}
+
       <span
         className="headset-icon-CD-page6 shadow-md hover:scale-110 transition"
         onClick={() => setActivePopup(1)}
       >
         <FaHeadphones size={12} color="rgba(255, 255, 255, 1)" />
       </span>
-      <Popup
-        isOpen={activePopup === 1}
-        onClose={() => setActivePopup(null)}
-        children={
-          <>
-            <audio controls>
-              <source src={CD4_Pg6_Grammar1_AdultLady} type="audio/mp3" />
-            </audio>
-          </>
-        }
-      />
-      <audio ref={audioRef} style={{ display: "none"}} />
+
+      <Popup isOpen={activePopup === 1} onClose={() => setActivePopup(null)}>
+        <audio controls>
+          <source src={CD4_Pg6_Grammar1_AdultLady} type="audio/mp3" />
+        </audio>
+      </Popup>
+
+      <audio ref={audioRef} style={{ display: "none" }} />
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import page4 from "../../assets/unit1/imgs/page_4.png";
+import page4 from "../../assets/unit1/imgs/Pages/Right 1 Unit 01 Good Morning World 2_page-0004.jpg";
 import { FaHeadphones } from "react-icons/fa";
 import Popup from "../Popup/Popup";
 import soundFile1 from "../../assets/unit1/sounds/CD1.Pg4.U1_Intro_Adult Lady.mp3";

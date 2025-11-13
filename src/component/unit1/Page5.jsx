@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import page_5 from "../../assets/unit1/imgs/page_5.png";
+import page_5 from "../../assets/unit1/imgs/Pages/Right 1 Unit 01 Good Morning World 2_page-0005.jpg";
 import page5_CD2 from "../../assets/unit1/sounds/page5all.mp3";
 import page5_CD3 from "../../assets/unit1/sounds/CD3.Pg5_Instruction1_Adult Lady.mp3";
 import Popup from "../Popup/Popup";
