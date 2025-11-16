@@ -4,8 +4,8 @@
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 3px;
   padding: 5px;
-  top: 26%;
-  right: 26%;
+  top: 25.5%;
+  right: 24%;
   cursor: pointer;
 }
 
@@ -52,8 +52,8 @@
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 3px;
   padding: 5px;
-  top: 10%;
-  right: 21%;
+  top: 8%;
+  right: 20%;
   cursor: pointer;
 }
 .click-icon-unit2-page5-2 {
@@ -62,8 +62,8 @@
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 3px;
   padding: 5px;
-  top: 26%;
-  right: 21%;
+  top: 25.5%;
+  right: 18%;
   cursor: pointer;
 }
 .click-icon-unit2-page5-3 {
@@ -72,8 +72,8 @@
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 3px;
   padding: 5px;
-  top: 45%;
-  left: 34.5%;
+  top: 45.5%;
+  left: 33.5%;
   cursor: pointer;
 }
 
@@ -83,8 +83,8 @@
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 3px;
   padding: 5px;
-  bottom: 27%;
-  left: 49%;
+  bottom: 25.5%;
+  left: 52%;
   cursor: pointer;
 }
 
@@ -269,5 +269,3 @@
   background-color: red;
   left: 14px;
 }
-
-

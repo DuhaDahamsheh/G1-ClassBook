@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import page_8 from "../../assets/img_unit2/imgs/21.jpg";
+import page_8 from "../../assets/img_unit2/imgs/Right 1 Unit 02 Stell Birthday8.jpg";
 import { FaHeadphones } from "react-icons/fa";
 import { PiCursorClickBold } from "react-icons/pi";
 import "./Unit2_Page8.css";

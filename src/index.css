@@ -73,12 +73,18 @@ img {
   transform: scale(1.4);
   filter: drop-shadow(0 0 6px gold);
 }
+.vocab_container h6 {
+  transition: transform 0.2s ease, color 0.2s;
+}
 
 .vocab_container h6.active {
-  transform: scale(1.2);
-  color: #e60000;
-  font-weight: bold;
+  transform: scale(1.2); /* تكبير بدون ما يتحرك */
+  color: red;
+  font-weight: 600;
+  filter: drop-shadow(0 0 6px gold);
 }
+
+
 
 
 .vocab_container{
@@ -307,16 +313,16 @@ img {
 
 #text-0 {
   position: absolute;
-  top: 41%;
-  left: 14%;
+      top: 42%;
+  left: 12%;
   font-size: 20px;
 }
 #text-1 {
   cursor: pointer;
   font-size: 20px;
   position: absolute;
-  right: 24%;
-  top: 41%;
+      right: 29%;
+    top: 42%;
 }
 /*===========page 6 ====================*/
 
@@ -343,7 +349,7 @@ img {
   border: rgb(255, 255, 255) solid 2px;
   padding: 5px;
   top: 4%;
-  right: 58%;
+     right: 59%;
   cursor: pointer;
 }
 
@@ -587,6 +593,12 @@ img {
 
 .try-again-button:hover {
   background-color: #e0a800;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(255, 193, 7, 0.3);
+}
+
+.play-btn:hover{
+    background-color: #1b92f4;
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(255, 193, 7, 0.3);
 }

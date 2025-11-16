@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import page_10 from "../../assets/img_unit2/imgs/23.jpg";
+import page_10 from "../../assets/img_unit2/imgs/Right 1 Unit 02 Stell Birthday10.jpg";
 import { FaHeadphones } from "react-icons/fa";
 import { PiCursorClickBold } from "react-icons/pi";
 import CD17_Pg19_Instruction1_AdultLady from "../../assets/img_unit2/sounds-unit2/CD17.Pg19.Instruction1_Adult Lady.mp3";

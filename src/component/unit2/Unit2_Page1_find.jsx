@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import find_img from "../../assets/img_unit2/imgs/find img.jpg"
-import find_title from "../../assets/img_unit2/imgs/unit2_page1_findTitle.png"
-import Popup from "../Popup/Popup";
+import find_img from "../../assets/img_unit2/imgs/02-03 New copy.jpg";
+import Rabbit from "../../assets/img_unit2/imgs/Rabbit.svg";
 import ValidationAlert from "../Popup/ValidationAlert";
 const Unit2_Page1_find = () => {
   const [clickedPoint, setClickedPoint] = useState(null);
@@ -9,17 +8,16 @@ const Unit2_Page1_find = () => {
 
   // ✅ منطقة المطعم (بالنسب المئوية)
   const targetArea = {
-    x1: 20,
-    y1: 67,
-    x2: 26,
-    y2: 72,
+    x1: 18,
+    y1: 69,
+    x2: 24,
+    y2: 74,
   };
 
   const handleImageClick = (e) => {
     const rect = e.target.getBoundingClientRect();
     const xPercent = ((e.clientX - rect.left) / rect.width) * 100;
     const yPercent = ((e.clientY - rect.top) / rect.height) * 100;
-
 
     setClickedPoint({
       x: xPercent,
@@ -57,22 +55,20 @@ const Unit2_Page1_find = () => {
 
   return (
     <div style={{ textAlign: "center" }}>
-  
+      <div style={{display:"flex"}}>
+    <img
+          src={Rabbit}
+          style={{ height: "50px", width: "auto" }}
+        />{" "}  <h5 className="header-title-page8">
+        
+        I need your help. Can you help me find the boat in the picture?
+      </h5>
+      </div>
       <div style={{ position: "relative", display: "inline-block" }}>
-        <img
-          src={find_title}
-          style={{
-            height: "200px",
-            width: "auto",
-            position: "absolute",
-            bottom: "2%",
-            right: "6%",
-          }}
-        />
         <img
           src={find_img}
           alt="interactive"
-          style={{ cursor: "pointer", height: "460px" ,width:"auto" }}
+          style={{ cursor: "pointer", height: "460px", width: "auto" }}
           onClick={handleImageClick}
         />
 

@@ -1,4 +1,4 @@
-import page24 from "../../assets/img_unit2/imgs/24.jpg";
+import page24 from "../../assets/img_unit2/imgs/Right 1 Unit 02 Stell Birthday11.jpg";
 import React, { useState, useRef } from "react";
 
 import "./Unit2_Page11.css";
@@ -25,10 +25,10 @@ const Unit2_Page11 = () => {
   };
   const clickableAreas = [
 
-    { x1: 17.00, y1: 40.0, x2: 50.14, y2: 48.0, sound: sound2 },
-    { x1: 56.0, y1: 40.0, x2: 89.0, y2: 48.0, sound: sound3 },
-    { x1: 18.0, y1: 83.0, x2: 51.0, y2: 95.0, sound: sound4 },
-    { x1: 56.0, y1: 83.0, x2: 85.0, y2: 90.0, sound: sound5 },
+    { x1: 15.90, y1: 39.4, x2: 51.14, y2: 44.0, sound: sound2 },
+    { x1: 56.0, y1: 39.1, x2: 93.9, y2: 44.0, sound: sound3 },
+    { x1: 16.0, y1: 84.0, x2: 52.9, y2: 89.5, sound: sound4 },
+    { x1: 56.0, y1: 84.5, x2: 93.7, y2: 90.9, sound: sound5 },
   ];
 
   const checkAreaAndPlaySound = (x, y) => {

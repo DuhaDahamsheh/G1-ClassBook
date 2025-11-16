@@ -13,21 +13,56 @@
 }
 
 .headset-icon-CD-unit2-page1-1 {
-  top: 8%;
-  right: 18%;
+  top: 7%;
+  right: 16%;
 }
 
 .click-icon-unit2-page1-1 {
-  left: 9%;
-  top: 38%;
+  left: 7%;
+  top: 37%;
 }
 
 .headset-icon-CD-unit2-page1-2 {
-  bottom: 34%;
-  left: 7%;
+  bottom: 36%;
+  left: 4%;
 }
 
 .click-icon-unit2-page1-2 {
-  bottom: 14%;
-  right: 40%;
+  bottom: 13%;
+  right: 39%;
+}
+
+#num-1 {
+  top: 31%;
+  left: 34%;
+}
+
+#num-2 {
+  bottom: 38%;
+  left: 31%;
+}
+
+#num-3 {
+  top: 48%;
+  left: 28.5%;
+}
+
+#num-4 {
+  top: 16%;
+  left: 44%;
+}
+
+#num-5 {
+  top: 24%;
+  left: 3%;
+}
+
+#num-6 {
+  bottom: 40%;
+  right: 29%;
+}
+
+#num-7 {
+  bottom: 40.5%;
+  right: 25%;
 }

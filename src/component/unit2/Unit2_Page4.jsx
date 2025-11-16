@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import page_4 from "../../assets/img_unit2/imgs/17.jpg";
+import page_4 from "../../assets/img_unit2/imgs/Right 1 Unit 02 Stell Birthday4.jpg";
 import "./Unit2_Page4.css";
 import { FaHeadphones } from "react-icons/fa";
 import { PiCursorClickBold } from "react-icons/pi";
@@ -31,18 +31,18 @@ const Unit2_Page4 = () => {
     checkAreaAndPlaySound(xPercent, yPercent);
   };
   const clickableAreas = [
-    { x1: 9.41, y1: 12.0, x2: 37.43, y2: 14.0, sound: Pg13_2_1_AdultLady },
-    { x1: 62.25, y1: 12.0, x2: 75.14, y2: 14.0, sound: Pg13_2_2_AdultLady },
-    { x1: 56.0, y1: 13.0, x2: 60.0, y2: 13.0, sound: Pg13_2_3_AdultLady },
-    { x1: 56.0, y1: 16.0, x2: 77.0, y2: 18.0, sound: Pg13_2_4_AdultLady },
-    { x1: 9.0, y1: 34.0, x2: 35.0, y2: 29.0, sound: Pg13_3_1_Hansel },
-    { x1: 16.0, y1: 29.0, x2: 39.0, y2: 30.0, sound: Pg13_3_2_Harley },
-    { x1: 54.0, y1: 32.0, x2: 70.0, y2: 35.0, sound: Pg13_4_1_Hansel },
-    { x1: 79.0, y1: 28.18, x2: 86.0, y2: 29.0, sound: Pg13_4_2_Harley },
-    { x1: 12.00, y1: 60.0, x2: 23.02, y2: 61.0, sound: Pg13_5_1_Tom },
-    { x1: 35.0, y1: 60.0, x2: 47.5, y2: 55.0, sound: Pg13_5_2_Sarah },
-    { x1: 55.0, y1: 55.0, x2: 66.0, y2: 67.0, sound: Pg13_6_1_Helen },
-    { x1: 76.0, y1: 61.0, x2: 87.0, y2: 62.0, sound: Pg13_6_2_Sarah },
+    { x1: 6.53, y1: 10.4, x2: 23.43, y2: 14.2, sound: Pg13_2_1_AdultLady },
+    { x1: 54.19, y1: 10.4, x2: 71.5, y2: 14.5, sound: Pg13_2_2_AdultLady },
+    { x1: 6.53, y1: 15.27, x2:30.7, y2: 19.4, sound: Pg13_2_3_AdultLady },
+    { x1: 54.2, y1: 15.27, x2: 78.3, y2: 19.5, sound: Pg13_2_4_AdultLady },
+    { x1: 6.7, y1:32.3, x2: 21.8, y2: 36.2, sound: Pg13_3_1_Hansel },
+    { x1: 23.3, y1: 25.5, x2: 39.8, y2: 30.7, sound: Pg13_3_2_Harley },
+    { x1: 55.0, y1: 30.7, x2: 74.1, y2: 33.9, sound: Pg13_4_1_Hansel },
+    { x1: 81.6, y1: 26.7, x2: 93.3, y2: 31.6, sound: Pg13_4_2_Harley },
+    { x1: 9.20, y1: 59.18, x2: 23.7, y2: 62.8, sound: Pg13_5_1_Tom },
+    { x1: 33.3, y1: 60.2, x2: 44.6, y2: 63.5, sound: Pg13_5_2_Sarah },
+    { x1: 55.0, y1: 55.0, x2: 70.1, y2: 58.27, sound: Pg13_6_1_Helen },
+    { x1: 77.1, y1: 60.69, x2: 91.4, y2: 63.7, sound: Pg13_6_2_Sarah },
   ];
 
   const checkAreaAndPlaySound = (x, y) => {

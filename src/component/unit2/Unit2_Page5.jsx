@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import page_5 from "../../assets/img_unit2/imgs/Right G1- Class Book_00014.jpg";
+import page_5 from "../../assets/img_unit2/imgs/Right 1 Unit 02 Stell Birthday5.jpg";
 import { FaHeadphones } from "react-icons/fa";
 import { PiCursorClickBold } from "react-icons/pi";
 import CD13_Pg14_Instruction1_AdultLady from "../../assets/img_unit2/sounds-unit2/CD13.Pg14_Instruction1_Adult Lady.mp3";

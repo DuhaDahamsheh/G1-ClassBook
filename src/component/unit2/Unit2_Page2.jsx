@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
-import page_2 from "../../assets/img_unit2/imgs/Right G1- Class Book_00011.jpg";
+import page_2 from "../../assets/img_unit2/imgs/Right 1 Unit 02 Stell Birthday2.jpg";
 import { FaHeadphones } from "react-icons/fa";
 import { PiCursorClickBold } from "react-icons/pi";
 import Popup from "../Popup/Popup";
 import soundBirthday from "../../assets/img_unit2/sounds-unit2/CD9.Pg11_Intro1_Adult Lady.mp3";
 import soundListen from "../../assets/img_unit2/sounds-unit2/CD10.Pg11_Instruction1_Adult Lady.mp3";
 import Pg11_1_1_Bebo from "../../assets/img_unit2/sounds-unit2/Pg11_1.1_Bebo.mp3";
-import Pg11_1_1_Stella from "../../assets/img_unit2/sounds-unit2/Pg11_1.1_Stella.mp3";
+import Pg11_1_1_Stella from "../../assets/img_unit2/sounds-unit2/mix_09s (audio-joiner.com).mp3";
 import Pg11_1_2_Lolo_Take from "../../assets/img_unit2/sounds-unit2/Pg11_1.2_Lolo_Take 2.mp3";
 import Pg11_1_2_Lolo from "../../assets/img_unit2/sounds-unit2/Pg11_1.2_Lolo.mp3";
 import Pg11_2_1_AdultLady from "../../assets/img_unit2/sounds-unit2/Pg11_2.1_Adult Lady.mp3";
@@ -20,7 +20,7 @@ import "./Unit2_Page2.css";
 const Unit2_Page2 = () => {
   const [activePopup, setActivePopup] = useState(null);
   const activeData = [
-    { page: "1", title: "Birthdays Are Fun", sound: soundBirthday, imgSrc: "" },
+    { page: "1", title: "Birthdays Are Fun", sound: Pg11_1_1_Stella, imgSrc: "" },
     {
       page: "2",
       title: "Lesiten, Read and repeat",
@@ -48,16 +48,16 @@ const Unit2_Page2 = () => {
   };
 
   const clickableAreas = [
-    { x1: 10.0, y1: 44.0, x2: 16.0, y2: 69.0, sound: Pg11_2_1_AdultLady },
-    { x1: 25.0, y1: 47.0, x2: 42.14, y2: 67.0, sound: Pg11_2_2_AdultLady },
-    { x1: 50.0, y1: 50.0, x2: 66.0, y2: 71.0, sound: Pg11_2_3_AdultLady },
-    { x1: 80.0, y1: 40.0, x2: 92.0, y2: 70.0, sound: Pg11_2_4_AdultLady },
+    { x1: 10.8, y1: 41.6, x2: 17.3, y2: 62.3, sound: Pg11_2_1_AdultLady },
+    { x1: 26.3, y1: 31.0, x2: 38.2, y2: 77.5, sound: Pg11_2_2_AdultLady },
+    { x1: 50.0, y1:  31.0, x2: 66.0, y2: 77.5, sound: Pg11_2_3_AdultLady },
+    { x1: 80.0, y1: 31.0, x2: 95.8, y2: 77.5, sound: Pg11_2_4_AdultLady },
     ,
   ];
 
   const clickableAreas2 = [
-    { x1: 12.0, y1:41.0, x2: 50.0, y2: 46.0, sound: Pg11_1_1_Bebo },
-    { x1: 56.0, y1: 45.0, x2: 83.0, y2: 43.0, sound: Pg11_1_2_Lolo_Take },
+    { x1: 17.0, y1:42.0, x2: 46.7, y2: 52.0, sound: Pg11_1_1_Bebo },
+    { x1: 55.6, y1: 42.6, x2: 81.0, y2: 51.1, sound: Pg11_1_2_Lolo_Take },
     ,
   ];
   const checkAreaAndPlaySound = (x, y, clickable) => {

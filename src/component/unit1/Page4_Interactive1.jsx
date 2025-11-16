@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import backgroundImage from "../../assets/unit1/imgs/Page 01/01.jpg";
 import ValidationAlert from "../Popup/ValidationAlert";
-import vocabTitle from "../../assets/unit1/imgs/vocab-title.png";
+import Rabbit from "../../assets/img_unit2/imgs/Rabbit.svg";
 const Page4_Interactive1 = () => {
   const [clickedPoint, setClickedPoint] = useState(null);
   const [checkResult, setCheckResult] = useState(null);
@@ -52,7 +52,7 @@ const Page4_Interactive1 = () => {
     const scoreMessage = `
     <div style="font-size: 20px; margin-top: 10px; text-align:center;">
       <span style="color:${color}; font-weight:bold;">
-        Your Score: ${score} / ${total}
+ Score: ${score} / ${total}
       </span>
     </div>
   `;
@@ -60,10 +60,10 @@ const Page4_Interactive1 = () => {
     // 5️⃣ نحدد نوع الإشعار حسب النتيجة
     if (score === total) {
       setCheckResult("success");
-      ValidationAlert.success(scoreMessage);
+      ValidationAlert.success("Bravo!", "You clicked on the restaurant! 🏆");
     } else if (score === 0) {
       setCheckResult("fail");
-      ValidationAlert.error(scoreMessage);
+      ValidationAlert.error("Oops!", "This is not the restaurant. Try again!");
     } else {
       ValidationAlert.warning(scoreMessage);
     }
@@ -76,9 +76,16 @@ const Page4_Interactive1 = () => {
 
   return (
     <div style={{ textAlign: "center" }}>
+          <div style={{display:"flex"}}>
+    <img
+          src={Rabbit}
+          style={{height: "50px", width: "auto" }}
+        />{" "}  
+        
       <h5 className="header-title-page8">
         I need your help. Can you help me find the restaurant in the picture?
       </h5>
+      </div>
       <div style={{ position: "relative", display: "inline-block" }}>
         <img
           src={backgroundImage}

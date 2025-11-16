@@ -3,11 +3,46 @@ import page2 from "../../assets/unit1/imgs/Pages/Right 1 Unit 01 Good Morning Wo
 
 const Page2 = ({ goToUnit }) => {
   const clickableAreas = [
-    { title: "Unit 1", startIndex: 4, top: "13%", left: "13%", width: "20%", height: "8%" },
-    { title: "Unit 2", startIndex: 10, top: "30%", left: "13%", width: "20%", height: "8%" },
-    { title: "Unit 3", startIndex: 22, top: "46%", left: "13%", width: "20%", height: "8%" },
-    { title: "Unit 4", startIndex: 28, top: "62%", left: "13%", width: "20%", height: "8%" },
-    { title: "Unit 5", startIndex: 28, top: "77%", left: "13%", width: "20%", height: "8%" },
+    {
+      title: "Unit 1",
+      startIndex: 4,
+      top: "9%",
+      left: "13%",
+      width: "20%",
+      height: "8%",
+    },
+    {
+      title: "Unit 2",
+      startIndex: 10,
+      top: "25%",
+      left: "13%",
+      width: "20%",
+      height: "8%",
+    },
+    {
+      title: "Unit 3",
+      startIndex: 22,
+      top: "46%",
+      left: "13%",
+      width: "20%",
+      height: "8%",
+    },
+    {
+      title: "Unit 4",
+      startIndex: 28,
+      top: "62%",
+      left: "13%",
+      width: "20%",
+      height: "8%",
+    },
+    {
+      title: "Unit 5",
+      startIndex: 28,
+      top: "77%",
+      left: "13%",
+      width: "20%",
+      height: "8%",
+    },
   ];
 
   const imgRef = useRef(null);
@@ -39,7 +74,11 @@ const Page2 = ({ goToUnit }) => {
       {clickableAreas.map((area, index) => (
         <div
           key={index}
-          onClick={() => goToUnit(area.startIndex)}
+          onClick={() => {
+            console.log(area.startIndex);
+            
+            goToUnit(area.startIndex);
+          }}
           className="absolute cursor-pointer hover:scale-105 transition-all duration-150"
           style={{
             top: area.top,

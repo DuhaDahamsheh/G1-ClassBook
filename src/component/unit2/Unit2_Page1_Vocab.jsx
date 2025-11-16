@@ -1,126 +1,168 @@
 import React, { useState, useRef, useEffect } from "react";
-import backgroundImage from "../../assets/img_unit2/imgs/find img.jpg";
-import ValidationAlert from "../Popup/ValidationAlert";
-import page2_2 from "../../assets/img_unit2/imgs/unit2 vocab.jpg";
+import backgroundImage from "../../assets/img_unit2/imgs/02-03 New copy.jpg";
+import page2_2 from "../../assets/img_unit2/imgs/unit2 vocab-3CQVwmCm.jpg";
 import vocabulary from "../../assets/img_unit2/sounds-unit2/Pg10_Vocabulary_Adult Lady.mp3";
-import { IoCaretForwardCircle } from "react-icons/io5";
-const Unit2_Page1_Vocab = () => {
-  const audioRef = useRef(null);
+import "./Unit2_Page1.css";
+import num1 from "../../assets/img_unit2/imgs/Num1.svg";
+import num2 from "../../assets/img_unit2/imgs/Num2.svg";
+import num3 from "../../assets/img_unit2/imgs/Num3.svg";
+import num4 from "../../assets/img_unit2/imgs/Num4.svg";
+import num5 from "../../assets/img_unit2/imgs/Num5.svg";
+import num6 from "../../assets/img_unit2/imgs/Num6.svg";
+import num7 from "../../assets/img_unit2/imgs/Num7.svg";
 
-  const mainAudioRef = useRef(null); // ✅ الأوديو الرئيسي
-  const clickAudioRef = useRef(null); // ✅ صوت المناطق
+import { IoCaretForwardCircle } from "react-icons/io5";
+
+const Unit2_Page1_Vocab = () => {
+  const mainAudioRef = useRef(null);
+  const clickAudioRef = useRef(null);
 
   const [paused, setPaused] = useState(false);
-  const stopAtSecond = 3;
+  const [activeIndex, setActiveIndex] = useState(null);
+  const [showContinue, setShowContinue] = useState(false);
+  const stopAtSecond = 3.0;
 
-  useEffect(() => {
-    if (!mainAudioRef.current) return;
-
-    mainAudioRef.current.currentTime = 0;
-    mainAudioRef.current.play();
-
-    const interval = setInterval(() => {
-      if (mainAudioRef.current.currentTime >= stopAtSecond) {
-        mainAudioRef.current.pause();
-        setPaused(true);
-        clearInterval(interval);
-      }
-    }, 250);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const handleImageClick = (e) => {
-    const rect = e.target.getBoundingClientRect();
-    const xPercent = ((e.clientX - rect.left) / rect.width) * 100;
-    const yPercent = ((e.clientY - rect.top) / rect.height) * 100;
-
-    console.log("X%:", xPercent.toFixed(2), "Y%:", yPercent.toFixed(2));
-
-    checkAreaAndPlaySound(xPercent, yPercent);
-  };
-
-  const clickableAreas = [
-    { x1: 16.0, y1: 44.0, x2: 18.0, y2: 46.0, sound: "" },
-    { x1: 55.0, y1: 45.0, x2: 57.0, y2: 47.0, sound: "" },
-    { x1: 70.0, y1: 42.0, x2: 72.0, y2: 44.0, sound: "" },
-    { x1: 9.0, y1: 17.0, x2: 33.0, y2: 21.0, sound: "" },
-    { x1: 35.0, y1: 28.0, x2: 38.0, y2: 30.0, sound: "" },
+  // 🎵 فترات الكلمات داخل الأوديو الرئيسي
+  const wordTimings = [
+    { start: 3.2, end: 5.0 }, // party hat
+    { start: 5.1, end: 7.2 }, // jellow
+    { start: 7.3, end: 10.2 }, // cake
+    { start: 10.3, end: 12.7 }, // Hello
+    { start: 12.8, end: 15.2 }, // Good morning
+    { start: 15.3, end: 17.0 },
+    { start: 17.1, end: 19.3 },
   ];
 
-  const checkAreaAndPlaySound = (x, y) => {
-    const area = clickableAreas.find(
-      (a) => x >= a.x1 && x <= a.x2 && y >= a.y1 && y <= a.y2
-    );
+  // 🟦 تشغيل الأوديو الرئيسي + إيقافه عند ثانية معينة
+  useEffect(() => {
+    const audio = mainAudioRef.current;
+    if (!audio) return;
 
-    console.log("Matched Area:", area);
+    audio.currentTime = 0;
+    audio.play();
 
-    if (area) playSound(area.sound);
-  };
-  const playSound = (soundPath) => {
-    console.log(soundPath);
-    if (clickAudioRef.current) {
-      clickAudioRef.current.src = soundPath;
-      clickAudioRef.current.play();
+    const interval = setInterval(() => {
+      if (audio.currentTime >= stopAtSecond) {
+        audio.pause();
+        setPaused(true);
+        setShowContinue(true); // 👈 خلي الكبسة تضل ظاهرة دائماً بعد ثانية 3
+        clearInterval(interval);
+      }
+    }, 200);
+
+    const handleTimeUpdate = () => {
+      const current = audio.currentTime;
+      const index = wordTimings.findIndex(
+        (t) => current >= t.start && current <= t.end
+      );
+      setActiveIndex(index !== -1 ? index : null);
+    };
+
+    audio.addEventListener("timeupdate", handleTimeUpdate);
+
+    return () => {
+      audio.removeEventListener("timeupdate", handleTimeUpdate);
+      clearInterval(interval);
+    };
+  }, []);
+
+  const togglePlay = () => {
+    const audio = mainAudioRef.current;
+
+    if (audio.paused) {
+      audio.play();
+      setPaused(false);
+    } else {
+      audio.pause();
+      setPaused(true);
     }
   };
+
+  // 🟦 تشغيل صوت المناطق (لو انضاف لاحقاً)
+  const playSound = (sound) => {
+    if (!sound || !clickAudioRef.current) return;
+    clickAudioRef.current.src = sound;
+    clickAudioRef.current.currentTime = 0;
+    clickAudioRef.current.play();
+  };
+
+  const nums = [num1, num2, num3, num4, num5, num6, num7];
 
   return (
     <div style={{ textAlign: "center" }}>
       <audio ref={mainAudioRef} controls>
         <source src={vocabulary} type="audio/mp3" />
       </audio>
+
       <audio ref={clickAudioRef} style={{ display: "none" }} />
+
       <div style={{ position: "relative", display: "inline-block" }}>
-        <img
-          src={page2_2}
-          style={{
-            height: "160px",
-            width: "auto",
-            position: "absolute",
-            bottom: "5%",
-            right: "5%",
-            borderRadius: "5%",
-          }}
-        />
+        {/* كلمة + صورة صغيرة */}
+        <div style={{ bottom: "0%", right: "0%" }}>
+          <img
+            src={page2_2}
+            style={{
+              height: "200px",
+              width: "auto",
+              position: "absolute",
+              bottom: "0%",
+              right: "0%",
+              borderRadius: "8%",
+            }}
+          />
+
+          {/* النصوص */}
+          <div className="vocab_container" style={{ bottom: "0%" ,right:"4%"}}>
+            {[
+              "party hat",
+              "jello",
+              "cake",
+              "happy birthday ",
+              "balloons",
+              "present",
+              "card",
+            ].map((text, i) => (
+              <h6 key={i} className={activeIndex === i ? "active" : ""}>
+                {i + 1} {text}
+              </h6>
+            ))}
+          </div>
+        </div>
+
+        {/* الأرقام */}
+        {nums.map((num, i) => (
+          <img
+            key={i}
+            src={num}
+            id={`num-${i + 1}`}
+            className={`num-img ${activeIndex === i ? "active" : ""}`}
+            style={{
+              height: "20px",
+              width: "auto",
+              position: "absolute",
+            }}
+          />
+        ))}
+
+        {/* الصورة الرئيسية */}
         <img
           src={backgroundImage}
           alt="interactive"
-          style={{ cursor: "pointer", height: "460px", width: "auto" }}
-          onClick={handleImageClick}
+          style={{ height: "460px", width: "auto" }}
         />
-
-        {clickableAreas.map((area, index) => (
-          <div
-            key={index}
-            style={{
-              position: "absolute",
-              left: `${area.x1}%`,
-              top: `${area.y1}%`,
-              width: `${area.x2 - area.x1}%`,
-              height: `${area.y2 - area.y1}%`,
-              cursor: "pointer",
-            }}
-            onClick={() => playClickSound(area.sound)}
-          />
-        ))}
       </div>
 
-      {paused ? (
+      {showContinue && (
         <div style={{ display: "flex", justifyContent: "center" }}>
           <button
             className="play-btn swal-continue"
-            onClick={() => {
-              mainAudioRef.current.play();
-              // setPaused(false);
-            }}
+            onClick={togglePlay}
             style={{ marginTop: "18px" }}
           >
-            Continue <IoCaretForwardCircle size={20} style={{ color: "red" }} />
+            {paused ? "Continue" : "Pause"}
+            <IoCaretForwardCircle size={20} style={{ color: "red" }} />
           </button>
         </div>
-      ) : (
-        <></>
       )}
     </div>
   );

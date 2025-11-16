@@ -52,10 +52,10 @@ const Page4 = () => {
 
 
   const clickableAreas = [
-    { x1: 12.0, y1: 43.0, x2: 16.0, y2: 69.0, sound: dSound },
-    { x1: 30.0, y1: 35.0, x2: 42.14, y2: 67.0, sound: deer },
-    { x1: 55.0, y1: 38.0, x2:66.0, y2: 71.0, sound: dish },
-    { x1: 86.0, y1: 34.0, x2: 91.0, y2: 54.0, sound: duck },
+    { x1: 10.7, y1: 42.1, x2: 17.4, y2: 61.8, sound: dSound },
+    { x1: 27.0, y1: 30.0, x2: 39.4, y2: 75.0, sound: deer },
+    { x1: 55.7, y1: 29.5, x2:66.0, y2: 74.0, sound: dish },
+    { x1: 82.8, y1: 29.5, x2: 94.0, y2:75.0, sound: duck },
     ,
   ];
   const checkAreaAndPlaySound = (x, y) => {

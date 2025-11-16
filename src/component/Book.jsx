@@ -3,7 +3,6 @@ import { GrLinkNext } from "react-icons/gr";
 import { IoMdArrowBack } from "react-icons/io";
 import { FaHome } from "react-icons/fa";
 
-
 //===================== unit 1 pages
 import Page1 from "./unit1/Page1";
 import Page2 from "./unit1/Page2";
@@ -58,76 +57,86 @@ export default function Book() {
   const goToIndex = () => setPageIndex(1);
   // ✅ دالة التنقل من الفهرس إلى أول صفحة من الوحدة
   const goToUnit = (unitStartIndex) => {
-    const evenIndex =
-      unitStartIndex % 2 === 0 ? unitStartIndex : unitStartIndex - 1;
-    setPageIndex(evenIndex);
+   if (!isMobile) {
+    // الصفحة التي يجب أن تظهر على الشمال يجب أن تكون فردية
+    const leftPage =
+      unitStartIndex % 2 === 1 
+        ? unitStartIndex 
+        : unitStartIndex - 1;
+
+    setPageIndex(leftPage);
+  } else {
+    setPageIndex(unitStartIndex);
+  }
   };
-const pages = [
-  <Page1 />, // الغلاف
-  <Page2 goToUnit={goToUnit} />,
-  <Page3  goToUnit={goToUnit}/>,
-  <Page4 />,
-  <Page5 />,
-  <Page6 />,
-  <Page7 />,
-  <Page8 />,
-  <Page9 />,
-  <Unit2_Page1 />,
-  <Unit2_Page2 />,
-  <Unit2_Page3 />,
-  <Unit2_Page4 />,
-  <Unit2_Page5 />,
-  <Unit2_Page6 />,
-  <Unit2_Page7 />,
-  <Unit2_Page8 />,
-  <Unit2_Page9 />,
-  <Unit2_Page10 />,
-  <Unit2_Page11 />,
-  <Unit2_Page12 />,
-  <Unit3_Page1 />,
-  <Unit3_Page2 />,
-  <Unit3_Page3 />,
-  <Unit3_Page4 />,
-  <Unit3_Page5 />,
-  <Unit3_Page6 />,
-  <Unit4_Page1 />,
-  <Unit4_Page2 />,
-  <Unit4_Page3 />,
-  <Unit4_Page4 />,
-  <Unit4_Page5 />,
-  <Unit4_Page6 />,
-];
+  const pages = [
+    <Page1 />, // الغلاف
+    <Page2 goToUnit={goToUnit} />,
+    <Page3 goToUnit={goToUnit} />,
+    <Page4 />,
+    <Page5 />,
+    <Page6 />,
+    <Page7 />,
+    <Page8 />,
+    <Page9 />,
+    <Unit2_Page1 />,
+    <Unit2_Page2 />,
+    <Unit2_Page3 />,
+    <Unit2_Page4 />,
+    <Unit2_Page5 />,
+    <Unit2_Page6 />,
+    <Unit2_Page7 />,
+    <Unit2_Page8 />,
+    <Unit2_Page9 />,
+    <Unit2_Page10 />,
+    <Unit2_Page11 />,
+    <Unit2_Page12 />,
+    <Unit3_Page1 />,
+    <Unit3_Page2 />,
+    <Unit3_Page3 />,
+    <Unit3_Page4 />,
+    <Unit3_Page5 />,
+    <Unit3_Page6 />,
+    <Unit4_Page1 />,
+    <Unit4_Page2 />,
+    <Unit4_Page3 />,
+    <Unit4_Page4 />,
+    <Unit4_Page5 />,
+    <Unit4_Page6 />,
+  ];
 
- const nextPage = () => {
-  if (isMobile) {
-    if (pageIndex < pages.length - 1) setPageIndex(pageIndex + 1);
-  } else {
-    if (pageIndex === 0) setPageIndex(1); // الغلاف → فهرس (صفحتين)
-    else if (pageIndex < pages.length - 2) setPageIndex(pageIndex + 2);
-  }
-};
+  console.log(pageIndex);
+  
+  const nextPage = () => {
+    if (isMobile) {
+      if (pageIndex < pages.length - 1) setPageIndex(pageIndex + 1);
+    } else {
+      if (pageIndex === 0) setPageIndex(1); // الغلاف → فهرس (صفحتين)
+      else if (pageIndex < pages.length - 2) setPageIndex(pageIndex + 2);
+    }
+  };
 
-const prevPage = () => {
-  if (isMobile) {
-    if (pageIndex > 0) setPageIndex(pageIndex - 1);
-  } else {
-    if (pageIndex === 1) setPageIndex(0); // رجوع من الفهرس → الغلاف
-    else if (pageIndex > 1) setPageIndex(pageIndex - 2);
-  }
-};
+  const prevPage = () => {
+    if (isMobile) {
+      if (pageIndex > 0) setPageIndex(pageIndex - 1);
+    } else {
+      if (pageIndex === 1) setPageIndex(0); // رجوع من الفهرس → الغلاف
+      else if (pageIndex > 1) setPageIndex(pageIndex - 2);
+    }
+  };
 
   return (
     <div className="w-full min-h-screen flex items-center justify-center relative">
       {/* 📖 زر العودة للفهرس - ثابت بكل الصفحات */}
-    {pageIndex !== 1 && pageIndex !== 2 && (
-  <button
-    onClick={goToIndex}
-    title="Go to Index"
-    className="fixed top-6 right-6 z-[10000] bg-[#2c5287] hover:bg-[#426ca7f2] text-white p-3 rounded-full shadow-lg hover:scale-110 transition"
-  >
-    <FaHome />
-  </button>
-)}
+      {pageIndex !== 1 && pageIndex !== 2 && (
+        <button
+          onClick={goToIndex}
+          title="Go to Index"
+          className="fixed top-6 right-6 z-[10000] bg-[#2c5287] hover:bg-[#426ca7f2] text-white p-3 rounded-full shadow-lg hover:scale-110 transition"
+        >
+          <FaHome />
+        </button>
+      )}
       {/* 📱 شاشة الموبايل */}
       {isMobile ? (
         <>
@@ -152,44 +161,43 @@ const prevPage = () => {
       ) : (
         <>
           {/* 💻 شاشة اللابتوب / الديسكتوب */}
-        {pageIndex === 0 ? (
-  // ✅ الغلاف صفحة واحدة فقط
-  <>
-    <div className="bg-white sm:w-[40%] h-[95vh] rounded-2xl shadow-2xl border flex items-center justify-center overflow-hidden">
-      {pages[0]}
-    </div>
+          {pageIndex === 0 ? (
+            // ✅ الغلاف صفحة واحدة فقط
+            <>
+              <div className="bg-white sm:w-[40%] h-[95vh] rounded-2xl shadow-2xl border flex items-center justify-center overflow-hidden">
+                {pages[0]}
+              </div>
 
-    <button
-      onClick={nextPage}
-      className="absolute right-10 w-14 h-14 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md hover:bg-[#426ca7f2] hover:scale-110 transition z-[9999]"
-    >
-      <GrLinkNext size={25} />
-    </button>
-  </>
-) : (
-  // ✅ الفهرس + باقي الصفحات → صفحتين
-  <>
-    <button
-      onClick={prevPage}
-      className="absolute left-10 w-14 h-14 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md hover:bg-[#426ca7f2] hover:scale-110 transition z-[9999]"
-    >
-      <IoMdArrowBack size={30} />
-    </button>
+              <button
+                onClick={nextPage}
+                className="absolute right-10 w-14 h-14 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md hover:bg-[#426ca7f2] hover:scale-110 transition z-[9999]"
+              >
+                <GrLinkNext size={25} />
+              </button>
+            </>
+          ) : (
+            // ✅ الفهرس + باقي الصفحات → صفحتين
+            <>
+              <button
+                onClick={prevPage}
+                className="absolute left-10 w-14 h-14 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md hover:bg-[#426ca7f2] hover:scale-110 transition z-[9999]"
+              >
+                <IoMdArrowBack size={30} />
+              </button>
 
-    <div className="bg-white sm:w-[75%] h-[95vh] rounded-2xl shadow-2xl border grid grid-cols-2 overflow-hidden">
-      <div className="border-r">{pages[pageIndex]}</div>
-      <div className="border-l">{pages[pageIndex + 1]}</div>
-    </div>
+              <div className="bg-white sm:w-[75%] h-[95vh] rounded-2xl shadow-2xl border grid grid-cols-2 overflow-hidden">
+                <div className="border-r">{pages[pageIndex]}</div>
+                <div className="border-l">{pages[pageIndex+1]}</div>
+              </div>
 
-    <button
-      onClick={nextPage}
-      className="absolute right-10 w-14 h-14 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md hover:bg-[#426ca7f2] hover:scale-110 transition z-[9999]"
-    >
-      <GrLinkNext size={25} />
-    </button>
-  </>
-)}
-
+              <button
+                onClick={nextPage}
+                className="absolute right-10 w-14 h-14 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md hover:bg-[#426ca7f2] hover:scale-110 transition z-[9999]"
+              >
+                <GrLinkNext size={25} />
+              </button>
+            </>
+          )}
         </>
       )}
     </div>

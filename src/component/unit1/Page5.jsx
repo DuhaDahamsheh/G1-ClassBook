@@ -48,10 +48,10 @@ const Page5 = () => {
   };
 
   const clickableAreas = [
-    { x1: 12.0, y1: 55.0, x2: 16.0, y2: 69.0, sound: Pg5_2_1_Adult },
-    { x1: 25.0, y1: 47.0, x2: 42.14, y2: 67.0, sound: Pg5_2_2_Adult },
-    { x1: 50.0, y1: 50.0, x2:66.0, y2: 71.0, sound: Pg5_2_3_Adult },
-    { x1: 80.0, y1: 40.0, x2: 89.0, y2: 70.0, sound: Pg5_2_4_Adult },
+    { x1: 11.7, y1: 50.2, x2: 17.2, y2: 74.9, sound: Pg5_2_1_Adult },
+    { x1: 25.7, y1: 39.6, x2: 42.14, y2: 87.9, sound: Pg5_2_2_Adult },
+    { x1: 52.7, y1: 39.6, x2:68.0, y2: 87.9, sound: Pg5_2_3_Adult },
+    { x1: 78.0, y1: 39.6, x2: 92.3, y2:87.9, sound: Pg5_2_4_Adult },
     ,
   ];
   const checkAreaAndPlaySound = (x, y) => {
@@ -72,7 +72,7 @@ const Page5 = () => {
   };
   const speaking = [
     { text: "Hello, How are you?", sound: Pg5_1_1_Bebo },
-    { text: "Fine, Thank you", sound: Pg5_1_2_Lolo },
+    { text: "Fine, Thank you.", sound: Pg5_1_2_Lolo },
   ];
 
 
@@ -120,7 +120,7 @@ const Page5 = () => {
               return (
                 <p
                   key={index}
-                  className="speaking"
+                  className="clickable-area"
                   id={`text-${index}`}
                   onClick={() => playSound(item.sound)}
                   style={{ cursor: "pointer" }}

@@ -25,11 +25,11 @@ const Page4_vocabulary = () => {
 
   // 🎵 فترات الكلمات داخل الأوديو الرئيسي
   const wordTimings = [
-    { start: 2.7, end: 4.5 }, // Goodbye
-    { start: 4.6, end: 6.5 }, // How are you
-    { start: 6.6, end: 8.3 }, // Fine thank you
-    { start: 8.4, end: 10.1 }, // Hello
-    { start: 10.2, end: 12.5 }, // Good morning
+    { start: 2.8, end: 5.0 }, // Goodbye
+    { start: 5.1, end: 7.0 }, // How are you
+    { start:7.1, end: 10.5 }, // Fine thank you
+    { start: 10.6, end: 12.1 }, // Hello
+    { start: 12.2, end: 15.0 }, // Good morning
   ];
 
   useEffect(() => {
