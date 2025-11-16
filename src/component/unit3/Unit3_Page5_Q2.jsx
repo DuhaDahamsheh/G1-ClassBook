@@ -9,7 +9,7 @@ const Unit3_Page5_Q2 = () => {
   const [showResult, setShowResult] = useState(false);
 
   const correctData = ["1", "2", "4"];
-  const items = [
+  const options = [
     { img: "/assets/bat.png", correct: "1" },
     { img: "/assets/bucket.png", correct: "2" },
     { img: "/assets/box.png", correct: "3" },
@@ -18,126 +18,68 @@ const Unit3_Page5_Q2 = () => {
     { img: "/assets/boat.png", correct: "6" },
   ];
 
-  const handleSelect = (index, value) => {
-    if (showResult) return; // بعد الفحص ما يسمح بالتغيير
-    const newAnswers = [...answers];
-    newAnswers[index] = value;
-    setAnswers(newAnswers);
+  // ✅ نسمح فقط باختيار إجابة واحدة
+  const [selected, setSelected] = useState(null);
+
+  const handleSelect = (index) => {
+    setSelected(index); // اختيار إجابة واحدة فقط
   };
 
+  const scoreMessage = `
+    <div style="font-size: 20px; text-align:center; margin-top: 8px;">
+      <span style="color:green; font-weight:bold;">
+         Score: 1 /1
+      </span>
+    </div>
+  `;
+
+  // ✅ الفحص فقط إذا الطالب اختار أو لا
   const checkAnswers = () => {
-    if (answers.includes(null)) {
-      ValidationAlert.info("Oops!", "Please answer all items first.");
+    if (selected === null) {
+      ValidationAlert.info("Oops!", "Please select an answer first.");
       return;
     }
 
-    const correctCount = answers.filter(
-      (a, i) => a?.toLowerCase() === items[i].correct?.toLowerCase()
-    ).length;
-
-    const total = items.length;
-    const color =
-      correctCount === total ? "green" : correctCount === 0 ? "red" : "orange";
-
-    const scoreMessage = `
-      <div style="font-size: 20px; text-align:center; margin-top: 8px;">
-        <span style="color:${color}; font-weight:bold;">
-          Score: ${correctCount} / ${total}
-        </span>
-      </div>
-    `;
-
-    if (correctCount === total) ValidationAlert.success(scoreMessage);
-    else if (correctCount === 0) ValidationAlert.error(scoreMessage);
-    else ValidationAlert.warning(scoreMessage);
-
-    setTimeout(() => setShowResult(true), 200);
+    // إذا بدك لاحقًا تضيف صح/غلط، هون منعمله.
+    ValidationAlert.success(scoreMessage);
   };
 
+  // 🔄 زر الريست
   const resetAnswers = () => {
-    setAnswers(Array(items.length).fill(null));
-    setShowResult(false);
+    setSelected(null);
   };
 
   return (
-    <div>
+    <div className="unit2-q3-wrapper">
       <h5 className="header-title-page8">
-        <span style={{ color: "purple" }}>2</span> Does it have a
-        <span style={{ color: "red" }}>short a</span>? Listen and circle.
+        <span className="ex-A">B</span> Ask and answer.
       </h5>
 
-      <div
-        className="imgFeild"
-        style={{
-          display: "flex",
-          marginBottom: "100px",
-          gap: "13px",
-          flexDirection: "column",
-        }}
-      >
-        <audio controls>
-          <source src={CD13_Pg14_Instruction1_AdultLady} type="audio/mp3" />
-        </audio>
-
-        <div className="bp-container">
-          {items.map((item, index) => (
-            <div className="bp-item" key={index}>
-              <img src={item.img} className="bp-image" />
-              <div className="bp-options">
-                {/* B OPTION */}
-                <span
-                  className={`bp-option 
-                    ${answers[index] === "b" ? "selected" : ""}
-                    ${
-                      showResult &&
-                      answers[index] === "b" &&
-                      answers[index] !== item.correct
-                        ? "wrong-answer"
-                        : ""
-                    }`}
-                  onClick={() => handleSelect(index, "b")}
-                >
-                  b
-                  {showResult &&
-                    answers[index] === "b" &&
-                    answers[index] !== item.correct && (
-                      <span className="wrong-x">X</span>
-                    )}
-                </span>
-
-                {/* P OPTION */}
-                <span
-                  className={`bp-option 
-                    ${answers[index] === "p" ? "selected" : ""}
-                    ${
-                      showResult &&
-                      answers[index] === "p" &&
-                      answers[index] !== item.correct
-                        ? "wrong-answer"
-                        : ""
-                    }`}
-                  onClick={() => handleSelect(index, "p")}
-                >
-                  p
-                  {showResult &&
-                    answers[index] === "p" &&
-                    answers[index] !== item.correct && (
-                      <span className="wrong-x">X</span>
-                    )}
-                </span>
-              </div>
+      <div className="q3-content">
+        {/* الخيارات */}
+        <div className="q3-options">
+          {options.map((item, index) => (
+            <div
+              key={item.num}
+              className={`q3-option-item ${selected === index ? "active" : ""}`}
+              onClick={() => handleSelect(index)}
+            >
+              <di>
+                <span className="q3-number">{item.num}</span>
+              </di>
+              <img src={item.img} className="q3-option-img" alt="" />
             </div>
           ))}
         </div>
+      </div>
 
-        <div className="action-buttons-container">
-          <button onClick={resetAnswers} className="try-again-button">
-            Start Again ↻
-          </button>
-          <button onClick={checkAnswers} className="check-button2">
-            Check Answer ✓
-          </button>
-        </div>
+      <div className="action-buttons-container">
+        <button onClick={resetAnswers} className="try-again-button">
+          Start Again ↻
+        </button>
+        <button onClick={checkAnswers} className="check-button2">
+          Check Answer ✓
+        </button>
       </div>
     </div>
   );

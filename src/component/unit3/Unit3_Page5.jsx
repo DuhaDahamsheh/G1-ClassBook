@@ -5,7 +5,8 @@ import { PiCursorClickBold } from "react-icons/pi";
 import "./Unit3_Page5.css";
 import Popup from "../Popup/Popup";
 import Unit3_Page5_Q1 from "./Unit3_Page5_Q1";
-
+import Unit3_Page5_Q2 from "./Unit3_Page5_Q2";
+import CD24_Pg26_Instructions1_AdultLady from "../../assets/unit3/sound3/CD24.Pg26_Instructions1_Adult Lady.mp3"
 const Unit3_Page5 = () => {
   const [activePopup, setActivePopup] = useState(null);
   return (
@@ -39,9 +40,9 @@ const Unit3_Page5 = () => {
         onClose={() => setActivePopup(null)}
         children={
           <>
-            {/* <audio controls>
-              <source src={CD13_Pg14_Instruction1_AdultLady} type="audio/mp3" />
-            </audio> */}
+            <audio controls>
+              <source src={CD24_Pg26_Instructions1_AdultLady} type="audio/mp3" />
+            </audio>
           </>
         }
       />
@@ -57,7 +58,7 @@ const Unit3_Page5 = () => {
         onClose={() => setActivePopup(null)}
         children={
           <>
-            
+            <Unit3_Page5_Q2/>
           </>
         }
       />
