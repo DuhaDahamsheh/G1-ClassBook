@@ -6,13 +6,14 @@ import num2 from "../../assets/unit1/imgs/Page 01/Num2.svg";
 import num3 from "../../assets/unit1/imgs/Page 01/Num3.svg";
 import num4 from "../../assets/unit1/imgs/Page 01/Num4.svg";
 import num5 from "../../assets/unit1/imgs/Page 01/Num5.svg";
+import { CgPlayPauseO } from "react-icons/cg";
 import vocabulary from "../../assets/unit1/sounds/Pg4_Vocabulary_Adult Lady.mp3";
 import sound1 from "../../assets/unit1/sounds/pg4-vocabulary-1-goodbye.mp3";
 import sound2 from "../../assets/unit1/sounds/pg4-vocabulary-2-how are you.mp3";
 import sound3 from "../../assets/unit1/sounds/pg4-vocabulary-3-fine thank you.mp3";
 import sound4 from "../../assets/unit1/sounds/pg4-vocabulary-4-hello..mp3";
 import sound5 from "../../assets/unit1/sounds/pg4-vocabulary-5-good morning.mp3";
-import { IoCaretForwardCircle } from "react-icons/io5";
+import { FaRegCirclePlay } from "react-icons/fa6";
 import "../../index.css"; // ✅ نضيف ملف CSS خارجي
 
 const Page4_vocabulary = () => {
@@ -20,14 +21,14 @@ const Page4_vocabulary = () => {
   const clickAudioRef = useRef(null);
   const [paused, setPaused] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
-
+  const [showContinue, setShowContinue] = useState(false);
   const stopAtSecond = 2.5;
 
   // 🎵 فترات الكلمات داخل الأوديو الرئيسي
   const wordTimings = [
     { start: 2.8, end: 5.0 }, // Goodbye
     { start: 5.1, end: 7.0 }, // How are you
-    { start:7.1, end: 10.5 }, // Fine thank you
+    { start: 7.1, end: 10.5 }, // Fine thank you
     { start: 10.6, end: 12.1 }, // Hello
     { start: 12.2, end: 15.0 }, // Good morning
   ];
@@ -43,6 +44,7 @@ const Page4_vocabulary = () => {
       if (audio.currentTime >= stopAtSecond) {
         audio.pause();
         setPaused(true);
+        setShowContinue(true); // 👈 خلي الكبسة تضل ظاهرة دائماً بعد ثانية 3
         clearInterval(interval);
       }
     }, 250);
@@ -77,6 +79,17 @@ const Page4_vocabulary = () => {
     clickAudioRef.current.play();
   };
 
+  const togglePlay = () => {
+    const audio = mainAudioRef.current;
+
+    if (audio.paused) {
+      audio.play();
+      setPaused(false);
+    } else {
+      audio.pause();
+      setPaused(true);
+    }
+  };
   const nums = [num1, num2, num3, num4, num5];
 
   return (
@@ -95,19 +108,23 @@ const Page4_vocabulary = () => {
               height: "170px",
               width: "auto",
               position: "absolute",
-              bottom: "2%",
+              bottom: "0%",
               right: "0%",
               borderRadius: "5%",
             }}
           />
-          <div className="vocab_container">
-            {["Goodbye!", "How are you?", "Fine, thank you.", "Hello!", "Good morning!"].map(
-              (text, i) => (
-                <h6 key={i} className={activeIndex === i ? "active" : ""}>
-                  {i + 1} {text}
-                </h6>
-              )
-            )}
+          <div className="vocab_container" style={{ bottom: "2%"}}>
+            {[
+              "Goodbye!",
+              "How are you?",
+              "Fine, thank you.",
+              "Hello!",
+              "Good morning!",
+            ].map((text, i) => (
+              <h6 key={i} className={activeIndex === i ? "active" : ""}>
+                {i + 1} {text}
+              </h6>
+            ))}
           </div>
         </div>
 
@@ -148,16 +165,25 @@ const Page4_vocabulary = () => {
         ))}
       </div>
 
-      {paused && (
+      {showContinue && (
         <div style={{ display: "flex", justifyContent: "center" }}>
           <button
             className="play-btn swal-continue"
-            onClick={() => {
-              mainAudioRef.current.play();
-            }}
+            onClick={togglePlay}
             style={{ marginTop: "18px" }}
           >
-            Continue <IoCaretForwardCircle size={20} style={{ color: "red" }} />
+            {paused ? (
+              <>
+                Continue
+                <FaRegCirclePlay  size={20} style={{ color: "red" }} />
+              </>
+            ) : (
+               <>
+                Pause
+                <CgPlayPauseO size={20} style={{ color: "red" }} />
+              </>
+            )}
+           
           </button>
         </div>
       )}

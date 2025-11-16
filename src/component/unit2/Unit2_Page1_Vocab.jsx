@@ -3,6 +3,8 @@ import backgroundImage from "../../assets/img_unit2/imgs/02-03 New copy.jpg";
 import page2_2 from "../../assets/img_unit2/imgs/unit2 vocab-3CQVwmCm.jpg";
 import vocabulary from "../../assets/img_unit2/sounds-unit2/Pg10_Vocabulary_Adult Lady.mp3";
 import "./Unit2_Page1.css";
+import { CgPlayPauseO } from "react-icons/cg";
+import { FaRegCirclePlay } from "react-icons/fa6";
 import num1 from "../../assets/img_unit2/imgs/Num1.svg";
 import num2 from "../../assets/img_unit2/imgs/Num2.svg";
 import num3 from "../../assets/img_unit2/imgs/Num3.svg";
@@ -11,7 +13,7 @@ import num5 from "../../assets/img_unit2/imgs/Num5.svg";
 import num6 from "../../assets/img_unit2/imgs/Num6.svg";
 import num7 from "../../assets/img_unit2/imgs/Num7.svg";
 
-import { IoCaretForwardCircle } from "react-icons/io5";
+
 
 const Unit2_Page1_Vocab = () => {
   const mainAudioRef = useRef(null);
@@ -159,8 +161,17 @@ const Unit2_Page1_Vocab = () => {
             onClick={togglePlay}
             style={{ marginTop: "18px" }}
           >
-            {paused ? "Continue" : "Pause"}
-            <IoCaretForwardCircle size={20} style={{ color: "red" }} />
+              {paused ? (
+                         <>
+                           Continue
+                           <FaRegCirclePlay  size={20} style={{ color: "red" }} />
+                         </>
+                       ) : (
+                          <>
+                           Pause
+                           <CgPlayPauseO size={20} style={{ color: "red" }} />
+                         </>
+                       )}
           </button>
         </div>
       )}
