@@ -1,5 +1,5 @@
 .question-wrapper {
-  margin: auto;
+
   font-size: 1.4rem;
 }
 
@@ -11,7 +11,7 @@
 
 .q-img {
   width: 100px;
-  height: 100px;
+     height: auto;
 }
 
 .q-input {

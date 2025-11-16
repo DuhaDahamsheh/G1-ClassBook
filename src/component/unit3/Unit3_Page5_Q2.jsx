@@ -1,0 +1,146 @@
+import "./Unit3_Page5_Q2.css";
+
+import React, { useState } from "react";
+import CD13_Pg14_Instruction1_AdultLady from "../../assets/img_unit2/sounds-unit2/CD13.Pg14_Instruction1_Adult Lady.mp3";
+import ValidationAlert from "../Popup/ValidationAlert";
+
+const Unit3_Page5_Q2 = () => {
+  const [answers, setAnswers] = useState([null, null, null, null]);
+  const [showResult, setShowResult] = useState(false);
+
+  const correctData = ["1", "2", "4"];
+  const items = [
+    { img: "/assets/bat.png", correct: "1" },
+    { img: "/assets/bucket.png", correct: "2" },
+    { img: "/assets/box.png", correct: "3" },
+    { img: "/assets/boat.png", correct: "4" },
+    { img: "/assets/boat.png", correct: "5" },
+    { img: "/assets/boat.png", correct: "6" },
+  ];
+
+  const handleSelect = (index, value) => {
+    if (showResult) return; // بعد الفحص ما يسمح بالتغيير
+    const newAnswers = [...answers];
+    newAnswers[index] = value;
+    setAnswers(newAnswers);
+  };
+
+  const checkAnswers = () => {
+    if (answers.includes(null)) {
+      ValidationAlert.info("Oops!", "Please answer all items first.");
+      return;
+    }
+
+    const correctCount = answers.filter(
+      (a, i) => a?.toLowerCase() === items[i].correct?.toLowerCase()
+    ).length;
+
+    const total = items.length;
+    const color =
+      correctCount === total ? "green" : correctCount === 0 ? "red" : "orange";
+
+    const scoreMessage = `
+      <div style="font-size: 20px; text-align:center; margin-top: 8px;">
+        <span style="color:${color}; font-weight:bold;">
+          Score: ${correctCount} / ${total}
+        </span>
+      </div>
+    `;
+
+    if (correctCount === total) ValidationAlert.success(scoreMessage);
+    else if (correctCount === 0) ValidationAlert.error(scoreMessage);
+    else ValidationAlert.warning(scoreMessage);
+
+    setTimeout(() => setShowResult(true), 200);
+  };
+
+  const resetAnswers = () => {
+    setAnswers(Array(items.length).fill(null));
+    setShowResult(false);
+  };
+
+  return (
+    <div>
+      <h5 className="header-title-page8">
+        <span style={{ color: "purple" }}>2</span> Does it have a
+        <span style={{ color: "red" }}>short a</span>? Listen and circle.
+      </h5>
+
+      <div
+        className="imgFeild"
+        style={{
+          display: "flex",
+          marginBottom: "100px",
+          gap: "13px",
+          flexDirection: "column",
+        }}
+      >
+        <audio controls>
+          <source src={CD13_Pg14_Instruction1_AdultLady} type="audio/mp3" />
+        </audio>
+
+        <div className="bp-container">
+          {items.map((item, index) => (
+            <div className="bp-item" key={index}>
+              <img src={item.img} className="bp-image" />
+              <div className="bp-options">
+                {/* B OPTION */}
+                <span
+                  className={`bp-option 
+                    ${answers[index] === "b" ? "selected" : ""}
+                    ${
+                      showResult &&
+                      answers[index] === "b" &&
+                      answers[index] !== item.correct
+                        ? "wrong-answer"
+                        : ""
+                    }`}
+                  onClick={() => handleSelect(index, "b")}
+                >
+                  b
+                  {showResult &&
+                    answers[index] === "b" &&
+                    answers[index] !== item.correct && (
+                      <span className="wrong-x">X</span>
+                    )}
+                </span>
+
+                {/* P OPTION */}
+                <span
+                  className={`bp-option 
+                    ${answers[index] === "p" ? "selected" : ""}
+                    ${
+                      showResult &&
+                      answers[index] === "p" &&
+                      answers[index] !== item.correct
+                        ? "wrong-answer"
+                        : ""
+                    }`}
+                  onClick={() => handleSelect(index, "p")}
+                >
+                  p
+                  {showResult &&
+                    answers[index] === "p" &&
+                    answers[index] !== item.correct && (
+                      <span className="wrong-x">X</span>
+                    )}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="action-buttons-container">
+          <button onClick={resetAnswers} className="try-again-button">
+            Start Again ↻
+          </button>
+          <button onClick={checkAnswers} className="check-button2">
+            Check Answer ✓
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Unit3_Page5_Q2;

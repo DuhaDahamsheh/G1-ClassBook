@@ -1,12 +1,12 @@
 import React, { useState, useRef } from "react";
-import page_4 from "../../assets/unit3/imgs3/Right G1- Class Book_00025.jpg";
+import page_4 from "../../assets/unit3/imgs3/Right 1 Unit 03 Let's Go to School4.jpg";
 import "./Unit3_Page4.css";
 import { FaHeadphones } from "react-icons/fa";
 import { PiCursorClickBold } from "react-icons/pi";
 import CD23_pg25_Grammar2_AdultLady from "../../assets/unit3/sound3/CD23.Pg25_Grammar2_Adult Lady.mp3"
 import sound1 from "../../assets/unit3/sound3/Pg25_2.1_Adult Lady.mp3"
 import sound2 from "../../assets/unit3/sound3/Pg25_2.2_Adult Lady.mp3"
-import sound3 from "../../assets/unit3/sound3/Pg23_2.3_Adult Lady.mp3"
+import sound3 from "../../assets/unit3/sound3/Pg25_2.3_Adult Lady.mp3"
 import sound4 from "../../assets/unit3/sound3/Pg25_3.1_Female Teacher.mp3"
 import sound5 from "../../assets/unit3/sound3/Pg25_4.1_Female Teacher.mp3"
 import sound6 from "../../assets/unit3/sound3/Pg25_5.1_Female Teacher.mp3"
@@ -25,11 +25,11 @@ const Unit3_Page4 = () => {
     checkAreaAndPlaySound(xPercent, yPercent);
   };
   const clickableAreas = [
-    { x1: 9.41, y1: 12.0, x2: 30.43, y2: 14.0, sound: sound1 },
-    { x1: 13.25, y1: 18.0, x2: 35.14, y2: 20.0, sound: sound2 },
-    { x1: 56.0, y1: 16.0, x2: 60.0, y2: 19.0, sound: sound3 },
-    { x1: 56.0, y1: 16.0, x2: 77.0, y2: 18.0, sound: sound4 },
-    { x1: 9.0, y1: 34.0, x2: 35.0, y2: 29.0, sound: sound5 },
+    { x1: 9.07, y1: 10.5, x2: 30.43, y2: 14.0, sound: sound1 },
+    { x1:9.07, y1: 15.4, x2: 30.43, y2: 18.7, sound: sound2 },
+    { x1: 66.4, y1: 13.4, x2: 89.9, y2: 17.0, sound: sound3 },
+    { x1: 11.11, y1: 22.9, x2: 30.4, y2: 26.4, sound: sound4 },
+    { x1: 55.5, y1: 22.5, x2: 75.4, y2: 26.2, sound: sound5 },
     { x1: 16.0, y1: 29.0, x2: 39.0, y2: 30.0, sound: sound6 },
   ];
 
@@ -51,7 +51,7 @@ const Unit3_Page4 = () => {
   };
 
   return (
-    <div className="unit3-page-background">
+    <div className="unit3-page-background" style={{ position: "relative" }}>
       <img
         src={page_4}
         style={{ display: "block" }}

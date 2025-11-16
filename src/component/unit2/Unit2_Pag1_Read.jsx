@@ -61,7 +61,7 @@ const Unit2_Page1_Read = () => {
 
         <img
           src={listenImg}
-          style={{ height: "auto", width: "600px"}}
+          style={{ height: "auto"}}
           onClick={handleImageClick}
         />
         <audio ref={audioRef} style={{ display: "none" }} />

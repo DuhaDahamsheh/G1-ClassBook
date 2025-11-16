@@ -167,7 +167,7 @@ const Unit2_Page2 = () => {
             </audio>
             <img
               src={activeData[2].imgSrc}
-              style={{ height: "auto", width: "600px" }}
+              style={{ height: "auto"}}
               onClick={(e) => {
                 handleImageClick(e,clickableAreas);
               }}

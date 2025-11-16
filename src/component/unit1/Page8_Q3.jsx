@@ -66,7 +66,10 @@ export default function Page8_Q3() {
 
   const checkAnswers = () => {
     if (lines.length < correctMatches.length) {
-      ValidationAlert.info("Oops!", "Please connect all the pairs before checking.");
+      ValidationAlert.info(
+        "Oops!",
+        "Please connect all the pairs before checking."
+      );
       return;
     }
 
@@ -85,11 +88,7 @@ export default function Page8_Q3() {
 
     const total = correctMatches.length;
     const color =
-      correctCount === total
-        ? "green"
-        : correctCount === 0
-        ? "red"
-        : "orange";
+      correctCount === total ? "green" : correctCount === 0 ? "red" : "orange";
 
     const scoreMessage = `
       <div style="font-size: 20px; margin-top: 10px; text-align:center;">
@@ -105,86 +104,93 @@ export default function Page8_Q3() {
   };
 
   return (
-    <>
-      <h5 className="header-title-page8">
-        <span className="ex-A">B</span>Read and match.
-      </h5>
+    <div className="matching-wrapper">
+      <div className="matching-scale">
+        <h5 className="header-title-page8">
+          <span className="ex-A">B</span>Read and match.
+        </h5>
 
-      <div className="container1" ref={containerRef}>
-        {/* row 1 */}
-        <div className="matching-row">
-          <div className="word-with-dot">
-            <span className="span-num">1</span>
+        <div className="container1" ref={containerRef}>
+          {/* row 1 */}
+          <div className="matching-row">
+            <div className="word-with-dot">
+              <span className="span-num">1</span>
 
-            <span className="word-text">
-              Hello! I’m John.
-              {wrongWords.includes("Hello! I’m John.") && ( // ⭐ تم التعديل هون
-                <span className="error-mark">✕</span>
-              )}
-            </span>
+              <span className="word-text">
+                Hello! I’m John.
+                {wrongWords.includes("Hello! I’m John.") && ( // ⭐ تم التعديل هون
+                  <span className="error-mark">✕</span>
+                )}
+              </span>
 
-            <div className="dot-wrapper">
-              <div
-                className="dot start-dot"
-                data-letter="Hello! I’m John."
-                onMouseDown={handleDotDown}
-              ></div>
+              <div className="dot-wrapper">
+                <div
+                  className="dot start-dot"
+                  data-letter="Hello! I’m John."
+                  onMouseDown={handleDotDown}
+                ></div>
+              </div>
+            </div>
+
+            <div className="img-with-dot">
+              <div className="dot-wrapper">
+                <div className="dot end-dot" data-image="img2"></div>
+              </div>
+              <img src={img2} className="matched-img" alt="" />
             </div>
           </div>
 
-          <div className="img-with-dot">
-            <div className="dot-wrapper">
-              <div className="dot end-dot" data-image="img2"></div>
+          {/* row 2 */}
+          <div className="matching-row">
+            <div className="word-with-dot">
+              <span className="span-num">2</span>
+
+              <span className="word-text">
+                Goodbye!
+                {wrongWords.includes("Goodbye!") && ( // ⭐ تم التعديل هون
+                  <span className="error-mark">✕</span>
+                )}
+              </span>
+
+              <div className="dot-wrapper">
+                <div
+                  className="dot start-dot"
+                  data-letter="Goodbye!"
+                  onMouseDown={handleDotDown}
+                ></div>
+              </div>
             </div>
-            <img src={img2} className="matched-img" alt="" />
+
+            <div className="img-with-dot">
+              <div className="dot-wrapper">
+                <div className="dot end-dot" data-image="img1"></div>
+              </div>
+              <img src={img1} className="matched-img" alt="" />
+            </div>
           </div>
+
+          <svg className="lines-layer">
+            {lines.map((line, i) => (
+              <line key={i} {...line} stroke="red" strokeWidth="3" />
+            ))}
+          </svg>
         </div>
 
-        {/* row 2 */}
-        <div className="matching-row">
-          <div className="word-with-dot">
-            <span className="span-num">2</span>
-
-            <span className="word-text">
-              Goodbye!
-              {wrongWords.includes("Goodbye!") && ( // ⭐ تم التعديل هون
-                <span className="error-mark">✕</span>
-              )}
-            </span>
-
-            <div className="dot-wrapper">
-              <div
-                className="dot start-dot"
-                data-letter="Goodbye!"
-                onMouseDown={handleDotDown}
-              ></div>
-            </div>
-          </div>
-
-          <div className="img-with-dot">
-            <div className="dot-wrapper">
-              <div className="dot end-dot" data-image="img1"></div>
-            </div>
-            <img src={img1} className="matched-img" alt="" />
-          </div>
+        <div className="action-buttons-container">
+          <button
+            onClick={() => {
+              setLines([]);
+              setWrongWords([]);
+            }}
+            className="try-again-button"
+          >
+            Start Again ↻
+          </button>
+          <button onClick={checkAnswers} className="check-button2">
+            Check Answer ✓
+          </button>
         </div>
-
-        <svg className="lines-layer">
-          {lines.map((line, i) => (
-            <line key={i} {...line} stroke="red" strokeWidth="3" />
-          ))}
-        </svg>
       </div>
-
-      <div className="action-buttons-container">
-        <button onClick={() => { setLines([]); setWrongWords([]); }} className="try-again-button">
-          Start Again ↻
-        </button>
-        <button onClick={checkAnswers} className="check-button2">
-          Check Answer ✓
-        </button>
-      </div>
-    </>
+    </div>
   );
 }
-

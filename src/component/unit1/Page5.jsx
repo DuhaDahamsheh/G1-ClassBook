@@ -152,7 +152,7 @@ const Page5 = () => {
             </audio>
             <img
               src={activeData[2].imgSrc}
-              style={{ height: "auto", width: "600px" }}
+              style={{ height: "auto" }}
               onClick={handleImageClick}
             />
              <audio ref={audioRef} style={{ display: "none" }} />

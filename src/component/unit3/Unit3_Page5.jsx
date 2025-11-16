@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
-import page_5 from "../../assets/unit3/imgs3/Right G1- Class Book_00026.jpg";
+import page_5 from "../../assets/unit3/imgs3/Right 1 Unit 03 Let's Go to School5.jpg";
 import { FaHeadphones } from "react-icons/fa";
 import { PiCursorClickBold } from "react-icons/pi";
 import "./Unit3_Page5.css";
 import Popup from "../Popup/Popup";
+import Unit3_Page5_Q1 from "./Unit3_Page5_Q1";
 
 const Unit3_Page5 = () => {
   const [activePopup, setActivePopup] = useState(null);
@@ -22,7 +23,7 @@ const Unit3_Page5 = () => {
         onClose={() => setActivePopup(null)}
         children={
           <>
-           
+           <Unit3_Page5_Q1/>
           </>
         }
       />

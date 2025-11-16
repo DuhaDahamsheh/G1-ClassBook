@@ -1,11 +1,9 @@
 .container2 {
   display: flex;
   flex-direction: row;
-  width: 50vw;
   align-items: center;
   position: relative;
   justify-content: space-between;
-  gap: 250px;
   user-select: none;
   padding-bottom: 85px;
 }

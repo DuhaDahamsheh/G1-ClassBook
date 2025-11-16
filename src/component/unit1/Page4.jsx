@@ -55,7 +55,7 @@ const Page4 = () => {
     { x1: 10.7, y1: 42.1, x2: 17.4, y2: 61.8, sound: dSound },
     { x1: 27.0, y1: 30.0, x2: 39.4, y2: 75.0, sound: deer },
     { x1: 55.7, y1: 29.5, x2:66.0, y2: 74.0, sound: dish },
-    { x1: 82.8, y1: 29.5, x2: 94.0, y2:75.0, sound: duck },
+    { x1: 81.9, y1: 29.5, x2: 94.0, y2:75.0, sound: duck },
     ,
   ];
   const checkAreaAndPlaySound = (x, y) => {
@@ -154,7 +154,7 @@ const Page4 = () => {
 
               <img
                 src={activeData[2].imgSrc}
-                style={{ height: "auto", width: "700px" }}
+                style={{ height: "auto"}}
                 onClick={handleImageClick}
               />
               <audio ref={audioRef} style={{ display: "none" }} />

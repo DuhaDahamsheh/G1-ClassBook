@@ -1,14 +1,18 @@
 .container1 {
-  width: 54vw;
   margin: auto;
   position: relative;
   user-select: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 .matching-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
+ 
   margin: 40px 0;
   position: relative;
 }
@@ -17,8 +21,40 @@
 .word-with-dot {
   display: flex;
   align-items: center;
-  width: 32%;
+  /* width: 32%; */
   gap: 10px;
+}
+
+
+.matching-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.matching-scale {
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+}
+
+
+@media (max-width: 600px) {
+  .matching-scale {
+    transform: scale(0.85);
+  }
+}
+
+@media (max-width: 500px) {
+  .matching-scale {
+    transform: scale(0.75);
+  }
+}
+
+@media (max-width: 400px) {
+  .matching-scale {
+    transform: scale(0.63);
+  }
 }
 
 /* النص يأخذ مساحة عشان النقطة ما تتحرك */

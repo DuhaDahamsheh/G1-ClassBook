@@ -6,7 +6,7 @@
 .layout2 {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+     align-items: center;
   gap: 50px;
   padding-bottom: 40px;
   margin: 35px 0px;
@@ -85,7 +85,7 @@
   gap: 12px;
   min-width: 140px; /* غيري الرقم حسب اللي بناسبك */
   min-height: 120px; /* اختياري */
-
+align-self: baseline;
   padding: 10px;
 }
 

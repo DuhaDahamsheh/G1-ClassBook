@@ -193,15 +193,15 @@ const Unit2_Page8_Q3 = () => {
 
         {/* الجمل */}
         <div className="match-words-row2">
-          <div className="word-box2">
-            <h5>
+          <div className="word-box2" >
+            <h5 id="d-char" style={{border:"2px solid #2effeaff" ,borderRadius:"8px" ,background:"#b7fff8ff" ,height:"30px" ,width:"60px"}}>
               d
             </h5>
             <div className="dot2 end-dot2" data-word="d"></div>
           </div>
 
           <div className="word-box2">
-            <h5>
+            <h5  id="t-char"  style={{border:"2px solid green" ,borderRadius:"8px" ,background:"#92e992" ,height:"30px" ,width:"60px"}}>
             t
             </h5>
             <div className="dot2 end-dot2" data-word="t"></div>

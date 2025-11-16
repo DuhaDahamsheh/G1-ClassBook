@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import page_6 from "../../assets/unit3/imgs3/Right G1- Class Book_00027.jpg";
+import page_6 from "../../assets/unit3/imgs3/Right 1 Unit 03 Let's Go to School6.jpg";
 import { FaHeadphones } from "react-icons/fa";
 import { PiCursorClickBold } from "react-icons/pi";
 import Popup from "../Popup/Popup";
 import "./Unit3_Page6.css";
+import Unit3_Page6_Q1 from "./Unit3_Page5_Q1";
 
 const Unit3_Page6 = () => {
   const [activePopup, setActivePopup] = useState(null);
@@ -20,7 +21,11 @@ const Unit3_Page6 = () => {
       <Popup
         isOpen={activePopup === 1}
         onClose={() => setActivePopup(null)}
-        children={<></>}
+        children={
+          <>
+           
+          </>
+        }
       />
       <span
         className="click-icon-unit3-page6-2 shadow-md hover:scale-110 transition"

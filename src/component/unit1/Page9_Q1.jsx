@@ -40,9 +40,7 @@ const Page9_Q1 = () => {
       {/* ✅ الصورة هي المرجع */}
       <div
         style={{
-          position: "relative",
-          width: "60vw",       // حجم Responsive
-          maxWidth: "600px",   // حد أقصى مناسب
+          position: "relative",  // حد أقصى مناسب
           marginBottom: "30px",
         }}
       >

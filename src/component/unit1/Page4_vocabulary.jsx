@@ -94,7 +94,7 @@ const Page4_vocabulary = () => {
 
   return (
     <div style={{ textAlign: "center" }}>
-      <audio ref={mainAudioRef} controls>
+      <audio ref={mainAudioRef}  style={{ position:"relative",left:"11%" }} controls>
         <source src={vocabulary} type="audio/mp3" />
       </audio>
 

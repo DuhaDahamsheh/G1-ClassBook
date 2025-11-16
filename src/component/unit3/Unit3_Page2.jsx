@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import page_2 from "../../assets/unit3/imgs3/Right G1- Class Book_00023.jpg";
+import page_2 from "../../assets/unit3/imgs3/Right 1 Unit 03 Let's Go to School2.jpg";
 import soundSong from "../../assets/unit3/sound3/CD20.Pg23_Song_Adult Lady.mp3";
 import sound1 from "../../assets/unit3/sound3/Pg23_1.1_Bebo.mp3";
 import sound2 from "../../assets/unit3/sound3/Pg23_1.2_Lolo.mp3";
@@ -49,16 +49,16 @@ const Unit3_Page2 = () => {
   };
 
   const clickableAreas = [
-    { x1: 10.0, y1: 44.0, x2: 16.0, y2: 69.0, sound: sound3 },
-    { x1: 44.0, y1: 38.0, x2: 47.14, y2: 41.0, sound: sound4 },
-    { x1: 50.0, y1: 50.0, x2: 66.0, y2: 71.0, sound: sound5 },
-    { x1: 80.0, y1: 40.0, x2: 92.0, y2: 70.0, sound: sound6 },
+    { x1: 12.5, y1: 42.0, x2: 29.5, y2: 65.0, sound: sound3 },
+    { x1: 31.0, y1: 27.5, x2: 47.14, y2: 85.0, sound: sound4 },
+    { x1: 54.2, y1: 27.5, x2: 67.9, y2: 85.0, sound: sound5 },
+    { x1: 80.0, y1: 27.5, x2: 95.2, y2: 85.0, sound: sound6 },
     ,
   ];
 
   const clickableAreas2 = [
-    { x1: 6.0, y1: 38.0, x2: 50.0, y2: 54.0, sound: sound1 },
-    { x1: 53.0, y1: 38.0, x2: 88.0, y2: 54.0, sound: sound2 },
+    { x1: 9.4, y1: 39.0, x2: 45.0, y2: 55.5, sound: sound1 },
+    { x1: 52.0, y1: 39.0, x2: 86.0, y2: 55.5, sound: sound2 },
     ,
   ];
   const checkAreaAndPlaySound = (x, y, clickable) => {

@@ -105,7 +105,7 @@ export default function Book() {
     <Unit4_Page6 />,
   ];
 
-  console.log(pageIndex);
+
   
   const nextPage = () => {
     if (isMobile) {

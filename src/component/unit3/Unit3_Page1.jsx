@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import page_1 from "../../assets/unit3/imgs3/Right G1- Class Book_00022.jpg";
+import page_1 from "../../assets/unit3/imgs3/Right 1 Unit 03 Let's Go to School.jpg";
 import "./Unit3_Page1.css";
 import { FaHeadphones } from "react-icons/fa";
 import { PiCursorClickBold } from "react-icons/pi";

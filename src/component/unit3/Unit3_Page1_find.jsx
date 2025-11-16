@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import find_img from "../../assets/unit3/imgs3/page1_2 unit3.jpg"
+import find_img from "../../assets/unit3/imgs3/G1_U3_Pg_22-23 copy.jpg"
 import find_title from "../../assets/unit3/imgs3/findimg_unit3_P1.jpg"
 import ValidationAlert from "../Popup/ValidationAlert";
+import Rabbit from "../../assets/img_unit2/imgs/Rabbit.svg";
 const Unit3_Page1_find = () => {
   const [clickedPoint, setClickedPoint] = useState(null);
   const [checkResult, setCheckResult] = useState(null);
@@ -57,18 +58,16 @@ console.log(xPercent,yPercent);
 
   return (
     <div style={{ textAlign: "center" }}>
-  
+   <div style={{display:"flex"}}>
+    <img
+          src={Rabbit}
+          style={{ height: "50px", width: "auto" }}
+        />{" "}  <h5 className="header-title-page8">
+        
+       I need your help. Can you help me find the boy shutting the window in the picture?
+      </h5>
+      </div>
       <div style={{ position: "relative", display: "inline-block" }}>
-        <img
-          src={find_title}
-          style={{
-            height: "200px",
-            width: "auto",
-            position: "absolute",
-            bottom: "2%",
-            right: "6%",
-          }}
-        />
         <img
           src={find_img}
           alt="interactive"

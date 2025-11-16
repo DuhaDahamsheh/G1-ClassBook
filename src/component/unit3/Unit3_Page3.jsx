@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import page_3 from "../../assets/unit3/imgs3/Right G1- Class Book_00024.jpg";
+import page_3 from "../../assets/unit3/imgs3/Right 1 Unit 03 Let's Go to School3.jpg";
 import "./Unit3_Page3.css";
 import { FaHeadphones } from "react-icons/fa";
 import { PiCursorClickBold } from "react-icons/pi";
@@ -25,12 +25,12 @@ const Unit3_Page3 = () => {
     checkAreaAndPlaySound(xPercent, yPercent);
   };
   const clickableAreas = [
-    { x1: 16.00, y1: 13.0, x2: 23.0, y2: 17.0, sound:sound1},
-    { x1: 16.00, y1: 18.0, x2: 21.14, y2: 19.0, sound: sound2},
-    { x1: 70.0, y1: 16.0, x2: 81.0, y2: 18.0, sound: sound3 },
-    { x1: 19.0, y1: 24.0, x2: 26.0, y2: 26.0, sound:  sound4  },
-    { x1:58.0, y1: 24.0, x2: 66.0, y2: 26.0, sound:sound5 },
-    { x1: 30.0, y1: 59.0, x2: 42.0, y2: 62.0, sound: sound6 },
+    { x1: 13.0, y1: 9.8, x2: 24.0, y2: 13.9, sound:sound1},
+    { x1: 13.0, y1: 15.2, x2: 24.0, y2: 19.0, sound: sound2},
+    { x1: 71.2, y1: 12.5, x2: 85.22, y2: 16.7, sound: sound3 },
+    { x1: 16.9, y1: 22.6, x2: 26.7, y2: 25.5, sound:  sound4  },
+    { x1:58.0, y1: 22.8, x2: 68.5, y2: 26.0, sound:sound5 },
+    { x1: 27.9, y1: 59.0, x2: 42.9, y2: 63.4, sound: sound6 },
 
   ];
 
@@ -51,7 +51,7 @@ const Unit3_Page3 = () => {
     }
   };
   return (
-    <div className="unit3-page-background">
+    <div className="unit3-page-background" style={{ position: "relative" }}>
       
       <img src={page_3} style={{display:"block"}} onClick={handleImageClick}  />
  {clickableAreas.map((area, index) => (

@@ -13,8 +13,6 @@ import num5 from "../../assets/img_unit2/imgs/Num5.svg";
 import num6 from "../../assets/img_unit2/imgs/Num6.svg";
 import num7 from "../../assets/img_unit2/imgs/Num7.svg";
 
-
-
 const Unit2_Page1_Vocab = () => {
   const mainAudioRef = useRef(null);
   const clickAudioRef = useRef(null);
@@ -92,7 +90,11 @@ const Unit2_Page1_Vocab = () => {
 
   return (
     <div style={{ textAlign: "center" }}>
-      <audio ref={mainAudioRef} controls>
+      <audio
+        ref={mainAudioRef}
+        style={{ position: "relative", left: "5%" }}
+        controls
+      >
         <source src={vocabulary} type="audio/mp3" />
       </audio>
 
@@ -114,7 +116,10 @@ const Unit2_Page1_Vocab = () => {
           />
 
           {/* النصوص */}
-          <div className="vocab_container" style={{ bottom: "0%" ,right:"4%"}}>
+          <div
+            className="vocab_container"
+            style={{ bottom: "0%", right: "4%" }}
+          >
             {[
               "party hat",
               "jello",
@@ -161,17 +166,17 @@ const Unit2_Page1_Vocab = () => {
             onClick={togglePlay}
             style={{ marginTop: "18px" }}
           >
-              {paused ? (
-                         <>
-                           Continue
-                           <FaRegCirclePlay  size={20} style={{ color: "red" }} />
-                         </>
-                       ) : (
-                          <>
-                           Pause
-                           <CgPlayPauseO size={20} style={{ color: "red" }} />
-                         </>
-                       )}
+            {paused ? (
+              <>
+                Continue
+                <FaRegCirclePlay size={20} style={{ color: "red" }} />
+              </>
+            ) : (
+              <>
+                Pause
+                <CgPlayPauseO size={20} style={{ color: "red" }} />
+              </>
+            )}
           </button>
         </div>
       )}
