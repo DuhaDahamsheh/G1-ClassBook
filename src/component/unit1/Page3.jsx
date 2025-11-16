@@ -5,7 +5,7 @@ const Page3 = ({ goToUnit }) => {
     {
       title: "Unit 6",
       startIndex: 4,
-      top: "13%",
+      top: "9%",
       left: "14%",
       width: "20%",
       height: "8%",
@@ -13,7 +13,7 @@ const Page3 = ({ goToUnit }) => {
     {
       title: "Unit 7",
       startIndex: 10,
-      top: "29%",
+      top: "25%",
       left: "14%",
       width: "20%",
       height: "8%",
