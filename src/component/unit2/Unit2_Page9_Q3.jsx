@@ -87,18 +87,20 @@ const Unit2_Page9_Q3 = () => {
 
       <div className="content-container-P9-Q3">
         <div className="section-one1">
-          <span
-            style={{
-              color: "#2c5287",
-              fontSize: "25px",
-              fontWeight: "500",
-              display: "flex",
-              gap: "10px",
-            }}
-          >
-            1
-          </span>{" "}
-          <img src={jello} className="p9-q1-img" />
+          <div style={{display:"flex"}}>
+            <span
+              style={{
+                color: "#2c5287",
+                fontSize: "25px",
+                fontWeight: "500",
+                display: "flex",
+                gap: "10px",
+              }}
+            >
+              1
+            </span>{" "}
+            <img src={jello} className="p9-q1-img" />
+          </div>
           <div className="content-input">
             <input
               type="text"
@@ -122,18 +124,20 @@ const Unit2_Page9_Q3 = () => {
         </div>
 
         <div className="section-two2">
-          <span
-            style={{
-              color: "#2c5287",
-              fontSize: "25px",
-              fontWeight: "500",
-              display: "flex",
-              gap: "10px",
-            }}
-          >
-            2
-          </span>{" "}
-          <img src={present} className="p9-q1-img" />
+          <div style={{display:"flex"}}>
+            <span
+              style={{
+                color: "#2c5287",
+                fontSize: "25px",
+                fontWeight: "500",
+                display: "flex",
+                gap: "10px",
+              }}
+            >
+              2
+            </span>{" "}
+            <img src={present} className="p9-q1-img" />
+          </div>
           <div className="content-input">
             <input
               type="text"
@@ -158,18 +162,20 @@ const Unit2_Page9_Q3 = () => {
         </div>
 
         <div className="section-three3">
-          <span
-            style={{
-              color: "#2c5287",
-              fontSize: "25px",
-              fontWeight: "500",
-              display: "flex",
-              gap: "10px",
-            }}
-          >
-            3
-          </span>{" "}
-          <img src={balloons} className="p9-q1-img" />
+          <div style={{display:"flex"}}>
+            <span
+              style={{
+                color: "#2c5287",
+                fontSize: "25px",
+                fontWeight: "500",
+                display: "flex",
+                gap: "10px",
+              }}
+            >
+              3
+            </span>{" "}
+            <img src={balloons} className="p9-q1-img" />
+          </div>
           <div className="content-input">
             <input
               type="text"

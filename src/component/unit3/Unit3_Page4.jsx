@@ -30,7 +30,7 @@ const Unit3_Page4 = () => {
     { x1: 66.4, y1: 13.4, x2: 89.9, y2: 17.0, sound: sound3 },
     { x1: 11.11, y1: 22.9, x2: 30.4, y2: 26.4, sound: sound4 },
     { x1: 55.5, y1: 22.5, x2: 75.4, y2: 26.2, sound: sound5 },
-    { x1: 16.0, y1: 29.0, x2: 39.0, y2: 30.0, sound: sound6 },
+    { x1: 30.4, y1: 60.0, x2: 55.6, y2: 63.5, sound: sound6 },
   ];
 
   const checkAreaAndPlaySound = (x, y) => {

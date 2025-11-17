@@ -18,7 +18,7 @@
     background: linear-gradient(145deg,#ffffff, #ffffff) !important;
     padding: 50px;
     border-radius: clamp(10px, 1.5vw, 15px);
-    width: min(60vw, 900px);
+    width: min(70vw, 900px);
     position: relative;
     box-shadow: 0 clamp(5px, 1vw, 10px) clamp(15px, 2vw, 25px) rgba(0, 0, 0, 0.2);
     text-align: center;

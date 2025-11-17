@@ -2,16 +2,19 @@ import React, { useState } from "react";
 import CD13_Pg14_Instruction1_AdultLady from "../../assets/img_unit2/sounds-unit2/CD13.Pg14_Instruction1_Adult Lady.mp3";
 import ValidationAlert from "../Popup/ValidationAlert";
 import "./Unit2_Page5.css";
-
+import bat from "../../assets/img_unit2/imgs/bat.jpg"
+import box from "../../assets/img_unit2/imgs/box.jpg"
+import bucket from "../../assets/img_unit2/imgs/bucket.jpg"
+import boat from "../../assets/img_unit2/imgs/boat.jpg"
 const Unit2_Page5_Q2 = () => {
   const [answers, setAnswers] = useState([null, null, null, null]);
   const [showResult, setShowResult] = useState(false);
 
   const items = [
-    { img: "/assets/bat.png", correct: "b" },
-    { img: "/assets/bucket.png", correct: "p" },
-    { img: "/assets/box.png", correct: "b" },
-    { img: "/assets/boat.png", correct: "b" },
+    { img: bat, correct: "b" },
+    { img: box, correct: "p" },
+    { img:  bucket, correct: "b" },
+    { img: boat, correct: "b" },
   ];
 
   const handleSelect = (index, value) => {

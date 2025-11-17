@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import deer from "../../assets/unit1/imgs/deer.svg";
-import taxi from "../../assets/unit1/imgs/taxi.svg";
-import table from "../../assets/unit1/imgs/table.svg";
-import dish from "../../assets/unit1/imgs/dish.svg";
+import deer from "../../assets/unit1/imgs/deer flip.svg";
+import taxi from "../../assets/unit1/imgs/taxi_1.svg";
+import table from "../../assets/unit1/imgs/table2.jpg";
+import dish from "../../assets/unit1/imgs/dish3.jpg";
 import ValidationAlert from "../Popup/ValidationAlert"; // تأكدي إنها موجودة
 import "./Unit2_Page8_Q2.css";
 

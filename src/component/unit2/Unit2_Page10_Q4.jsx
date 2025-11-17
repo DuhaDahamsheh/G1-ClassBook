@@ -79,7 +79,7 @@ setWrongInputs(wrong);
               )}
             </div>
           </span>{" "}
-          <img src={paint} alt="" className="q-img" />
+          <img src={paint} alt="" className="q-img10" />
         </div>
 
         <div className="row2">
@@ -97,7 +97,7 @@ setWrongInputs(wrong);
               )}
             </div>
           </span>
-          <img src={boy} alt="" className="q-img" />
+          <img src={boy} alt="" className="q-img10" />
         </div>
 
         <div className="row2">
@@ -115,7 +115,7 @@ setWrongInputs(wrong);
               )}
             </div>
           </span>
-          <img src={pizza2} alt="" className="q-img" />
+          <img src={pizza2} alt="" className="q-img10" />
         </div>
 
         <div className="row2">
@@ -133,7 +133,7 @@ setWrongInputs(wrong);
               )}
             </div>
           </span>{" "}
-          <img src={pincle} alt="" className="q-img" />
+          <img src={pincle} alt="" className="q-img10" />
         </div>
       </div>
 

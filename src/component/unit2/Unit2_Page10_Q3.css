@@ -1,5 +1,5 @@
 .page10-q3-container {
-  width: 90%;
+  /* width: 90%; */
   margin-bottom: 30px;
   text-align: center;
 }
@@ -14,7 +14,7 @@
 /* كل سؤال */
 .questions-grid {
   display: flex;
-  justify-content: center;
+ justify-content: center;
   gap: 40px;
   flex-wrap: wrap;
   /* width: 50vw; */

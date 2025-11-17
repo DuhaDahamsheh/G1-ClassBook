@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 60vw;
+  width: 100%;
   margin: 0 auto;
   gap: 20px;
   font-family: "Poppins", sans-serif;
@@ -22,8 +22,8 @@
 .sentence-container2 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
-  width: 100%;
+  gap: 20px;
+  /* width: 100%; */
   margin-bottom: 50px;
 }
 
@@ -98,13 +98,13 @@
 /* ===== 🧩 الاستجابة للشاشات ===== */
 
 /* تابلت */
-@media (max-width: 992px) {
+@media (max-width:1200px) {
   .content-container10 {
-    width: 80vw;
+    width: 100%;
   }
 
   .sentence-container2 {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
   }
 

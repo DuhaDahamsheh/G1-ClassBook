@@ -5,6 +5,9 @@ import { PiCursorClickBold } from "react-icons/pi";
 import Popup from "../Popup/Popup";
 import "./Unit3_Page6.css";
 import Unit3_Page6_Q1 from "./Unit3_Page5_Q1";
+import Unit3_Page6_Q2 from "./Unit3_Page6_Q2";
+import Unit3_Page6_Q3 from "./Unit3_Page6_Q3";
+import CD25_Pg27_Song_AdultLady from "../../assets/unit3/sound3/CD25.Pg27_Song_Adult Lady.mp3";
 
 const Unit3_Page6 = () => {
   const [activePopup, setActivePopup] = useState(null);
@@ -21,11 +24,7 @@ const Unit3_Page6 = () => {
       <Popup
         isOpen={activePopup === 1}
         onClose={() => setActivePopup(null)}
-        children={
-          <>
-           
-          </>
-        }
+        children={<></>}
       />
       <span
         className="click-icon-unit3-page6-2 shadow-md hover:scale-110 transition"
@@ -38,9 +37,7 @@ const Unit3_Page6 = () => {
         onClose={() => setActivePopup(null)}
         children={
           <>
-            {/* <audio controls>
-              <source src={CD14_Pg15_Intruction1_AdultLady} type="audio/mp3" />
-            </audio> */}
+            <Unit3_Page6_Q2 />
           </>
         }
       />
@@ -55,9 +52,7 @@ const Unit3_Page6 = () => {
         onClose={() => setActivePopup(null)}
         children={
           <>
-            {/* <audio controls>
-              <source src={song} type="audio/mp3" />
-            </audio> */}
+            <Unit3_Page6_Q3 />
           </>
         }
       />
@@ -71,7 +66,19 @@ const Unit3_Page6 = () => {
       <Popup
         isOpen={activePopup === 4}
         onClose={() => setActivePopup(null)}
-        children={<></>}
+        children={
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignContent: "center",
+            }}
+          >
+            <audio controls>
+              <source src={CD25_Pg27_Song_AdultLady} type="audio/mp3" />
+            </audio>
+          </div>
+        }
       />
     </div>
   );

@@ -97,7 +97,7 @@ const Unit2_Page7_Q3 = () => {
                   }`}
                 >
                   {char}
-                  {isWrong && <span className="wrong-x">×</span>}
+                  {isWrong && <span className="wrong-x-unit2-q3">×</span>}
                 </span>
               );
             })}

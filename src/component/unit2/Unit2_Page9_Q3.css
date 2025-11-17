@@ -14,14 +14,17 @@
 .section-one1 {
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
 }
 
 .section-two2 {
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
 }
 
 .section-three3 {
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
 }

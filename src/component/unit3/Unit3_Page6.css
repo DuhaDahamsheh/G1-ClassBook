@@ -4,7 +4,7 @@
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 3px;
   padding: 5px;
-  top: 17%;
+  top: 16%;
   left: 51%;
   cursor: pointer;
 }
@@ -15,7 +15,7 @@
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 3px;
   padding: 5px;
-  top: 6%;
+  top: 4%;
   left: 39%;
   cursor: pointer;
 }
@@ -36,7 +36,7 @@
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 3px;
   padding: 5px;
-  bottom: 31%;
-  left: 27.5%;
+     bottom: 30%;
+    left: 25.5%;
   cursor: pointer;
 }
