@@ -39,11 +39,11 @@ const Unit2_Page6 = () => {
         isOpen={activePopup === 2}
         onClose={() => setActivePopup(null)}
         children={
-          <>
+          <div style={{display:"flex" ,justifyContent:"center",alignContent:"center" }}>
             <audio controls>
               <source src={CD14_Pg15_Intruction1_AdultLady} type="audio/mp3" />
             </audio>
-          </>
+          </div>
         }
       />
       <span
@@ -56,11 +56,11 @@ const Unit2_Page6 = () => {
         isOpen={activePopup === 3}
         onClose={() => setActivePopup(null)}
         children={
-          <>
+          <div style={{display:"flex" ,justifyContent:"center",alignContent:"center" }}>
             <audio controls>
               <source src={song} type="audio/mp3" />
             </audio>
-          </>
+          </div>
         }
       />
       <span className="click-icon-unit2-page6-2 shadow-md hover:scale-110 transition">

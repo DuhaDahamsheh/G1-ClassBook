@@ -101,11 +101,11 @@ const Unit2_Page2 = () => {
         isOpen={activePopup === 1}
         onClose={() => setActivePopup(null)}
         children={
-          <>
+          <div style={{display:"flex" ,justifyContent:"center",alignContent:"center" }}>
             <audio controls>
               <source src={activeData[0].sound} type="audio/mp3" />
             </audio>
-          </>
+          </div>
         }
       />
       <span className="headset-icon-CD-unit2-page2-2 shadow-md hover:scale-110 transition">

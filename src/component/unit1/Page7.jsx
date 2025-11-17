@@ -85,11 +85,11 @@ const Page7 = () => {
         isOpen={activePopup === 1}
         onClose={() => setActivePopup(null)}
         children={
-          <>
+          <div style={{display:"flex" ,justifyContent:"center",alignContent:"center" }}>
             <audio controls>
               <source src={CD5_Pg7_Grammar2_AdultLady} type="audio/mp3" />
             </audio>
-          </>
+          </div>
         }
       />
       <audio ref={audioRef} style={{ display: "none" }} />

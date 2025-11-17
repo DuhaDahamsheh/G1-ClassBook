@@ -79,7 +79,7 @@ const Unit3_Page2 = () => {
   };
   const speaking = [
     { text: "My favorite subject is science.", sound: sound1 },
-    { text: "My favorite subject is art.", sound: sound2  },
+    { text: "My favorite subject is art.", sound: sound2 },
   ];
 
   useEffect(() => {
@@ -101,11 +101,19 @@ const Unit3_Page2 = () => {
       <Popup
         isOpen={activePopup === 1}
         onClose={() => setActivePopup(null)}
-        children={<>
-          <audio controls >
+        children={
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignContent: "center",
+            }}
+          >
+            <audio controls>
               <source src={soundSong} type="audio/mp3" />
             </audio>
-        </>}
+          </div>
+        }
       />
       <span className="headset-icon-CD-unit3-page2-2 shadow-md hover:scale-110 transition">
         <FaHeadphones
@@ -127,7 +135,7 @@ const Unit3_Page2 = () => {
               src={lolo_bebo}
               style={{ height: "auto" }}
               onClick={(e) => {
-                handleImageClick(e,clickableAreas2);
+                handleImageClick(e, clickableAreas2);
               }}
             />
             <audio ref={audioRef} style={{ display: "none" }} />
@@ -168,25 +176,25 @@ const Unit3_Page2 = () => {
               src={activeData[2].imgSrc}
               style={{ height: "auto", width: "600px" }}
               onClick={(e) => {
-                handleImageClick(e,clickableAreas);
+                handleImageClick(e, clickableAreas);
               }}
             />
-             <audio ref={audioRef} style={{ display: "none" }} />
+            <audio ref={audioRef} style={{ display: "none" }} />
 
-              {clickableAreas.map((area, index) => (
-                <div
-                  key={index}
-                  className="clickable-area"
-                  style={{
-                    left: `${area.x1}%`,
-                    top: `${area.y1}%`,
-                    width: `${area.x2 - area.x1}%`,
-                    height: `${area.y2 - area.y1}%`,
-                  }}
-                  onMouseEnter={(e) => (e.target.style.cursor = "pointer")}
-                  onClick={() => playSound(area.sound)}
-                ></div>
-              ))}
+            {clickableAreas.map((area, index) => (
+              <div
+                key={index}
+                className="clickable-area"
+                style={{
+                  left: `${area.x1}%`,
+                  top: `${area.y1}%`,
+                  width: `${area.x2 - area.x1}%`,
+                  height: `${area.y2 - area.y1}%`,
+                }}
+                onMouseEnter={(e) => (e.target.style.cursor = "pointer")}
+                onClick={() => playSound(area.sound)}
+              ></div>
+            ))}
           </div>
         }
       />

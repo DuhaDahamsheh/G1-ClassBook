@@ -81,11 +81,11 @@ const Unit2_Page11 = () => {
         isOpen={activePopup === 1}
         onClose={() => setActivePopup(null)}
         children={
-          <>
+          <div style={{display:"flex" ,justifyContent:"center",alignContent:"center" }}>
             <audio controls>
               <source src={sound1} type="audio/mp3" />
             </audio>
-          </>
+          </div>
         }
       />
       <audio ref={audioRef} style={{ display: "none" }} />

@@ -41,11 +41,11 @@ const Unit2_Page10 = () => {
         isOpen={activePopup === 2}
         onClose={() => setActivePopup(null)}
         children={
-          <>
+          <div style={{display:"flex" ,justifyContent:"center",alignContent:"center" }}>
             <audio controls>
               <source src={CD17_Pg19_Instruction1_AdultLady} type="audio/mp3" />
             </audio>
-          </>
+          </div>
         }
       />
       <span className="click-icon-unit2-page10-2 shadow-md hover:scale-110 transition">
@@ -90,11 +90,11 @@ const Unit2_Page10 = () => {
         isOpen={activePopup === 5}
         onClose={() => setActivePopup(null)}
         children={
-          <>
+          <div style={{display:"flex" ,justifyContent:"center",alignContent:"center" }}>
             <audio controls>
               <source src={CD18_Pg19_Instruction1_AdultLady} type="audio/mp3" />
             </audio>
-          </>
+          </div>
         }
       />
       <span className="click-icon-unit2-page10-4 shadow-md hover:scale-110 transition">

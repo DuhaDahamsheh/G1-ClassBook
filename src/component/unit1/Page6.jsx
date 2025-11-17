@@ -27,12 +27,12 @@ const Page6 = () => {
     { x1: 61.5, y1: 14.0, x2: 82.0, y2: 18.0, sound: Pg6_1_4_AdultLady },
     { x1: 7.0, y1: 18.0, x2: 30.0, y2: 21.5, sound: Pg6_1_5_AdultLady },
     { x1: 61.5, y1: 18.0, x2: 83.0, y2: 21.5, sound: Pg6_1_6_AdultLady },
-    { x1: 32.0, y1: 28.00, x2: 51.0, y2: 33.5, sound: Pg6_2_1_Stella },
-    { x1: 62.00, y1: 32.0, x2: 71.02, y2: 35.5, sound: Pg6_2_2_ModifiedStella },
-    { x1: 6.70, y1: 63.7, x2: 23.5, y2: 67.5, sound: Pg6_3_1_Harley },
+    { x1: 32.0, y1: 28.0, x2: 51.0, y2: 33.5, sound: Pg6_2_1_Stella },
+    { x1: 62.0, y1: 32.0, x2: 71.02, y2: 35.5, sound: Pg6_2_2_ModifiedStella },
+    { x1: 6.7, y1: 63.7, x2: 23.5, y2: 67.5, sound: Pg6_3_1_Harley },
     { x1: 48.0, y1: 64.0, x2: 67.3, y2: 68.2, sound: Pg6_3_2_ModifiedHarley },
   ];
- const handleImageClick = (e) => {
+  const handleImageClick = (e) => {
     const rect = e.target.getBoundingClientRect();
     const xPercent = ((e.clientX - rect.left) / rect.width) * 100;
     const yPercent = ((e.clientY - rect.top) / rect.height) * 100;
@@ -60,7 +60,7 @@ const Page6 = () => {
           key={index}
           className="clickable-area"
           style={{
-            position:"absolute",
+            position: "absolute",
             left: `${area.x1}%`,
             top: `${area.y1}%`,
             width: `${area.x2 - area.x1}%`,
@@ -80,9 +80,17 @@ const Page6 = () => {
       </span>
 
       <Popup isOpen={activePopup === 1} onClose={() => setActivePopup(null)}>
-        <audio controls>
-          <source src={CD4_Pg6_Grammar1_AdultLady} type="audio/mp3" />
-        </audio>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignContent: "center",
+          }}
+        >
+          <audio controls>
+            <source src={CD4_Pg6_Grammar1_AdultLady} type="audio/mp3" />
+          </audio>
+        </div>
       </Popup>
 
       <audio ref={audioRef} style={{ display: "none" }} />

@@ -55,11 +55,11 @@ const Unit2_Page8 = () => {
         isOpen={activePopup === 3}
         onClose={() => setActivePopup(null)}
         children={
-          <>
+          <div style={{display:"flex" ,justifyContent:"center",alignContent:"center" }}>
             <audio controls>
               <source src={CD16_Pg17_Instruction1_AdultLady} type="audio/mp3" />
             </audio>
-          </>
+          </div>
         }
       />
       <span className="click-icon-unit2-page8-3 shadow-md hover:scale-110 transition">

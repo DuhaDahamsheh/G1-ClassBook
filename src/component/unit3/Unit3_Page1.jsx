@@ -25,11 +25,17 @@ const Unit3_Page1 = () => {
         isOpen={activePopup === 1}
         onClose={() => setActivePopup(null)}
         children={
-          <>
-             <audio controls>
-                       <source src={Pg22_U3_Intro_AdultLady} type="audio/mp3" />
-                     </audio>
-          </>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignContent: "center",
+            }}
+          >
+            <audio controls>
+              <source src={Pg22_U3_Intro_AdultLady} type="audio/mp3" />
+            </audio>
+          </div>
         }
       />
       <span className="click-icon-unit3-page1-1 shadow-md hover:scale-110 transition">
@@ -44,7 +50,7 @@ const Unit3_Page1 = () => {
         onClose={() => setActivePopup(null)}
         children={
           <>
-           <Unit3_Page1_find/>
+            <Unit3_Page1_find />
           </>
         }
       />
@@ -60,7 +66,7 @@ const Unit3_Page1 = () => {
         onClose={() => setActivePopup(null)}
         children={
           <>
-          <Unit3_Page1_Vocab/>
+            <Unit3_Page1_Vocab />
           </>
         }
       />
@@ -76,7 +82,7 @@ const Unit3_Page1 = () => {
         onClose={() => setActivePopup(null)}
         children={
           <>
-          <Unit3_Page1_Read/>
+            <Unit3_Page1_Read />
           </>
         }
       />

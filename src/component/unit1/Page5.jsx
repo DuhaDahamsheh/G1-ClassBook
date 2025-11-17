@@ -95,11 +95,11 @@ const Page5 = () => {
         isOpen={activePopup === 1}
         onClose={() => setActivePopup(null)}
         children={
-          <>
+          <div style={{display:"flex" ,justifyContent:"center",alignContent:"center" }}>
             <audio controls>
               <source src={activeData[0].sound} type="audio/mp3" />
             </audio>
-          </>
+          </div>
         }
       />
       <span
