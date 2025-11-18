@@ -11,7 +11,11 @@ import Page8_Q4 from "./Page8_Q4";
 import AudioWithCaption from "../AudioWithCaption";
 const Page8 = () => {
   const [activePopup, setActivePopup] = useState(null);
-
+const captionsExample = [
+    { start: 0, end: 1, text: "Hello!" },
+    { start: 1, end: 2.2, text: "My name is Tom." },
+    { start: 2.2, end: 4, text: "I like apples." },
+  ];
   return (
     <div className="page_8-background">
       <img src={page_8} />
@@ -35,7 +39,7 @@ const Page8 = () => {
           >
             <AudioWithCaption
               src={CD6_Pg8_Instruction1_AdultLady}
-              captions={""}
+              captions={captionsExample}
             />
           </div>
         }

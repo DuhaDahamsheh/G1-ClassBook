@@ -34,7 +34,11 @@ const Page5 = () => {
       imgSrc: page_5_3,
     },
   ];
-
+const captionsExample = [
+    { start: 0, end: 1, text: "Hello!" },
+    { start: 1, end: 2.2, text: "My name is Tom." },
+    { start: 2.2, end: 4, text: "I like apples." },
+  ];
   const audioRef = useRef(null);
   const introRef = useRef(null);
   const handleImageClick = (e) => {
@@ -102,7 +106,7 @@ const Page5 = () => {
               alignContent: "center",
             }}
           >
-            <AudioWithCaption src={activeData[0].sound} captions={""} />
+            <AudioWithCaption src={activeData[0].sound} captions={captionsExample} />
           </div>
         }
       />

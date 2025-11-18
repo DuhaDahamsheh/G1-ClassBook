@@ -4,7 +4,11 @@ import { TbMessageCircle } from "react-icons/tb";
 import { IoMdSettings } from "react-icons/io";
 import "./AudioWithCaption.css";
 
-const AudioWithCaption = ({ src, captions, onCaptionChange }) => {
+const AudioWithCaption = ({
+  src,
+  captions ,
+  onCaptionChange,
+}) => {
   const audioRef = useRef(null);
   const settingsRef = useRef(null);
 
@@ -32,8 +36,8 @@ const AudioWithCaption = ({ src, captions, onCaptionChange }) => {
       (cap) => time >= cap.start && time <= cap.end
     );
 
-  setActiveIndex(index);
-if (onCaptionChange) onCaptionChange(index);
+    setActiveIndex(index);
+    if (onCaptionChange) onCaptionChange(index);
   };
 
   // تشغيل/إيقاف
@@ -77,7 +81,6 @@ if (onCaptionChange) onCaptionChange(index);
 
   return (
     <div className="audio-popup">
-
       {/* مؤشر السرعة */}
       {speedIndicator && (
         <div className="speed-indicator">Speed: {speedIndicator}</div>
@@ -86,7 +89,7 @@ if (onCaptionChange) onCaptionChange(index);
       <div className="audio-inner">
         {/* التشغيل */}
         <button className="audio-play-btn" onClick={togglePlay}>
-          {isPlaying ? <FaPause size={22} /> : <FaPlay size={22}/>}
+          {isPlaying ? <FaPause size={22} /> : <FaPlay size={22} />}
         </button>
 
         {/* السلايدر */}
@@ -155,7 +158,6 @@ if (onCaptionChange) onCaptionChange(index);
 
           {showSettings && (
             <div className="settings-popup">
-
               {/* الصوت */}
               <label>Volume</label>
               <input
@@ -183,9 +185,7 @@ if (onCaptionChange) onCaptionChange(index);
                 </button>
 
                 <button
-                  className={`speed-rate ${
-                    activeSpeed === 1 ? "active" : ""
-                  }`}
+                  className={`speed-rate ${activeSpeed === 1 ? "active" : ""}`}
                   onClick={() => changeSpeed(1)}
                 >
                   1x
@@ -209,7 +209,6 @@ if (onCaptionChange) onCaptionChange(index);
                   1.5x
                 </button>
               </div>
-
             </div>
           )}
         </div>

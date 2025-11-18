@@ -19,7 +19,11 @@ const Page6 = () => {
   const audioRef = useRef(null);
   const [activePopup, setActivePopup] = useState(null);
   const [hoveredAreaIndex, setHoveredAreaIndex] = useState(null);
-
+const captionsExample = [
+    { start: 0, end: 1, text: "Hello!" },
+    { start: 1, end: 2.2, text: "My name is Tom." },
+    { start: 2.2, end: 4, text: "I like apples." },
+  ];
   // 🟩 مناطق مستطيلة (x1,y1,x2,y2)
   const clickableAreas = [
     { x1: 7.0, y1: 10.0, x2: 43.0, y2: 14.0, sound: Pg6_1_1_AdultLady },
@@ -92,7 +96,7 @@ const Page6 = () => {
             alignContent: "center",
           }}
         >
-          <AudioWithCaption src={CD4_Pg6_Grammar1_AdultLady} captions={""} />
+          <AudioWithCaption src={CD4_Pg6_Grammar1_AdultLady} captions={captionsExample} />
         </div>
       </Popup>
 

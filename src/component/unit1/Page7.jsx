@@ -27,6 +27,12 @@ const Page7 = () => {
 
     checkAreaAndPlaySound(xPercent, yPercent);
   };
+
+  const captionsExample = [
+    { start: 0, end: 1, text: "Hello!" },
+    { start: 1, end: 2.2, text: "My name is Tom." },
+    { start: 2.2, end: 4, text: "I like apples." },
+  ];
   const clickableAreas = [
     { x1: 6.33, y1: 9.4, x2: 28.43, y2: 13.3, sound: Pg7_2_1_AdultLady },
     { x1: 29.25, y1: 9.4, x2: 50.14, y2: 13.3, sound: Pg7_2_2_AdultLady },
@@ -94,7 +100,7 @@ const Page7 = () => {
               alignContent: "center",
             }}
           >
-            <AudioWithCaption src={CD5_Pg7_Grammar2_AdultLady} captions={""} />
+            <AudioWithCaption src={CD5_Pg7_Grammar2_AdultLady} captions={captionsExample} />
           </div>
         }
       />
