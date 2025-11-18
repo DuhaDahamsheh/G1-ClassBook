@@ -10,7 +10,10 @@ import taxi from "../../assets/unit1/imgs/taxi_1.svg";
 import tiger from "../../assets/unit1/imgs/tiger.svg";
 import ValidationAlert from "../Popup/ValidationAlert";
 import { IoCaretForwardCircle } from "react-icons/io5";
-
+import { FaPlay, FaPause, FaVolumeUp, FaVolumeMute } from "react-icons/fa";
+import { IoMdSettings } from "react-icons/io";
+import { FaRegCirclePlay } from "react-icons/fa6";
+import { CgPlayPauseO } from "react-icons/cg";
 const Page8_Q1 = () => {
   const audioRef = useRef(null);
   const clickAudioRef = useRef(null);
@@ -56,28 +59,62 @@ const Page8_Q1 = () => {
 
   const stopAtSecond = 9;
   const [paused, setPaused] = useState(false);
+  // إعدادات الصوت
+  const [showSettings, setShowSettings] = useState(false);
+  const [volume, setVolume] = useState(1);
+  const [activeSpeed, setActiveSpeed] = useState(1);
+  const settingsRef = useRef(null);
+  const [forceRender, setForceRender] = useState(0);
+  const [showContinue, setShowContinue] = useState(false);
+  // زر الكابشن
+  const [isMuted, setIsMuted] = useState(false);
+
+  const changeSpeed = (rate) => {
+    if (!audioRef.current) return;
+    audioRef.current.playbackRate = rate;
+    setActiveSpeed(rate);
+  };
 
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
+    audio.currentTime = 0;
     audio.play();
 
     const interval = setInterval(() => {
       if (audio.currentTime >= stopAtSecond) {
         audio.pause();
         setPaused(true);
+        setShowContinue(true);
         clearInterval(interval);
       }
-    }, 200);
+    }, 250);
+
+    // ⚡⚡ هنا الإضافة الوحيدة
+    const handleEnded = () => {
+      audio.currentTime = 0; // يرجع لأول ثانية
+      audio.pause(); // يوقف
+      setPaused(true); // زر البلاي يصير Play
+      setShowContinue(true); // يظهر زر Continue
+      // setActiveIndex(null); // يشيل الأنيميشن عن الكلمات
+    };
+
+    // audio.addEventListener("timeupdate", handleTimeUpdate);
+    audio.addEventListener("ended", handleEnded); // 👈 الإضافة
 
     return () => {
+      // audio.removeEventListener("timeupdate", handleTimeUpdate);
+      audio.removeEventListener("ended", handleEnded); // 👈 تنظيف الإضافة
       clearInterval(interval);
-      if (audio) {
-        audio.pause();
-        audio.currentTime = 0;
-      }
     };
+  }, []);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setForceRender((prev) => prev + 1);
+    }, 1000); // كل ثانية
+
+    return () => clearInterval(timer);
   }, []);
 
   const updateAnswer = (index, field, value) => {
@@ -140,7 +177,17 @@ const Page8_Q1 = () => {
     else if (score === 0) ValidationAlert.error(scoreMessage);
     else ValidationAlert.warning(scoreMessage);
   };
+  const togglePlay = () => {
+    const audio = audioRef.current;
 
+    if (audio.paused) {
+      audio.play();
+      setPaused(false);
+    } else {
+      audio.pause();
+      setPaused(true);
+    }
+  };
   return (
     <>
       <header className="header-title-page8">
@@ -154,7 +201,97 @@ const Page8_Q1 = () => {
           margin: "30px 0px",
         }}
       >
-        <audio ref={audioRef} controls>
+        <div className="audio-popup">
+          <div className="audio-inner">
+            {/* Play / Pause */}
+            <button className="audio-play-btn" onClick={togglePlay}>
+              {paused ? <FaPlay size={22} /> : <FaPause size={22} />}
+            </button>
+
+            {/* Slider */}
+            <input
+              type="range"
+              min="0"
+              max={audioRef.current?.duration || 0}
+              value={audioRef.current?.currentTime || 0}
+              className="audio-slider"
+              onChange={(e) => {
+                if (!audioRef.current) return;
+                audioRef.current.currentTime = e.target.value;
+              }}
+            />
+
+            {/* Current Time */}
+            <span className="audio-time">
+              {new Date((audioRef.current?.currentTime || 0) * 1000)
+                .toISOString()
+                .substring(14, 19)}
+            </span>
+
+            {/* Total Time */}
+            <span className="audio-time">
+              {new Date((audioRef.current?.duration || 0) * 1000)
+                .toISOString()
+                .substring(14, 19)}
+            </span>
+
+            {/* Mute */}
+            <button
+              className="mute-btn-outside"
+              onClick={() => {
+                audioRef.current.muted = !audioRef.current.muted;
+                setIsMuted(!isMuted);
+              }}
+            >
+              {audioRef.current?.muted ? (
+                <FaVolumeMute size={22} color="#1d4f7b" />
+              ) : (
+                <FaVolumeUp size={22} color="#1d4f7b" />
+              )}
+            </button>
+            <div className="settings-wrapper" ref={settingsRef}>
+              <button
+                className={`settings-btn ${showSettings ? "active" : ""}`}
+                onClick={() => setShowSettings(!showSettings)}
+              >
+                <IoMdSettings size={22} color="#1d4f7b" />
+              </button>
+
+              {showSettings && (
+                <div className="settings-popup">
+                  <label>Volume</label>
+                  <input
+                    type="range"
+                    min="0"
+                    max="1"
+                    step="0.05"
+                    value={volume}
+                    onChange={(e) => {
+                      setVolume(e.target.value);
+                      audioRef.current.volume = e.target.value;
+                    }}
+                  />
+
+                  <label>Speed</label>
+                  <div className="speed-buttons">
+                    {[0.75, 1, 1.25, 1.5].map((rate) => (
+                      <button
+                        key={rate}
+                        className={`speed-rate ${
+                          activeSpeed === rate ? "active" : ""
+                        }`}
+                        onClick={() => changeSpeed(rate)}
+                      >
+                        {rate}x
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+        <audio ref={audioRef}>
           <source src={CD6_Pg8_Instruction1_AdultLady} type="audio/mp3" />
         </audio>
       </div>
@@ -297,12 +434,19 @@ const Page8_Q1 = () => {
         <button onClick={reset} className="try-again-button">
           Start Again ↻
         </button>
-        {paused && (
-          <button
-            className="play-btn swal-continue"
-            onClick={() => (audioRef.current.play(), setPaused(false))}
-          >
-            Continue <IoCaretForwardCircle size={20} style={{ color: "red" }} />
+        {showContinue && (
+          <button className="play-btn swal-continue" onClick={togglePlay}>
+            {paused ? (
+              <>
+                Continue
+                <FaRegCirclePlay size={20} style={{ color: "red" }} />
+              </>
+            ) : (
+              <>
+                Pause
+                <CgPlayPauseO size={20} style={{ color: "red" }} />
+              </>
+            )}
           </button>
         )}
 

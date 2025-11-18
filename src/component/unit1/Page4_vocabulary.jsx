@@ -6,24 +6,34 @@ import num2 from "../../assets/unit1/imgs/Page 01/Num2.svg";
 import num3 from "../../assets/unit1/imgs/Page 01/Num3.svg";
 import num4 from "../../assets/unit1/imgs/Page 01/Num4.svg";
 import num5 from "../../assets/unit1/imgs/Page 01/Num5.svg";
+import { IoMdSettings } from "react-icons/io";
 import { CgPlayPauseO } from "react-icons/cg";
 import vocabulary from "../../assets/unit1/sounds/Pg4_Vocabulary_Adult Lady.mp3";
-import sound1 from "../../assets/unit1/sounds/pg4-vocabulary-1-goodbye.mp3";
-import sound2 from "../../assets/unit1/sounds/pg4-vocabulary-2-how are you.mp3";
-import sound3 from "../../assets/unit1/sounds/pg4-vocabulary-3-fine thank you.mp3";
-import sound4 from "../../assets/unit1/sounds/pg4-vocabulary-4-hello..mp3";
-import sound5 from "../../assets/unit1/sounds/pg4-vocabulary-5-good morning.mp3";
+import { FaPlay, FaPause, FaVolumeUp, FaVolumeMute } from "react-icons/fa";
 import { FaRegCirclePlay } from "react-icons/fa6";
 import "../../index.css"; // ✅ نضيف ملف CSS خارجي
 
 const Page4_vocabulary = () => {
   const mainAudioRef = useRef(null);
-  const clickAudioRef = useRef(null);
+
   const [paused, setPaused] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
   const [showContinue, setShowContinue] = useState(false);
   const stopAtSecond = 2.5;
+  // إعدادات الصوت
+  const [showSettings, setShowSettings] = useState(false);
+  const [volume, setVolume] = useState(1);
+  const [activeSpeed, setActiveSpeed] = useState(1);
+  const settingsRef = useRef(null);
+  const [forceRender, setForceRender] = useState(0);
+  // زر الكابشن
+  const [isMuted, setIsMuted] = useState(false);
 
+  const changeSpeed = (rate) => {
+    if (!mainAudioRef.current) return;
+    mainAudioRef.current.playbackRate = rate;
+    setActiveSpeed(rate);
+  };
   // 🎵 فترات الكلمات داخل الأوديو الرئيسي
   const wordTimings = [
     { start: 2.8, end: 5.0 }, // Goodbye
@@ -44,7 +54,7 @@ const Page4_vocabulary = () => {
       if (audio.currentTime >= stopAtSecond) {
         audio.pause();
         setPaused(true);
-        setShowContinue(true); // 👈 خلي الكبسة تضل ظاهرة دائماً بعد ثانية 3
+        setShowContinue(true);
         clearInterval(interval);
       }
     }, 250);
@@ -57,27 +67,32 @@ const Page4_vocabulary = () => {
       setActiveIndex(currentWordIndex !== -1 ? currentWordIndex : null);
     };
 
+    // ⚡⚡ هنا الإضافة الوحيدة
+    const handleEnded = () => {
+      audio.currentTime = 0; // يرجع لأول ثانية
+      audio.pause(); // يوقف
+      setPaused(true); // زر البلاي يصير Play
+      setShowContinue(true); // يظهر زر Continue
+      setActiveIndex(null); // يشيل الأنيميشن عن الكلمات
+    };
+
     audio.addEventListener("timeupdate", handleTimeUpdate);
+    audio.addEventListener("ended", handleEnded); // 👈 الإضافة
+
     return () => {
       audio.removeEventListener("timeupdate", handleTimeUpdate);
+      audio.removeEventListener("ended", handleEnded); // 👈 تنظيف الإضافة
       clearInterval(interval);
     };
   }, []);
 
-  const clickableAreas = [
-    { x1: 16, y1: 44, x2: 18, y2: 46, sound: sound1 },
-    { x1: 54, y1: 45, x2: 57, y2: 47, sound: sound2 },
-    { x1: 70, y1: 42, x2: 72, y2: 44, sound: sound3 },
-    { x1: 40, y1: 24, x2: 43, y2: 26, sound: sound4 },
-    { x1: 33, y1: 28, x2: 38, y2: 30, sound: sound5 },
-  ];
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setForceRender((prev) => prev + 1);
+    }, 1000); // كل ثانية
 
-  const playClickSound = (sound) => {
-    if (!clickAudioRef.current) return;
-    clickAudioRef.current.src = sound;
-    clickAudioRef.current.currentTime = 0;
-    clickAudioRef.current.play();
-  };
+    return () => clearInterval(timer);
+  }, []);
 
   const togglePlay = () => {
     const audio = mainAudioRef.current;
@@ -100,15 +115,103 @@ const Page4_vocabulary = () => {
           flexDirection: "column",
           justifyContent: "flex-start",
           margin: "0px 20px",
-          position:"relative",
-          left:"-15%",
-          alignItems:"center"
+          position: "relative",
+          left: "-5%",
+          top: "-2%",
+          alignItems: "center",
         }}
       >
-        <audio
-          ref={mainAudioRef}
-          controls
-        >
+        <div className="audio-popup">
+          <div className="audio-inner">
+            {/* Play / Pause */}
+            <button className="audio-play-btn" onClick={togglePlay}>
+              {paused ? <FaPlay size={22} /> : <FaPause size={22} />}
+            </button>
+
+            {/* Slider */}
+            <input
+              type="range"
+              min="0"
+              max={mainAudioRef.current?.duration || 0}
+              value={mainAudioRef.current?.currentTime || 0}
+              className="audio-slider"
+              onChange={(e) => {
+                if (!mainAudioRef.current) return;
+                mainAudioRef.current.currentTime = e.target.value;
+              }}
+            />
+
+            {/* Current Time */}
+            <span className="audio-time">
+              {new Date((mainAudioRef.current?.currentTime || 0) * 1000)
+                .toISOString()
+                .substring(14, 19)}
+            </span>
+
+            {/* Total Time */}
+            <span className="audio-time">
+              {new Date((mainAudioRef.current?.duration || 0) * 1000)
+                .toISOString()
+                .substring(14, 19)}
+            </span>
+
+            {/* Mute */}
+            <button
+              className="mute-btn-outside"
+              onClick={() => {
+                mainAudioRef.current.muted = !mainAudioRef.current.muted;
+                setIsMuted(!isMuted);
+              }}
+            >
+              {mainAudioRef.current?.muted ? (
+                <FaVolumeMute size={22} color="#1d4f7b" />
+              ) : (
+                <FaVolumeUp size={22} color="#1d4f7b" />
+              )}
+            </button>
+            <div className="settings-wrapper" ref={settingsRef}>
+              <button
+                className={`settings-btn ${showSettings ? "active" : ""}`}
+                onClick={() => setShowSettings(!showSettings)}
+              >
+                <IoMdSettings size={22} color="#1d4f7b" />
+              </button>
+
+              {showSettings && (
+                <div className="settings-popup">
+                  <label>Volume</label>
+                  <input
+                    type="range"
+                    min="0"
+                    max="1"
+                    step="0.05"
+                    value={volume}
+                    onChange={(e) => {
+                      setVolume(e.target.value);
+                      mainAudioRef.current.volume = e.target.value;
+                    }}
+                  />
+
+                  <label>Speed</label>
+                  <div className="speed-buttons">
+                    {[0.75, 1, 1.25, 1.5].map((rate) => (
+                      <button
+                        key={rate}
+                        className={`speed-rate ${
+                          activeSpeed === rate ? "active" : ""
+                        }`}
+                        onClick={() => changeSpeed(rate)}
+                      >
+                        {rate}x
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+        <audio ref={mainAudioRef}>
           <source src={vocabulary} type="audio/mp3" />
         </audio>
       </div>
@@ -172,30 +275,11 @@ const Page4_vocabulary = () => {
             alt="interactive"
             style={{ height: "500px", width: "auto" }}
           />
-
-          {clickableAreas.map((area, index) => (
-            <div
-              key={index}
-              style={{
-                position: "absolute",
-                left: `${area.x1}%`,
-                top: `${area.y1}%`,
-                width: `${area.x2 - area.x1}%`,
-                height: `${area.y2 - area.y1}%`,
-                cursor: "pointer",
-              }}
-              onClick={() => playClickSound(area.sound)}
-            />
-          ))}
         </div>
       </div>{" "}
       {showContinue && (
         <div className="action-buttons-container ">
-          <button
-            className="play-btn swal-continue"
-            onClick={togglePlay}
-            style={{ marginTop: "18px" }}
-          >
+          <button className="play-btn swal-continue" onClick={togglePlay}>
             {paused ? (
               <>
                 Continue

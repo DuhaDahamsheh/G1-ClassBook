@@ -4,7 +4,7 @@ import { TbMessageCircle } from "react-icons/tb";
 import { IoMdSettings } from "react-icons/io";
 import "./AudioWithCaption.css";
 
-const AudioWithCaption = ({ src, captions }) => {
+const AudioWithCaption = ({ src, captions, onCaptionChange }) => {
   const audioRef = useRef(null);
   const settingsRef = useRef(null);
 
@@ -32,7 +32,8 @@ const AudioWithCaption = ({ src, captions }) => {
       (cap) => time >= cap.start && time <= cap.end
     );
 
-    setActiveIndex(index);
+  setActiveIndex(index);
+if (onCaptionChange) onCaptionChange(index);
   };
 
   // تشغيل/إيقاف
