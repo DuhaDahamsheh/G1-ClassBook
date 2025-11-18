@@ -21,6 +21,7 @@ const Page9 = () => {
       </span>
       <Popup
         isOpen={activePopup === 3}
+        isAudio={true}
         onClose={() => setActivePopup(null)}
         children={
           <>

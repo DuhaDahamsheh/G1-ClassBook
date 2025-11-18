@@ -79,6 +79,7 @@ const Unit2_Page11 = () => {
       </span>
       <Popup
         isOpen={activePopup === 1}
+        isAudio={true}
         onClose={() => setActivePopup(null)}
         children={
           <div style={{display:"flex" ,justifyContent:"center",alignContent:"center" }}>

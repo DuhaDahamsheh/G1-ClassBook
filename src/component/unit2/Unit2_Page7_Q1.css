@@ -1,19 +1,20 @@
+/* ======================== */
+/*  DESKTOP — نفس شكلِك     */
+/* ======================== */
+
 .number-word-section {
   display: grid;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-evenly;
-  gap: 9px 45px;
   grid-template-columns: repeat(5, 1fr);
+  gap: 9px 45px;
   margin-top: 24px;
 }
 
 .num-word {
   border: 2px solid #3baaf7;
   height: 30px;
-  font-size: 19px;
-  display: inline-flex;
   width: 30px;
+  font-size: 19px;
+  display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 5px;
@@ -35,11 +36,12 @@
 }
 
 .sentence-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  gap: 23px;
+      display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.1rem;
+    justify-content: flex-start;
+    flex-direction: row;
 }
 
 .input-sentence {
@@ -52,7 +54,6 @@
 
 .sentence-line {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   gap: 15px;
 }
@@ -73,7 +74,6 @@
 
 .input-wrapper1 {
   position: relative;
-  display: inline-block;
 }
 
 /* الانبت الغلط */
@@ -81,7 +81,6 @@
   border-color: #ff3b3b !important;
 }
 
-/* الأيقونة فوق يمين الانبت */
 .wrong-icon {
   position: absolute;
   top: 3px;
@@ -99,28 +98,35 @@
   border: 2px solid white;
 }
 
-/* للشاشات المتوسطة (تابلت) */
+/* ======================== */
+/*      TABLET 992px        */
+/* ======================== */
+
 @media (max-width: 992px) {
   .number-word-section {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px 25px;
+    grid-template-columns: repeat(3, 1fr); /* من 5 → 3 بدون تخريب */
+    /* gap: 16px 25px; */
   }
 
   .sentence-row {
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
   }
 
   .num-container {
-    width: 45vw;
+    /* width: 60vw; */
     justify-content: center;
+    gap: 20px;
   }
 }
 
-/* للشاشات الصغيرة (موبايل) */
+/* ======================== */
+/*        MOBILE 600px      */
+/* ======================== */
+
 @media (max-width: 600px) {
   .number-word-section {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* 2 أعمدة للموبايل */
     gap: 14px 20px;
   }
 
@@ -136,7 +142,7 @@
   }
 
   .input-sentence {
-    width: 50px;
+    width: 55px;
     height: 35px;
     font-size: 16px;
   }
@@ -146,15 +152,22 @@
   }
 
   .num-container {
-    width: 70vw;
+    width: 80vw;
     justify-content: center;
   }
 }
 
-/* للشاشات الصغيرة جدًا */
+/* ======================== */
+/*    SMALL SCREENS 400px   */
+/* ======================== */
+
 @media (max-width: 400px) {
   .number-word-section {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(1, 1fr); /* صف واحد */
     justify-items: center;
+  }
+
+  .sentence-label {
+    font-size: 16px;
   }
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import page_6 from "../../assets/unit4/Right G1- Class Book_00033.jpg";
+import page_6 from "../../assets/unit4/imgs/Right 1 Unit 04 Wonderful Shapes and Colors6.jpg";
 import { FaHeadphones } from "react-icons/fa";
 import { PiCursorClickBold } from "react-icons/pi";
 import Popup from "../Popup/Popup";
@@ -8,7 +8,7 @@ import "./Unit4_Page6.css";
 const Unit4_Page6 = () => {
   const [activePopup, setActivePopup] = useState(null);
   return (
-    <div className="unit4-page-background"  style={{position:"relative"}}>
+    <div className="unit4-page-background" style={{ position: "relative" }}>
       <img src={page_6} />
       <span className="click-icon-unit4-page6-1 shadow-md hover:scale-110 transition">
         <PiCursorClickBold
@@ -39,7 +39,7 @@ const Unit4_Page6 = () => {
           </>
         }
       />
-      
+
       <span className="headset-icon-CD-unit4-page6-1 shadow-md hover:scale-110 transition">
         <FaHeadphones
           size={12}

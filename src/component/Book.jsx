@@ -1,8 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { GrLinkNext } from "react-icons/gr";
 import { IoMdArrowBack } from "react-icons/io";
 import { FaHome } from "react-icons/fa";
-
+import { MdOutlineZoomIn } from "react-icons/md";
+import { MdOutlineZoomOut } from "react-icons/md";
+import { LuFullscreen } from "react-icons/lu";
+import { RiBookOpenLine } from "react-icons/ri";
+import { AiOutlineBook } from "react-icons/ai";
+import { IoMdMenu } from "react-icons/io";
 //===================== unit 1 pages
 import Page1 from "./unit1/Page1";
 import Page2 from "./unit1/Page2";
@@ -35,6 +40,7 @@ import Unit3_Page3 from "./unit3/Unit3_Page3";
 import Unit3_Page4 from "./unit3/Unit3_Page4";
 import Unit3_Page5 from "./unit3/Unit3_Page5";
 import Unit3_Page6 from "./unit3/Unit3_Page6";
+
 //==================== unit 4 pages
 import Unit4_Page1 from "./unit4/Unit4_Page1";
 import Unit4_Page2 from "./unit4/Unit4_Page2";
@@ -45,32 +51,46 @@ import Unit4_Page6 from "./unit4/Unit4_Page6";
 
 export default function Book() {
   const [pageIndex, setPageIndex] = useState(0);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1100);
+  const [activeTab, setActiveTab] = useState("student");
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  // ZOOM + VIEW MODE
+  const [zoom, setZoom] = useState(1);
+  const [viewMode, setViewMode] = useState("spread"); // spread | single
 
+  // ==== PANNING ====
+  const [isPanning, setIsPanning] = useState(false);
+  const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const menuItems = [
+    { id: 1, label: "Home", icon: "🏠" },
+    { id: 2, label: "Units", icon: "📘" },
+  ];
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 640);
+    const handleResize = () => setIsMobile(window.innerWidth < 1100);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // ✅ دالة الذهاب للفهرس
-  const goToIndex = () => setPageIndex(1);
-  // ✅ دالة التنقل من الفهرس إلى أول صفحة من الوحدة
-  const goToUnit = (unitStartIndex) => {
-   if (!isMobile) {
-    // الصفحة التي يجب أن تظهر على الشمال يجب أن تكون فردية
-    const leftPage =
-      unitStartIndex % 2 === 1 
-        ? unitStartIndex 
-        : unitStartIndex - 1;
-
-    setPageIndex(leftPage);
-  } else {
-    setPageIndex(unitStartIndex);
-  }
+  const toggleFullScreen = () => {
+    const elem = document.documentElement;
+    if (!document.fullscreenElement) elem.requestFullscreen();
+    else document.exitFullscreen();
   };
+
+  const goToIndex = () => setPageIndex(1);
+
+  const goToUnit = (unitStartIndex) => {
+    if (!isMobile) {
+      const leftPage =
+        unitStartIndex % 2 === 1 ? unitStartIndex : unitStartIndex - 1;
+      setPageIndex(leftPage);
+    } else {
+      setPageIndex(unitStartIndex);
+    }
+  };
+
   const pages = [
-    <Page1 />, // الغلاف
+    <Page1 />,
     <Page2 goToUnit={goToUnit} />,
     <Page3 goToUnit={goToUnit} />,
     <Page4 />,
@@ -79,127 +99,368 @@ export default function Book() {
     <Page7 />,
     <Page8 />,
     <Page9 />,
-    <Unit2_Page1 />,
-    <Unit2_Page2 />,
-    <Unit2_Page3 />,
-    <Unit2_Page4 />,
-    <Unit2_Page5 />,
-    <Unit2_Page6 />,
-    <Unit2_Page7 />,
-    <Unit2_Page8 />,
-    <Unit2_Page9 />,
-    <Unit2_Page10 />,
-    <Unit2_Page11 />,
-    <Unit2_Page12 />,
-    <Unit3_Page1 />,
-    <Unit3_Page2 />,
-    <Unit3_Page3 />,
-    <Unit3_Page4 />,
-    <Unit3_Page5 />,
-    <Unit3_Page6 />,
-    <Unit4_Page1 />,
-    <Unit4_Page2 />,
-    <Unit4_Page3 />,
-    <Unit4_Page4 />,
-    <Unit4_Page5 />,
-    <Unit4_Page6 />,
+    // <Unit2_Page1 />,
+    // <Unit2_Page2 />,
+    // <Unit2_Page3 />,
+    // <Unit2_Page4 />,
+    // <Unit2_Page5 />,
+    // <Unit2_Page6 />,
+    // <Unit2_Page7 />,
+    // <Unit2_Page8 />,
+    // <Unit2_Page9 />,
+    // <Unit2_Page10 />,
+    // <Unit2_Page11 />,
+    // <Unit2_Page12 />,
+    // <Unit3_Page1 />,
+    // <Unit3_Page2 />,
+    // <Unit3_Page3 />,
+    // <Unit3_Page4 />,
+    // <Unit3_Page5 />,
+    // <Unit3_Page6 />,
+    // <Unit4_Page1 />,
+    // <Unit4_Page2 />,
+    // <Unit4_Page3 />,
+    // <Unit4_Page4 />,
+    // <Unit4_Page5 />,
+    // <Unit4_Page6 />,
   ];
+  const hideArrows = zoom > 1;
+  const [isDragging, setIsDragging] = useState(false);
+  const startPosition = useRef({ x: 0, y: 0 });
+  const handleMouseDown = (e) => {
+    if (zoom === 1) return;
 
+    setIsDragging(true);
 
-  
+    startPosition.current = {
+      x: e.clientX - offset.x,
+      y: e.clientY - offset.y,
+    };
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging) return;
+
+    setOffset({
+      x: e.clientX - startPosition.current.x,
+      y: e.clientY - startPosition.current.y,
+    });
+  };
+
+  const handleMouseUp = () => setIsDragging(false);
+
   const nextPage = () => {
-    if (isMobile) {
+    if (isMobile || viewMode === "single") {
       if (pageIndex < pages.length - 1) setPageIndex(pageIndex + 1);
     } else {
-      if (pageIndex === 0) setPageIndex(1); // الغلاف → فهرس (صفحتين)
+      if (pageIndex === 0) setPageIndex(1);
       else if (pageIndex < pages.length - 2) setPageIndex(pageIndex + 2);
     }
   };
 
   const prevPage = () => {
-    if (isMobile) {
+    if (isMobile || viewMode === "single") {
       if (pageIndex > 0) setPageIndex(pageIndex - 1);
     } else {
-      if (pageIndex === 1) setPageIndex(0); // رجوع من الفهرس → الغلاف
+      if (pageIndex === 1) setPageIndex(0);
       else if (pageIndex > 1) setPageIndex(pageIndex - 2);
     }
   };
-
+  const handleMenuClick = (id) => {
+    if (id === 1) goToHome();
+    if (id === 2) goToIndex();
+  };
   return (
-    <div className="w-full min-h-screen flex items-center justify-center relative">
-      {/* 📖 زر العودة للفهرس - ثابت بكل الصفحات */}
-      {pageIndex !== 1 && pageIndex !== 2 && (
-        <button
-          onClick={goToIndex}
-          title="Go to Index"
-          className="fixed top-6 right-6 z-[10000] bg-[#2c5287] hover:bg-[#426ca7f2] text-white p-3 rounded-full shadow-lg hover:scale-110 transition"
-        >
-          <FaHome />
-        </button>
-      )}
-      {/* 📱 شاشة الموبايل */}
-      {isMobile ? (
-        <>
-          <button
-            onClick={prevPage}
-            className="absolute left-4 w-10 h-10 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md hover:bg-[#426ca7f2] hover:scale-110 transition"
-          >
-            <IoMdArrowBack size={25} />
-          </button>
+    <>
+    <div className="w-full flex flex-col pb-20">
+      {/* NAVBAR */}
+      <nav className="w-full bg-[#2c5287] text-white border-b shadow px-6 py-2 flex items-center justify-between">
+        {/* LEFT SECTION: LOGO + TABS */}
+        <div className="flex items-center gap-10">
+          <h1 className="text-2xl font-serif tracking-wide text-gray-200">
+            Interactive Book
+          </h1>
 
-          <div className="bg-white w-[90%] h-[97vh] rounded-2xl shadow-2xl border p-3 text-center overflow-auto">
-            {pages[pageIndex]}
-          </div>
-
-          <button
-            onClick={nextPage}
-            className="absolute right-4 w-10 h-10 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md hover:bg-[#426ca7f2] hover:scale-110 transition z-[9999]"
-          >
-            <GrLinkNext size={25} />
-          </button>
-        </>
-      ) : (
-        <>
-          {/* 💻 شاشة اللابتوب / الديسكتوب */}
-          {pageIndex === 0 ? (
-            // ✅ الغلاف صفحة واحدة فقط
-            <>
-              <div className="bg-white sm:w-[40%] h-[95vh] rounded-2xl shadow-2xl border flex items-center justify-center overflow-hidden">
-                {pages[0]}
-              </div>
-
+          {/* TABS */}
+          <div className="flex items-center gap-3">
+            {[
+              { id: "student", label: "Student’s Book" },
+              { id: "work", label: "Workbook" },
+              { id: "teacher", label: "Teacher’s Book" },
+            ].map((tab) => (
               <button
-                onClick={nextPage}
-                className="absolute right-10 w-14 h-14 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md hover:bg-[#426ca7f2] hover:scale-110 transition z-[9999]"
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`
+            px-2 rounded-lg font-medium transition-all duration-300
+            ${
+              activeTab === tab.id
+                ? "bg-white text-[#2c5287] shadow-md scale-95 border-b-4 border-yellow-400"
+                : "bg-transparent text-gray-200 hover:text-white hover:bg-white/10"
+            }
+          `}
               >
-                <GrLinkNext size={25} />
+                {tab.label}
               </button>
-            </>
-          ) : (
-            // ✅ الفهرس + باقي الصفحات → صفحتين
-            <>
+            ))}
+          </div>
+        </div>
+
+        {/* RIGHT SECTION */}
+        <div className="flex items-center gap-4">
+          <span className="cursor-pointer hover:text-gray-300">
+            Student Edition
+          </span>
+        </div>
+      </nav>
+
+      {/* MAIN CONTENT */}
+      <div
+        className="w-full  h-[90vh] flex items-center justify-center relative"
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseUp}
+      >
+        {/* MOBILE VIEW */}
+        {isMobile ? (
+          <>
+            {!hideArrows && (
               <button
                 onClick={prevPage}
-                className="absolute left-10 w-14 h-14 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md hover:bg-[#426ca7f2] hover:scale-110 transition z-[9999]"
+                className="absolute left-4 w-10 h-10 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md z-[9999]"
               >
-                <IoMdArrowBack size={30} />
+                <IoMdArrowBack size={25} />
               </button>
+            )}
 
-              <div className="bg-white sm:w-[75%] h-[95vh] rounded-2xl shadow-2xl border grid grid-cols-2 overflow-hidden">
-                <div className="border-r">{pages[pageIndex]}</div>
-                <div className="border-l">{pages[pageIndex+1]}</div>
-              </div>
-
+            <div
+              className="bg-white sm:w-auto h-[85vh] rounded-2xl shadow-2xl border flex items-center justify-center overflow-hidden"
+              style={{
+                transform: `scale(${zoom})`,
+                transformOrigin: "center top",
+              }}
+            >
+              {pages[pageIndex]}
+            </div>
+            {!hideArrows && (
               <button
                 onClick={nextPage}
-                className="absolute right-10 w-14 h-14 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md hover:bg-[#426ca7f2] hover:scale-110 transition z-[9999]"
+                className="absolute right-4 w-10 h-10 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md"
               >
                 <GrLinkNext size={25} />
               </button>
-            </>
-          )}
-        </>
-      )}
+            )}
+          </>
+        ) : (
+          <>
+            {/* DESKTOP */}
+            {pageIndex === 0 || viewMode === "single" ? (
+              // SINGLE PAGE
+              <>
+                {!hideArrows && (
+                  <button
+                    onClick={prevPage}
+                    className="absolute left-10 w-14 h-14 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md z-[9999]"
+                  >
+                    <IoMdArrowBack size={30} />
+                  </button>
+                )}
+
+                {/* PANNING WRAPPER */}
+                <div
+                  className="bg-white sm:w-auto h-[85vh] rounded-2xl shadow-2xl border flex items-center justify-center overflow-hidden"
+                  style={{
+                    transform: `translate(${offset.x}px, ${offset.y}px) scale(${zoom})`,
+                    transformOrigin: "center top",
+                    cursor:
+                      zoom === 1 ? "default" : isDragging ? "grabbing" : "grab",
+                  }}
+                >
+                  <div className="max-w-full max-h-full flex justify-center items-center">
+                    {pages[pageIndex]}
+                  </div>
+                </div>
+                {!hideArrows && (
+                  <button
+                    onClick={nextPage}
+                    className="absolute right-10 w-14 h-14 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md"
+                  >
+                    <GrLinkNext size={30} />
+                  </button>
+                )}
+              </>
+            ) : (
+              // SPREAD 2 PAGES
+              <>
+                {!hideArrows && (
+                  <button
+                    onClick={prevPage}
+                    className="absolute left-10 w-14 h-14 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md z-[9999]"
+                  >
+                    <IoMdArrowBack size={30} />
+                  </button>
+                )}
+
+                {/* PANNING WRAPPER */}
+                <div
+                  className="bg-white sm:w-auto h-[85vh] rounded-2xl shadow-2xl border grid grid-cols-2 overflow-hidden"
+                  onMouseDown={handleMouseDown}
+                  onMouseMove={handleMouseMove}
+                  onMouseUp={handleMouseUp}
+                  onMouseLeave={handleMouseUp}
+                  style={{
+                    transform: `translate(${offset.x}px, ${offset.y}px) scale(${zoom})`,
+                    transformOrigin: "center top",
+                    cursor:
+                      zoom === 1 ? "default" : isDragging ? "grabbing" : "grab",
+                  }}
+                >
+                  <div className="flex justify-center items-center border-r">
+                    {pages[pageIndex]}
+                  </div>
+
+                  <div className="flex justify-center items-center border-l">
+                    {pages[pageIndex + 1]}
+                  </div>
+                </div>
+                {!hideArrows && (
+                  <button
+                    onClick={nextPage}
+                    className="absolute right-10 w-14 h-14 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md"
+                  >
+                    <GrLinkNext size={30} />
+                  </button>
+                )}
+              </>
+            )}
+          </>
+        )}
+      </div>
+
+      {/* FOOTER */}
+      <footer
+         className="w-full bg-white border-t border-gray-300 shadow
+             flex items-center justify-center gap-3 
+             py-1.5 fixed bottom-0 left-0 z-[9999]"
+      >
+        <button
+          onClick={() => setIsSidebarOpen(true)}
+          className="absolute left-3 bg-[#2c5287] text-white p-0.5 rounded-lg shadow hover:bg-[#426ca7] transition"
+        >
+          <IoMdMenu size={18}/>
+        </button>
+        {/* HOME BUTTON */}
+        {pageIndex !== 1 && pageIndex !== 2 && (
+          <button
+            onClick={goToIndex}
+            className="bg-[#2c5287] text-white rounded-lg p-0.5 shadow hover:bg-[#426ca7] transition"
+          >
+            <FaHome size={18} />
+          </button>
+        )}
+        <button
+          onClick={() => setZoom((z) => z + 0.2)}
+          className="bg-[#2c5287] text-white rounded-lg p-0.5 shadow hover:bg-[#426ca7] transition"
+        >
+          <MdOutlineZoomIn size={18} />
+        </button>
+
+        <button
+          onClick={() => {
+            setZoom(1); // يرجع الحجم الأصلي
+            setOffset({ x: 0, y: 0 }); // يرجع المكان الأصلي
+            setIsPanning(false); // يوقف السحب
+          }}
+          className="bg-[#2c5287] text-white rounded-lg p-0.5 shadow hover:bg-[#426ca7] transition"
+        >
+          <MdOutlineZoomOut size={18} />
+        </button>
+
+        <button
+          onClick={toggleFullScreen}
+          className="bg-[#2c5287] text-white rounded-lg p-0.5 shadow hover:bg-[#426ca7] transition"
+        >
+          <LuFullscreen size={18} />
+        </button>
+        {!isMobile && (
+          <>
+            <button
+              onClick={() => setViewMode("single")}
+              className={`rounded-lg p-0.5 shadow hover:bg-[#426ca7] transition ${
+                viewMode === "single"
+                  ? "bg-[#2c5287] text-white"
+                  : "bg-gray-300 text-gray-900"
+              }`}
+            >
+              <AiOutlineBook size={18} />
+            </button>
+
+            <button
+              onClick={() => setViewMode("spread")}
+              className={`rounded-lg p-0.5 shadow hover:bg-[#426ca7] transition ${
+                viewMode === "spread"
+                  ? "bg-[#2c5287] text-white"
+                  : "bg-gray-300 text-gray-900"
+              }`}
+            >
+              <RiBookOpenLine size={18} />
+            </button>
+          </>
+        )}
+
+        {/* Sidebar */}
+
+        {/* Bottom-Left Sidebar */}
+        <div
+          className={`
+    fixed left-0 bottom-0 
+    w-64 h-[100%] 
+    bg-white shadow-2xl z-[99999] 
+    rounded-tr-2xl
+    transform transition-transform duration-300
+    ${isSidebarOpen ? "translate-y-0" : "translate-y-full"}
+  `}
+        >
+          {/* Header */}
+          <div className="p-4 border-b flex justify-between items-center">
+            <h2 className="text-xl text-[#2c5287] font-semibold">Menu</h2>
+            <button
+              onClick={() => setIsSidebarOpen(false)}
+              className="text-yellow-500 text-xl"
+            >
+              ✕
+            </button>
+          </div>
+
+          {/* MENU LIST */}
+          <ul className="p-3 space-y-2">
+            {menuItems.map((item) => (
+              <li
+                key={item.id}
+                onClick={() => handleMenuClick(item.id)}
+                className="
+          flex items-center gap-3 text-[#2c5287]
+          p-3 rounded-lg cursor-pointer
+          bg-gray-100 hover:bg-[#2c5287] hover:text-white 
+          transition
+        "
+              >
+                <span className="text-xl">{item.icon}</span>
+                <span className="text-base font-medium">{item.label}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {isSidebarOpen && (
+          <div
+            onClick={() => setIsSidebarOpen(false)}
+            className="fixed inset-0 bg-black/40 z-[99998]"
+          ></div>
+        )}
+      </footer>
     </div>
+    </>
   );
 }

@@ -90,6 +90,7 @@ const Unit2_Page3 = () => {
       <Popup
         isOpen={activePopup === 1}
         onClose={() => setActivePopup(null)}
+        isAudio={true}
         children={
           <div style={{display:"flex" ,justifyContent:"center",alignContent:"center" }}>
             <audio controls>

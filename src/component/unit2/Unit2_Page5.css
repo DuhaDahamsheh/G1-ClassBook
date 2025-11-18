@@ -88,7 +88,7 @@
   cursor: pointer;
 }
 
-.letter {
+.letter-Q1-Pag5-Unit2 {
   border: 2px solid #2c5287;
   height: 35px;
   width: 35px;
@@ -100,6 +100,8 @@
   color: beige;
   font-size: 22px;
   font-weight: 500;
+  display: flex;
+  justify-content: center;
 }
 
 #b-0 {
@@ -276,4 +278,84 @@
   border-radius: 20px;
   background-color: red;
   left: 14px;
+}
+
+
+/* ============================= */
+/*      RESPONSIVE DESIGN        */
+/* ============================= */
+
+/* --------- Tablets (992px↓) ---------- */
+@media (max-width: 992px) {
+  .q3-content {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .q3-options {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-items: center;
+  }
+  .q3-main-img {
+    height: 200px;
+  }
+
+  .q3-options {
+    gap: 1.5rem;
+  }
+
+  .q3-option-img {
+    width: 130px;
+    height: 130px;
+  }
+}
+
+/* --------- Large Phones (768px↓) ---------- */
+@media (max-width: 768px) {
+  .q3-title {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  .q3-main-img {
+    height: 180px !important
+  }
+
+  .q3-options {
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+  }
+
+  .q3-option-item {
+    width: 90%;
+  }
+
+  .q3-option-img {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  .q3-number {
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+  }
+}
+
+/* --------- Small Phones (480px↓) ---------- */
+@media (max-width: 480px) {
+  .q3-main-img {
+    height: 170px !important;
+  }
+
+  .q3-option-img {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  .q3-number {
+    width: 28px;
+    height: 28px;
+    font-size: 18px;
+  }
 }

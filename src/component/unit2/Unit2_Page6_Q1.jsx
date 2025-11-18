@@ -110,14 +110,15 @@ const Unit2_Page6_Q1 = () => {
   };
 
   return (
-    <div className="u2-container">
+    <>
       <h5 className="header-title-page8">
         <span className="ex-A">D</span> Listen and choose.
       </h5>
+      <div style={{display:"flex",justifyContent:"center"}}>
       <audio controls>
         <source src={stella} type="audio/mp3" />
-      </audio>
-
+      </audio></div>
+<div className="u2-container">
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <div className="layout">
           <audio ref={clickAudioRef} style={{ display: "none" }} />
@@ -209,7 +210,7 @@ const Unit2_Page6_Q1 = () => {
           </Droppable>
         </div>
       </DragDropContext>
-
+</div>
       <div className="action-buttons-container">
         <button
           onClick={() => {
@@ -225,7 +226,7 @@ const Unit2_Page6_Q1 = () => {
           Check Answer ✓
         </button>
       </div>
-    </div>
+    </>
   );
 };
 

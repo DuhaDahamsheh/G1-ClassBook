@@ -11,12 +11,12 @@ import Pg5_2_2_Adult from "../../assets/unit1/sounds/Pg5_2.2_Adult Lady.mp3";
 import Pg5_2_3_Adult from "../../assets/unit1/sounds/Pg5_2.3_Adult Lady.mp3";
 import Pg5_2_4_Adult from "../../assets/unit1/sounds/Pg5_2.4_Adult Lady.mp3";
 import Pg5_Instruction2_Adult from "../../assets/unit1/sounds/Pg5_Instruction2_Adult Lady.mp3";
-import page_5_1 from "../../assets/unit1/imgs/page_5-1.svg";
+import page_5_1 from "../../assets/unit1/imgs/lolo_bebo1.jpg";
 import page_5_2 from "../../assets/unit1/imgs/page_5-2.png";
 import page_5_3 from "../../assets/unit1/imgs/page_5-3.jpg";
 import { PiCursorClickBold } from "react-icons/pi";
 import { FaHeadphones } from "react-icons/fa";
-
+import AudioWithCaption from "../AudioWithCaption";
 const Page5 = () => {
   const [activePopup, setActivePopup] = useState(null);
   const activeData = [
@@ -48,10 +48,10 @@ const Page5 = () => {
   };
 
   const clickableAreas = [
-    { x1: 11.7, y1: 50.2, x2: 17.2, y2: 74.9, sound: Pg5_2_1_Adult },
-    { x1: 25.7, y1: 39.6, x2: 42.14, y2: 87.9, sound: Pg5_2_2_Adult },
-    { x1: 52.7, y1: 39.6, x2:68.0, y2: 87.9, sound: Pg5_2_3_Adult },
-    { x1: 78.0, y1: 39.6, x2: 92.3, y2:87.9, sound: Pg5_2_4_Adult },
+    { x1: 11.7, y1: 50.2, x2: 17.2, y2: 61.9, sound: Pg5_2_1_Adult },
+    { x1: 26.0, y1: 43.5, x2: 43.0, y2: 71.0, sound: Pg5_2_2_Adult },
+    { x1: 52.7, y1: 43.5, x2: 68.0, y2: 71.0, sound: Pg5_2_3_Adult },
+    { x1: 78.0, y1: 43.5, x2: 92.3, y2: 71.0, sound: Pg5_2_4_Adult },
     ,
   ];
   const checkAreaAndPlaySound = (x, y) => {
@@ -75,7 +75,6 @@ const Page5 = () => {
     { text: "Fine, Thank you.", sound: Pg5_1_2_Lolo },
   ];
 
-
   useEffect(() => {
     if (activePopup !== null && audioRef.current) {
       audioRef.current.play(); // تشغيل الصوت عند فتح البوب أب
@@ -94,11 +93,16 @@ const Page5 = () => {
       <Popup
         isOpen={activePopup === 1}
         onClose={() => setActivePopup(null)}
+        isAudio={true}
         children={
-          <div style={{display:"flex" ,justifyContent:"center",alignContent:"center" }}>
-            <audio controls>
-              <source src={activeData[0].sound} type="audio/mp3" />
-            </audio>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignContent: "center",
+            }}
+          >
+            <AudioWithCaption src={activeData[0].sound} captions={""} />
           </div>
         }
       />
@@ -114,21 +118,11 @@ const Page5 = () => {
         onClose={() => setActivePopup(null)}
         children={
           <>
-            <img src={activeData[1].imgSrc} style={{ height: "auto" }} />
+            <img
+              src={activeData[1].imgSrc}
+              style={{ height: "500px", display: "block" }}
+            />
 
-            {speaking.map((item, index) => {
-              return (
-                <p
-                  key={index}
-                  className="clickable-area"
-                  id={`text-${index}`}
-                  onClick={() => playSound(item.sound)}
-                  style={{ cursor: "pointer" }}
-                >
-                  {item.text}
-                </p>
-              );
-            })}
             <audio ref={audioRef} autoPlay style={{ display: "none" }}>
               <source src={activeData[1].sound} type="audio/mp3" />
             </audio>
@@ -146,31 +140,39 @@ const Page5 = () => {
         isOpen={activePopup === 3}
         onClose={() => setActivePopup(null)}
         children={
-          <div style={{position:"relative"}}>
+          <div
+            style={{
+              position: "relative",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              height: "100%",
+            }}
+          >
             <audio ref={introRef} autoPlay style={{ display: "none" }}>
               <source src={activeData[2].sound} type="audio/mp3" />
             </audio>
             <img
               src={activeData[2].imgSrc}
-              style={{ height: "auto" }}
+              style={{ height: "auto", display: "block" }}
               onClick={handleImageClick}
             />
-             <audio ref={audioRef} style={{ display: "none" }} />
+            <audio ref={audioRef} style={{ display: "none" }} />
 
-              {clickableAreas.map((area, index) => (
-                <div
-                  key={index}
-                  className="clickable-area"
-                  style={{
-                    left: `${area.x1}%`,
-                    top: `${area.y1}%`,
-                    width: `${area.x2 - area.x1}%`,
-                    height: `${area.y2 - area.y1}%`,
-                  }}
-                  onMouseEnter={(e) => (e.target.style.cursor = "pointer")}
-                  onClick={() => playSound(area.sound)}
-                ></div>
-              ))}
+            {clickableAreas.map((area, index) => (
+              <div
+                key={index}
+                className="clickable-area"
+                style={{
+                  left: `${area.x1}%`,
+                  top: `${area.y1}%`,
+                  width: `${area.x2 - area.x1}%`,
+                  height: `${area.y2 - area.y1}%`,
+                }}
+                onMouseEnter={(e) => (e.target.style.cursor = "pointer")}
+                onClick={() => playSound(area.sound)}
+              ></div>
+            ))}
           </div>
         }
       />

@@ -3,14 +3,14 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 800px;
+  /* max-width: 800px; */
   margin: auto;
   font-family: "Helvetica Neue", sans-serif;
   padding: 20px;
   box-sizing: border-box;
-  background-color: #f8f9fa;
+  /* background-color: #f8f9fa; */
   border-radius: 16px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  /* box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); */
   position: relative;
   padding-bottom: 100px;
 }
@@ -54,7 +54,7 @@
 /* --- قسم الصور ومربعات الإسقاط --- */
 .image-section-horizontal {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: flex-start;
   gap: 25px;
   width: 100%;
@@ -313,6 +313,7 @@
 
   .image-section-horizontal {
     gap: 15px;
+    flex-wrap: wrap;
   }
 
   .image-container {

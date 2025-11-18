@@ -66,7 +66,7 @@ const Page3 = ({ goToUnit }) => {
         alt="Book Index"
         ref={imgRef}
         onClick={handleClick}
-        className="w-full h-full object-contain rounded-2xl shadow-lg"
+        className="w-full h-full rounded-2xl shadow-lg"
       />
       {clickableAreas.map((area, index) => (
         <div

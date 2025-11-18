@@ -17,34 +17,55 @@ export default function Page8_Q3() {
   ];
 
   const handleDotDown = (e) => {
+    e.preventDefault(); // مهم لمنع التمرير على الموبايل
+
+    const isTouch = e.type === "touchstart";
+    const clientX = isTouch ? e.touches[0].clientX : e.clientX;
+    const clientY = isTouch ? e.touches[0].clientY : e.clientY;
+
     startPoint = e.target;
+
     const rect = containerRef.current.getBoundingClientRect();
     const x = startPoint.getBoundingClientRect().left - rect.left + 8;
     const y = startPoint.getBoundingClientRect().top - rect.top + 8;
 
     setLines((prev) => [...prev, { x1: x, y1: y, x2: x, y2: y }]);
+
     window.addEventListener("mousemove", followMouse);
     window.addEventListener("mouseup", stopDrawingLine);
+
+    window.addEventListener("touchmove", followMouse);
+    window.addEventListener("touchend", stopDrawingLine);
   };
 
   const followMouse = (e) => {
+    const isTouch = e.type === "touchmove";
+    const clientX = isTouch ? e.touches[0].clientX : e.clientX;
+    const clientY = isTouch ? e.touches[0].clientY : e.clientY;
+
     const rect = containerRef.current.getBoundingClientRect();
     setLines((prev) => [
       ...prev.slice(0, -1),
       {
         x1: startPoint.getBoundingClientRect().left - rect.left + 8,
         y1: startPoint.getBoundingClientRect().top - rect.top + 8,
-        x2: e.clientX - rect.left,
-        y2: e.clientY - rect.top,
+        x2: clientX - rect.left,
+        y2: clientY - rect.top,
       },
     ]);
   };
 
   const stopDrawingLine = (e) => {
+    const isTouch = e.type === "touchend";
+    const clientX = isTouch ? e.changedTouches[0].clientX : e.clientX;
+    const clientY = isTouch ? e.changedTouches[0].clientY : e.clientY;
+
     window.removeEventListener("mousemove", followMouse);
     window.removeEventListener("mouseup", stopDrawingLine);
+    window.removeEventListener("touchmove", followMouse);
+    window.removeEventListener("touchend", stopDrawingLine);
 
-    const endDot = document.elementFromPoint(e.clientX, e.clientY);
+    const endDot = document.elementFromPoint(clientX, clientY);
 
     if (!endDot || !endDot.classList.contains("end-dot")) {
       setLines((prev) => prev.slice(0, -1));
@@ -52,6 +73,7 @@ export default function Page8_Q3() {
     }
 
     const rect = containerRef.current.getBoundingClientRect();
+
     const newLine = {
       x1: startPoint.getBoundingClientRect().left - rect.left + 8,
       y1: startPoint.getBoundingClientRect().top - rect.top + 8,
@@ -128,6 +150,7 @@ export default function Page8_Q3() {
                   className="dot start-dot"
                   data-letter="Hello! I’m John."
                   onMouseDown={handleDotDown}
+                  onTouchStart={handleDotDown}
                 ></div>
               </div>
             </div>
@@ -157,6 +180,7 @@ export default function Page8_Q3() {
                   className="dot start-dot"
                   data-letter="Goodbye!"
                   onMouseDown={handleDotDown}
+                  onTouchStart={handleDotDown}
                 ></div>
               </div>
             </div>
@@ -175,21 +199,20 @@ export default function Page8_Q3() {
             ))}
           </svg>
         </div>
-
-        <div className="action-buttons-container">
-          <button
-            onClick={() => {
-              setLines([]);
-              setWrongWords([]);
-            }}
-            className="try-again-button"
-          >
-            Start Again ↻
-          </button>
-          <button onClick={checkAnswers} className="check-button2">
-            Check Answer ✓
-          </button>
-        </div>
+      </div>{" "}
+      <div className="action-buttons-container">
+        <button
+          onClick={() => {
+            setLines([]);
+            setWrongWords([]);
+          }}
+          className="try-again-button"
+        >
+          Start Again ↻
+        </button>
+        <button onClick={checkAnswers} className="check-button2">
+          Check Answer ✓
+        </button>
       </div>
     </div>
   );

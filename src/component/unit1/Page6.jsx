@@ -13,6 +13,7 @@ import Pg6_3_1_Harley from "../../assets/unit1/sounds/Pg6_3.1_Harley.mp3";
 import Pg6_3_2_ModifiedHarley from "../../assets/unit1/sounds/Pg6_3.2_Modified Harley.mp3";
 import Popup from "../Popup/Popup";
 import { FaHeadphones } from "react-icons/fa";
+import AudioWithCaption from "../AudioWithCaption";
 
 const Page6 = () => {
   const audioRef = useRef(null);
@@ -79,7 +80,11 @@ const Page6 = () => {
         <FaHeadphones size={12} color="rgba(255, 255, 255, 1)" />
       </span>
 
-      <Popup isOpen={activePopup === 1} onClose={() => setActivePopup(null)}>
+      <Popup
+        isOpen={activePopup === 1}
+        isAudio={true}
+        onClose={() => setActivePopup(null)}
+      >
         <div
           style={{
             display: "flex",
@@ -87,9 +92,7 @@ const Page6 = () => {
             alignContent: "center",
           }}
         >
-          <audio controls>
-            <source src={CD4_Pg6_Grammar1_AdultLady} type="audio/mp3" />
-          </audio>
+          <AudioWithCaption src={CD4_Pg6_Grammar1_AdultLady} captions={""} />
         </div>
       </Popup>
 

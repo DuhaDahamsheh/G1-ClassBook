@@ -1,4 +1,11 @@
 /* شكل البوكس العام */
+.swal2-container {
+  z-index: 999999999 !important; /* أعلى من أي Popup عندك */
+}
+
+.swal2-popup {
+  z-index: 999999999 !important;
+}
 .my-popup {
   border-radius: clamp(15px, 2vw, 25px) !important;
   padding: clamp(15px, 2vw, 30px) !important;

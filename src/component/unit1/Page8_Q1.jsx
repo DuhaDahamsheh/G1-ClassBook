@@ -147,17 +147,27 @@ const Page8_Q1 = () => {
         <span className="ex-A">A</span> 1 Listen and write the missing letters.
         Number the pictures.
       </header>
-
-      <audio ref={audioRef} controls>
-        <source src={CD6_Pg8_Instruction1_AdultLady} type="audio/mp3" />
-      </audio>
-
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-start",
+          margin: "30px 0px",
+        }}
+      >
+        <audio ref={audioRef} controls>
+          <source src={CD6_Pg8_Instruction1_AdultLady} type="audio/mp3" />
+        </audio>
+      </div>
       <audio ref={clickAudioRef} style={{ display: "none" }} />
 
       {/* ✅ الكلمات */}
       <div
         className="div-input"
-        style={{ display: "flex", justifyContent: "space-around" }}
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+          marginBottom: "30px",
+        }}
       >
         {displayOrder.map((dataIndex, index) => (
           <div
@@ -178,14 +188,21 @@ const Page8_Q1 = () => {
                 updateAnswer(dataIndex, "letter", e.target.value)
               }
               style={{
-                width: "30px",
+                width: "40px",
                 textAlign: "center",
-                fontSize: "24px",
+                fontSize: "30px",
                 marginRight: "5px",
               }}
             />
 
-            {data[dataIndex].word.slice(1)}
+            <span
+              style={{
+                textAlign: "center",
+                fontSize: "25px",
+              }}
+            >
+              {data[dataIndex].word.slice(1)}
+            </span>
             {wrongLetters[dataIndex] && (
               <div
                 style={{
@@ -214,7 +231,15 @@ const Page8_Q1 = () => {
       </div>
 
       {/* ✅ الصور */}
-      <div className="exercise-image-div" style={{ display: "flex" }}>
+      <div
+        className="exercise-image-div"
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-around",
+          marginBottom: "20px",
+        }}
+      >
         {data.map((item, index) => (
           <img
             key={index}

@@ -211,7 +211,8 @@ const Page8_Q2 = () => {
           </div>
         </DragDropContext>
 
-        <div className="action-buttons-container">
+      
+      </div>  <div className="action-buttons-container">
           <button onClick={resetExercise} className="try-again-button">
             Start Again ↻
           </button>
@@ -219,7 +220,6 @@ const Page8_Q2 = () => {
             Check Answer ✓
           </button>
         </div>
-      </div>
     </>
   );
 };

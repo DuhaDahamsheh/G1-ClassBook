@@ -93,80 +93,104 @@ const Page4_vocabulary = () => {
   const nums = [num1, num2, num3, num4, num5];
 
   return (
-    <div style={{ textAlign: "center" }}>
-      <audio ref={mainAudioRef}  style={{ position:"relative",left:"11%" }} controls>
-        <source src={vocabulary} type="audio/mp3" />
-      </audio>
-
-      <audio ref={clickAudioRef} style={{ display: "none" }} />
-
-      <div style={{ position: "relative", display: "inline-block" }}>
-        <div style={{ bottom: "2%", right: "0%" }}>
-          <img
-            src={page2_2}
-            style={{
-              height: "170px",
-              width: "auto",
-              position: "absolute",
-              bottom: "0%",
-              right: "0%",
-              borderRadius: "5%",
-            }}
-          />
-          <div className="vocab_container" style={{ bottom: "2%"}}>
-            {[
-              "Goodbye!",
-              "How are you?",
-              "Fine, thank you.",
-              "Hello!",
-              "Good morning!",
-            ].map((text, i) => (
-              <h6 key={i} className={activeIndex === i ? "active" : ""}>
-                {i + 1} {text}
-              </h6>
-            ))}
-          </div>
-        </div>
-
-        {nums.map((num, i) => (
-          <img
-            key={i}
-            src={num}
-            className={`num-img ${activeIndex === i ? "active" : ""}`}
-            style={{
-              height: "20px",
-              width: "auto",
-              position: "absolute",
-              top: ["43%", "43%", "42%", "22%", "25%"][i],
-              left: ["14%", "54%", "71%", "40%", "32%"][i],
-            }}
-          />
-        ))}
-
-        <img
-          src={backgroundImage}
-          alt="interactive"
-          style={{ height: "460px", width: "auto" }}
-        />
-
-        {clickableAreas.map((area, index) => (
-          <div
-            key={index}
-            style={{
-              position: "absolute",
-              left: `${area.x1}%`,
-              top: `${area.y1}%`,
-              width: `${area.x2 - area.x1}%`,
-              height: `${area.y2 - area.y1}%`,
-              cursor: "pointer",
-            }}
-            onClick={() => playClickSound(area.sound)}
-          />
-        ))}
+    <>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-start",
+          margin: "0px 20px",
+          position:"relative",
+          left:"-15%",
+          alignItems:"center"
+        }}
+      >
+        <audio
+          ref={mainAudioRef}
+          controls
+        >
+          <source src={vocabulary} type="audio/mp3" />
+        </audio>
       </div>
+      <div
+        style={{
+          textAlign: "center",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <div style={{ position: "relative", display: "inline-block" }}>
+          <div style={{ bottom: "2%", right: "0%" }}>
+            <img
+              src={page2_2}
+              style={{
+                height: "170px",
+                width: "auto",
+                position: "absolute",
+                bottom: "0%",
+                right: "0%",
+                borderRadius: "5%",
+              }}
+            />
+            <div
+              className="vocab_container"
+              style={{ bottom: "2%", right: "6%" }}
+            >
+              {[
+                "Goodbye!",
+                "How are you?",
+                "Fine, thank you.",
+                "Hello!",
+                "Good morning!",
+              ].map((text, i) => (
+                <h6 key={i} className={activeIndex === i ? "active" : ""}>
+                  {i + 1} {text}
+                </h6>
+              ))}
+            </div>
+          </div>
 
+          {nums.map((num, i) => (
+            <img
+              key={i}
+              src={num}
+              className={`num-img ${activeIndex === i ? "active" : ""}`}
+              style={{
+                height: "20px",
+                width: "auto",
+                position: "absolute",
+                top: ["43%", "43%", "42%", "22%", "25%"][i],
+                left: ["14%", "54%", "71%", "40%", "32%"][i],
+              }}
+            />
+          ))}
+
+          <img
+            src={backgroundImage}
+            alt="interactive"
+            style={{ height: "500px", width: "auto" }}
+          />
+
+          {clickableAreas.map((area, index) => (
+            <div
+              key={index}
+              style={{
+                position: "absolute",
+                left: `${area.x1}%`,
+                top: `${area.y1}%`,
+                width: `${area.x2 - area.x1}%`,
+                height: `${area.y2 - area.y1}%`,
+                cursor: "pointer",
+              }}
+              onClick={() => playClickSound(area.sound)}
+            />
+          ))}
+        </div>
+      </div>{" "}
       {showContinue && (
-        <div style={{ display: "flex", justifyContent: "center" }}>
+        <div className="action-buttons-container ">
           <button
             className="play-btn swal-continue"
             onClick={togglePlay}
@@ -175,19 +199,18 @@ const Page4_vocabulary = () => {
             {paused ? (
               <>
                 Continue
-                <FaRegCirclePlay  size={20} style={{ color: "red" }} />
+                <FaRegCirclePlay size={20} style={{ color: "red" }} />
               </>
             ) : (
-               <>
+              <>
                 Pause
                 <CgPlayPauseO size={20} style={{ color: "red" }} />
               </>
             )}
-           
           </button>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
 body {
-  background: linear-gradient(to bottom right, #4f46e5, #7c3aed, #ec4899);
+  background: rgb(233, 233, 233);
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 input:focus {
@@ -22,6 +23,11 @@ input:focus {
   cursor: pointer;
 }
 
+.navbar-fixed {
+    position: relative;
+    z-index: 99999999;
+}
+
 .page_1-background,
 .page_2-background,
 .page_3-background,
@@ -39,15 +45,15 @@ input:focus {
   justify-content: center;
   align-items: center; /* حتى تتمركز الصورة عموديًا */
   width: auto;
-  height: 95vh; /* يغطي 95% من ارتفاع الشاشة */
+  /* height: 95vh; يغطي 95% من ارتفاع الشاشة */
   margin: 0;
   padding: 0;
 }
 
 /* إعداد الصورة نفسها */
 img {
-  height: 95vh;
-  width: 100vw;
+  height: 85vh;
+  width: auto;
 }
 
 /* ============page 4=============== */
@@ -84,16 +90,13 @@ img {
   filter: drop-shadow(0 0 6px gold);
 }
 
-
-
-
-.vocab_container{
-      position: absolute;
-    bottom: 5%;
-    right: 8%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+.vocab_container {
+  position: absolute;
+  bottom: 5%;
+  right: 8%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 .number-icon,
 .headset-icon-CD-page4-1,
@@ -134,7 +137,7 @@ img {
 .headset-icon-CD-page4-2 {
   position: absolute;
   top: 60%;
-  left: 4%;
+ left: 27%;
   background-color: #6bcff6;
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 2px;
@@ -194,7 +197,7 @@ img {
   border: rgb(255, 255, 255) solid 3px;
   padding: 5px;
   top: 35%;
-  left: 4%;
+ left: 18%;
   cursor: pointer;
 }
 
@@ -313,16 +316,16 @@ img {
 
 #text-0 {
   position: absolute;
-      top: 42%;
-  left: 12%;
-  font-size: 20px;
+    top: 30%;
+    left: 7%;
+  font-size: 43px;
 }
 #text-1 {
   cursor: pointer;
-  font-size: 20px;
+  font-size: 43px;
   position: absolute;
-      right: 29%;
-    top: 42%;
+  right: 20%;
+  top: 30%;
 }
 
 /*===========page 6 ====================*/
@@ -350,7 +353,7 @@ img {
   border: rgb(255, 255, 255) solid 2px;
   padding: 5px;
   top: 4%;
-     right: 59%;
+  right: 59%;
   cursor: pointer;
 }
 
@@ -428,7 +431,7 @@ img {
 }
 
 .header-title-page8 {
-  font-size: 25px;
+  font-size: 30px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   color: navy;
   font-weight: 700;
@@ -469,7 +472,7 @@ img {
   border: 2px solid #6ec1ff;
   border-radius: 6px;
   text-align: center;
-  font-size: 25px;
+  font-size: 30px;
   font-weight: bold;
   transition: transform 0.2s ease, font-size 0.2s ease;
 }
@@ -485,7 +488,7 @@ img {
 
 .number-of-q {
   color: rgb(105, 1, 147);
-  font-size: 25px;
+  font-size: 30px;
   font-weight: 700;
   margin-right: 10px;
 }
@@ -598,8 +601,8 @@ img {
   box-shadow: 0 6px 12px rgba(255, 193, 7, 0.3);
 }
 
-.play-btn:hover{
-    background-color: #1b92f4;
+.play-btn:hover {
+  background-color: #1b92f4;
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(255, 193, 7, 0.3);
 }

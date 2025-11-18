@@ -1,70 +1,83 @@
 import React, { useState, useRef, useEffect } from "react";
-import backgroundImage from "../../assets/img_unit2/imgs/find img.jpg";
-import ValidationAlert from "../Popup/ValidationAlert";
-import page2_2 from "../../assets/img_unit2/imgs/unit2 vocab.jpg";
+import backgroundImage from "../../assets/unit4/imgs/G1_U4_Pg_28-29 copy.jpg";
 import vocabulary from "../../assets/img_unit2/sounds-unit2/Pg10_Vocabulary_Adult Lady.mp3";
-import { IoCaretForwardCircle } from "react-icons/io5";
-const Unit2_Page1_Vocab = () => {
+import { CgPlayPauseO } from "react-icons/cg";
+import { FaRegCirclePlay } from "react-icons/fa6";
+import page2_2 from "../../assets/img_unit2/imgs/unit2 vocab-3CQVwmCm.jpg";
+import num1 from"../../assets/unit4/imgs/Num1.svg";
+import num2 from "../../assets/unit4/imgs/Num2.svg";
+import num3 from "../../assets/unit4/imgs/Num3.svg";
+import num4 from "../../assets/unit4/imgs/Num4.svg";
+import num5 from "../../assets/unit4/imgs/Num5.svg";
+import num6 from "../../assets/unit4/imgs/Num6.svg";
+import num7 from "../../assets/unit4/imgs/Num7.svg";
+import num8 from "../../assets/unit4/imgs/Num8.svg";
+import "./Unit4_Page1.css"
+const Unit4_Page1_Vocab = () => {
   const audioRef = useRef(null);
 
   const mainAudioRef = useRef(null); // ✅ الأوديو الرئيسي
   const clickAudioRef = useRef(null); // ✅ صوت المناطق
-
+  const [showContinue, setShowContinue] = useState(false);
   const [paused, setPaused] = useState(false);
-  const stopAtSecond = 3;
+  const [activeIndex, setActiveIndex] = useState(null);
+  const stopAtSecond = 3.5;
 
-  useEffect(() => {
-    if (!mainAudioRef.current) return;
-
-    mainAudioRef.current.currentTime = 0;
-    mainAudioRef.current.play();
-
-    const interval = setInterval(() => {
-      if (mainAudioRef.current.currentTime >= stopAtSecond) {
-        mainAudioRef.current.pause();
-        setPaused(true);
-        clearInterval(interval);
-      }
-    }, 250);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const handleImageClick = (e) => {
-    const rect = e.target.getBoundingClientRect();
-    const xPercent = ((e.clientX - rect.left) / rect.width) * 100;
-    const yPercent = ((e.clientY - rect.top) / rect.height) * 100;
-
-    console.log("X%:", xPercent.toFixed(2), "Y%:", yPercent.toFixed(2));
-
-    checkAreaAndPlaySound(xPercent, yPercent);
-  };
-
-  const clickableAreas = [
-    { x1: 16.0, y1: 44.0, x2: 18.0, y2: 46.0, sound: "" },
-    { x1: 55.0, y1: 45.0, x2: 57.0, y2: 47.0, sound: "" },
-    { x1: 70.0, y1: 42.0, x2: 72.0, y2: 44.0, sound: "" },
-    { x1: 9.0, y1: 17.0, x2: 33.0, y2: 21.0, sound: "" },
-    { x1: 35.0, y1: 28.0, x2: 38.0, y2: 30.0, sound: "" },
+  const wordTimings = [
+    { start: 3.9, end: 6.2 }, // party hat
+    { start: 6.3, end: 8.5 }, // jellow
+    { start: 8.6, end: 11.5 }, // cake
+    { start: 11.6, end: 14.6 }, // Hello
+    { start: 14.7, end: 17.2 }, // Good morning
+    { start: 17.3, end: 19.8 },
+    { start: 19.9, end: 23.6 },
   ];
 
-  const checkAreaAndPlaySound = (x, y) => {
-    const area = clickableAreas.find(
-      (a) => x >= a.x1 && x <= a.x2 && y >= a.y1 && y <= a.y2
-    );
+  useEffect(() => {
+    const audio = mainAudioRef.current;
+    if (!audio) return;
 
-    console.log("Matched Area:", area);
+    audio.currentTime = 0;
+    audio.play();
 
-    if (area) playSound(area.sound);
-  };
-  const playSound = (soundPath) => {
-    console.log(soundPath);
-    if (clickAudioRef.current) {
-      clickAudioRef.current.src = soundPath;
-      clickAudioRef.current.play();
+    const interval = setInterval(() => {
+      if (audio.currentTime >= stopAtSecond) {
+        audio.pause();
+        setPaused(true);
+        setShowContinue(true); // 👈 خلي الكبسة تضل ظاهرة دائماً بعد ثانية 3
+        clearInterval(interval);
+      }
+    }, 200);
+
+    const handleTimeUpdate = () => {
+      const current = audio.currentTime;
+      const index = wordTimings.findIndex(
+        (t) => current >= t.start && current <= t.end
+      );
+      setActiveIndex(index !== -1 ? index : null);
+    };
+
+    audio.addEventListener("timeupdate", handleTimeUpdate);
+
+    return () => {
+      audio.removeEventListener("timeupdate", handleTimeUpdate);
+      clearInterval(interval);
+    };
+  }, []);
+
+    const togglePlay = () => {
+    const audio = mainAudioRef.current;
+
+    if (audio.paused) {
+      audio.play();
+      setPaused(false);
+    } else {
+      audio.pause();
+      setPaused(true);
     }
   };
-
+ 
+const nums = [num1, num2, num3, num4, num5, num6, num7 ,num8];
   return (
     <div style={{ textAlign: "center" }}>
       <audio ref={mainAudioRef} controls>
@@ -72,58 +85,86 @@ const Unit2_Page1_Vocab = () => {
       </audio>
       <audio ref={clickAudioRef} style={{ display: "none" }} />
       <div style={{ position: "relative", display: "inline-block" }}>
-        <img
-          src={page2_2}
-          style={{
-            height: "160px",
-            width: "auto",
-            position: "absolute",
-            bottom: "5%",
-            right: "5%",
-            borderRadius: "5%",
-          }}
-        />
-        <img
-          src={backgroundImage}
-          alt="interactive"
-          style={{ cursor: "pointer", height: "460px", width: "auto" }}
-          onClick={handleImageClick}
-        />
-
-        {clickableAreas.map((area, index) => (
-          <div
-            key={index}
-            style={{
-              position: "absolute",
-              left: `${area.x1}%`,
-              top: `${area.y1}%`,
-              width: `${area.x2 - area.x1}%`,
-              height: `${area.y2 - area.y1}%`,
-              cursor: "pointer",
-            }}
-            onClick={() => playClickSound(area.sound)}
-          />
-        ))}
-      </div>
-
-      {paused ? (
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <button
-            className="play-btn swal-continue"
-            onClick={() => {
-              mainAudioRef.current.play();
-              // setPaused(false);
-            }}
-            style={{ marginTop: "18px" }}
-          >
-            Continue <IoCaretForwardCircle size={20} style={{ color: "red" }} />
-          </button>
-        </div>
-      ) : (
-        <></>
-      )}
+             {/* كلمة + صورة صغيرة */}
+             <div style={{ bottom: "0%", right: "0%" }}>
+               <img
+                 src={page2_2}
+                 style={{
+                   height: "210px",
+                   width: "auto",
+                   position: "absolute",
+                   bottom: "0%",
+                   right: "0%",
+                   borderRadius: "8%",
+                 }}
+               />
+     
+               {/* النصوص */}
+               <div
+                 className="vocab_container"
+                 style={{ bottom: "2%", right: "0.5%" }}
+               >
+                 {[
+                   "numbers",
+                   "Close your book.",
+                   "Open your book",
+                   "Make a line.",
+                   "Listen! ",
+                   "Quiet! ",
+                   "Take out your pencil.",
+                 ].map((text, i) => (
+                   <h6 key={i} className={activeIndex === i ? "active" : ""}>
+                     {i + 1} {text}
+                   </h6>
+                 ))}
+               </div>
+             </div>
+     
+             {/* الأرقام */}
+             {nums.map((num, i) => (
+               <img
+                 key={i}
+                 src={num}
+                 id={`num-${i + 1}-unit4`}
+                 className={`num-img ${activeIndex === i ? "active" : ""}`}
+                 style={{
+                   height: "20px",
+                   width: "auto",
+                   position: "absolute",
+                 }}
+               />
+             ))}
+             {/* الصورة الرئيسية */}
+             <img
+               src={backgroundImage}
+               alt="interactive"
+               style={{ height: "460px", width: "auto" }}
+             />
+           </div>
+     
+           {showContinue && (
+             <div style={{ display: "flex", justifyContent: "center" }}>
+               <button
+                 className="play-btn swal-continue"
+                 onClick={togglePlay}
+                 style={{ marginTop: "18px" }}
+               >
+                 {paused ? (
+                   <>
+                     Continue
+                     <FaRegCirclePlay size={20} style={{ color: "red" }} />
+                   </>
+                 ) : (
+                   <>
+                     Pause
+                     <CgPlayPauseO size={20} style={{ color: "red" }} />
+                   </>
+                 )}
+               </button>
+             </div>
+           )}
     </div>
   );
 };
 
-export default Unit2_Page1_Vocab;
+export default Unit4_Page1_Vocab;

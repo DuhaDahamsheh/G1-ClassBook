@@ -13,6 +13,7 @@ import dSound from "../../assets/unit1/sounds/Pg4_1.1_Adult Lady.mp3";
 import { PiCursorClickBold } from "react-icons/pi";
 import Page4_Interactive1 from "./Page4_Interactive1";
 import Page4_vocabulary from "./Page4_vocabulary";
+import AudioWithCaption from "../AudioWithCaption";
 const Page4 = () => {
   const [activePopup, setActivePopup] = useState(null);
   const activeData = [
@@ -37,6 +38,11 @@ const Page4 = () => {
       imgSrc: listenImg,
     },
   ];
+  const captionsExample = [
+    { start: 0, end: 1, text: "Hello!" },
+    { start: 1, end: 2.2, text: "My name is Tom." },
+    { start: 2.2, end: 4, text: "I like apples." },
+  ];
 
   const audioRef = useRef(null);
   const introRef = useRef(null);
@@ -50,12 +56,11 @@ const Page4 = () => {
     checkAreaAndPlaySound(xPercent, yPercent);
   };
 
-
   const clickableAreas = [
-    { x1: 10.7, y1: 42.1, x2: 17.4, y2: 61.8, sound: dSound },
-    { x1: 27.0, y1: 30.0, x2: 39.4, y2: 75.0, sound: deer },
-    { x1: 55.7, y1: 29.5, x2:66.0, y2: 74.0, sound: dish },
-    { x1: 81.9, y1: 29.5, x2: 94.0, y2:75.0, sound: duck },
+    { x1: 10.7, y1: 46.1, x2: 17.4, y2: 56.8, sound: dSound },
+    { x1: 26.0, y1: 39.0, x2: 40.0, y2: 66.0, sound: deer },
+    { x1: 54.7, y1: 39.0, x2: 67.0, y2: 66.0, sound: dish },
+    { x1: 81.9, y1: 39.0, x2: 94.0, y2: 66.0, sound: duck },
     ,
   ];
   const checkAreaAndPlaySound = (x, y) => {
@@ -96,12 +101,19 @@ const Page4 = () => {
         <Popup
           isOpen={activePopup === 1}
           onClose={() => setActivePopup(null)}
+          isAudio={true}
           children={
-            <div style={{display:"flex" ,justifyContent:"center",alignContent:"center" }}>
-         
-              <audio controls>
-                <source src={activeData[0].sound} type="audio/mp3" />
-              </audio>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignContent: "center",
+              }}
+            >
+              <AudioWithCaption
+                src={activeData[0].sound}
+                captions={captionsExample}
+              />
             </div>
           }
         />
@@ -148,14 +160,22 @@ const Page4 = () => {
           isOpen={activePopup === 3}
           onClose={() => setActivePopup(null)}
           children={
-            <div style={{ position: "relative" }}>
+            <div
+              style={{
+                position: "relative",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                height: "100%",
+              }}
+            >
               <audio ref={introRef} autoPlay style={{ display: "none" }}>
                 <source src={activeData[2].sound} type="audio/mp3" />
               </audio>
 
               <img
                 src={activeData[2].imgSrc}
-                style={{ height: "auto"}}
+                style={{ height: "auto", display: "block" }}
                 onClick={handleImageClick}
               />
               <audio ref={audioRef} style={{ display: "none" }} />

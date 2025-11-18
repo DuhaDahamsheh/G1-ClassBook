@@ -83,13 +83,13 @@ const Unit2_Page5_Q1 = () => {
       <h5 className="header-title-page8">
         <span className="ex-A">A</span>{" "}
         <span style={{ color: "purple" }}>1</span> Which picture begins with the
-        letter? Write <span style={{ color: "red" }}>✓</span>
+        letter? Write <span style={{ color: "red" }}>✓</span>.
       </h5>
 
-      <div className="imgFeild" style={{ display: "flex", marginBottom: "100px", gap: "13px" }}>
+      <div className="imgFeild" style={{ display: "flex", margin: "100px 0px", gap: "13px" ,justifyContent:"space-around"}}>
         {exerciseData.map((item, rowIndex) => (
           <div key={rowIndex} className="row1" style={{ display: "flex",position:"relative" }}>
-            <span className="letter">{item.letter}</span>
+            <span className="letter-Q1-Pag5-Unit2">{item.letter}</span>
 
             {item.options.map((opt, optIndex) => (
               <div
@@ -113,8 +113,8 @@ const Unit2_Page5_Q1 = () => {
                   src={opt.src}
                   className="exercise-image"
                   style={{
-                    width: "120px",
-                    height: "120px",
+                    width: "130px",
+                    height: "130px",
                     objectFit: "contain",
                     cursor: "pointer",
                   }}
@@ -149,7 +149,8 @@ const Unit2_Page5_Q1 = () => {
           </div>
         ))}
 
-        <div className="action-buttons-container">
+        
+      </div><div className="action-buttons-container">
           <button onClick={resetAnswers} className="try-again-button">
             Start Again ↻
           </button>
@@ -157,7 +158,6 @@ const Unit2_Page5_Q1 = () => {
             Check Answer ✓
           </button>
         </div>
-      </div>
     </div>
   );
 };

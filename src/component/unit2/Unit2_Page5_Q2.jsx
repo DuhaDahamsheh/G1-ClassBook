@@ -18,7 +18,7 @@ const Unit2_Page5_Q2 = () => {
   ];
 
   const handleSelect = (index, value) => {
-    if (showResult) return; // بعد الفحص ما يسمح بالتغيير
+
     const newAnswers = [...answers];
     newAnswers[index] = value;
     setAnswers(newAnswers);
@@ -65,20 +65,21 @@ const Unit2_Page5_Q2 = () => {
         <span style={{ color: "red" }}>b</span> or{" "}
         <span style={{ color: "red" }}>p</span>? Listen and circle.
       </h5>
-
+<div style={{display:"flex" ,justifyContent:"center"}}>
+        <audio controls>
+          <source src={CD13_Pg14_Instruction1_AdultLady} type="audio/mp3" />
+        </audio>
+</div>
       <div
         className="imgFeild"
         style={{
           display: "flex",
-          marginBottom: "100px",
+          margin: "70px 0px",
           gap: "13px",
           flexDirection: "column",
         }}
       >
-        <audio controls>
-          <source src={CD13_Pg14_Instruction1_AdultLady} type="audio/mp3" />
-        </audio>
-
+        
         <div className="bp-container">
           {items.map((item, index) => (
             <div className="bp-item" key={index}>

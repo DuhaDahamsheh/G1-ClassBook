@@ -14,6 +14,7 @@ import Pg7_5_2_Mom from "../../assets/unit1/sounds/Pg7_5.2_Mom.mp3";
 import Pg7_6_1_Mom from "../../assets/unit1/sounds/Pg7_6.1_Mom and Dad.mp3";
 import Popup from "../Popup/Popup";
 import { FaHeadphones } from "react-icons/fa";
+import AudioWithCaption from "../AudioWithCaption";
 const Page7 = () => {
   const audioRef = useRef(null);
   const [activePopup, setActivePopup] = useState(null);
@@ -29,11 +30,11 @@ const Page7 = () => {
   const clickableAreas = [
     { x1: 6.33, y1: 9.4, x2: 28.43, y2: 13.3, sound: Pg7_2_1_AdultLady },
     { x1: 29.25, y1: 9.4, x2: 50.14, y2: 13.3, sound: Pg7_2_2_AdultLady },
-    { x1: 51.0, y1: 9.4, x2: 72.0, y2:13.3, sound: Pg7_2_3_AdultLady },
+    { x1: 51.0, y1: 9.4, x2: 72.0, y2: 13.3, sound: Pg7_2_3_AdultLady },
     { x1: 73.0, y1: 9.4, x2: 89.0, y2: 13.3, sound: Pg7_2_4_AdultLady },
-    { x1:6.5, y1: 16.3, x2: 31.7, y2: 19.6, sound: Pg7_3_1_Stella },
+    { x1: 6.5, y1: 16.3, x2: 31.7, y2: 19.6, sound: Pg7_3_1_Stella },
     { x1: 19.4, y1: 41.0, x2: 44.8, y2: 44.6, sound: Pg7_3_2_Mom },
-    { x1: 50.0, y1: 19.80, x2: 70.2, y2: 22.8, sound: Pg7_4_1_Hansel },
+    { x1: 50.0, y1: 19.8, x2: 70.2, y2: 22.8, sound: Pg7_4_1_Hansel },
     { x1: 70.25, y1: 47.0, x2: 90.0, y2: 50.4, sound: Pg7_4_2_ModifiedJack },
     { x1: 7.5, y1: 57.4, x2: 27.0, y2: 61.2, sound: Pg7_5_1_Dad },
     { x1: 30.0, y1: 59.4, x2: 49.0, y2: 62.8, sound: Pg7_5_2_Mom },
@@ -65,13 +66,13 @@ const Page7 = () => {
           key={index}
           className="clickable-area"
           style={{
-            position:"absolute",
+            position: "absolute",
             left: `${area.x1}%`,
             top: `${area.y1}%`,
             width: `${area.x2 - area.x1}%`,
             height: `${area.y2 - area.y1}%`,
           }}
-           onClick={() => playSound(area.sound)} 
+          onClick={() => playSound(area.sound)}
           onMouseEnter={(e) => (e.target.style.cursor = "pointer")}
         ></div>
       ))}
@@ -83,12 +84,17 @@ const Page7 = () => {
       </span>
       <Popup
         isOpen={activePopup === 1}
+        isAudio={true}
         onClose={() => setActivePopup(null)}
         children={
-          <div style={{display:"flex" ,justifyContent:"center",alignContent:"center" }}>
-            <audio controls>
-              <source src={CD5_Pg7_Grammar2_AdultLady} type="audio/mp3" />
-            </audio>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignContent: "center",
+            }}
+          >
+            <AudioWithCaption src={CD5_Pg7_Grammar2_AdultLady} captions={""} />
           </div>
         }
       />

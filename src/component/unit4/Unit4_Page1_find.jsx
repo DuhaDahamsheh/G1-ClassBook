@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import find_img from "../../assets/img_unit2/imgs/find img.jpg"
+import find_img from "../../assets/unit4/imgs/G1_U4_Pg_28-29 copy.jpg"
 import find_title from "../../assets/img_unit2/imgs/unit2_page1_findTitle.png"
 import Popup from "../Popup/Popup";
 import ValidationAlert from "../Popup/ValidationAlert";

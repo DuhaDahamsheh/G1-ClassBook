@@ -8,6 +8,7 @@ import Page8_Q3 from "./Page8_Q3";
 import Page8_Q2 from "./Page8_Q2";
 import Page8_Q1 from "./Page8_Q1";
 import Page8_Q4 from "./Page8_Q4";
+import AudioWithCaption from "../AudioWithCaption";
 const Page8 = () => {
   const [activePopup, setActivePopup] = useState(null);
 
@@ -23,11 +24,19 @@ const Page8 = () => {
       <Popup
         isOpen={activePopup === 1}
         onClose={() => setActivePopup(null)}
+        isAudio={true}
         children={
-          <div style={{display:"flex" ,justifyContent:"center",alignContent:"center" }}>
-            <audio controls>
-              <source src={CD6_Pg8_Instruction1_AdultLady} type="audio/mp3" />
-            </audio>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignContent: "center",
+            }}
+          >
+            <AudioWithCaption
+              src={CD6_Pg8_Instruction1_AdultLady}
+              captions={""}
+            />
           </div>
         }
       />

@@ -85,7 +85,7 @@
   gap: 12px;
   min-width: 140px; /* غيري الرقم حسب اللي بناسبك */
   min-height: 120px; /* اختياري */
-align-self: baseline;
+/* align-self: baseline; */
   padding: 10px;
 }
 

@@ -8,16 +8,18 @@ const Page4_Interactive1 = () => {
 
   // ✅ منطقة المطعم (بالنسب المئوية)
   const targetArea = {
-    x1: 30,
-    y1: 12,
-    x2: 60,
-    y2: 38,
+    x1: 28,
+    y1: 10.5,
+    x2: 56,
+    y2: 35,
   };
 
   const handleImageClick = (e) => {
-    const rect = e.target.getBoundingClientRect();
+    const rect = e.currentTarget.getBoundingClientRect();
     const xPercent = ((e.clientX - rect.left) / rect.width) * 100;
     const yPercent = ((e.clientY - rect.top) / rect.height) * 100;
+
+    console.log(xPercent, yPercent);
 
     setClickedPoint({
       x: xPercent,
@@ -75,23 +77,32 @@ const Page4_Interactive1 = () => {
   };
 
   return (
-    <div style={{ textAlign: "center" }}>
-          <div style={{display:"flex"}}>
-    <img
-          src={Rabbit}
-          style={{height: "50px", width: "auto" }}
-        />{" "}  
-        
-      <h5 className="header-title-page8">
-        I need your help. Can you help me find the restaurant in the picture?
-      </h5>
+    <>
+    <div
+      style={{
+        textAlign: "center",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <img src={Rabbit} style={{ height: "50px", width: "auto" }} />{" "}
+        <h5 className="header-title-page8">
+          I need your help. Can you help me find the restaurant in the picture?
+        </h5>
       </div>
-      <div style={{ position: "relative", display: "inline-block" }}>
+      <div style={{ width: "auto", maxWidth: "600px", position: "relative" }}>
         <img
           src={backgroundImage}
           alt="interactive"
-          style={{ cursor: "pointer", height: "460px", width: "auto" }}
           onClick={handleImageClick}
+          style={{
+            width: "auto",
+            height: "80%",
+            cursor: "pointer",
+            display: "block",
+          }}
         />
 
         {/* ✅ الدائرة الحمراء في مكان الكبس */}
@@ -128,12 +139,11 @@ const Page4_Interactive1 = () => {
         )}
       </div>
 
-      <div
-        style={{
-          marginTop: "18px",
-          display: "flex",
-          justifyContent: "space-around",
-        }}
+     
+    </div>
+     <div
+     className="action-buttons-container "
+       
       >
         <button className="try-again-button" onClick={handleStartAgain}>
           Start Again ↻
@@ -141,8 +151,7 @@ const Page4_Interactive1 = () => {
         <button className="check-button2" onClick={handleCheck}>
           Check Answer ✓
         </button>
-      </div>
-    </div>
+      </div></>
   );
 };
 

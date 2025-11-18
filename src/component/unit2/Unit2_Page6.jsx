@@ -37,6 +37,7 @@ const Unit2_Page6 = () => {
       </span>
       <Popup
         isOpen={activePopup === 2}
+        isAudio={true}
         onClose={() => setActivePopup(null)}
         children={
           <div style={{display:"flex" ,justifyContent:"center",alignContent:"center" }}>
@@ -54,6 +55,7 @@ const Unit2_Page6 = () => {
       </span>
       <Popup
         isOpen={activePopup === 3}
+        isAudio={true}
         onClose={() => setActivePopup(null)}
         children={
           <div style={{display:"flex" ,justifyContent:"center",alignContent:"center" }}>

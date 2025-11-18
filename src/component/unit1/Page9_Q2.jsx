@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import ValidationAlert from "../Popup/ValidationAlert";
 import "./Page9_Q2.css";
 
@@ -19,6 +19,11 @@ export default function Page9_Q2() {
     "transparent",
     "transparent",
   ]);
+  const correctMatches = [
+    { word1: "Good", word2: "afternoon" },
+    { word1: "Fine,", word2: "thank you" },
+    { word1: "How", word2: "are you" },
+  ];
 
   const handleWordClick = (index) => {
     setSelectedWordIndex(index);
@@ -32,46 +37,63 @@ export default function Page9_Q2() {
   };
 
   const handleDotDown = (e) => {
+    e.preventDefault(); // مهم لمنع التمرير على الموبايل
+
+    const isTouch = e.type === "touchstart";
+    const clientX = isTouch ? e.touches[0].clientX : e.clientX;
+    const clientY = isTouch ? e.touches[0].clientY : e.clientY;
+
     startPoint = e.target;
+
     const rect = containerRef.current.getBoundingClientRect();
     const x = startPoint.getBoundingClientRect().left - rect.left + 8;
     const y = startPoint.getBoundingClientRect().top - rect.top + 8;
+
     setLines((prev) => [...prev, { x1: x, y1: y, x2: x, y2: y }]);
+
     window.addEventListener("mousemove", followMouse);
     window.addEventListener("mouseup", stopDrawingLine);
+
+    window.addEventListener("touchmove", followMouse);
+    window.addEventListener("touchend", stopDrawingLine);
   };
 
-  const correctMatches = [
-    { word1: "Good", word2: "afternoon" },
-    { word1: "Fine,", word2: "thank you" },
-    { word1: "How", word2: "are you" },
-  ];
-
   const followMouse = (e) => {
+    const isTouch = e.type === "touchmove";
+    const clientX = isTouch ? e.touches[0].clientX : e.clientX;
+    const clientY = isTouch ? e.touches[0].clientY : e.clientY;
+
     const rect = containerRef.current.getBoundingClientRect();
     setLines((prev) => [
       ...prev.slice(0, -1),
       {
         x1: startPoint.getBoundingClientRect().left - rect.left + 8,
         y1: startPoint.getBoundingClientRect().top - rect.top + 8,
-        x2: e.clientX - rect.left,
-        y2: e.clientY - rect.top,
+        x2: clientX - rect.left,
+        y2: clientY - rect.top,
       },
     ]);
   };
 
   const stopDrawingLine = (e) => {
+    const isTouch = e.type === "touchend";
+    const clientX = isTouch ? e.changedTouches[0].clientX : e.clientX;
+    const clientY = isTouch ? e.changedTouches[0].clientY : e.clientY;
+
     window.removeEventListener("mousemove", followMouse);
     window.removeEventListener("mouseup", stopDrawingLine);
+    window.removeEventListener("touchmove", followMouse);
+    window.removeEventListener("touchend", stopDrawingLine);
 
-    const endDot = document.elementFromPoint(e.clientX, e.clientY);
+    const endDot = document.elementFromPoint(clientX, clientY);
 
-    if (!endDot.classList.contains("end-dot1")) {
+    if (!endDot || !endDot.classList.contains("end-dot1")) {
       setLines((prev) => prev.slice(0, -1));
       return;
     }
 
     const rect = containerRef.current.getBoundingClientRect();
+
     const newLine = {
       x1: startPoint.getBoundingClientRect().left - rect.left + 8,
       y1: startPoint.getBoundingClientRect().top - rect.top + 8,
@@ -83,6 +105,28 @@ export default function Page9_Q2() {
 
     setLines((prev) => [...prev.slice(0, -1), newLine]);
   };
+
+  useEffect(() => {
+    const hidePalette = (e) => {
+      // إذا الكبس كان على دائرة اللون أو على الكلمة المختارة → لا تخفيه
+      if (
+        e.target.classList.contains("color-circle") ||
+        e.target.classList.contains("H5")
+      ) {
+        return;
+      }
+
+      setSelectedWordIndex(null);
+    };
+
+    // إضافة listener
+    document.addEventListener("click", hidePalette);
+
+    // تنظيف عند الخروج
+    return () => {
+      document.removeEventListener("click", hidePalette);
+    };
+  }, []);
 
   const checkAnswers = () => {
     // 1️⃣ إذا في خطوط ناقصة
@@ -148,7 +192,7 @@ export default function Page9_Q2() {
         </div>
       )}
 
-      <div className="container2" ref={containerRef}>
+      <div className="container3" ref={containerRef}>
         <div className="word-section1">
           {["Good", "Fine,", "How"].map((word, i) => (
             <div style={{ position: "relative" }}>
@@ -172,6 +216,7 @@ export default function Page9_Q2() {
                   className="dot1 start-dot1"
                   data-letter={word}
                   onMouseDown={handleDotDown}
+                  onTouchStart={handleDotDown}
                 ></div>
               </h5>
               {wrongWords.includes(word) && ( // ⭐ تم التعديل هون
