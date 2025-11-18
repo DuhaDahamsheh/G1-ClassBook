@@ -131,7 +131,7 @@ const Page8_Q4 = () => {
             <div className="word-group" key={groupIndex}>
               {group.map((num, letterIndex) => (
                 <div className="input-h6" key={letterIndex}>
-                  <h6>{num}</h6>
+                  <h6 className="unit1-page8-q4-nums" style={{fontSize:"30px" ,fontWeight:"bold"}}>{num}</h6>
                    <div className="input-wrapper">  {/* ⭐ تم التعديل هون */}
                   <input
                     className="inputs"

@@ -1,4 +1,3 @@
-
 .letter-of-Q {
   border: 5px #5acbf4 solid;
   background-color: #5acbf4;
@@ -32,7 +31,7 @@
 }
 
 .cell {
-  font-size: clamp(20px, 2vw, 15px);
+  font-size: clamp(25px, 2vw, 20px);
   font-weight: 600;
   text-align: center;
   min-width: 18px;
@@ -126,7 +125,6 @@
   justify-content: center;
 }
 
-
 /* ⭐ تم إضافته */
 .input-wrapper {
   position: relative; /* مهم جدا حتى يصير المرجع */
@@ -134,8 +132,8 @@
 }
 
 .error-mark1 {
-    position: absolute;
-  top: 0px;   /* تحريك لفوق */
+  position: absolute;
+  top: 0px; /* تحريك لفوق */
   right: -8px; /* تحريك لليمين */
   width: 20px;
   height: 20px;
@@ -151,8 +149,8 @@
   pointer-events: none; /* عشان ما تأثر على السحب أو الكتابة */
 }
 
-.input-h6{
-      display: flex;
-    flex-direction: column;
-    align-items: center;
+.input-h6 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

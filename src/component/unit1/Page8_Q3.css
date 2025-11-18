@@ -57,7 +57,7 @@
 /* النص يأخذ مساحة عشان النقطة ما تتحرك */
 .word-text {
   flex: 1;
-  font-size: 18px;
+  font-size: 30px;
   font-weight: 700;
 }
 
