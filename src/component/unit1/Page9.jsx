@@ -6,10 +6,16 @@ import Popup from "../Popup/Popup";
 import Page9_Q3 from "./Page9_Q3";
 import Page9_Q1 from "./Page9_Q1";
 import Page9_Q2 from "./Page9_Q2";
+import song from "../../assets/unit1/sounds/pg9-song-all.mp3";
+import AudioWithCaption from "../AudioWithCaption";
 const Page9 = () => {
   const audioRef = useRef(null);
   const [activePopup, setActivePopup] = useState(null);
-
+  const captionsExample = [
+    { start: 0, end: 1, text: "Hello!" },
+    { start: 1, end: 2.2, text: "My name is Tom." },
+    { start: 2.2, end: 4, text: "I like apples." },
+  ];
   return (
     <div className="page_9-background">
       <img src={page_9} />
@@ -24,9 +30,15 @@ const Page9 = () => {
         isAudio={true}
         onClose={() => setActivePopup(null)}
         children={
-          <>
-            <Page9_Q3 />
-          </>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignContent: "center",
+            }}
+          >
+            <AudioWithCaption src={song} captions={captionsExample} />
+          </div>
         }
       />
 
@@ -57,7 +69,7 @@ const Page9 = () => {
         onClose={() => setActivePopup(null)}
         children={
           <>
-            <Page9_Q2/>
+            <Page9_Q2 />
           </>
         }
       />
