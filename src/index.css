@@ -250,7 +250,6 @@ img {
   left: 31%;
 }
 
-
 /*===========page5============*/
 
 .headset-icon-CD-page5 {
@@ -337,8 +336,8 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 2px; */
   padding: 5px;
-  top: 4.5%;
-  left: 36%;
+  top: 4%;
+  left: 35%;
   cursor: pointer;
 }
 
@@ -456,7 +455,7 @@ img {
 
 .exercise-image {
   height: auto;
-    width: 260px;
+  width: 260px;
   cursor: pointer;
   transition: 0.2s;
   border: solid 2px #6ec1ff;
@@ -627,7 +626,7 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 3px; */
   padding: 5px;
-     top: 3.5%;
+  top: 3.5%;
   left: 33%;
   cursor: pointer;
 }
