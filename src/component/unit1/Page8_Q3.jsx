@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
-import img1 from "../../assets/unit1/imgs/img2.svg";
-import img2 from "../../assets/unit1/imgs/img1.svg";
+import img1 from "../../assets/unit1/imgs/Read and match 01.png";
+import img2 from "../../assets/unit1/imgs/Read and match 02.png";
 
 import "./Page8_Q3.css";
 import ValidationAlert from "../Popup/ValidationAlert";

@@ -14,18 +14,6 @@ const Unit3_Page6 = () => {
   return (
     <div className="unit2-page-background">
       <img src={page_6} />
-      <span className="click-icon-unit3-page6-1 shadow-md hover:scale-110 transition">
-        <PiCursorClickBold
-          size={12}
-          color="rgb(255, 255, 255)"
-          onClick={() => setActivePopup(1)}
-        />
-      </span>
-      <Popup
-        isOpen={activePopup === 1}
-        onClose={() => setActivePopup(null)}
-        children={<></>}
-      />
       <span
         className="click-icon-unit3-page6-2 shadow-md hover:scale-110 transition"
         onClick={() => setActivePopup(2)}

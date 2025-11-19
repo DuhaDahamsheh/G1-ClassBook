@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import find_img from "../../assets/unit4/imgs/G1_U4_Pg_28-29 copy.jpg"
-import find_title from "../../assets/img_unit2/imgs/unit2_page1_findTitle.png"
+import find_img from "../../assets/unit4/imgs/G1_U4_Pg_28-29 copy.jpg";
+// import find_title from "../../assets/img_unit2/imgs/unit2_page1_findTitle.png";
 import Popup from "../Popup/Popup";
+import Rabbit from "../../assets/img_unit2/imgs/Rabbit.svg";
 import ValidationAlert from "../Popup/ValidationAlert";
-const Unit2_Page1_find = () => {
+const Unit4_Page1_find = () => {
   const [clickedPoint, setClickedPoint] = useState(null);
   const [checkResult, setCheckResult] = useState(null);
 
@@ -19,7 +20,6 @@ const Unit2_Page1_find = () => {
     const rect = e.target.getBoundingClientRect();
     const xPercent = ((e.clientX - rect.left) / rect.width) * 100;
     const yPercent = ((e.clientY - rect.top) / rect.height) * 100;
-
 
     setClickedPoint({
       x: xPercent,
@@ -57,22 +57,18 @@ const Unit2_Page1_find = () => {
 
   return (
     <div style={{ textAlign: "center" }}>
-  
+      <div style={{ display: "flex" }}>
+        <img src={Rabbit} style={{ height: "50px", width: "auto" }} />
+        <h5 className="header-title-page8">
+          I need your help. Can you help me find the white clouds in the
+          picture?
+        </h5>
+      </div>
       <div style={{ position: "relative", display: "inline-block" }}>
-        <img
-          src={find_title}
-          style={{
-            height: "200px",
-            width: "auto",
-            position: "absolute",
-            bottom: "2%",
-            right: "6%",
-          }}
-        />
         <img
           src={find_img}
           alt="interactive"
-          style={{ cursor: "pointer", height: "460px" ,width:"auto" }}
+          style={{ cursor: "pointer", height: "460px", width: "auto" }}
           onClick={handleImageClick}
         />
 
@@ -128,4 +124,4 @@ const Unit2_Page1_find = () => {
   );
 };
 
-export default Unit2_Page1_find;
+export default Unit4_Page1_find;

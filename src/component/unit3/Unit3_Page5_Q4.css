@@ -22,7 +22,7 @@
 .unit3-q4-row {
   background: #f7d3e4; /* نفس الوردي اللي بالصورة */
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   gap: 9px;
 
@@ -36,6 +36,7 @@
   font-weight: 600;
   text-align: center;
   min-width: 18px;
+  font-size: 20px;
   color: #333;
 }
 
@@ -43,6 +44,11 @@
   color: #444;
 }
 
+.unit3-q4-input-h6{
+      display: flex;
+    align-items: center;
+    flex-direction: column;
+}
 .unit3-q4-words {
   display: flex;
   justify-content: space-around;

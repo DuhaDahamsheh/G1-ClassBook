@@ -99,11 +99,11 @@ export default function Book() {
     <Page7 />,
     <Page8 />,
     <Page9 />,
-    // <Unit2_Page1 />,
-    // <Unit2_Page2 />,
-    // <Unit2_Page3 />,
-    // <Unit2_Page4 />,
-    // <Unit2_Page5 />,
+    <Unit2_Page1 />,
+    <Unit2_Page2 />,
+    <Unit2_Page3 />,
+    <Unit2_Page4 />,
+    <Unit2_Page5 />,
     // <Unit2_Page6 />,
     // <Unit2_Page7 />,
     // <Unit2_Page8 />,
@@ -216,7 +216,7 @@ export default function Book() {
 
       {/* MAIN CONTENT */}
       <div
-        className="w-full  h-[90vh] flex items-center justify-center relative"
+        className="w-full  h-[88vh] flex items-center justify-center relative"
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}

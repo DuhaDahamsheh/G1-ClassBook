@@ -1,26 +1,25 @@
-import React, { useState, useRef, useEffect } from "react";
-import backgroundImage from "../../assets/unit1/imgs/Page 01/01.jpg";
-import page2_2 from "../../assets/unit1/imgs/Page 01/page4_vocab-removebg-preview-XE32rJsc.jpg";
-import num1 from "../../assets/unit1/imgs/Page 01/Num1.svg";
-import num2 from "../../assets/unit1/imgs/Page 01/Num2.svg";
-import num3 from "../../assets/unit1/imgs/Page 01/Num3.svg";
-import num4 from "../../assets/unit1/imgs/Page 01/Num4.svg";
-import num5 from "../../assets/unit1/imgs/Page 01/Num5.svg";
+import React, { useState, useEffect, useRef } from "react";
+import "./FourImagesWithAudio.css";
 import { IoMdSettings } from "react-icons/io";
 import { CgPlayPauseO } from "react-icons/cg";
-import vocabulary from "../../assets/unit1/sounds/Pg4_Vocabulary_Adult Lady.mp3";
-import pauseBtn from "../../assets/unit1/imgs/Right Video Button.svg"
 import { FaPlay, FaPause, FaVolumeUp, FaVolumeMute } from "react-icons/fa";
 import { FaRegCirclePlay } from "react-icons/fa6";
-import "../../index.css"; // ✅ نضيف ملف CSS خارجي
+import pauseBtn from "../assets/unit1/imgs/Right Video Button.svg"
+const FourImagesWithAudio = ({
+  images,
+  audioSrc,
+  checkpoints,
+  popupOpen,
+  titleQ,
+}) => {
+  const audioRef = useRef(null);
 
-const Page4_vocabulary = () => {
-  const mainAudioRef = useRef(null);
+  const [currentIndex, setCurrentIndex] = useState(0); // 0 = intro
 
   const [paused, setPaused] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
   const [showContinue, setShowContinue] = useState(false);
-  const stopAtSecond = 2.5;
+  const stopAtSecond = checkpoints[1] - 0.2;
   // إعدادات الصوت
   const [showSettings, setShowSettings] = useState(false);
   const [volume, setVolume] = useState(1);
@@ -31,22 +30,17 @@ const Page4_vocabulary = () => {
   const [isMuted, setIsMuted] = useState(false);
 
   const changeSpeed = (rate) => {
-    if (!mainAudioRef.current) return;
-    mainAudioRef.current.playbackRate = rate;
+    if (!audioRef.current) return;
+    audioRef.current.playbackRate = rate;
     setActiveSpeed(rate);
   };
-  // 🎵 فترات الكلمات داخل الأوديو الرئيسي
-  const wordTimings = [
-    { start: 2.8, end: 5.0 }, // Goodbye
-    { start: 5.1, end: 7.0 }, // How are you
-    { start: 7.1, end: 10.5 }, // Fine thank you
-    { start: 10.6, end: 12.1 }, // Hello
-    { start: 12.2, end: 15.0 }, // Good morning
-  ];
 
   useEffect(() => {
-    const audio = mainAudioRef.current;
+    const audio = audioRef.current;
     if (!audio) return;
+    if (popupOpen && audioRef.current) {
+      setTimeout(() => audioRef.current.play(), 300);
+    }
 
     audio.currentTime = 0;
     audio.play();
@@ -59,13 +53,15 @@ const Page4_vocabulary = () => {
         clearInterval(interval);
       }
     }, 250);
-
     const handleTimeUpdate = () => {
-      const current = audio.currentTime;
-      const currentWordIndex = wordTimings.findIndex(
-        (t) => current >= t.start && current <= t.end
-      );
-      setActiveIndex(currentWordIndex !== -1 ? currentWordIndex : null);
+      const time = audio.currentTime;
+      let newIndex = 0;
+
+      for (let i = 0; i < checkpoints.length; i++) {
+        if (time >= checkpoints[i]) newIndex = i;
+      }
+
+      setCurrentIndex(newIndex);
     };
 
     // ⚡⚡ هنا الإضافة الوحيدة
@@ -90,8 +86,7 @@ const Page4_vocabulary = () => {
       audio.removeEventListener("ended", handleEnded); // 👈 تنظيف الإضافة
       clearInterval(interval);
     };
-  }, []);
-
+  }, [checkpoints]);
   useEffect(() => {
     const timer = setInterval(() => {
       setForceRender((prev) => prev + 1);
@@ -99,9 +94,8 @@ const Page4_vocabulary = () => {
 
     return () => clearInterval(timer);
   }, []);
-
   const togglePlay = () => {
-    const audio = mainAudioRef.current;
+    const audio = audioRef.current;
 
     if (audio.paused) {
       audio.play();
@@ -111,10 +105,16 @@ const Page4_vocabulary = () => {
       setPaused(true);
     }
   };
-  const nums = [num1, num2, num3, num4, num5];
-
   return (
-    <>
+    <div className="four-wrapper">
+      <div>
+        <h5 className="header-title-page8" style={{ fontSize: "38px" }}>
+          {images[0] && (
+            <img src={images[0]} className="main-image" alt="main" />
+          )}
+          {titleQ}
+        </h5>
+      </div>
       <div
         style={{
           display: "flex",
@@ -122,15 +122,17 @@ const Page4_vocabulary = () => {
           justifyContent: "flex-start",
           margin: "0px 20px",
           position: "relative",
-          left: "-10.5%",
-          top: "-2%",
-          alignItems: "center",
+          alignItems: "flex-start",
         }}
       >
         <div className="audio-popup-vocab">
           <div className="audio-inner-vocab">
             {/* Play / Pause */}
-            <button className="audio-play-btn" style={{height:"30px",width:"30px"}} onClick={togglePlay}>
+            <button
+              className="audio-play-btn"
+              style={{ height: "30px", width: "30px" }}
+              onClick={togglePlay}
+            >
               {paused ? <FaPlay size={18} /> : <FaPause size={18} />}
             </button>
 
@@ -138,25 +140,25 @@ const Page4_vocabulary = () => {
             <input
               type="range"
               min="0"
-              max={mainAudioRef.current?.duration || 0}
-              value={mainAudioRef.current?.currentTime || 0}
+              max={audioRef.current?.duration || 0}
+              value={audioRef.current?.currentTime || 0}
               className="audio-slider"
               onChange={(e) => {
-                if (!mainAudioRef.current) return;
-                mainAudioRef.current.currentTime = e.target.value;
+                if (!audioRef.current) return;
+                audioRef.current.currentTime = e.target.value;
               }}
             />
 
             {/* Current Time */}
             <span className="audio-time">
-              {new Date((mainAudioRef.current?.currentTime || 0) * 1000)
+              {new Date((audioRef.current?.currentTime || 0) * 1000)
                 .toISOString()
                 .substring(14, 19)}
             </span>
 
             {/* Total Time */}
             <span className="audio-time">
-              {new Date((mainAudioRef.current?.duration || 0) * 1000)
+              {new Date((audioRef.current?.duration || 0) * 1000)
                 .toISOString()
                 .substring(14, 19)}
             </span>
@@ -165,11 +167,11 @@ const Page4_vocabulary = () => {
             <button
               className="mute-btn-outside"
               onClick={() => {
-                mainAudioRef.current.muted = !mainAudioRef.current.muted;
+                audioRef.current.muted = !audioRef.current.muted;
                 setIsMuted(!isMuted);
               }}
             >
-              {mainAudioRef.current?.muted ? (
+              {audioRef.current?.muted ? (
                 <FaVolumeMute size={22} color="#1d4f7b" />
               ) : (
                 <FaVolumeUp size={22} color="#1d4f7b" />
@@ -194,7 +196,7 @@ const Page4_vocabulary = () => {
                     value={volume}
                     onChange={(e) => {
                       setVolume(e.target.value);
-                      mainAudioRef.current.volume = e.target.value;
+                      audioRef.current.volume = e.target.value;
                     }}
                   />
 
@@ -217,80 +219,56 @@ const Page4_vocabulary = () => {
             </div>
           </div>
         </div>
-        <audio ref={mainAudioRef}>
-          <source src={vocabulary} type="audio/mp3" />
+        <audio ref={audioRef}>
+          <source src={audioSrc} type="audio/mp3" />
         </audio>
       </div>
-      <div
-        style={{
-          textAlign: "center",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <div style={{ position: "relative", display: "inline-block" }}>
-          <div style={{ bottom: "2%", right: "0%" }}>
-            <img
-              src={page2_2}
-              style={{
-                height: "170px",
-                width: "auto",
-                position: "absolute",
-                bottom: "0%",
-                right: "0%",
-                borderRadius: "5%",
-              }}
-            />
-            <div
-              className="vocab_container"
-              style={{ bottom: "2%", right: "6%" }}
-            >
-              {[
-                "Goodbye!",
-                "How are you?",
-                "Fine, thank you.",
-                "Hello!",
-                "Good morning!",
-              ].map((text, i) => (
-                <h6 key={i} className={activeIndex === i ? "active" : ""}>
-                  {i + 1} {text}
-                </h6>
-              ))}
-            </div>
-          </div>
 
-          {nums.map((num, i) => (
-            <img
-              key={i}
-              src={num}
-              className={`num-img ${activeIndex === i ? "active" : ""}`}
-              style={{
-                height: "20px",
-                width: "auto",
-                position: "absolute",
-                top: ["43%", "43%", "42%", "22%", "25%"][i],
-                left: ["14%", "54%", "71%", "40%", "32%"][i],
-              }}
-            />
-          ))}
-          <div>
-            <img
-              src={backgroundImage}
-              alt="interactive"
-              style={{height:"76vh"}}
-            />
-          </div>
+      <div className="images-layout">
+        {/* الصور الصغيرة الثلاث */}
+        <div className="small-images">
+          {images.length <= 3 ? (
+            <>
+              {images.slice(1).map((src, i) => {
+                const globalIndex = i + 1; // index 2,3,4
+                return (
+                  <div
+                    key={i}
+                    className={`small-box1 ${
+                      currentIndex === globalIndex ? "active" : ""
+                    }`}
+                  >
+                    <img src={src} className="small-img1" />
+                  </div>
+                );
+              })}
+            </>
+          ) : (
+            <>
+              {images.slice(1).map((src, i) => {
+                const globalIndex = i +1; // index 2,3,4
+                return (
+                  <div
+                    key={i}
+                    className={`small-box2 ${
+                      currentIndex === globalIndex ? "active" : ""
+                    }`}
+                  >
+                    <img src={src} className="small-img2" />
+                  </div>
+                );
+              })}
+            </>
+          )}
         </div>
-      </div>{" "}
+      </div>
       {showContinue && (
         <div className="action-buttons-container ">
           <button className="play-btn swal-continue" onClick={togglePlay}>
             {paused ? (
               <>
                 Continue
-              <svg width="20" height="20" viewBox="0 0 30 30">
+                <svg width="20" height="20" viewBox="0 0 30 30">
                   <image href={pauseBtn} x="0" y="0" width="30" height="30" />
                 </svg>
               </>
@@ -303,8 +281,8 @@ const Page4_vocabulary = () => {
           </button>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
-export default Page4_vocabulary;
+export default FourImagesWithAudio;

@@ -24,8 +24,8 @@ input:focus {
 }
 
 .navbar-fixed {
-    position: relative;
-    z-index: 99999999;
+  position: relative;
+  z-index: 99999999;
 }
 
 .page_1-background,
@@ -108,7 +108,7 @@ img {
 }
 .headset-icon-CD-page4-1 {
   top: 7%;
-  right: 9.5%;
+  right: 8.5%;
 }
 
 #num-4-page4 {
@@ -125,33 +125,33 @@ img {
   top: 44%;
   left: 45%;
 }
-.headset-icon-CD-page4-1 {
+/* .headset-icon-CD-page4-1 {
   position: absolute;
   background-color: #6bcff6;
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 2px;
   padding: 5px;
   cursor: pointer;
-}
+} */
 
 .headset-icon-CD-page4-2 {
   position: absolute;
-  top: 60%;
- left: 27%;
-  background-color: #6bcff6;
+  top: 61%;
+  left: 27%;
+  /* background-color: #6bcff6;
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 2px;
-  padding: 5px;
+  padding: 5px; */
   cursor: pointer;
 }
 
 .click-icon-page4 {
   position: absolute;
-  background-color: #6bcff6;
+  /* background-color: #6bcff6;
   border-radius: 20px;
-  border: rgb(255, 255, 255) solid 3px;
+  border: rgb(255, 255, 255) solid 3px; */
   padding: 5px;
-  bottom: 12.5%;
+  bottom: 11.5%;
   right: 39%;
 
   cursor: pointer;
@@ -192,12 +192,12 @@ img {
 }
 .click-icon-page4-1 {
   position: absolute;
-  background-color: #6bcff6;
+  /* background-color: #6bcff6;
   border-radius: 20px;
-  border: rgb(255, 255, 255) solid 3px;
+  border: rgb(255, 255, 255) solid 3px; */
   padding: 5px;
   top: 35%;
- left: 18%;
+  left: 16%;
   cursor: pointer;
 }
 
@@ -250,20 +250,23 @@ img {
   left: 31%;
 }
 
+.audio-popup-vocab {
+}
+
 /*===========page5============*/
 
 .headset-icon-CD-page5 {
   position: absolute;
-  background-color: #6bcff6;
+  /* background-color: #6bcff6;
   border-radius: 20px;
-  border: rgb(255, 255, 255) solid 2px;
+  border: rgb(255, 255, 255) solid 2px; */
   padding: 5px;
   cursor: pointer;
 }
 
 #CD-1-page5 {
-  top: 4%;
-  right: 5%;
+  top: 3%;
+  right: 4%;
 }
 
 #CD-2-page5 {
@@ -283,12 +286,12 @@ img {
 
 .click-icon-page5 {
   position: absolute;
-  background-color: #6bcff6;
+  /* background-color: #6bcff6;
   border-radius: 20px;
-  border: rgb(255, 255, 255) solid 3px;
+  border: rgb(255, 255, 255) solid 3px; */
   padding: 5px;
-  bottom: 15%;
-  left: 53%;
+  bottom: 14%;
+  left: 52.5%;
   cursor: pointer;
 }
 #t {
@@ -316,8 +319,8 @@ img {
 
 #text-0 {
   position: absolute;
-    top: 30%;
-    left: 7%;
+  top: 30%;
+  left: 7%;
   font-size: 43px;
 }
 #text-1 {
@@ -332,9 +335,9 @@ img {
 
 .headset-icon-CD-page6 {
   position: absolute;
-  background-color: #6bcff6;
+  /* background-color: #6bcff6;
   border-radius: 20px;
-  border: rgb(255, 255, 255) solid 2px;
+  border: rgb(255, 255, 255) solid 2px; */
   padding: 5px;
   top: 4.5%;
   left: 36%;
@@ -348,9 +351,9 @@ img {
 /*=========page7===========*/
 .headset-icon-CD-page7 {
   position: absolute;
-  background-color: #6bcff6;
+  /* background-color: #6bcff6;
   border-radius: 20px;
-  border: rgb(255, 255, 255) solid 2px;
+  border: rgb(255, 255, 255) solid 2px; */
   padding: 5px;
   top: 4%;
   right: 59%;
@@ -360,20 +363,20 @@ img {
 /*===========page8==================*/
 .headset-icon-CD-page8 {
   position: absolute;
-  background-color: #6bcff6;
+  /* background-color: #6bcff6;
   border-radius: 20px;
-  border: rgb(255, 255, 255) solid 3px;
+  border: rgb(255, 255, 255) solid 3px; */
   padding: 5px;
   top: 8%;
-  right: 4.5%;
+  right: 4%;
   cursor: pointer;
 }
 
 .click-icon-page8-1 {
   position: absolute;
-  background-color: #6bcff6;
+  /* background-color: #6bcff6;
   border-radius: 20px;
-  border: rgb(255, 255, 255) solid 3px;
+  border: rgb(255, 255, 255) solid 3px; */
   padding: 5px;
   top: 8%;
   right: 0%;
@@ -381,9 +384,9 @@ img {
 }
 .click-icon-page8-2 {
   position: absolute;
-  background-color: #6bcff6;
+  /* background-color: #6bcff6;
   border-radius: 20px;
-  border: rgb(255, 255, 255) solid 3px;
+  border: rgb(255, 255, 255) solid 3px; */
   padding: 5px;
   top: 26.5%;
   left: 33.7%;
@@ -391,9 +394,9 @@ img {
 }
 .click-icon-page8-3 {
   position: absolute;
-  background-color: #6bcff6;
+  /* background-color: #6bcff6;
   border-radius: 20px;
-  border: rgb(255, 255, 255) solid 3px;
+  border: rgb(255, 255, 255) solid 3px; */
   padding: 5px;
   top: 47.5%;
   left: 33.5%;
@@ -402,9 +405,9 @@ img {
 
 .click-icon-page8-4 {
   position: absolute;
-  background-color: #6bcff6;
+  /* background-color: #6bcff6;
   border-radius: 20px;
-  border: rgb(255, 255, 255) solid 3px;
+  border: rgb(255, 255, 255) solid 3px; */
   padding: 5px;
   bottom: 23.4%;
   left: 50.7%;
@@ -454,7 +457,8 @@ img {
 }
 
 .exercise-image {
-  height: 130px;
+  height: auto;
+    width: 260px;
   cursor: pointer;
   transition: 0.2s;
   border: solid 2px #6ec1ff;
@@ -610,32 +614,31 @@ img {
 /*===========page9==================*/
 .headset-icon-CD-page9 {
   position: absolute;
-  background-color: #6bcff6;
+  /* background-color: #6bcff6;
   border-radius: 20px;
-  border: rgb(255, 255, 255) solid 2px;
+  border: rgb(255, 255, 255) solid 2px; */
   padding: 5px;
-  bottom: 31.5%;
-  left: 24.8%;
-
+  bottom: 30.5%;
+  left: 25.8%;
   cursor: pointer;
 }
 
 .click-icon-page9-1 {
   position: absolute;
-  background-color: #6bcff6;
+  /* background-color: #6bcff6;
   border-radius: 20px;
-  border: rgb(255, 255, 255) solid 3px;
+  border: rgb(255, 255, 255) solid 3px; */
   padding: 5px;
-  top: 4%;
+     top: 3.5%;
   left: 33%;
   cursor: pointer;
 }
 
 .click-icon-page9-2 {
   position: absolute;
-  background-color: #6bcff6;
+  /* background-color: #6bcff6;
   border-radius: 20px;
-  border: rgb(255, 255, 255) solid 3px;
+  border: rgb(255, 255, 255) solid 3px; */
   padding: 5px;
   top: 26%;
   left: 33.8%;

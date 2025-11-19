@@ -9,9 +9,11 @@ import Page8_Q2 from "./Page8_Q2";
 import Page8_Q1 from "./Page8_Q1";
 import Page8_Q4 from "./Page8_Q4";
 import AudioWithCaption from "../AudioWithCaption";
+import audioBtn from "../../assets/unit1/imgs/Right Audio Button 2.svg";
+import arrowBtn from "../../assets/unit1/imgs/Right Arrow Button ....-01.svg";
 const Page8 = () => {
   const [activePopup, setActivePopup] = useState(null);
-const captionsExample = [
+  const captionsExample = [
     { start: 0, end: 1, text: "Hello!" },
     { start: 1, end: 2.2, text: "My name is Tom." },
     { start: 2.2, end: 4, text: "I like apples." },
@@ -19,12 +21,16 @@ const captionsExample = [
   return (
     <div className="page_8-background">
       <img src={page_8} />
-      <span
-        className="headset-icon-CD-page8 shadow-md hover:scale-110 transition"
+
+      <svg
+        width="30"
+        height="30"
+        viewBox="0 0 90 90"
         onClick={() => setActivePopup(1)}
+        className="headset-icon-CD-page8 hover:scale-110 transition"
       >
-        <FaHeadphones size={12} color="rgba(255, 255, 255, 1)" />
-      </span>
+        <image href={audioBtn} x="0" y="0" width="90" height="90" />
+      </svg>
       <Popup
         isOpen={activePopup === 1}
         onClose={() => setActivePopup(null)}
@@ -44,13 +50,16 @@ const captionsExample = [
           </div>
         }
       />
-      <span className="click-icon-page8-1 shadow-md hover:scale-110 transition">
-        <PiCursorClickBold
-          size={12}
-          color="rgb(255, 255, 255)"
-          onClick={() => setActivePopup(2)}
-        />
-      </span>
+
+      <svg
+        width="30"
+        height="30"
+        viewBox="0 0 60 60"
+        onClick={() => setActivePopup(2)}
+        className="click-icon-page8-1 hover:scale-110 transition"
+      >
+        <image href={arrowBtn} x="0" y="0" width="60" height="60" />
+      </svg>
       <Popup
         isOpen={activePopup === 2}
         onClose={() => setActivePopup(null)}
@@ -60,12 +69,16 @@ const captionsExample = [
           </>
         }
       />
-      <span
-        className="click-icon-page8-2 shadow-md hover:scale-110 transition"
+
+      <svg
+        width="30"
+        height="30"
+        viewBox="0 0 60 60"
         onClick={() => setActivePopup(3)}
+        className="click-icon-page8-2 hover:scale-110 transition"
       >
-        <PiCursorClickBold size={12} color="rgb(255, 255, 255)" />
-      </span>
+        <image href={arrowBtn} x="0" y="0" width="60" height="60" />
+      </svg>
       <Popup
         isOpen={activePopup === 3}
         onClose={() => setActivePopup(null)}
@@ -81,6 +94,16 @@ const captionsExample = [
       >
         <PiCursorClickBold size={12} color="rgb(255, 255, 255)" />
       </span>
+      <svg
+        width="30"
+        height="30"
+        viewBox="0 0 60 60"
+        onClick={() => setActivePopup(4)}
+        className="click-icon-page8-3 hover:scale-110 transition"
+      >
+        <image href={arrowBtn} x="0" y="0" width="60" height="60" />
+      </svg>
+
       <Popup
         isOpen={activePopup === 4}
         onClose={() => setActivePopup(null)}
@@ -90,12 +113,16 @@ const captionsExample = [
           </>
         }
       />
-      <span
-        className="click-icon-page8-4 shadow-md hover:scale-110 transition"
+
+      <svg
+        width="30"
+        height="30"
+        viewBox="0 0 60 60"
         onClick={() => setActivePopup(5)}
+        className="click-icon-page8-4 hover:scale-110 transition"
       >
-        <PiCursorClickBold size={12} color="rgb(255, 255, 255)" />
-      </span>
+        <image href={arrowBtn} x="0" y="0" width="60" height="60" />
+      </svg>
       <Popup
         isOpen={activePopup === 5}
         onClose={() => setActivePopup(null)}

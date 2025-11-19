@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import conversation from "../../assets/unit1/imgs/conversation.svg";
+import conversation from "../../assets/unit1/imgs/Ask and answer.svg";
 import ValidationAlert from "../Popup/ValidationAlert";
 
 const Page9_Q1 = () => {
   // ✅ الإحداثيات كلها نسب مئوية (نسبة من الصورة)
   const clickableAreas = [
-    { x: 20, y: 8, w: 22, h:12 }, // غيّري هاي الأرقام حسب ما بدك
+    { x: 14, y:5.5, w: 27.8, h:12 }, // غيّري هاي الأرقام حسب ما بدك
   ];
 
   const [inputs, setInputs] = useState(Array(clickableAreas.length).fill(""));

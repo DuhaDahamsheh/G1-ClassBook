@@ -12,7 +12,7 @@ const Popup = ({ isOpen, onClose, children, isAudio = false }) => {
             <div 
                 className={`popup-content ${isAudio ? "audio-size" : "fullscreen-size"}`}
             >
-                <button className="popup-close-btn" onClick={onClose} style={{zIndex:"99999999999"}}>
+                <button className={`popup-close-btn ${isAudio ? "audio" : ""}`} onClick={onClose} style={{zIndex:"99999999999"}}>
                     <FontAwesomeIcon icon={faTimes} />
                 </button>
 

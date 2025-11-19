@@ -7,6 +7,8 @@ import Page9_Q3 from "./Page9_Q3";
 import Page9_Q1 from "./Page9_Q1";
 import Page9_Q2 from "./Page9_Q2";
 import song from "../../assets/unit1/sounds/pg9-song-all.mp3";
+import audioBtn from "../../assets/unit1/imgs/Right Audio Button 2.svg";
+import arrowBtn from "../../assets/unit1/imgs/Right Arrow Button ....-01.svg";
 import AudioWithCaption from "../AudioWithCaption";
 const Page9 = () => {
   const audioRef = useRef(null);
@@ -19,12 +21,16 @@ const Page9 = () => {
   return (
     <div className="page_9-background">
       <img src={page_9} />
-      <span
-        className="headset-icon-CD-page9 shadow-md hover:scale-110 transition"
+
+      <svg
+        width="30"
+        height="30"
+        viewBox="0 0 90 90"
         onClick={() => setActivePopup(3)}
+        className="headset-icon-CD-page9 hover:scale-110 transition"
       >
-        <FaHeadphones size={12} color="rgba(255, 255, 255, 1)" />
-      </span>
+        <image href={audioBtn} x="0" y="0" width="90" height="90" />
+      </svg>
       <Popup
         isOpen={activePopup === 3}
         isAudio={true}
@@ -42,12 +48,15 @@ const Page9 = () => {
         }
       />
 
-      <span
-        className="click-icon-page9-1 shadow-md hover:scale-110 transition"
+      <svg
+        width="30"
+        height="30"
+        viewBox="0 0 60 60"
         onClick={() => setActivePopup(1)}
+        className="click-icon-page9-1 hover:scale-110 transition"
       >
-        <PiCursorClickBold size={12} color="rgb(255, 255, 255)" />
-      </span>
+        <image href={arrowBtn} x="0" y="0" width="60" height="60" />
+      </svg>
       <Popup
         isOpen={activePopup === 1}
         onClose={() => setActivePopup(null)}
@@ -57,13 +66,16 @@ const Page9 = () => {
           </>
         }
       />
-      <span className="click-icon-page9-2 shadow-md hover:scale-110 transition">
-        <PiCursorClickBold
-          size={12}
-          color="rgb(255, 255, 255)"
-          onClick={() => setActivePopup(2)}
-        />
-      </span>
+
+      <svg
+        width="30"
+        height="30"
+        viewBox="0 0 60 60"
+        onClick={() => setActivePopup(2)}
+        className="click-icon-page9-2 hover:scale-110 transition"
+      >
+        <image href={arrowBtn} x="0" y="0" width="60" height="60" />
+      </svg>
       <Popup
         isOpen={activePopup === 2}
         onClose={() => setActivePopup(null)}

@@ -84,7 +84,7 @@ const Unit3_Page6_Q2 = () => {
       <div className="unit3-q5-container">
         {questions.map((q, index) => (
           <div key={q.id} className="unit3-q5-question-box">
-            <p className="unit3-q5-question-text">
+            <p className="unit3-q5-question-text" style={{fontSize:"20px"}}>
               <span style={{ color: "darkblue", fontWeight: "700" }}>
                 {q.id}.
               </span>

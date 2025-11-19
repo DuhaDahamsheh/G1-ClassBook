@@ -77,7 +77,7 @@ const Page4_Interactive1 = () => {
   };
 
   return (
-    <>
+    <div>
     <div
       style={{
         textAlign: "center",
@@ -86,20 +86,20 @@ const Page4_Interactive1 = () => {
         alignItems: "center",
       }}
     >
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      <div style={{ display: "flex", justifyContent: "flex-start",width:"100%" }}>
         <img src={Rabbit} style={{ height: "50px", width: "auto" }} />{" "}
         <h5 className="header-title-page8">
           I need your help. Can you help me find the restaurant in the picture?
         </h5>
       </div>
-      <div style={{ width: "auto", maxWidth: "600px", position: "relative" }}>
+      <div style={{  position: "relative" }}>
         <img
           src={backgroundImage}
           alt="interactive"
           onClick={handleImageClick}
           style={{
             width: "auto",
-            height: "80%",
+            height: "75vh",
             cursor: "pointer",
             display: "block",
           }}
@@ -151,7 +151,7 @@ const Page4_Interactive1 = () => {
         <button className="check-button2" onClick={handleCheck}>
           Check Answer ✓
         </button>
-      </div></>
+      </div></div>
   );
 };
 

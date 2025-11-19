@@ -9,7 +9,7 @@ import duck from "../../assets/unit1/imgs/duck.svg";
 import taxi from "../../assets/unit1/imgs/taxi_1.svg";
 import tiger from "../../assets/unit1/imgs/tiger.svg";
 import ValidationAlert from "../Popup/ValidationAlert";
-import { IoCaretForwardCircle } from "react-icons/io5";
+import pauseBtn from "../../assets/unit1/imgs/Right Video Button.svg";
 import { FaPlay, FaPause, FaVolumeUp, FaVolumeMute } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
 import { FaRegCirclePlay } from "react-icons/fa6";
@@ -100,12 +100,19 @@ const Page8_Q1 = () => {
       // setActiveIndex(null); // يشيل الأنيميشن عن الكلمات
     };
 
+    const handleClickOutside = (e) => {
+      if (settingsRef.current && !settingsRef.current.contains(e.target)) {
+        setShowSettings(false);
+      }
+    };
+
     // audio.addEventListener("timeupdate", handleTimeUpdate);
     audio.addEventListener("ended", handleEnded); // 👈 الإضافة
-
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
       // audio.removeEventListener("timeupdate", handleTimeUpdate);
       audio.removeEventListener("ended", handleEnded); // 👈 تنظيف الإضافة
+      document.removeEventListener("mousedown", handleClickOutside);
       clearInterval(interval);
     };
   }, []);
@@ -201,10 +208,14 @@ const Page8_Q1 = () => {
           margin: "30px 0px",
         }}
       >
-        <div className="audio-popup">
-          <div className="audio-inner">
+        <div className="audio-popup-vocab">
+          <div className="audio-inner-vocab">
             {/* Play / Pause */}
-            <button className="audio-play-btn" onClick={togglePlay}>
+            <button
+              className="audio-play-btn"
+              style={{ height: "30px", width: "30px" }}
+              onClick={togglePlay}
+            >
               {paused ? <FaPlay size={22} /> : <FaPause size={22} />}
             </button>
 
@@ -439,7 +450,9 @@ const Page8_Q1 = () => {
             {paused ? (
               <>
                 Continue
-                <FaRegCirclePlay size={20} style={{ color: "red" }} />
+                <svg width="20" height="20" viewBox="0 0 30 30">
+                  <image href={pauseBtn} x="0" y="0" width="30" height="30" />
+                </svg>
               </>
             ) : (
               <>

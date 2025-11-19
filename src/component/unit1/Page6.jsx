@@ -14,12 +14,13 @@ import Pg6_3_2_ModifiedHarley from "../../assets/unit1/sounds/Pg6_3.2_Modified H
 import Popup from "../Popup/Popup";
 import { FaHeadphones } from "react-icons/fa";
 import AudioWithCaption from "../AudioWithCaption";
+import audioBtn from "../../assets/unit1/imgs/Right Audio Button 2.svg";
 
 const Page6 = () => {
   const audioRef = useRef(null);
   const [activePopup, setActivePopup] = useState(null);
   const [hoveredAreaIndex, setHoveredAreaIndex] = useState(null);
-const captionsExample = [
+  const captionsExample = [
     { start: 0, end: 1, text: "Hello!" },
     { start: 1, end: 2.2, text: "My name is Tom." },
     { start: 2.2, end: 4, text: "I like apples." },
@@ -77,13 +78,15 @@ const captionsExample = [
         ></div>
       ))}
 
-      <span
-        className="headset-icon-CD-page6 shadow-md hover:scale-110 transition"
+      <svg
+        width="30"
+        height="30"
+        viewBox="0 0 60 60"
         onClick={() => setActivePopup(1)}
+        className="headset-icon-CD-page6 hover:scale-110 transition"
       >
-        <FaHeadphones size={12} color="rgba(255, 255, 255, 1)" />
-      </span>
-
+        <image href={audioBtn} x="0" y="0" width="60" height="60" />
+      </svg>
       <Popup
         isOpen={activePopup === 1}
         isAudio={true}
@@ -96,7 +99,10 @@ const captionsExample = [
             alignContent: "center",
           }}
         >
-          <AudioWithCaption src={CD4_Pg6_Grammar1_AdultLady} captions={captionsExample} />
+          <AudioWithCaption
+            src={CD4_Pg6_Grammar1_AdultLady}
+            captions={captionsExample}
+          />
         </div>
       </Popup>
 

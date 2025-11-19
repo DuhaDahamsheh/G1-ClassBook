@@ -13,7 +13,8 @@ import Pg7_5_1_Dad from "../../assets/unit1/sounds/Pg7_5.1_Dad.mp3";
 import Pg7_5_2_Mom from "../../assets/unit1/sounds/Pg7_5.2_Mom.mp3";
 import Pg7_6_1_Mom from "../../assets/unit1/sounds/Pg7_6.1_Mom and Dad.mp3";
 import Popup from "../Popup/Popup";
-import { FaHeadphones } from "react-icons/fa";
+import audioBtn from "../../assets/unit1/imgs/Right Audio Button 2.svg";
+
 import AudioWithCaption from "../AudioWithCaption";
 const Page7 = () => {
   const audioRef = useRef(null);
@@ -82,12 +83,16 @@ const Page7 = () => {
           onMouseEnter={(e) => (e.target.style.cursor = "pointer")}
         ></div>
       ))}
-      <span
-        className="headset-icon-CD-page7 shadow-md hover:scale-110 transition"
+
+      <svg
+        width="30"
+        height="30"
+        viewBox="0 0 60 60"
         onClick={() => setActivePopup(1)}
+        className="headset-icon-CD-page7 hover:scale-110 transition"
       >
-        <FaHeadphones size={12} color="rgba(255, 255, 255, 1)" />
-      </span>
+        <image href={audioBtn} x="0" y="0" width="60" height="60" />
+      </svg>
       <Popup
         isOpen={activePopup === 1}
         isAudio={true}
@@ -100,7 +105,10 @@ const Page7 = () => {
               alignContent: "center",
             }}
           >
-            <AudioWithCaption src={CD5_Pg7_Grammar2_AdultLady} captions={captionsExample} />
+            <AudioWithCaption
+              src={CD5_Pg7_Grammar2_AdultLady}
+              captions={captionsExample}
+            />
           </div>
         }
       />

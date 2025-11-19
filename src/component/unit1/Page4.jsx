@@ -6,14 +6,19 @@ import soundFile1 from "../../assets/unit1/sounds/CD1.Pg4.U1_Intro_Adult Lady.mp
 import vocabulary from "../../assets/unit1/sounds/Pg4_Vocabulary_Adult Lady.mp3";
 import listenSound from "../../assets/unit1/sounds/Pg4_Instruction1_Adult Lady.mp3";
 import listenImg from "../../assets/unit1/imgs/page_4-1.jpg";
-import duck from "../../assets/unit1/sounds/Pg4_1.4_Adult Lady.mp3";
-import deer from "../../assets/unit1/sounds/Pg4_1.2_Adult Lady.mp3";
-import dish from "../../assets/unit1/sounds/Pg4_1.3_Adult Lady.mp3";
-import dSound from "../../assets/unit1/sounds/Pg4_1.1_Adult Lady.mp3";
+import Rabbit from "../../assets/img_unit2/imgs/Rabbit.svg";
+import img1 from "../../assets/unit1/imgs/P1 listen and read 01.svg";
+import img2 from "../../assets/unit1/imgs/deer33.svg";
+import img3 from "../../assets/unit1/imgs/dish22.svg";
+import img4 from "../../assets/unit1/imgs/duck22.svg";
 import { PiCursorClickBold } from "react-icons/pi";
 import Page4_Interactive1 from "./Page4_Interactive1";
 import Page4_vocabulary from "./Page4_vocabulary";
 import AudioWithCaption from "../AudioWithCaption";
+import FourImagesWithAudio from "../FourImagesWithAudio";
+import audioBtn from "../../assets/unit1/imgs/Right Audio Button 2.svg";
+import arrowBtn from "../../assets/unit1/imgs/Right Arrow Button ....-01.svg";
+import longAudio from "../../assets/unit1/sounds/pg4-instruction1-adult-lady_9KnGFLcl.mp3";
 const Page4 = () => {
   const [activePopup, setActivePopup] = useState(null);
   const activeData = [
@@ -45,42 +50,7 @@ const Page4 = () => {
   ];
 
   const audioRef = useRef(null);
-  const introRef = useRef(null);
-  const handleImageClick = (e) => {
-    const rect = e.target.getBoundingClientRect();
-    const xPercent = ((e.clientX - rect.left) / rect.width) * 100;
-    const yPercent = ((e.clientY - rect.top) / rect.height) * 100;
 
-    console.log("X%:", xPercent.toFixed(2), "Y%:", yPercent.toFixed(2));
-
-    checkAreaAndPlaySound(xPercent, yPercent);
-  };
-
-  const clickableAreas = [
-    { x1: 10.7, y1: 46.1, x2: 17.4, y2: 56.8, sound: dSound },
-    { x1: 26.0, y1: 39.0, x2: 40.0, y2: 66.0, sound: deer },
-    { x1: 54.7, y1: 39.0, x2: 67.0, y2: 66.0, sound: dish },
-    { x1: 81.9, y1: 39.0, x2: 94.0, y2: 66.0, sound: duck },
-    ,
-  ];
-  const checkAreaAndPlaySound = (x, y) => {
-    console.log("hi");
-
-    const area = clickableAreas.find(
-      (a) => x >= a.x1 && x <= a.x2 && y >= a.y1 && y <= a.y2
-    );
-
-    console.log("Matched Area:", area);
-
-    if (area) playSound(area.sound);
-  };
-  const playSound = (soundPath) => {
-    console.log(soundPath);
-    if (audioRef.current) {
-      audioRef.current.src = soundPath;
-      audioRef.current.play();
-    }
-  };
   useEffect(() => {
     if (activePopup !== null && audioRef.current) {
       audioRef.current.play(); // تشغيل الصوت عند فتح البوب أب
@@ -91,13 +61,17 @@ const Page4 = () => {
     <>
       <div className="page_4-background">
         <img src={page4} />
-        <span className="headset-icon-CD-page4-1 shadow-md hover:scale-110 transition">
-          <FaHeadphones
-            size={12}
-            color="rgba(255, 255, 255, 1)"
-            onClick={() => setActivePopup(1)}
-          />
-        </span>
+
+        <svg
+          width="30"
+          height="30"
+          viewBox="0 0 60 60"
+          onClick={() => setActivePopup(1)}
+          className="headset-icon-CD-page4-1 hover:scale-110 transition"
+        >
+          <image href={audioBtn} x="0" y="0" width="45" height="45" />
+        </svg>
+
         <Popup
           isOpen={activePopup === 1}
           onClose={() => setActivePopup(null)}
@@ -117,13 +91,17 @@ const Page4 = () => {
             </div>
           }
         />
-        <span className="click-icon-page4-1 shadow-md hover:scale-110 transition">
-          <PiCursorClickBold
-            size={12}
-            color="rgb(255, 255, 255)"
-            onClick={() => setActivePopup(4)}
-          />
-        </span>
+
+        <svg
+          width="30"
+          height="30"
+          viewBox="0 0 60 60"
+          onClick={() => setActivePopup(4)}
+          className="click-icon-page4-1 hover:scale-110 transition"
+        >
+          <image href={arrowBtn} x="0" y="0" width="60" height="60" />
+        </svg>
+
         <Popup
           isOpen={activePopup === 4}
           onClose={() => setActivePopup(null)}
@@ -133,13 +111,17 @@ const Page4 = () => {
             </>
           }
         />
-        <span className="headset-icon-CD-page4-2 shadow-md hover:scale-110 transition">
-          <FaHeadphones
-            size={12}
-            color="rgba(255, 255, 255, 1)"
-            onClick={() => setActivePopup(2)}
-          />
-        </span>
+
+        <svg
+          width="30"
+          height="30"
+          viewBox="0 0 60 60"
+          onClick={() => setActivePopup(2)}
+          className="headset-icon-CD-page4-2 hover:scale-110 transition"
+        >
+          <image href={audioBtn} x="0" y="0" width="45" height="45" />
+        </svg>
+
         <Popup
           isOpen={activePopup === 2}
           onClose={() => setActivePopup(null)}
@@ -149,52 +131,28 @@ const Page4 = () => {
             </>
           }
         />
-        <span className="click-icon-page4 shadow-md hover:scale-110 transition">
-          <PiCursorClickBold
-            size={12}
-            color="rgb(255, 255, 255)"
-            onClick={() => setActivePopup(3)}
-          />
-        </span>
+
+        <svg
+          width="30"
+          height="30"
+          viewBox="0 0 60 60"
+          onClick={() => setActivePopup(3)}
+          className="click-icon-page4 hover:scale-110 transition"
+        >
+          <image href={arrowBtn} x="0" y="0" width="60" height="60" />
+        </svg>
+
         <Popup
           isOpen={activePopup === 3}
           onClose={() => setActivePopup(null)}
           children={
-            <div
-              style={{
-                position: "relative",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                height: "100%",
-              }}
-            >
-              <audio ref={introRef} autoPlay style={{ display: "none" }}>
-                <source src={activeData[2].sound} type="audio/mp3" />
-              </audio>
-
-              <img
-                src={activeData[2].imgSrc}
-                style={{ height: "auto", display: "block" }}
-                onClick={handleImageClick}
-              />
-              <audio ref={audioRef} style={{ display: "none" }} />
-
-              {clickableAreas.map((area, index) => (
-                <div
-                  key={index}
-                  className="clickable-area"
-                  style={{
-                    left: `${area.x1}%`,
-                    top: `${area.y1}%`,
-                    width: `${area.x2 - area.x1}%`,
-                    height: `${area.y2 - area.y1}%`,
-                  }}
-                  onMouseEnter={(e) => (e.target.style.cursor = "pointer")}
-                  onClick={() => playSound(area.sound)}
-                ></div>
-              ))}
-            </div>
+            <FourImagesWithAudio
+              images={[Rabbit, img1, img2, img3, img4]}
+              audioSrc={longAudio}
+              checkpoints={[0, 2.8, 3.4, 4.2, 5.1]}
+              popupOpen={true}
+              titleQ={"Listen and read along."}
+            />
           }
         />
       </div>

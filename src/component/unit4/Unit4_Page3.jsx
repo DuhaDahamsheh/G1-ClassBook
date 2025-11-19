@@ -4,19 +4,16 @@ import "./Unit4_Page3.css";
 import { FaHeadphones } from "react-icons/fa";
 import { PiCursorClickBold } from "react-icons/pi";
 import Popup from "../Popup/Popup";
-// import CD11_Pg12_Grammar1_AdultLady from "../../assets/img_unit2/sounds-unit2/CD11.Pg12_Grammar1_Adult Lady.mp3";
-// import Pg12_1_1_AdultLady from "../../assets/img_unit2/sounds-unit2/Pg12_1.1_Adult Lady.mp3";
-// import Pg12_1_2_AdultLady from "../../assets/img_unit2/sounds-unit2/Pg12_1.2_Adult Lady.mp3";
-// import Pg12_1_3_AdultLady from "../../assets/img_unit2/sounds-unit2/Pg12_1.3_Adult Lady.mp3";
-// import Pg12_1_4_AdultLady from "../../assets/img_unit2/sounds-unit2/Pg12_1.4_Adult Lady.mp3";
-// import Pg12_1_5_AdultLady from "../../assets/img_unit2/sounds-unit2/Pg12_1.5_Adult Lady.mp3";
-// import Pg12_2_1_Harley from "../../assets/img_unit2/sounds-unit2/Pg12_2.1_Harley.mp3";
-// import Pg12_2_2_Sarah from "../../assets/img_unit2/sounds-unit2/Pg12_2.2_Sarah.mp3";
-// import Pg12_3_1_Helen_Take from "../../assets/img_unit2/sounds-unit2/Pg12_3.1_Helen_Take 2.mp3";
-// import Pg12_3_2_Stella from "../../assets/img_unit2/sounds-unit2/Pg12_3.2_Stella.mp3";
-// import Pg12_4_1_Hansel from "../../assets/img_unit2/sounds-unit2/Pg12_4.1_Hansel.mp3";
-// import Pg12_4_2_Stella from "../../assets/img_unit2/sounds-unit2/Pg12_4.2_Stella.mp3";
-// import Pg12_4_3_Hansel from "../../assets/img_unit2/sounds-unit2/Pg12_4.3_Hansel.mp3";
+import CD29_Pg30_Grammar1_AdultLady from "../../assets/unit4/sounds/CD29.Pg30_Grammar1_Adult Lady.mp3";
+import Pg12_1_1_AdultLady from "../../assets/unit4/sounds/Pg30_1.1_Adult Lady.mp3";
+import Pg12_1_2_AdultLady from "../../assets/unit4/sounds/Pg30_1.2_Adult Lady.mp3";
+import Pg12_1_3_AdultLady from "../../assets/unit4/sounds/Pg30_1.3_Adult Lady.mp3";
+import Pg12_1_4_AdultLady from "../../assets/unit4/sounds/Pg30_2.1_Stella.mp3";
+import Pg12_1_5_AdultLady from "../../assets/unit4/sounds/Pg30_2.2_John.mp3";
+import Pg12_2_1_Harley from "../../assets/unit4/sounds/Pg30_3.1_Sarah.mp3";
+import Pg12_2_2_Sarah from "../../assets/unit4/sounds/Pg30_3.2_Jack.mp3";
+import Pg12_3_1_Helen_Take from "../../assets/unit4/sounds/Pg30_4.1_Harley.mp3";
+import Pg12_3_2_Stella from "../../assets/unit4/sounds/Pg30_4.2_Hansel.mp3";
 const Unit4_Page3 = () => {
   const [activePopup, setActivePopup] = useState(null);
   const audioRef = useRef(null);
@@ -31,18 +28,16 @@ const Unit4_Page3 = () => {
     checkAreaAndPlaySound(xPercent, yPercent);
   };
   const clickableAreas = [
-    { x1: 9.41, y1: 12.0, x2: 37.43, y2: 14.0, sound: "Pg12_1_1_AdultLady" },
-    { x1: 62.25, y1: 12.0, x2: 75.14, y2: 14.0, sound: "Pg12_1_2_AdultLady" },
-    { x1: 10.0, y1: 16.0, x2: 22.0, y2: 18.0, sound: "Pg12_1_3_AdultLady" },
-    { x1: 56.0, y1: 16.0, x2: 77.0, y2: 18.0, sound: "Pg12_1_4_AdultLady" },
-    { x1:56.0, y1: 19.0, x2: 70.0, y2: 18.0, sound:"Pg12_1_5_AdultLady" },
-    { x1: 16.0, y1: 29.0, x2: 29.0, y2: 30.0, sound: "Pg12_2_1_Harley" },
-    { x1: 10.0, y1: 48.0, x2: 29.0, y2: 49.0, sound: "Pg12_2_2_Sarah" },
-    { x1: 52.0, y1: 28.18, x2: 86.0, y2: 29.0, sound: "Pg12_3_1_Helen_Take" },
-    { x1: 82.25, y1: 40.0, x2:91.02, y2: 41.0, sound: "Pg12_3_2_Stella" },
-    { x1: 9.00, y1: 54.00, x2: 47.5, y2: 55.0, sound: "Pg12_4_1_Hansel" },
-    { x1: 44.0, y1: 62.0, x2: 66.0, y2: 67.0, sound: "Pg12_4_2_Stella" },
-    { x1: 9.0, y1: 74.0, x2: 66.0, y2:77.0, sound: "Pg12_4_3_Hansel"},
+   { x1: 8.5, y1: 11.7, x2: 30.00, y2: 15.5, sound: Pg12_1_1_AdultLady },
+       { x1: 54.2, y1: 9.5, x2: 78.3, y2: 13.0, sound: Pg12_1_2_AdultLady },
+       { x1: 6.5, y1: 15.8, x2: 35.6, y2: 20.0, sound: Pg12_1_3_AdultLady },
+       { x1: 54.2, y1: 13.5, x2: 83.5, y2: 16.7, sound: Pg12_1_4_AdultLady },
+       { x1:54.2, y1: 17.0, x2: 74.1, y2: 20.4, sound:Pg12_1_5_AdultLady },
+       { x1: 14.08, y1: 27.0, x2: 29.6, y2: 31.7, sound: Pg12_2_1_Harley },
+       { x1: 7.00, y1: 47.5, x2: 29.2, y2: 50.4, sound: Pg12_2_2_Sarah },
+       { x1: 49.6, y1: 26.17, x2: 88.9, y2: 29.8, sound: Pg12_3_1_Helen_Take },
+       { x1: 84.18, y1:37.6, x2:95.1, y2: 43.4, sound: Pg12_3_2_Stella },
+       
   ];
 
   const checkAreaAndPlaySound = (x, y) => {
@@ -92,9 +87,9 @@ const Unit4_Page3 = () => {
         onClose={() => setActivePopup(null)}
         children={
           <>
-            {/* <audio controls>
-              <source src={CD11_Pg12_Grammar1_AdultLady} type="audio/mp3" />
-            </audio> */}
+            <audio controls>
+              <source src={CD29_Pg30_Grammar1_AdultLady} type="audio/mp3" />
+            </audio>
           </>
         }
       />

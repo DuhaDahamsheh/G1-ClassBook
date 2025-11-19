@@ -10,9 +10,9 @@
 
 .matching-row {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  margin: 40px 0;
+  margin: 40px 100px;
   position: relative;
 }
 
@@ -63,7 +63,7 @@
 
 .span-num {
   font-weight: 800;
-   font-size: 30px;
+  font-size: 30px;
   color: purple;
 }
 
