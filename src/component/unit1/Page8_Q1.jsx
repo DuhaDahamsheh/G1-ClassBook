@@ -196,7 +196,8 @@ const Page8_Q1 = () => {
     }
   };
   return (
-    <>
+ <div className="page8-wrapper">
+  <div className="page8-content">
       <header className="header-title-page8">
         <span className="ex-A">A</span> 1 Listen and write the missing letters.
         Number the pictures.
@@ -313,8 +314,10 @@ const Page8_Q1 = () => {
         className="div-input"
         style={{
           display: "flex",
-          justifyContent: "space-around",
+          justifyContent: "space-between",
           marginBottom: "30px",
+          // marginLeft:"40px",
+          width:"100%"
         }}
       >
         {displayOrder.map((dataIndex, index) => (
@@ -440,7 +443,7 @@ const Page8_Q1 = () => {
           </div>
         ))}
       </div>
-
+</div>
       <div className="action-buttons-container">
         <button onClick={reset} className="try-again-button">
           Start Again ↻
@@ -467,7 +470,7 @@ const Page8_Q1 = () => {
           Check Answer ✓
         </button>
       </div>
-    </>
+    </div>
   );
 };
 

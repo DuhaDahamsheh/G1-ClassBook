@@ -107,8 +107,8 @@ img {
   cursor: pointer;
 }
 .headset-icon-CD-page4-1 {
-  top: 7%;
-  right: 8.5%;
+  top: 7.5%;
+    right: 7.5%;
 }
 
 #num-4-page4 {
@@ -288,7 +288,7 @@ img {
   border: rgb(255, 255, 255) solid 3px; */
   padding: 5px;
   bottom: 14%;
-  left: 52.5%;
+     left: 52%;
   cursor: pointer;
 }
 #t {
@@ -376,7 +376,7 @@ img {
   border: rgb(255, 255, 255) solid 3px; */
   padding: 5px;
   top: 8%;
-  right: 0%;
+ right: 4%;
   cursor: pointer;
 }
 .click-icon-page8-2 {
@@ -385,7 +385,7 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 3px; */
   padding: 5px;
-  top: 26.5%;
+  top: 26%;
   left: 33.7%;
   cursor: pointer;
 }
@@ -395,7 +395,7 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 3px; */
   padding: 5px;
-  top: 47.5%;
+top: 47%;
   left: 33.5%;
   cursor: pointer;
 }
@@ -406,7 +406,7 @@ img {
   border-radius: 20px;
   border: rgb(255, 255, 255) solid 3px; */
   padding: 5px;
-  bottom: 23.4%;
+      bottom: 23%;
   left: 50.7%;
   cursor: pointer;
 }
@@ -431,7 +431,7 @@ img {
 }
 
 .header-title-page8 {
-  font-size: 30px;
+  font-size: 25px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   color: navy;
   font-weight: 700;
@@ -441,11 +441,14 @@ img {
 }
 
 .exercise-container {
-  display: flex;
+    display: flex;
+    margin-bottom: 80px;
+    width: -webkit-fill-available;
+    flex-direction: row;
+    align-items: flex-start;
   gap: 20px;
-  margin-bottom: 80px;
-  justify-content: space-around;
-}
+    justify-content: space-evenly;
+  }
 
 .exercise-item {
   display: flex;
@@ -454,8 +457,8 @@ img {
 }
 
 .exercise-image {
-  height: auto;
-  width: 260px;
+      height: 150px;
+    width: auto;
   cursor: pointer;
   transition: 0.2s;
   border: solid 2px #6ec1ff;
@@ -477,6 +480,17 @@ img {
   font-weight: bold;
   transition: transform 0.2s ease, font-size 0.2s ease;
 }
+.page8-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.page8-content {
+  width: 90%;
+  max-width: 900px;
+}
+
 
 /* لما يصير فيه حرف */
 .missing-input.filled {
@@ -608,6 +622,7 @@ img {
   box-shadow: 0 6px 12px rgba(255, 193, 7, 0.3);
 }
 
+
 /*===========page9==================*/
 .headset-icon-CD-page9 {
   position: absolute;
@@ -649,17 +664,7 @@ img {
   gap: 11px;
 }
 
-@media (max-width: 1000px) {
-  .div-input {
-    flex-wrap: wrap;
-  }
-  .exercise-image-div {
-    flex-wrap: wrap;
-  }
-  .exercise-image-div img {
-    width: auto;
-  }
-}
+
 
 @media (max-width: 768px) {
   .page_1-background,

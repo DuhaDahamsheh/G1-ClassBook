@@ -22,7 +22,7 @@ const Page8 = () => {
     <div className="page_8-background">
       <img src={page_8} />
 
-      <svg
+      {/* <svg
         width="30"
         height="30"
         viewBox="0 0 90 90"
@@ -49,7 +49,7 @@ const Page8 = () => {
             />
           </div>
         }
-      />
+      /> */}
 
       <svg
         width="30"

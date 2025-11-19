@@ -26,16 +26,6 @@
     align-items: center;
 }
 
-.audio-popup-vocab{
-    background: #2c78b4; /* الأزرق الغامق الخارجي */
-  padding: 16px;
-  border-radius: 8px;
-  height: 55px;
-  width: auto;
-    display: flex;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    align-items: center;
-}
 
 
 /* زر التشغيل */

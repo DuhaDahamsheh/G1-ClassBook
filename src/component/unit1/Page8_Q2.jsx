@@ -119,7 +119,7 @@ const Page8_Q2 = () => {
   };
 
   return (
-    <>
+    <div>
       <div className="exercise-container2">
         <h5 className="header-title-page8">
           <span className="number-of-q">2</span>Look and write.
@@ -220,7 +220,7 @@ const Page8_Q2 = () => {
             Check Answer ✓
           </button>
         </div>
-    </>
+    </div>
   );
 };
 

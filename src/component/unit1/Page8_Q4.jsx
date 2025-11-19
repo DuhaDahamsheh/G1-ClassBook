@@ -103,6 +103,7 @@ const Page8_Q4 = () => {
   };
 
   return (
+    <div style={{display:"flex",justifyContent:"center"}}>
     <div className="container8">
       <h5 className="header-title-page8">
         <span className="letter-of-Q"> C</span>Answer the question.
@@ -131,7 +132,7 @@ const Page8_Q4 = () => {
             <div className="word-group" key={groupIndex}>
               {group.map((num, letterIndex) => (
                 <div className="input-h6" key={letterIndex}>
-                  <h6 className="unit1-page8-q4-nums" style={{fontSize:"30px" ,fontWeight:"bold"}}>{num}</h6>
+                  <h6 className="unit1-page8-q4-nums" style={{fontSize:"25px" }}>{num}</h6>
                    <div className="input-wrapper">  {/* ⭐ تم التعديل هون */}
                   <input
                     className="inputs"
@@ -173,6 +174,7 @@ const Page8_Q4 = () => {
           Check Answer ✓
         </button>
       </div>
+    </div>
     </div>
   );
 };

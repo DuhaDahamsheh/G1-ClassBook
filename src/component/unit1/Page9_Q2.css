@@ -1,12 +1,13 @@
 .container3 {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  position: relative;
-  justify-content: space-around;
-  user-select: none;
-  padding-bottom: 85px;
-  margin-top: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    justify-content: space-between;
+    user-select: none;
+    padding-bottom: 85px;
+    margin-top: 60px;
+    width: 100%;
 }
 
 .word-section1 {

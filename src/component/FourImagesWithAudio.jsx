@@ -107,8 +107,14 @@ const FourImagesWithAudio = ({
   };
   return (
     <div className="four-wrapper">
-      <div>
-        <h5 className="header-title-page8" style={{ fontSize: "38px" }}>
+      <div  style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-start",
+          width:"60%",
+          alignItems: "flex-start",
+        }}>
+        <h5 className="header-title-page8" style={{ fontSize: "25px"  }}>
           {images[0] && (
             <img src={images[0]} className="main-image" alt="main" />
           )}
@@ -122,6 +128,7 @@ const FourImagesWithAudio = ({
           justifyContent: "flex-start",
           margin: "0px 20px",
           position: "relative",
+          width:"60%",
           alignItems: "flex-start",
         }}
       >

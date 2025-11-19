@@ -175,97 +175,113 @@ export default function Page9_Q2() {
   };
 
   return (
-    <>
-      <h4 className="header-title-page8">
-        <span className="ex-A">E</span>Match and color.
-      </h4>
-      {selectedWordIndex !== null && (
-        <div className="color-palette">
-          {colors.map((c) => (
-            <div
-              key={c}
-              className="color-circle"
-              style={{ backgroundColor: c }}
-              onClick={() => applyColor(c)}
-            ></div>
-          ))}
-        </div>
-      )}
+    <div
+      style={{
+        display: "flex",
+        // marginTop: "30px",
+        justifyContent: "center",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-start",
+          alignItems: "flex-start",
+          position: "relative",
+          width: "60%",
+        }}
+      >
+        <h4 className="header-title-page8">
+          <span className="ex-A">E</span>Match and color.
+        </h4>
+        {selectedWordIndex !== null && (
+          <div className="color-palette">
+            {colors.map((c) => (
+              <div
+                key={c}
+                className="color-circle"
+                style={{ backgroundColor: c }}
+                onClick={() => applyColor(c)}
+              ></div>
+            ))}
+          </div>
+        )}
 
-      <div className="container3" ref={containerRef}>
-        <div className="word-section1">
-          {["Good", "Fine,", "How"].map((word, i) => (
-            <div style={{ position: "relative" }}>
-              <h5
+        <div className="container3" ref={containerRef}>
+          <div className="word-section1">
+            {["Good", "Fine,", "How"].map((word, i) => (
+              <div style={{ position: "relative" }}>
+                <h5
+                  key={i}
+                  className={
+                    wordColors[0] === "transparent"
+                      ? "word-outline H5"
+                      : "word-colored H5"
+                  }
+                  style={{
+                    color: wordColors[i],
+                    cursor: "pointer",
+                    position: "relative",
+                  }}
+                  onClick={() => handleWordClick(i)}
+                >
+                  {word}
+
+                  <div
+                    className="dot1 start-dot1"
+                    data-letter={word}
+                    onMouseDown={handleDotDown}
+                    onTouchStart={handleDotDown}
+                  ></div>
+                </h5>
+                {wrongWords.includes(word) && ( // ⭐ تم التعديل هون
+                  <span className="error-mark3">X</span>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <div className="word-section2">
+            {["thank you", "are you", "afternoon"].map((word, i) => (
+              <>
+                {" "}
+                <h5
+                  key={i + 3}
+                  className={
+                    wordColors[0] === "transparent"
+                      ? "word-outline H5"
+                      : "word-colored H5"
+                  }
+                  style={{
+                    color: wordColors[i + 3],
+                    cursor: "pointer",
+                    position: "relative",
+                  }}
+                  onClick={() => handleWordClick(i + 3)}
+                >
+                  <div className="dot1 end-dot1" data-image={word}></div>
+                  {word}
+                </h5>
+              </>
+            ))}
+          </div>
+
+          <svg className="lines-layer">
+            {lines.map((line, i) => (
+              <line
                 key={i}
-                className={
-                  wordColors[0] === "transparent"
-                    ? "word-outline H5"
-                    : "word-colored H5"
-                }
-                style={{
-                  color: wordColors[i],
-                  cursor: "pointer",
-                  position: "relative",
-                }}
-                onClick={() => handleWordClick(i)}
-              >
-                {word}
-
-                <div
-                  className="dot1 start-dot1"
-                  data-letter={word}
-                  onMouseDown={handleDotDown}
-                  onTouchStart={handleDotDown}
-                ></div>
-              </h5>
-              {wrongWords.includes(word) && ( // ⭐ تم التعديل هون
-                <span className="error-mark3">X</span>
-              )}
-            </div>
-          ))}
+                x1={line.x1}
+                y1={line.y1}
+                x2={line.x2}
+                y2={line.y2}
+                stroke="red"
+                strokeWidth="3"
+              />
+            ))}
+          </svg>
         </div>
-
-        <div className="word-section2">
-          {["thank you", "are you", "afternoon"].map((word, i) => (
-            <>
-              {" "}
-              <h5
-                key={i + 3}
-                className={
-                  wordColors[0] === "transparent"
-                    ? "word-outline H5"
-                    : "word-colored H5"
-                }
-                style={{
-                  color: wordColors[i + 3],
-                  cursor: "pointer",
-                  position: "relative",
-                }}
-                onClick={() => handleWordClick(i + 3)}
-              >
-                <div className="dot1 end-dot1" data-image={word}></div>
-                {word}
-              </h5>
-            </>
-          ))}
-        </div>
-
-        <svg className="lines-layer">
-          {lines.map((line, i) => (
-            <line
-              key={i}
-              x1={line.x1}
-              y1={line.y1}
-              x2={line.x2}
-              y2={line.y2}
-              stroke="red"
-              strokeWidth="3"
-            />
-          ))}
-        </svg>
       </div>
-
       <div className="action-buttons-container">
         <button
           onClick={() => {
@@ -288,6 +304,6 @@ export default function Page9_Q2() {
           Check Answer ✓
         </button>
       </div>
-    </>
+    </div>
   );
 }

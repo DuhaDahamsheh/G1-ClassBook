@@ -86,7 +86,7 @@ const Page4_Interactive1 = () => {
         alignItems: "center",
       }}
     >
-      <div style={{ display: "flex", justifyContent: "flex-start",width:"100%" }}>
+      <div style={{ display: "flex", justifyContent: "center",width:"100%" }}>
         <img src={Rabbit} style={{ height: "50px", width: "auto" }} />{" "}
         <h5 className="header-title-page8">
           I need your help. Can you help me find the restaurant in the picture?

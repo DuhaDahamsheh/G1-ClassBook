@@ -51,7 +51,7 @@ import Unit4_Page6 from "./unit4/Unit4_Page6";
 
 export default function Book() {
   const [pageIndex, setPageIndex] = useState(0);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 1100);
+ const [isMobile, setIsMobile] = useState(window.innerWidth < 1100);
   const [activeTab, setActiveTab] = useState("student");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   // ZOOM + VIEW MODE
@@ -65,11 +65,14 @@ export default function Book() {
     { id: 1, label: "Home", icon: "🏠" },
     { id: 2, label: "Units", icon: "📘" },
   ];
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 1100);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+useEffect(() => {
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 1100);
+  };
+
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
 
   const toggleFullScreen = () => {
     const elem = document.documentElement;
@@ -172,26 +175,26 @@ export default function Book() {
   };
   return (
     <>
-    <div className="w-full flex flex-col pb-20">
-      {/* NAVBAR */}
-      <nav className="w-full bg-[#2c5287] text-white border-b shadow px-6 py-2 flex items-center justify-between">
-        {/* LEFT SECTION: LOGO + TABS */}
-        <div className="flex items-center gap-10">
-          <h1 className="text-2xl font-serif tracking-wide text-gray-200">
-            Interactive Book
-          </h1>
+      <div className="w-full flex flex-col pb-20">
+        {/* NAVBAR */}
+        <nav className="w-full bg-[#2c5287] text-white border-b shadow px-6 py-2 flex items-center justify-between">
+          {/* LEFT SECTION: LOGO + TABS */}
+          <div className="flex items-center gap-10">
+            <h1 className="text-2xl font-serif tracking-wide text-gray-200">
+              Interactive Book
+            </h1>
 
-          {/* TABS */}
-          <div className="flex items-center gap-3">
-            {[
-              { id: "student", label: "Student’s Book" },
-              { id: "work", label: "Workbook" },
-              { id: "teacher", label: "Teacher’s Book" },
-            ].map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`
+            {/* TABS */}
+            <div className="flex items-center gap-3">
+              {[
+                { id: "student", label: "Student’s Book" },
+                { id: "work", label: "Workbook" },
+                { id: "teacher", label: "Teacher’s Book" },
+              ].map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`
             px-2 rounded-lg font-medium transition-all duration-300
             ${
               activeTab === tab.id
@@ -199,221 +202,229 @@ export default function Book() {
                 : "bg-transparent text-gray-200 hover:text-white hover:bg-white/10"
             }
           `}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* RIGHT SECTION */}
-        <div className="flex items-center gap-4">
-          <span className="cursor-pointer hover:text-gray-300">
-            Student Edition
-          </span>
-        </div>
-      </nav>
-
-      {/* MAIN CONTENT */}
-      <div
-        className="w-full  h-[88vh] flex items-center justify-center relative"
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseUp}
-      >
-        {/* MOBILE VIEW */}
-        {isMobile ? (
-          <>
-            {!hideArrows && (
-              <button
-                onClick={prevPage}
-                className="absolute left-4 w-10 h-10 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md z-[9999]"
-              >
-                <IoMdArrowBack size={25} />
-              </button>
-            )}
-
-            <div
-              className="bg-white sm:w-auto h-[85vh] rounded-2xl shadow-2xl border flex items-center justify-center overflow-hidden"
-              style={{
-                transform: `scale(${zoom})`,
-                transformOrigin: "center top",
-              }}
-            >
-              {pages[pageIndex]}
+                >
+                  {tab.label}
+                </button>
+              ))}
             </div>
-            {!hideArrows && (
-              <button
-                onClick={nextPage}
-                className="absolute right-4 w-10 h-10 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md"
+          </div>
+
+          {/* RIGHT SECTION */}
+          <div className="flex items-center gap-4">
+            <span className="cursor-pointer hover:text-gray-300">
+              Student Edition
+            </span>
+          </div>
+        </nav>
+
+        {/* MAIN CONTENT */}
+        <div
+          className="w-full  h-[88vh] flex items-center justify-center relative"
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseUp}
+        >
+          {/* MOBILE VIEW */}
+          {isMobile ? (
+            <>
+              {!hideArrows && (
+                <button
+                  onClick={prevPage}
+                  className="absolute left-4 w-10 h-10 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md z-[9999]"
+                >
+                  <IoMdArrowBack size={25} />
+                </button>
+              )}
+
+              <div
+                className="bg-white sm:w-auto h-[85vh] rounded-2xl shadow-2xl border flex items-center justify-center overflow-hidden"
+                style={{
+                  transform: `scale(${zoom})`,
+                  transformOrigin: "center top",
+                }}
               >
-                <GrLinkNext size={25} />
-              </button>
-            )}
-          </>
-        ) : (
-          <>
-            {/* DESKTOP */}
-            {pageIndex === 0 || viewMode === "single" ? (
-              // SINGLE PAGE
-              <>
-                {!hideArrows && (
-                  <button
-                    onClick={prevPage}
-                    className="absolute left-10 w-14 h-14 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md z-[9999]"
-                  >
-                    <IoMdArrowBack size={30} />
-                  </button>
-                )}
-
-                {/* PANNING WRAPPER */}
-                <div
-                  className="bg-white sm:w-auto h-[85vh] rounded-2xl shadow-2xl border flex items-center justify-center overflow-hidden"
-                  style={{
-                    transform: `translate(${offset.x}px, ${offset.y}px) scale(${zoom})`,
-                    transformOrigin: "center top",
-                    cursor:
-                      zoom === 1 ? "default" : isDragging ? "grabbing" : "grab",
-                  }}
+                {pages[pageIndex]}
+              </div>
+              {!hideArrows && (
+                <button
+                  onClick={nextPage}
+                  className="absolute right-4 w-10 h-10 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md"
                 >
-                  <div className="max-w-full max-h-full flex justify-center items-center">
-                    {pages[pageIndex]}
-                  </div>
-                </div>
-                {!hideArrows && (
-                  <button
-                    onClick={nextPage}
-                    className="absolute right-10 w-14 h-14 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md"
-                  >
-                    <GrLinkNext size={30} />
-                  </button>
-                )}
-              </>
-            ) : (
-              // SPREAD 2 PAGES
-              <>
-                {!hideArrows && (
-                  <button
-                    onClick={prevPage}
-                    className="absolute left-10 w-14 h-14 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md z-[9999]"
-                  >
-                    <IoMdArrowBack size={30} />
-                  </button>
-                )}
+                  <GrLinkNext size={25} />
+                </button>
+              )}
+            </>
+          ) : (
+            <>
+              {/* DESKTOP */}
+              {pageIndex === 0 || viewMode === "single" ? (
+                // SINGLE PAGE
+                <>
+                  {!hideArrows && (
+                    <button
+                      onClick={prevPage}
+                      className="absolute left-10 w-14 h-14 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md z-[9999]"
+                    >
+                      <IoMdArrowBack size={30} />
+                    </button>
+                  )}
 
-                {/* PANNING WRAPPER */}
-                <div
-                  className="bg-white sm:w-auto h-[85vh] rounded-2xl shadow-2xl border grid grid-cols-2 overflow-hidden"
-                  onMouseDown={handleMouseDown}
-                  onMouseMove={handleMouseMove}
-                  onMouseUp={handleMouseUp}
-                  onMouseLeave={handleMouseUp}
-                  style={{
-                    transform: `translate(${offset.x}px, ${offset.y}px) scale(${zoom})`,
-                    transformOrigin: "center top",
-                    cursor:
-                      zoom === 1 ? "default" : isDragging ? "grabbing" : "grab",
-                  }}
-                >
-                  <div className="flex justify-center items-center border-r">
-                    {pages[pageIndex]}
-                  </div>
-
-                  <div className="flex justify-center items-center border-l">
-                    {pages[pageIndex + 1]}
-                  </div>
-                </div>
-                {!hideArrows && (
-                  <button
-                    onClick={nextPage}
-                    className="absolute right-10 w-14 h-14 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md"
+                  {/* PANNING WRAPPER */}
+                  <div
+                    className="bg-white sm:w-auto h-[85vh] rounded-2xl shadow-2xl border flex items-center justify-center overflow-hidden"
+                    style={{
+                      transform: `translate(${offset.x}px, ${offset.y}px) scale(${zoom})`,
+                      transformOrigin: "center top",
+                      cursor:
+                        zoom === 1
+                          ? "default"
+                          : isDragging
+                          ? "grabbing"
+                          : "grab",
+                    }}
                   >
-                    <GrLinkNext size={30} />
-                  </button>
-                )}
-              </>
-            )}
-          </>
-        )}
-      </div>
+                    <div className="max-w-full max-h-full flex justify-center items-center">
+                      {pages[pageIndex]}
+                    </div>
+                  </div>
+                  {!hideArrows && (
+                    <button
+                      onClick={nextPage}
+                      className="absolute right-10 w-14 h-14 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md"
+                    >
+                      <GrLinkNext size={30} />
+                    </button>
+                  )}
+                </>
+              ) : (
+                // SPREAD 2 PAGES
+                <>
+                  {!hideArrows && (
+                    <button
+                      onClick={prevPage}
+                      className="absolute left-10 w-14 h-14 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md z-[9999]"
+                    >
+                      <IoMdArrowBack size={30} />
+                    </button>
+                  )}
 
-      {/* FOOTER */}
-      <footer
-         className="w-full bg-white border-t border-gray-300 shadow
+                  {/* PANNING WRAPPER */}
+                  <div
+                    className="bg-white sm:w-auto h-[85vh] rounded-2xl shadow-2xl border grid grid-cols-2 overflow-hidden"
+                    onMouseDown={handleMouseDown}
+                    onMouseMove={handleMouseMove}
+                    onMouseUp={handleMouseUp}
+                    onMouseLeave={handleMouseUp}
+                    style={{
+                      transform: `translate(${offset.x}px, ${offset.y}px) scale(${zoom})`,
+                      transformOrigin: "center top",
+                      cursor:
+                        zoom === 1
+                          ? "default"
+                          : isDragging
+                          ? "grabbing"
+                          : "grab",
+                    }}
+                  >
+                    <div className="flex justify-center items-center border-r">
+                      {pages[pageIndex]}
+                    </div>
+
+                    <div className="flex justify-center items-center border-l">
+                      {pages[pageIndex + 1]}
+                    </div>
+                  </div>
+                  {!hideArrows && (
+                    <button
+                      onClick={nextPage}
+                      className="absolute right-10 w-14 h-14 rounded-full bg-[#2c5287] text-white flex items-center justify-center shadow-md"
+                    >
+                      <GrLinkNext size={30} />
+                    </button>
+                  )}
+                </>
+              )}
+            </>
+          )}
+        </div>
+
+        {/* FOOTER */}
+        <footer
+          className="w-full bg-white border-t border-gray-300 shadow
              flex items-center justify-center gap-3 
              py-1.5 fixed bottom-0 left-0 z-[9999]"
-      >
-        <button
-          onClick={() => setIsSidebarOpen(true)}
-          className="absolute left-3 bg-[#2c5287] text-white p-0.5 rounded-lg shadow hover:bg-[#426ca7] transition"
         >
-          <IoMdMenu size={18}/>
-        </button>
-        {/* HOME BUTTON */}
-        {pageIndex !== 1 && pageIndex !== 2 && (
           <button
-            onClick={goToIndex}
+            onClick={() => setIsSidebarOpen(true)}
+            className="absolute left-3 bg-[#2c5287] text-white p-0.5 rounded-lg shadow hover:bg-[#426ca7] transition"
+          >
+            <IoMdMenu size={18} />
+          </button>
+          {/* HOME BUTTON */}
+          {pageIndex !== 1 && pageIndex !== 2 && (
+            <button
+              onClick={goToIndex}
+              className="bg-[#2c5287] text-white rounded-lg p-0.5 shadow hover:bg-[#426ca7] transition"
+            >
+              <FaHome size={18} />
+            </button>
+          )}
+          <button
+            onClick={() => setZoom((z) => z + 0.2)}
             className="bg-[#2c5287] text-white rounded-lg p-0.5 shadow hover:bg-[#426ca7] transition"
           >
-            <FaHome size={18} />
+            <MdOutlineZoomIn size={18} />
           </button>
-        )}
-        <button
-          onClick={() => setZoom((z) => z + 0.2)}
-          className="bg-[#2c5287] text-white rounded-lg p-0.5 shadow hover:bg-[#426ca7] transition"
-        >
-          <MdOutlineZoomIn size={18} />
-        </button>
 
-        <button
-          onClick={() => {
-            setZoom(1); // يرجع الحجم الأصلي
-            setOffset({ x: 0, y: 0 }); // يرجع المكان الأصلي
-            setIsPanning(false); // يوقف السحب
-          }}
-          className="bg-[#2c5287] text-white rounded-lg p-0.5 shadow hover:bg-[#426ca7] transition"
-        >
-          <MdOutlineZoomOut size={18} />
-        </button>
+          <button
+            onClick={() => {
+              setZoom(1); // يرجع الحجم الأصلي
+              setOffset({ x: 0, y: 0 }); // يرجع المكان الأصلي
+              setIsPanning(false); // يوقف السحب
+            }}
+            className="bg-[#2c5287] text-white rounded-lg p-0.5 shadow hover:bg-[#426ca7] transition"
+          >
+            <MdOutlineZoomOut size={18} />
+          </button>
 
-        <button
-          onClick={toggleFullScreen}
-          className="bg-[#2c5287] text-white rounded-lg p-0.5 shadow hover:bg-[#426ca7] transition"
-        >
-          <LuFullscreen size={18} />
-        </button>
-        {!isMobile && (
-          <>
-            <button
-              onClick={() => setViewMode("single")}
-              className={`rounded-lg p-0.5 shadow hover:bg-[#426ca7] transition ${
-                viewMode === "single"
-                  ? "bg-[#2c5287] text-white"
-                  : "bg-gray-300 text-gray-900"
-              }`}
-            >
-              <AiOutlineBook size={18} />
-            </button>
+          <button
+            onClick={toggleFullScreen}
+            className="bg-[#2c5287] text-white rounded-lg p-0.5 shadow hover:bg-[#426ca7] transition"
+          >
+            <LuFullscreen size={18} />
+          </button>
+          {!isMobile && (
+            <>
+              <button
+                onClick={() => setViewMode("single")}
+                className={`rounded-lg p-0.5 shadow hover:bg-[#426ca7] transition ${
+                  viewMode === "single"
+                    ? "bg-[#2c5287] text-white"
+                    : "bg-gray-300 text-gray-900"
+                }`}
+              >
+                <AiOutlineBook size={18} />
+              </button>
 
-            <button
-              onClick={() => setViewMode("spread")}
-              className={`rounded-lg p-0.5 shadow hover:bg-[#426ca7] transition ${
-                viewMode === "spread"
-                  ? "bg-[#2c5287] text-white"
-                  : "bg-gray-300 text-gray-900"
-              }`}
-            >
-              <RiBookOpenLine size={18} />
-            </button>
-          </>
-        )}
+              <button
+                onClick={() => setViewMode("spread")}
+                className={`rounded-lg p-0.5 shadow hover:bg-[#426ca7] transition ${
+                  viewMode === "spread"
+                    ? "bg-[#2c5287] text-white"
+                    : "bg-gray-300 text-gray-900"
+                }`}
+              >
+                <RiBookOpenLine size={18} />
+              </button>
+            </>
+          )}
 
-        {/* Sidebar */}
+          {/* Sidebar */}
 
-        {/* Bottom-Left Sidebar */}
-        <div
-          className={`
+          {/* Bottom-Left Sidebar */}
+          <div
+            className={`
     fixed left-0 bottom-0 
     w-64 h-[100%] 
     bg-white shadow-2xl z-[99999] 
@@ -421,46 +432,46 @@ export default function Book() {
     transform transition-transform duration-300
     ${isSidebarOpen ? "translate-y-0" : "translate-y-full"}
   `}
-        >
-          {/* Header */}
-          <div className="p-4 border-b flex justify-between items-center">
-            <h2 className="text-xl text-[#2c5287] font-semibold">Menu</h2>
-            <button
-              onClick={() => setIsSidebarOpen(false)}
-              className="text-yellow-500 text-xl"
-            >
-              ✕
-            </button>
-          </div>
+          >
+            {/* Header */}
+            <div className="p-4 border-b flex justify-between items-center">
+              <h2 className="text-xl text-[#2c5287] font-semibold">Menu</h2>
+              <button
+                onClick={() => setIsSidebarOpen(false)}
+                className="text-yellow-500 text-xl"
+              >
+                ✕
+              </button>
+            </div>
 
-          {/* MENU LIST */}
-          <ul className="p-3 space-y-2">
-            {menuItems.map((item) => (
-              <li
-                key={item.id}
-                onClick={() => handleMenuClick(item.id)}
-                className="
+            {/* MENU LIST */}
+            <ul className="p-3 space-y-2">
+              {menuItems.map((item) => (
+                <li
+                  key={item.id}
+                  onClick={() => handleMenuClick(item.id)}
+                  className="
           flex items-center gap-3 text-[#2c5287]
           p-3 rounded-lg cursor-pointer
           bg-gray-100 hover:bg-[#2c5287] hover:text-white 
           transition
         "
-              >
-                <span className="text-xl">{item.icon}</span>
-                <span className="text-base font-medium">{item.label}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+                >
+                  <span className="text-xl">{item.icon}</span>
+                  <span className="text-base font-medium">{item.label}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        {isSidebarOpen && (
-          <div
-            onClick={() => setIsSidebarOpen(false)}
-            className="fixed inset-0 bg-black/40 z-[99998]"
-          ></div>
-        )}
-      </footer>
-    </div>
+          {isSidebarOpen && (
+            <div
+              onClick={() => setIsSidebarOpen(false)}
+              className="fixed inset-0 bg-black/40 z-[99998]"
+            ></div>
+          )}
+        </footer>
+      </div>
     </>
   );
 }
