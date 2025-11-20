@@ -12,13 +12,11 @@ import Pg7_4_2_ModifiedJack from "../../assets/unit1/sounds/Pg7_4.2_Modified Jac
 import Pg7_5_1_Dad from "../../assets/unit1/sounds/Pg7_5.1_Dad.mp3";
 import Pg7_5_2_Mom from "../../assets/unit1/sounds/Pg7_5.2_Mom.mp3";
 import Pg7_6_1_Mom from "../../assets/unit1/sounds/Pg7_6.1_Mom and Dad.mp3";
-import Popup from "../Popup/Popup";
 import audioBtn from "../../assets/unit1/imgs/Right Audio Button 2.svg";
 
 import AudioWithCaption from "../AudioWithCaption";
-const Page7 = () => {
+const Page7 = ({ openPopup }) => {
   const audioRef = useRef(null);
-  const [activePopup, setActivePopup] = useState(null);
   const handleImageClick = (e) => {
     const rect = e.target.getBoundingClientRect();
     const xPercent = ((e.clientX - rect.left) / rect.width) * 100;
@@ -88,30 +86,28 @@ const Page7 = () => {
         width="30"
         height="30"
         viewBox="0 0 60 60"
-        onClick={() => setActivePopup(1)}
+        onClick={() =>
+          openPopup(
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignContent: "center",
+              }}
+            >
+              <AudioWithCaption
+                src={CD5_Pg7_Grammar2_AdultLady}
+                captions={captionsExample}
+              />
+            </div>,
+            true
+          )
+        }
         className="headset-icon-CD-page7 hover:scale-110 transition"
       >
         <image href={audioBtn} x="0" y="0" width="60" height="60" />
       </svg>
-      <Popup
-        isOpen={activePopup === 1}
-        isAudio={true}
-        onClose={() => setActivePopup(null)}
-        children={
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignContent: "center",
-            }}
-          >
-            <AudioWithCaption
-              src={CD5_Pg7_Grammar2_AdultLady}
-              captions={captionsExample}
-            />
-          </div>
-        }
-      />
+
       <audio ref={audioRef} style={{ display: "none" }} />
     </div>
   );

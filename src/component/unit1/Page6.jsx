@@ -11,14 +11,11 @@ import Pg6_2_1_Stella from "../../assets/unit1/sounds/Pg6_2.1_Stella.mp3";
 import Pg6_2_2_ModifiedStella from "../../assets/unit1/sounds/Pg6_2.2_Modified Stella.mp3";
 import Pg6_3_1_Harley from "../../assets/unit1/sounds/Pg6_3.1_Harley.mp3";
 import Pg6_3_2_ModifiedHarley from "../../assets/unit1/sounds/Pg6_3.2_Modified Harley.mp3";
-import Popup from "../Popup/Popup";
-import { FaHeadphones } from "react-icons/fa";
 import AudioWithCaption from "../AudioWithCaption";
 import audioBtn from "../../assets/unit1/imgs/Right Audio Button 2.svg";
 
-const Page6 = () => {
+const Page6 = ({ openPopup }) => {
   const audioRef = useRef(null);
-  const [activePopup, setActivePopup] = useState(null);
   const [hoveredAreaIndex, setHoveredAreaIndex] = useState(null);
   const captionsExample = [
     { start: 0, end: 1, text: "Hello!" },
@@ -82,30 +79,27 @@ const Page6 = () => {
         width="30"
         height="30"
         viewBox="0 0 60 60"
-        onClick={() => setActivePopup(1)}
+        onClick={() =>
+          openPopup(
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignContent: "center",
+              }}
+            >
+              <AudioWithCaption
+                src={CD4_Pg6_Grammar1_AdultLady}
+                captions={captionsExample}
+              />
+            </div>,
+            true
+          )
+        }
         className="headset-icon-CD-page6 hover:scale-110 transition"
       >
         <image href={audioBtn} x="0" y="0" width="60" height="60" />
       </svg>
-      <Popup
-        isOpen={activePopup === 1}
-        isAudio={true}
-        onClose={() => setActivePopup(null)}
-      >
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignContent: "center",
-          }}
-        >
-          <AudioWithCaption
-            src={CD4_Pg6_Grammar1_AdultLady}
-            captions={captionsExample}
-          />
-        </div>
-      </Popup>
-
       <audio ref={audioRef} style={{ display: "none" }} />
     </div>
   );

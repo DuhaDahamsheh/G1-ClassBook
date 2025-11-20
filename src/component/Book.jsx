@@ -8,6 +8,7 @@ import { LuFullscreen } from "react-icons/lu";
 import { RiBookOpenLine } from "react-icons/ri";
 import { AiOutlineBook } from "react-icons/ai";
 import { IoMdMenu } from "react-icons/io";
+import Popup from "./Popup/Popup";
 //===================== unit 1 pages
 import Page1 from "./unit1/Page1";
 import Page2 from "./unit1/Page2";
@@ -51,7 +52,7 @@ import Unit4_Page6 from "./unit4/Unit4_Page6";
 
 export default function Book() {
   const [pageIndex, setPageIndex] = useState(0);
- const [isMobile, setIsMobile] = useState(window.innerWidth < 1100);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1100);
   const [activeTab, setActiveTab] = useState("student");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   // ZOOM + VIEW MODE
@@ -65,14 +66,17 @@ export default function Book() {
     { id: 1, label: "Home", icon: "🏠" },
     { id: 2, label: "Units", icon: "📘" },
   ];
-useEffect(() => {
-  const handleResize = () => {
-    setIsMobile(window.innerWidth < 1100);
-  };
 
-  window.addEventListener("resize", handleResize);
-  return () => window.removeEventListener("resize", handleResize);
-}, []);
+  const [globalPopup, setGlobalPopup] = useState(null);
+  const [popupContent, setPopupContent] = useState(null);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1100);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const toggleFullScreen = () => {
     const elem = document.documentElement;
@@ -91,17 +95,30 @@ useEffect(() => {
       setPageIndex(unitStartIndex);
     }
   };
+  const [globalPopupOpen, setGlobalPopupOpen] = useState(false);
+  const [globalPopupContent, setGlobalPopupContent] = useState(null);
+  const [globalPopupAudio, setGlobalPopupAudio] = useState(false);
 
+  const openPopup = (content, isAudio = false) => {
+    setGlobalPopupContent(content);
+    setGlobalPopupAudio(isAudio);
+    setGlobalPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setGlobalPopupOpen(false);
+    setGlobalPopupContent(null);
+  };
   const pages = [
     <Page1 />,
     <Page2 goToUnit={goToUnit} />,
     <Page3 goToUnit={goToUnit} />,
-    <Page4 />,
-    <Page5 />,
-    <Page6 />,
-    <Page7 />,
-    <Page8 />,
-    <Page9 />,
+    <Page4 openPopup={openPopup} />,
+    <Page5 openPopup={openPopup} />,
+    <Page6 openPopup={openPopup} />,
+    <Page7 openPopup={openPopup} />,
+    <Page8 openPopup={openPopup} />,
+    <Page9 openPopup={openPopup} />,
     // <Unit2_Page1 />,
     // <Unit2_Page2 />,
     // <Unit2_Page3 />,
@@ -472,6 +489,14 @@ useEffect(() => {
           )}
         </footer>
       </div>
+
+      <Popup
+        isOpen={globalPopupOpen}
+        onClose={closePopup}
+        isAudio={globalPopupAudio}
+      >
+        {globalPopupContent}
+      </Popup>
     </>
   );
 }
