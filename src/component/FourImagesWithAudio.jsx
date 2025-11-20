@@ -4,18 +4,19 @@ import { IoMdSettings } from "react-icons/io";
 import { CgPlayPauseO } from "react-icons/cg";
 import { FaPlay, FaPause, FaVolumeUp, FaVolumeMute } from "react-icons/fa";
 import { FaRegCirclePlay } from "react-icons/fa6";
-import pauseBtn from "../assets/unit1/imgs/Right Video Button.svg"
+import pauseBtn from "../assets/unit1/imgs/Right Video Button.svg";
 const FourImagesWithAudio = ({
   images,
   audioSrc,
   checkpoints,
   popupOpen,
   titleQ,
+  audioArr,
 }) => {
   const audioRef = useRef(null);
 
   const [currentIndex, setCurrentIndex] = useState(0); // 0 = intro
-
+  const [clickedIndex, setClickedIndex] = useState(null);
   const [paused, setPaused] = useState(false);
   const [activeIndex, setActiveIndex] = useState(null);
   const [showContinue, setShowContinue] = useState(false);
@@ -33,6 +34,20 @@ const FourImagesWithAudio = ({
     if (!audioRef.current) return;
     audioRef.current.playbackRate = rate;
     setActiveSpeed(rate);
+  };
+
+  const playImageSound = (index) => {
+    const sound = audioArr[index];
+    if (sound) {
+      setClickedIndex(index); // 🔥 فعل الأنيميشن
+
+      sound.currentTime = 0;
+      sound.play();
+
+      sound.onended = () => {
+        setClickedIndex(null); // 🔥 لما يخلص الصوت يشيل الأنيميشن
+      };
+    }
   };
 
   useEffect(() => {
@@ -107,14 +122,16 @@ const FourImagesWithAudio = ({
   };
   return (
     <div className="four-wrapper">
-      <div  style={{
+      <div
+        style={{
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-start",
-          width:"60%",
+          width: "60%",
           alignItems: "flex-start",
-        }}>
-        <h5 className="header-title-page8" style={{ fontSize: "25px"  }}>
+        }}
+      >
+        <h5 className="header-title-page8" style={{ fontSize: "25px" }}>
           {images[0] && (
             <img src={images[0]} className="main-image" alt="main" />
           )}
@@ -128,7 +145,7 @@ const FourImagesWithAudio = ({
           justifyContent: "flex-start",
           margin: "0px 20px",
           position: "relative",
-          width:"60%",
+          width: "60%",
           alignItems: "flex-start",
         }}
       >
@@ -242,10 +259,18 @@ const FourImagesWithAudio = ({
                   <div
                     key={i}
                     className={`small-box1 ${
-                      currentIndex === globalIndex ? "active" : ""
+                      currentIndex === globalIndex ||
+                      clickedIndex === globalIndex
+                        ? "active"
+                        : ""
                     }`}
                   >
-                    <img src={src} className="small-img1" />
+                    <img
+                      src={src}
+                      className="small-img1"
+                      style={{ cursor: "pointer" }}
+                      onClick={() => playImageSound(globalIndex)}
+                    />
                   </div>
                 );
               })}
@@ -253,15 +278,23 @@ const FourImagesWithAudio = ({
           ) : (
             <>
               {images.slice(1).map((src, i) => {
-                const globalIndex = i +1; // index 2,3,4
+                const globalIndex = i + 1; // index 2,3,4
                 return (
                   <div
                     key={i}
                     className={`small-box2 ${
-                      currentIndex === globalIndex ? "active" : ""
+                      currentIndex === globalIndex ||
+                      clickedIndex === globalIndex
+                        ? "active"
+                        : ""
                     }`}
                   >
-                    <img src={src} className="small-img2" />
+                    <img
+                      src={src}
+                      className="small-img2"
+                      style={{ cursor: "pointer" }}
+                      onClick={() => playImageSound(globalIndex)}
+                    />
                   </div>
                 );
               })}

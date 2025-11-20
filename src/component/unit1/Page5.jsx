@@ -21,6 +21,12 @@ import audioBtn from "../../assets/unit1/imgs/Right Audio Button 2.svg";
 import arrowBtn from "../../assets/unit1/imgs/Right Arrow Button ....-01.svg";
 import AudioWithCaption from "../AudioWithCaption";
 import FourImagesWithAudio from "../FourImagesWithAudio";
+import Pg5_2_1_Adult from "../../assets/unit1/sounds/Pg5_2.1_Adult Lady.mp3";
+import Pg5_2_2_Adult from "../../assets/unit1/sounds/Pg5_2.2_Adult Lady.mp3";
+import Pg5_2_3_Adult from "../../assets/unit1/sounds/Pg5_2.3_Adult Lady.mp3";
+import Pg5_2_4_Adult from "../../assets/unit1/sounds/Pg5_2.4_Adult Lady.mp3";
+import Pg5_1_2_Lolo from "../../assets/unit1/sounds/Pg5_1.2_Lolo.mp3";
+import Pg5_1_1_Bebo from "../../assets/unit1/sounds/Pg5_1.1_Bebo.mp3";
 const Page5 = () => {
   const [activePopup, setActivePopup] = useState(null);
   const activeData = [
@@ -44,7 +50,19 @@ const Page5 = () => {
     { start: 2.2, end: 4, text: "I like apples." },
   ];
   const audioRef = useRef(null);
-
+  // أصوات الصور
+  const imageSounds = [
+    null, // الصورة الأولى الكبيرة (إن ما بدك صوت إلها)
+    new Audio(Pg5_2_1_Adult),
+    new Audio(Pg5_2_2_Adult),
+    new Audio(Pg5_2_3_Adult),
+    new Audio(Pg5_2_4_Adult),
+  ];
+  const imageSounds2 = [
+    null, // الصورة الأولى الكبيرة (إن ما بدك صوت إلها)
+    new Audio(Pg5_1_1_Bebo),
+    new Audio(Pg5_1_2_Lolo),
+  ];
   useEffect(() => {
     if (activePopup !== null && audioRef.current) {
       audioRef.current.play(); // تشغيل الصوت عند فتح البوب أب
@@ -101,9 +119,10 @@ const Page5 = () => {
           <FourImagesWithAudio
             images={[read, repeat1, repeat2]}
             audioSrc={longsound2}
-            checkpoints={[0,  4, 5.9]}
+            checkpoints={[0, 4, 5.9]}
             popupOpen={true}
             titleQ={`Listen, read, and repeat.`}
+            audioArr={imageSounds2}
           />
         }
       />
@@ -124,9 +143,10 @@ const Page5 = () => {
           <FourImagesWithAudio
             images={[Rabbit, img1, img2, img3, img4]}
             audioSrc={longsound}
-            checkpoints={[0, 3.2, 4, 4.9, 6]}
+            checkpoints={[0, 3.4, 4, 4.9, 6]}
             popupOpen={true}
             titleQ={"Listen and read along."}
+            audioArr={imageSounds}
           />
         }
       />

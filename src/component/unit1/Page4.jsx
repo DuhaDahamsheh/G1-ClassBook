@@ -11,6 +11,10 @@ import img1 from "../../assets/unit1/imgs/P1 listen and read 01.svg";
 import img2 from "../../assets/unit1/imgs/deer33.svg";
 import img3 from "../../assets/unit1/imgs/dish22.svg";
 import img4 from "../../assets/unit1/imgs/duck22.svg";
+import duck from "../../assets/unit1/sounds/Pg4_1.4_Adult Lady.mp3";
+import deer from "../../assets/unit1/sounds/Pg4_1.2_Adult Lady.mp3";
+import dish from "../../assets/unit1/sounds/Pg4_1.3_Adult Lady.mp3";
+import dSound from "../../assets/unit1/sounds/Pg4_1.1_Adult Lady.mp3";
 import { PiCursorClickBold } from "react-icons/pi";
 import Page4_Interactive1 from "./Page4_Interactive1";
 import Page4_vocabulary from "./Page4_vocabulary";
@@ -42,6 +46,14 @@ const Page4 = () => {
       sound: listenSound,
       imgSrc: listenImg,
     },
+  ];
+  // أصوات الصور
+  const imageSounds = [
+    null, // الصورة الأولى الكبيرة (إن ما بدك صوت إلها)
+    new Audio(dSound),
+    new Audio(deer),
+    new Audio(dish),
+    new Audio(duck),
   ];
   const captionsExample = [
     { start: 0, end: 1, text: "Hello!" },
@@ -152,6 +164,7 @@ const Page4 = () => {
               checkpoints={[0, 2.8, 3.4, 4.2, 5.1]}
               popupOpen={true}
               titleQ={"Listen and read along."}
+              audioArr={imageSounds}
             />
           }
         />
